@@ -13,9 +13,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import Navbar from "@/components/layout/navbar";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const FormSchema = z.object({
   type: z.enum(["1", "2", "3", "4", "5"], {
@@ -47,45 +47,41 @@ export default function RadioGroupForm() {
     resolver: zodResolver(FormSchema),
   });
 
+  const router = useRouter();
   //TODO onSubmit
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    {
-      console.log(data);
-    }
+    console.log(data);
+    router.push("/result");
   }
 
   return (
     <>
-      <Navbar
-        title={
-          <div className="flex gap-1 items-center">
-            <Image src="/icons/logo.svg" alt={"logo"} height={24} width={24} />
-            <h1 className="text-sm text-[#171A1D] font-semibold">
-              AI Профориентатор
-            </h1>
-          </div>
-        }
-        leftLinkButton={
-          <Link href="/">
-            <Image
-              src="/icons/arrow-back.svg"
-              alt={"arrow-back"}
-              height={24}
-              width={24}
-            />
-          </Link>
-        }
-        rightLinkButton={
-          <Link href="/">
-            <Image
-              src="/icons/close-button.svg"
-              alt={"close-button"}
-              height={24}
-              width={24}
-            />
-          </Link>
-        }
-      />
+      <div className="w-full flex justify-between">
+        <Link href="/">
+          <Image
+            src="/icons/arrow-back.svg"
+            alt={"arrow-back"}
+            height={24}
+            width={24}
+          />
+        </Link>
+
+        <div className="flex gap-1 items-center">
+          <Image src="/icons/logo.svg" alt={"logo"} height={24} width={24} />
+          <h1 className="text-sm text-[#171A1D] font-semibold">
+            AI Профориентатор
+          </h1>
+        </div>
+
+        <Link href="/">
+          <Image
+            src="/icons/close-button.svg"
+            alt={"close-button"}
+            height={24}
+            width={24}
+          />
+        </Link>
+      </div>
 
       <div className="bg-[#212121] text-white text-xs font-semibold p-2.5 rounded-lg mt-4">
         3 /32 вопросов
