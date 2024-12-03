@@ -1,7 +1,7 @@
 import React from "react";
 
 const ResultPage: React.FC = async () => {
-  return <>{/* <Navbar></Navbar> */}</>;
+  return <></>;
 };
 
 export default ResultPage;
