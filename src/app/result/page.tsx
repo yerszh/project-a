@@ -3,12 +3,37 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from "recharts";
+
+import {
+  ChartConfig,
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart";
+const chartData = [
+  { profs: "Технические", points: 186 },
+  { profs: "Юридические", points: 305 },
+  { profs: "Экономические", points: 237 },
+  { profs: "Военные", points: 273 },
+  { profs: "Безопасность", points: 209 },
+  { profs: "Творческие", points: 214 },
+  { profs: "Аграрное", points: 214 },
+  { profs: "Управление", points: 214 },
+];
+
+const chartConfig = {
+  desktop: {
+    label: "Desktop",
+    color: "hsl(var(--chart-1))",
+  },
+} satisfies ChartConfig;
 
 const ResultPage: React.FC = () => {
   return (
     <>
       <div className="w-full flex justify-between">
-        <Link href="/" className="flex gap-2">
+        <Link href="/quiz" className="flex gap-2">
           <Image
             src="/icons/refresh-button.svg"
             alt={"refresh-button.svg"}
@@ -26,6 +51,51 @@ const ResultPage: React.FC = () => {
             width={24}
           />
         </Link>
+      </div>
+
+      <div className="mt-9 w-full">
+        <h1 className="text-base text-[#A5AAB3] font-medium text-center">
+          Результаты
+        </h1>
+        <p className="text-[32px] text-[#171A1D] font-semibold leading-8 text-center mt-6">
+          Отличная работа!
+        </p>
+        <p className="text-sm text-[#171A1D] font-normal text-center mt-6">
+          На основе ваших ответов&nbsp;
+          <span className="text-[#644CF8] font-semibold">
+            AI профориентатор
+          </span>
+          &nbsp; подобрал профессии, которые лучше всего подходят вашим талантам
+          и интересам.
+        </p>
+      </div>
+
+      <div className="mt-9 w-full">
+        <h2 className="text-base text-[#A5AAB3] font-normal text-center">
+          Направления
+        </h2>
+
+        <ChartContainer
+          config={chartConfig}
+          className="mx-auto aspect-square max-h-[250px]"
+        >
+          <RadarChart data={chartData}>
+            <ChartTooltip
+              cursor={false}
+              content={<ChartTooltipContent hideLabel />}
+            />
+            <PolarGrid gridType="circle" />
+            <PolarAngleAxis dataKey="profs" />
+            <Radar dataKey="points" fill="#644CF8" fillOpacity={0.5} />
+          </RadarChart>
+        </ChartContainer>
+      </div>
+
+      <div className="mt-10 w-full">
+        <h2 className="text-base text-[#171A1D] font-semibold">Профессии</h2>
+        <h3 className="text-xs	 text-[#A5AAB3] font-normal">
+          Подобранные профессии
+        </h3>
       </div>
     </>
   );
