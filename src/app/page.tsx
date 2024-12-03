@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -21,7 +21,7 @@ export default function Home() {
         </p>
       </div>
 
-      <Button className="mt-8">
+      <Link href="/quiz" className="mt-8">
         <Image
           src="/icons/cursor-magic-selection-02.svg"
           alt={"cursor-magic-selection-02"}
@@ -29,7 +29,7 @@ export default function Home() {
           width={20}
         />
         Начать тест
-      </Button>
+      </Link>
     </>
   );
 }

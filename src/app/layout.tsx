@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="max-w-480 mx-auto p-4 h-screen flex flex-col items-center justify-center">
+        <div className="max-w-480 mx-auto p-4 h-screen flex flex-col items-center">
           {children}
         </div>
       </body>
