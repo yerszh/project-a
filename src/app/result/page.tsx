@@ -4,13 +4,14 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from "recharts";
-
+import { Progress } from "@/components/ui/progress";
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
+
 const chartData = [
   { profs: "Технические", points: 186 },
   { profs: "Юридические", points: 305 },
@@ -96,7 +97,42 @@ const ResultPage: React.FC = () => {
         <h3 className="text-xs	 text-[#A5AAB3] font-normal">
           Подобранные профессии
         </h3>
+
+        <div className="flex flex-col gap-1.5 mt-4">
+          <div className="border-[#E3E6EB] border border-solid rounded-lg shadow-sm p-4">
+            <div className="w-full flex justify-between mb-3">
+              <p>Программист</p> <p>91%</p>
+            </div>
+            <Progress value={91} />
+          </div>
+
+          <div className="border-[#E3E6EB] border border-solid rounded-lg shadow-sm p-4">
+            <div className="w-full flex justify-between mb-3">
+              <p>Учитель (технические)</p> <p>57%</p>
+            </div>
+            <Progress value={57} />
+          </div>
+        </div>
       </div>
+
+      <Link
+        className="bg-[#212121] w-full flex gap-2 py-5 text-white justify-center rounded-lg mt-10"
+        href={"/chat"}
+      >
+        <Image
+          src="/icons/chat-button.svg"
+          alt={"chat-button"}
+          height={24}
+          width={24}
+        />
+        Обсудить профессии с AI chat
+        <Image
+          src="/icons/arrow-forward.svg"
+          alt={"arrow-forward"}
+          height={24}
+          width={24}
+        />
+      </Link>
     </>
   );
 };
