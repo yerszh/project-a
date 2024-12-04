@@ -2,7 +2,8 @@
 
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import Link from "next/link";
+import Image from "next/image";
 import {
   Dialog,
   DialogContent,
@@ -20,6 +21,7 @@ import {
 } from "@/components/ui/drawer";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import SelectProfession from "./SelectProfession";
+import { Textarea } from "@/components/ui/textarea";
 
 const ChatPage: React.FC = () => {
   const [open, setOpen] = React.useState(false);
@@ -27,6 +29,30 @@ const ChatPage: React.FC = () => {
 
   return (
     <>
+      <div className="w-full flex justify-between">
+        <Link href="/result">
+          <Image
+            src="/icons/arrow-back.svg"
+            alt={"arrow-back"}
+            height={24}
+            width={24}
+          />
+        </Link>
+
+        <div className="flex gap-1 items-center">
+          <h1 className="text-sm text-[#171A1D] font-semibold">
+            Smart Bolashaq AI chat
+          </h1>
+        </div>
+
+        <Image
+          src="/icons/menu-icon.svg"
+          alt={"menu-icon"}
+          height={24}
+          width={24}
+        />
+      </div>
+
       <div className="max-w-[236px]">
         <h1 className="text-[12px] text-[#171A1D] font-semibold leading-8 text-center">
           Привет, я AI Chat! Я тут чтобы помочь тебе узнать информацию о
@@ -56,11 +82,11 @@ const ChatPage: React.FC = () => {
         {isDesktop ? (
           <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
-              <Button variant="outline">Edit Profile</Button>
+              <Button variant="outline">Выбрать профессию</Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
               <DialogHeader>
-                <DialogTitle>Edit profile</DialogTitle>
+                <DialogTitle>Edit </DialogTitle>
               </DialogHeader>
 
               <SelectProfession />
@@ -69,20 +95,27 @@ const ChatPage: React.FC = () => {
         ) : (
           <Drawer open={open} onOpenChange={setOpen}>
             <DrawerTrigger asChild>
-              <Button variant="outline">Edit Profile</Button>
+              <Button variant="outline">Edit</Button>
             </DrawerTrigger>
             <DrawerContent>
               <DrawerHeader className="text-left">
-                <DrawerTitle>Edit profile</DrawerTitle>
+                <DrawerTitle>Edit </DrawerTitle>
               </DrawerHeader>
               <SelectProfession />
             </DrawerContent>
           </Drawer>
         )}
       </div>
-      <div className="flex w-full max-w-sm items-center space-x-2">
-        <Input type="email" placeholder="Email" />
-        <Button type="submit">Subscribe</Button>
+      <div className="bg-[#F5F5F5] flex w-full items-center rounded-full p-1.5">
+        <Textarea placeholder="Сообщение" />
+        <Button type="submit" variant={"icon"} size={"icon"}>
+          <Image
+            src="/icons/send-message-button.svg"
+            alt={"send"}
+            height={30}
+            width={30}
+          />
+        </Button>
       </div>
     </>
   );
