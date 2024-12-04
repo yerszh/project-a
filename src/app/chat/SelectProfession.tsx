@@ -12,20 +12,61 @@ const SelectProfession: React.FC<SelectProfessionProps> = ({ className }) => {
     "Учитель",
     "Юрист",
     "Экономист",
+    "Медицинский работник",
+    "Программис",
+    "Учитель",
+    "Юрист",
+    "Экономист",
+    "Медицинский работник",
+    "Программис",
+    "Учитель",
+    "Юрист",
+    "Экономист",
+    "Медицинский работник",
+    "Программис",
+    "Учитель",
+    "Юрист",
+    "Экономист",
+    "Юрист",
+    "Экономист",
+    "Медицинский работник",
+    "Программис",
+    "Учитель",
+    "Юрист",
+    "Экономист",
+    "Юрист",
+    "Экономист",
+    "Медицинский работник",
+    "Программис",
+    "Учитель",
+    "Юрист",
+    "Экономист",
+    "Юрист",
+    "Экономист",
+    "Юрист",
+    "Экономист",
+    "Медицинский работник",
+    "Программис",
+    "Учитель",
+    "Юрист",
+    "Экономист",
   ];
 
   const handleCategoryClick = (category: string) => {
+    //TODO handleCategoryClick
     alert(`You clicked on: ${category}`);
   };
 
   return (
     <div className={className}>
-      <div style={{ padding: "20px" }}>
-        <h1>Select a Category</h1>
-        <CategoryButtons
-          categories={categories}
-          onClick={handleCategoryClick}
-        />
+      <div>
+        <h3>Выберите профессию</h3>
+        <div className="max-h-[300px] overflow-y-auto">
+          <CategoryButtons
+            categories={categories}
+            onClick={handleCategoryClick}
+          />
+        </div>
       </div>
     </div>
   );

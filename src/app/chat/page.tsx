@@ -13,20 +13,16 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import {
-  Drawer,
-  DrawerContent,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@/components/ui/drawer";
-import { useMediaQuery } from "@/hooks/use-media-query";
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import SelectProfession from "./SelectProfession";
 import { Textarea } from "@/components/ui/textarea";
 
 const ChatPage: React.FC = () => {
-  const [open, setOpen] = React.useState(false);
-  const isDesktop = useMediaQuery("(min-width: 768px)");
-
   return (
     <>
       <div className="w-full flex justify-between">
@@ -79,32 +75,16 @@ const ChatPage: React.FC = () => {
       </div>
 
       <div>
-        {isDesktop ? (
-          <Dialog open={open} onOpenChange={setOpen}>
-            <DialogTrigger asChild>
-              <Button variant="outline">Выбрать профессию</Button>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]">
-              <DialogHeader>
-                <DialogTitle>Edit </DialogTitle>
-              </DialogHeader>
+        <Sheet>
+          <SheetTrigger>Выбрать профессию</SheetTrigger>
+          <SheetContent side={"bottom"} className="max-h-[80vh]">
+            <SheetHeader>
+              <SheetTitle>Профессии</SheetTitle>
+            </SheetHeader>
 
-              <SelectProfession />
-            </DialogContent>
-          </Dialog>
-        ) : (
-          <Drawer open={open} onOpenChange={setOpen}>
-            <DrawerTrigger asChild>
-              <Button variant="outline">Edit</Button>
-            </DrawerTrigger>
-            <DrawerContent>
-              <DrawerHeader className="text-left">
-                <DrawerTitle>Edit </DrawerTitle>
-              </DrawerHeader>
-              <SelectProfession />
-            </DrawerContent>
-          </Drawer>
-        )}
+            <SelectProfession />
+          </SheetContent>
+        </Sheet>
       </div>
       <div className="bg-[#F5F5F5] flex w-full items-center rounded-full p-1.5">
         <Textarea placeholder="Сообщение" />

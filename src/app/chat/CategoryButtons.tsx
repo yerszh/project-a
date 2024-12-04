@@ -15,16 +15,7 @@ const CategoryButtons: React.FC<CategoryButtonsProps> = ({
         <button
           key={index}
           onClick={() => onClick(category)}
-          style={{
-            padding: "10px 20px",
-            margin: "5px",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-            backgroundColor: "#0070f3",
-            color: "white",
-            fontSize: "16px",
-          }}
+          className="p-3 m-1 border border-[#E0E0E0] rounded-xl font-normal cursor-pointer bg-white text-[#171A1D] text-sm leading-3"
         >
           {category}
         </button>
