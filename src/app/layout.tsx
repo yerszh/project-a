@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -15,8 +14,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="max-w-480 mx-auto p-4 h-screen flex flex-col items-center">
-          {children}
+        <div className="bg-white max-480:bg-[#171A1D] max-480:h-screen max-480:flex max-480:items-center">
+          <main className="max-w-[480px] w-full mx-auto flex flex-col items-center bg-white max-480:rounded-3xl">
+            {children}
+          </main>
         </div>
       </body>
     </html>

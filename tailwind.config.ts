@@ -10,10 +10,10 @@ export default {
   theme: {
     extend: {
       screens: {
-        "max-480": "480px",
+        "max-480": "481px",
       },
       maxWidth: {
-        "480": "480px",
+        "480": "481px",
       },
       colors: {
         background: "hsl(var(--background))",

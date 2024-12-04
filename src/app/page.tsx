@@ -4,6 +4,13 @@ import Link from "next/link";
 export default function Home() {
   return (
     <>
+      <div className="flex gap-1 items-center">
+        <Image src="/icons/logo.svg" alt={"logo"} height={24} width={24} />
+        <h1 className="text-sm text-[#171A1D] font-semibold">
+          AI Профориентатор
+        </h1>
+      </div>
+
       <Image
         src={`/images/main-image.jpg`}
         alt={"main-image"}
