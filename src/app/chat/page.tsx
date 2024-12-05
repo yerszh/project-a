@@ -52,11 +52,45 @@ const ChatPage: React.FC = () => {
             />
           </SheetTrigger>
 
-          <SheetContent side={"right"} className="">
+          <SheetContent
+            closeIcon={
+              <Image
+                src="/icons/menu-icon.svg"
+                alt={"menu-icon"}
+                height={24}
+                width={24}
+              />
+            }
+            side={"right"}
+            className=""
+          >
             <SheetHeader>
-              <SheetTitle></SheetTitle>
+              <SheetTitle>
+                <p className="text-sm text-[#171A1D] font-bold">
+                  Smart Bolashaq AI chat
+                </p>
+              </SheetTitle>
             </SheetHeader>
-            aaaa
+
+            <div
+              className="w-full h-10 flex gap-2 p-2.5 items-center bg-[#F5F5F5] rounded-lg mt-8"
+              cmdk-input-wrapper=""
+            >
+              <Image
+                src="/icons/search-icon.svg"
+                alt={"search-icon"}
+                height={20}
+                width={20}
+              />
+              <Input
+                placeholder="Поиск чата"
+                className={
+                  "flex w-full !border-transparent bg-transparent  text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
+                }
+              />
+            </div>
+
+            <h3 className="text-[#A5AAB3] text-sm leading-4 mt-7">Чаты</h3>
           </SheetContent>
         </Sheet>
       </div>
@@ -117,16 +151,18 @@ const ChatPage: React.FC = () => {
           </SheetContent>
         </Sheet>
       </div>
-      <div className="bg-[#F5F5F5] flex w-full items-center rounded-full p-1.5 mt-52 ">
-        <Textarea className="ml-3" placeholder="Сообщение" />
-        <Button type="submit" variant={"icon"} size={"icon"}>
-          <Image
-            src="/icons/send-message-button.svg"
-            alt={"send"}
-            height={30}
-            width={30}
-          />
-        </Button>
+      <div className="w-full h-full flex items-end">
+        <div className="bg-[#F5F5F5] flex w-full items-center rounded-full p-1.5 h-[42px]">
+          <Textarea className="ml-3" placeholder="Сообщение" />
+          <Button type="submit" variant={"icon"} size={"icon"}>
+            <Image
+              src="/icons/send-message-button.svg"
+              alt={"send"}
+              height={30}
+              width={30}
+            />
+          </Button>
+        </div>
       </div>
     </>
   );
