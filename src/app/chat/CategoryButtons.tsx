@@ -10,17 +10,17 @@ const CategoryButtons: React.FC<CategoryButtonsProps> = ({
   onClick,
 }) => {
   return (
-    <div>
+    <>
       {categories.map((category, index) => (
         <button
           key={index}
           onClick={() => onClick(category)}
-          className="p-3 m-1 border border-[#E0E0E0] rounded-xl font-normal cursor-pointer bg-white text-[#171A1D] text-sm leading-3"
+          className="p-3 border border-[#E0E0E0] rounded-xl font-normal cursor-pointer bg-white text-[#171A1D] text-sm leading-3"
         >
           {category}
         </button>
       ))}
-    </div>
+    </>
   );
 };
 

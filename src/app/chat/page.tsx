@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/sheet";
 import SelectProfession from "./SelectProfession";
 import { Textarea } from "@/components/ui/textarea";
+import { Input } from "@/components/ui/input";
 
 const ChatPage: React.FC = () => {
   return (

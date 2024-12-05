@@ -21,6 +21,8 @@ import {
   FormLabel,
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import Image from "next/image";
 
 interface SelectProfessionProps {
   className?: string;
@@ -87,6 +89,13 @@ const SelectProfession: React.FC<SelectProfessionProps> = ({ className }) => {
     console.log(`You clicked on: ${category}`);
   };
 
+  const selectedFilters = form.watch("items");
+
+  const handleRemoveFilter = (filter: string) => {
+    const updatedFilters = selectedFilters.filter((item) => item !== filter);
+    form.setValue("items", updatedFilters);
+  };
+
   function onSubmit(data: z.infer<typeof FormSchema>) {
     //TODO onSubmit
     console.log(data);
@@ -94,101 +103,156 @@ const SelectProfession: React.FC<SelectProfessionProps> = ({ className }) => {
 
   return (
     <div className={className}>
-      <Drawer>
-        <DrawerTrigger>Open</DrawerTrigger>
-        <DrawerContent>
-          <DrawerHeader className="grid grid-cols-3 items-center pb-4 pt-3">
-            <div></div>
-            <DrawerTitle className="text-center text-[#171A1D] text-base font-semibold">
-              Фильтр
-            </DrawerTitle>
-            <div
-              onClick={() => form.reset()}
-              className="text-right text-[#171A1D] text-xs cursor-pointer font-normal"
-            >
-              Сбросить
-            </div>
-          </DrawerHeader>
+      <div className="flex flex-row gap-4 justify-between my-4">
+        <div
+          className="w-full flex gap-2 items-center border-b"
+          cmdk-input-wrapper=""
+        >
+          <Image
+            src="/icons/search-icon.svg"
+            alt={"search-icon"}
+            height={21}
+            width={20}
+          />
+          <Input
+            placeholder="Поиск профессии"
+            className={
+              "flex w-full !border-transparent bg-transparent  text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
+            }
+          />
+        </div>
 
-          <Tabs defaultValue="directions" className="">
-            <TabsList>
-              <TabsTrigger value="directions">По направлениям</TabsTrigger>
-              <TabsTrigger value="subjects">По предметам</TabsTrigger>
-            </TabsList>
+        <Drawer>
+          <DrawerTrigger>
+            <Image
+              className="max-w-fit"
+              src="/icons/filter-button.svg"
+              alt={"filter-button"}
+              height={32}
+              width={32}
+            />
+          </DrawerTrigger>
+          <DrawerContent>
+            <DrawerHeader className="grid grid-cols-3 items-center pb-4 pt-3">
+              <div></div>
+              <DrawerTitle className="text-center text-[#171A1D] text-base font-semibold">
+                Фильтр
+              </DrawerTitle>
+              <div
+                onClick={() => form.reset()}
+                className="text-right text-[#171A1D] text-xs cursor-pointer font-normal"
+              >
+                Сбросить
+              </div>
+            </DrawerHeader>
 
-            <TabsContent value="directions">
-              <Form {...form}>
-                <form
-                  onSubmit={form.handleSubmit(onSubmit)}
-                  className="space-y-8"
-                >
-                  <FormField
-                    control={form.control}
-                    name="items"
-                    render={() => (
-                      <FormItem>
-                        {items.map((item) => (
-                          <FormField
-                            key={item.id}
-                            control={form.control}
-                            name="items"
-                            render={({ field }) => {
-                              return (
-                                <>
-                                  <FormItem
-                                    key={item.id}
-                                    className="flex flex-row  justify-between py-4 items-center"
-                                  >
-                                    <FormLabel className="font-normal">
-                                      {item.label}
-                                    </FormLabel>
-                                    <FormControl>
-                                      <Checkbox
-                                        checked={field.value?.includes(item.id)}
-                                        onCheckedChange={(checked) => {
-                                          return checked
-                                            ? field.onChange([
-                                                ...field.value,
-                                                item.id,
-                                              ])
-                                            : field.onChange(
-                                                field.value?.filter(
-                                                  (value) => value !== item.id
-                                                )
-                                              );
-                                        }}
-                                      />
-                                    </FormControl>
-                                  </FormItem>
-                                  <div className="border-t border-[#E3E6EB]"></div>
-                                </>
-                              );
-                            }}
-                          />
-                        ))}
-                      </FormItem>
-                    )}
-                  />
+            <Tabs defaultValue="directions" className="">
+              <TabsList>
+                <TabsTrigger value="directions">По направлениям</TabsTrigger>
+                <TabsTrigger value="subjects">По предметам</TabsTrigger>
+              </TabsList>
 
-                  <DrawerClose asChild>
-                    <Button
-                      variant={"secondary"}
-                      className="!my-7"
-                      type="submit"
-                    >
-                      Применить
-                    </Button>
-                  </DrawerClose>
-                </form>
-              </Form>
-            </TabsContent>
-            <TabsContent value="subjects">По предметам</TabsContent>
-          </Tabs>
-        </DrawerContent>
-      </Drawer>
+              <TabsContent value="directions">
+                <Form {...form}>
+                  <form
+                    onSubmit={form.handleSubmit(onSubmit)}
+                    className="space-y-8"
+                  >
+                    <FormField
+                      control={form.control}
+                      name="items"
+                      render={() => (
+                        <FormItem>
+                          {items.map((item) => (
+                            <FormField
+                              key={item.id}
+                              control={form.control}
+                              name="items"
+                              render={({ field }) => {
+                                return (
+                                  <>
+                                    <FormItem
+                                      key={item.id}
+                                      className="flex flex-row  justify-between py-4 items-center"
+                                    >
+                                      <FormLabel className="font-normal">
+                                        {item.label}
+                                      </FormLabel>
+                                      <FormControl>
+                                        <Checkbox
+                                          checked={field.value?.includes(
+                                            item.id
+                                          )}
+                                          onCheckedChange={(checked) => {
+                                            return checked
+                                              ? field.onChange([
+                                                  ...field.value,
+                                                  item.id,
+                                                ])
+                                              : field.onChange(
+                                                  field.value?.filter(
+                                                    (value) => value !== item.id
+                                                  )
+                                                );
+                                          }}
+                                        />
+                                      </FormControl>
+                                    </FormItem>
+                                    <div className="border-t border-[#E3E6EB]"></div>
+                                  </>
+                                );
+                              }}
+                            />
+                          ))}
+                        </FormItem>
+                      )}
+                    />
+
+                    <DrawerClose asChild>
+                      <Button
+                        variant={"secondary"}
+                        className="!my-7"
+                        type="submit"
+                      >
+                        Применить
+                      </Button>
+                    </DrawerClose>
+                  </form>
+                </Form>
+              </TabsContent>
+              <TabsContent value="subjects">По предметам</TabsContent>
+            </Tabs>
+          </DrawerContent>
+        </Drawer>
+      </div>
+
       <div>
-        <h3>Выберите профессию</h3>
-        <div className="max-h-[300px] overflow-y-auto">
+        <div className="flex flex-wrap gap-2">
+          {selectedFilters.length > 0 &&
+            selectedFilters.map((filter) => (
+              <div
+                key={filter}
+                className="flex gap-1 items-center border border-[border-[#E3E6EB]] px-2 py-1.5 text-sm rounded-full"
+              >
+                <Image
+                  onClick={() => handleRemoveFilter(filter)}
+                  className="max-w-fit"
+                  src="/icons/cancel-square.svg"
+                  alt={"filter-button"}
+                  height={32}
+                  width={32}
+                />
+                <p className="font-medium">{filter}</p>
+              </div>
+            ))}
+        </div>
+      </div>
+
+      <div>
+        <h3 className="text-[#171A1D] text-base font-semibold leading-4	my-6">
+          Выберите профессию
+        </h3>
+        <div className="flex flex-wrap gap-2 overflow-y-auto">
           <CategoryButtons
             categories={categories}
             onClick={handleCategoryClick}
