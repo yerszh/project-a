@@ -1,18 +1,57 @@
 import React from "react";
 import CategoryButtons from "./CategoryButtons";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 import {
   Drawer,
+  DrawerClose,
   DrawerContent,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-
+import { Checkbox } from "@/components/ui/checkbox";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+} from "@/components/ui/form";
+import { Button } from "@/components/ui/button";
 
 interface SelectProfessionProps {
   className?: string;
 }
+
+const items = [
+  {
+    id: "Технические",
+    label: "Технические",
+  },
+  {
+    id: "Педагогические",
+    label: "Педагогические",
+  },
+  {
+    id: "Юридические",
+    label: "Юридические",
+  },
+  {
+    id: "Медицинские",
+    label: "Медицинские",
+  },
+  {
+    id: "Экономические",
+    label: "Экономические",
+  },
+  {
+    id: "Творческие",
+    label: "Творческие",
+  },
+] as const;
 
 const SelectProfession: React.FC<SelectProfessionProps> = ({ className }) => {
   const categories = [
@@ -31,38 +70,119 @@ const SelectProfession: React.FC<SelectProfessionProps> = ({ className }) => {
     "Учитель",
     "Юрист",
     "Экономист",
-    "Медицинский работник",
-    "Программис",
-    "Учитель",
-    "Юрист",
-    "Экономист",
-    "Юрист",
-    "Экономист",
-    "Медицинский работник",
   ];
 
+  const FormSchema = z.object({
+    items: z.array(z.string()),
+  });
+
+  const form = useForm<z.infer<typeof FormSchema>>({
+    resolver: zodResolver(FormSchema),
+    defaultValues: {
+      items: [],
+    },
+  });
   const handleCategoryClick = (category: string) => {
     //TODO handleCategoryClick
-    alert(`You clicked on: ${category}`);
+    console.log(`You clicked on: ${category}`);
   };
+
+  function onSubmit(data: z.infer<typeof FormSchema>) {
+    //TODO onSubmit
+    console.log(data);
+  }
 
   return (
     <div className={className}>
       <Drawer>
         <DrawerTrigger>Open</DrawerTrigger>
         <DrawerContent>
-          <DrawerHeader>
-            <DrawerTitle>Фильтр</DrawerTitle>
+          <DrawerHeader className="grid grid-cols-3 items-center pb-4 pt-3">
+            <div></div>
+            <DrawerTitle className="text-center text-[#171A1D] text-base font-semibold">
+              Фильтр
+            </DrawerTitle>
+            <div
+              onClick={() => form.reset()}
+              className="text-right text-[#171A1D] text-xs cursor-pointer font-normal"
+            >
+              Сбросить
+            </div>
           </DrawerHeader>
 
-          <Tabs defaultValue="account" className="">
+          <Tabs defaultValue="directions" className="">
             <TabsList>
-              <TabsTrigger value="account">По направлениям</TabsTrigger>
-              <TabsTrigger value="password">По предметам</TabsTrigger>
+              <TabsTrigger value="directions">По направлениям</TabsTrigger>
+              <TabsTrigger value="subjects">По предметам</TabsTrigger>
             </TabsList>
 
-            <TabsContent value="account">По направлениям</TabsContent>
-            <TabsContent value="password">По предметам</TabsContent>
+            <TabsContent value="directions">
+              <Form {...form}>
+                <form
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  className="space-y-8"
+                >
+                  <FormField
+                    control={form.control}
+                    name="items"
+                    render={() => (
+                      <FormItem>
+                        {items.map((item) => (
+                          <FormField
+                            key={item.id}
+                            control={form.control}
+                            name="items"
+                            render={({ field }) => {
+                              return (
+                                <>
+                                  <FormItem
+                                    key={item.id}
+                                    className="flex flex-row  justify-between py-4 items-center"
+                                  >
+                                    <FormLabel className="font-normal">
+                                      {item.label}
+                                    </FormLabel>
+                                    <FormControl>
+                                      <Checkbox
+                                        checked={field.value?.includes(item.id)}
+                                        onCheckedChange={(checked) => {
+                                          return checked
+                                            ? field.onChange([
+                                                ...field.value,
+                                                item.id,
+                                              ])
+                                            : field.onChange(
+                                                field.value?.filter(
+                                                  (value) => value !== item.id
+                                                )
+                                              );
+                                        }}
+                                      />
+                                    </FormControl>
+                                  </FormItem>
+                                  <div className="border-t border-[#E3E6EB]"></div>
+                                </>
+                              );
+                            }}
+                          />
+                        ))}
+                      </FormItem>
+                    )}
+                  />
+
+                  <DrawerClose asChild>
+                    <Button
+                      variant={"secondary"}
+                      className="!my-7"
+                      type="submit"
+                    >
+                      Применить
+                    </Button>
+                  </DrawerClose>
+                </form>
+              </Form>
+            </TabsContent>
+            <TabsContent value="subjects">По предметам</TabsContent>
           </Tabs>
         </DrawerContent>
       </Drawer>
