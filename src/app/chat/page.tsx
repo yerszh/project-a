@@ -41,19 +41,30 @@ const ChatPage: React.FC = () => {
           </h1>
         </div>
 
-        <Image
-          src="/icons/menu-icon.svg"
-          alt={"menu-icon"}
-          height={24}
-          width={24}
-        />
+        <Sheet>
+          <SheetTrigger className="">
+            <Image
+              src="/icons/menu-icon.svg"
+              alt={"menu-icon"}
+              height={24}
+              width={24}
+            />
+          </SheetTrigger>
+
+          <SheetContent side={"right"} className="">
+            <SheetHeader>
+              <SheetTitle></SheetTitle>
+            </SheetHeader>
+            aaaa
+          </SheetContent>
+        </Sheet>
       </div>
 
       <div className="mt-56 mx-5">
         <h2 className="text-[#171A1D] text-sm font-normal leading-4 text-center">
-          Привет, я <span className="font-semibold">AI Chat!</span> Я тут чтобы помочь тебе узнать информацию о
-          различных профессиях, вузах, грандах, стипендиях, и многое другое. Для
-          начала работы выбери профессию.
+          Привет, я <span className="font-semibold">AI Chat!</span> Я тут чтобы
+          помочь тебе узнать информацию о различных профессиях, вузах, грандах,
+          стипендиях, и многое другое. Для начала работы выбери профессию.
         </h2>
         <p className="mt-6 mx-14 text-[#757575] text-xs font-normal leading-3 text-center">
           Диалог в чате ведется на основе выбранной вами профессии
@@ -61,17 +72,20 @@ const ChatPage: React.FC = () => {
       </div>
       <div>
         <Dialog>
-          <DialogTrigger className="mt-2.5 text-[#171A1D] text-xs font-medium leading-3 text-center">Подробнее..</DialogTrigger>
+          <DialogTrigger className="mt-2.5 text-[#171A1D] text-xs font-medium leading-3 text-center">
+            Подробнее..
+          </DialogTrigger>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle className="flex flex-row gap-1.5 text-[#171A1D] text-base	font-semibold leading-4"> 
+              <DialogTitle className="flex flex-row gap-1.5 text-[#171A1D] text-base	font-semibold leading-4">
                 <Image
-            src="/icons/help-icon.svg"
-            alt={"help-icon"}
-            height={16}
-            width={16}
-          />
-          Помощь</DialogTitle>
+                  src="/icons/help-icon.svg"
+                  alt={"help-icon"}
+                  height={16}
+                  width={16}
+                />
+                Помощь
+              </DialogTitle>
               <DialogDescription className="text-[#171A1D] text-[13px] font-medium leading-5 !mt-4">
                 Чат фокусируется на профессии, которую вы выбрали. Чтобы начать
                 обсуждение другой профессии необходимо сначала сменить выбор.
@@ -83,14 +97,15 @@ const ChatPage: React.FC = () => {
 
       <div>
         <Sheet>
-          <SheetTrigger className=" mt-11 flex flex-row gap-1.5 text-[#171A1D] text-[13px] font-medium leading-4 text-center border rounded-3xl p-3"> 
-          <Image
-            src="/icons/message-search.svg"
-            alt={"message-search"}
-            height={16}
-            width={16}
-          />
-            Выбрать профессию</SheetTrigger>
+          <SheetTrigger className=" mt-11 flex flex-row gap-1.5 text-[#171A1D] text-[13px] font-medium leading-4 text-center border rounded-3xl p-3">
+            <Image
+              src="/icons/message-search.svg"
+              alt={"message-search"}
+              height={16}
+              width={16}
+            />
+            Выбрать профессию
+          </SheetTrigger>
 
           <SheetContent side={"bottom"} className="max-h-[80vh]">
             <SheetHeader>
@@ -101,7 +116,7 @@ const ChatPage: React.FC = () => {
           </SheetContent>
         </Sheet>
       </div>
-      <div className="bg-[#F5F5F5] flex w-full items-center rounded-full p-1.5 mt-52">
+      <div className="bg-[#F5F5F5] flex w-full items-center rounded-full p-1.5 mt-52 ">
         <Textarea className="ml-3" placeholder="Сообщение" />
         <Button type="submit" variant={"icon"} size={"icon"}>
           <Image
