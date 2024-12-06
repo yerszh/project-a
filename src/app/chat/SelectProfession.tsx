@@ -274,20 +274,22 @@ const SelectProfession: React.FC<SelectProfessionProps> = ({ className }) => {
                 </Form>
               </TabsContent>
               <TabsContent value="subjects">
-                <Accordion type="single" collapsible>
+                <Accordion type="single" collapsible defaultValue="item-1">
                   <AccordionItem value="item-1">
                     <AccordionTrigger>Профильный предмет 1</AccordionTrigger>
                     <AccordionContent>
                       <RadioGroup defaultValue="comfortable">
-                        <div className="flex items-center space-x-2">
+                        <div className="flex flex-row  justify-between py-3 items-center">
                           <Label htmlFor="r1">Биология</Label>
                           <RadioGroupItem value="default" id="r1" />
                         </div>
-                        <div className="flex items-center space-x-2">
+                        <div className="border-t border-[#E3E6EB]"></div>
+                        <div className="flex flex-row  justify-between py-3 items-center">
                           <Label htmlFor="r2">Всемирная история</Label>
                           <RadioGroupItem value="comfortable" id="r2" />
                         </div>
-                        <div className="flex items-center space-x-2">
+                        <div className="border-t border-[#E3E6EB]"></div>
+                        <div className="flex flex-row  justify-between py-3 items-center">
                           <Label htmlFor="r3">География</Label>
                           <RadioGroupItem value="compact" id="r3" />
                         </div>
@@ -297,7 +299,22 @@ const SelectProfession: React.FC<SelectProfessionProps> = ({ className }) => {
                   <AccordionItem value="item-2">
                     <AccordionTrigger>Профильный предмет 2</AccordionTrigger>
                     <AccordionContent>
-                      Yes. It adheres to the WAI-ARIA design pattern.
+                      <RadioGroup defaultValue="comfortable">
+                        <div className="flex flex-row  justify-between py-3 items-center">
+                          <Label htmlFor="r1">Биология</Label>
+                          <RadioGroupItem value="default" id="r1" />
+                        </div>
+                        <div className="border-t border-[#E3E6EB]"></div>
+                        <div className="flex flex-row  justify-between py-3 items-center">
+                          <Label htmlFor="r2">Всемирная история</Label>
+                          <RadioGroupItem value="comfortable" id="r2" />
+                        </div>
+                        <div className="border-t border-[#E3E6EB]"></div>
+                        <div className="flex flex-row  justify-between py-3 items-center">
+                          <Label htmlFor="r3">География</Label>
+                          <RadioGroupItem value="compact" id="r3" />
+                        </div>
+                      </RadioGroup>
                     </AccordionContent>
                   </AccordionItem>
                 </Accordion>
