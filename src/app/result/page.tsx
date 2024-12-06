@@ -16,11 +16,9 @@ const chartData = [
   { profs: "Технические", points: 186 },
   { profs: "Юридические", points: 305 },
   { profs: "Экономические", points: 237 },
-  { profs: "Военные", points: 273 },
-  { profs: "Безопасность", points: 209 },
+  { profs: "Военные", points: 153 },
+  { profs: "Безопасность", points: 109 },
   { profs: "Творческие", points: 214 },
-  { profs: "Аграрное", points: 214 },
-  { profs: "Управление", points: 214 },
 ];
 
 const chartConfig = {
@@ -116,7 +114,7 @@ const ResultPage: React.FC = () => {
       </div>
 
       <Link
-        className="bg-[#212121] w-full flex gap-2 py-5 text-white justify-center rounded-lg mt-10"
+        className="bg-[#212121] w-full flex gap-2 py-5 text-white justify-center rounded-lg !my-10"
         href={"/chat"}
       >
         <Image
