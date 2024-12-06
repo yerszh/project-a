@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Button } from "@/components/ui/button";
+
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -22,10 +22,11 @@ import {
 import SelectProfession from "./SelectProfession";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
-const ChatPage: React.FC = () => {
+const SelectPage: React.FC = () => {
   return (
-    <>
+    <div className="p-4 w-full h-full flex flex-col items-center">
       <div className="w-full flex justify-between">
         <Link href="/result">
           <Image
@@ -164,8 +165,8 @@ const ChatPage: React.FC = () => {
           </Button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
-export default ChatPage;
+export default SelectPage;

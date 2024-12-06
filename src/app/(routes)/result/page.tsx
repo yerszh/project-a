@@ -15,8 +15,8 @@ import {
 const chartData = [
   { profs: "Технические", points: 186 },
   { profs: "Юридические", points: 305 },
-  { profs: "Экономические", points: 237 },
   { profs: "Военные", points: 153 },
+  { profs: "Экономические", points: 237 },
   { profs: "Безопасность", points: 109 },
   { profs: "Творческие", points: 214 },
 ];
@@ -30,14 +30,17 @@ const chartConfig = {
 
 const ResultPage: React.FC = () => {
   return (
-    <>
+    <div className="p-4 w-full flex flex-col items-center">
       <div className="w-full flex justify-between">
-        <Link href="/quiz" className="flex gap-2">
+        <Link
+          href="/quiz"
+          className="flex gap-2 items-center text-[#A5AAB3] text-xs	"
+        >
           <Image
             src="/icons/refresh-button.svg"
             alt={"refresh-button.svg"}
-            height={24}
-            width={24}
+            height={20}
+            width={20}
           />
           Пройти заново
         </Link>
@@ -70,14 +73,11 @@ const ResultPage: React.FC = () => {
       </div>
 
       <div className="mt-9 w-full">
-        <h2 className="text-base text-[#A5AAB3] font-normal text-center">
+        <h2 className="text-base text-[#A5AAB3] font-normal text-center ">
           Направления
         </h2>
 
-        <ChartContainer
-          config={chartConfig}
-          className="mx-auto aspect-square max-h-[250px]"
-        >
+        <ChartContainer config={chartConfig} className="mx-auto w-full mt-7">
           <RadarChart data={chartData}>
             <ChartTooltip
               cursor={false}
@@ -115,7 +115,7 @@ const ResultPage: React.FC = () => {
 
       <Link
         className="bg-[#212121] w-full flex gap-2 py-5 text-white justify-center rounded-lg !my-10"
-        href={"/chat"}
+        href={"/select"}
       >
         <Image
           src="/icons/chat-button.svg"
@@ -131,7 +131,7 @@ const ResultPage: React.FC = () => {
           width={24}
         />
       </Link>
-    </>
+    </div>
   );
 };
 

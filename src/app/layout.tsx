@@ -15,7 +15,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <div className="bg-white max-480:bg-[#171A1D] max-480:flex max-480:items-center">
-          <main className="max-w-[480px] w-full h-screen max-480:h-full mx-auto flex flex-col items-center bg-white max-480:rounded-3xl p-4 ">
+          <main className="max-w-[480px] w-full h-screen max-480:h-full mx-auto flex flex-col items-center bg-white max-480:rounded-3xl">
             {children}
           </main>
         </div>

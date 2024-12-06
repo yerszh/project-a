@@ -55,7 +55,7 @@ export default function RadioGroupForm() {
   }
 
   return (
-    <>
+    <div className="p-4 w-full flex flex-col items-center">
       <div className="w-full flex justify-between">
         <Link href="/">
           <Image
@@ -83,7 +83,7 @@ export default function RadioGroupForm() {
         </Link>
       </div>
 
-      <div className="bg-[#212121] text-white text-xs font-semibold p-2.5 rounded-lg mt-4">
+      <div className="bg-[#212121] text-white w-fit text-xs font-semibold p-2.5 rounded-lg mt-4">
         3 /32 вопросов
       </div>
 
@@ -129,6 +129,6 @@ export default function RadioGroupForm() {
           <Button type="submit">Дальше</Button>
         </form>
       </Form>
-    </>
+    </div>
   );
 }
