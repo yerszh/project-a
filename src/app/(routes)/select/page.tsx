@@ -15,6 +15,7 @@ import {
 import {
   Sheet,
   SheetContent,
+  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -136,7 +137,7 @@ const SelectPage: React.FC = () => {
           <SheetTrigger className=" mt-11 flex flex-row gap-1.5 text-[#171A1D] text-[13px] font-medium leading-4 text-center border rounded-3xl p-3">
             <Image
               src="/icons/message-search.svg"
-              alt={"message-search"}
+              alt="message-search"
               height={16}
               width={16}
             />
@@ -147,7 +148,7 @@ const SelectPage: React.FC = () => {
             <SheetHeader>
               <SheetTitle>Профессии</SheetTitle>
             </SheetHeader>
-
+            <SheetDescription></SheetDescription>
             <SelectProfession />
           </SheetContent>
         </Sheet>

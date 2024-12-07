@@ -86,6 +86,8 @@ const SelectProfession: React.FC<SelectProfessionProps> = ({ className }) => {
     "Радиоинженер",
   ];
 
+  const recommendedProfs = ["Инженер", "Программист", "Учитель"];
+
   const FormSchema = z.object({
     items: z.array(z.string()),
   });
@@ -305,20 +307,34 @@ const SelectProfession: React.FC<SelectProfessionProps> = ({ className }) => {
         </div>
       </div>
 
-      <div>
-        <h3 className="text-[#171A1D] text-base font-semibold leading-4	my-6">
+      <div className="mt-4">
+        <h3 className="text-[#6F7581] text-sm font-normal">
+          Рекомендуемые профессии
+        </h3>
+
+        <div className="flex flex-wrap gap-1.5 mt-4">
+          {recommendedProfs.map((prof, index) => (
+            <Badge key={index} onClick={() => handleCategoryClick(prof)}>
+              {prof}
+            </Badge>
+          ))}
+        </div>
+      </div>
+
+      <div className="mt-8">
+        <h3 className="text-[#171A1D] text-base font-semibold leading-4 ">
           Выберите профессию
         </h3>
 
-        <ScrollArea className="h-[200px] w-full">
-          <div className="flex flex-wrap gap-1.5">
-            {categories.map((category, index) => (
+        <ScrollArea className="h-[200px] w-full mt-6">
+          <div className="flex flex-wrap gap-1.5 ">
+            {categories.map((prof, index) => (
               <Badge
                 key={index}
-                onClick={() => handleCategoryClick(category)}
+                onClick={() => handleCategoryClick(prof)}
                 variant="secondary"
               >
-                {category}
+                {prof}
               </Badge>
             ))}
           </div>
