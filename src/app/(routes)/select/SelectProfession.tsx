@@ -1,5 +1,5 @@
 import React from "react";
-import CategoryButtons from "./CategoryButtons";
+import { Badge } from "@/components/ui/badge";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -31,6 +31,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface SelectProfessionProps {
   className?: string;
@@ -65,66 +66,24 @@ const items = [
 
 const SelectProfession: React.FC<SelectProfessionProps> = ({ className }) => {
   const categories = [
-    "Медицинский работник",
-    "Программис",
-    "Учитель",
-    "Юрист",
-    "Экономист",
-    "Медицинский работник",
-    "Программис",
-    "Учитель",
-    "Юрист",
-    "Экономист",
-    "Медицинский работник",
-    "Программис",
-    "Учитель",
-    "Юрист",
-    "Экономист",
-    "Медицинский работник",
-    "Программис",
-    "Учитель",
-    "Юрист",
-    "Экономист",
-    "Медицинский работник",
-    "Программис",
-    "Учитель",
-    "Юрист",
-    "Экономист",
-    "Медицинский работник",
-    "Программис",
-    "Учитель",
-    "Юрист",
-    "Экономист",
-    "Медицинский работник",
-    "Программис",
-    "Учитель",
-    "Юрист",
-    "Экономист",
-    "Медицинский работник",
-    "Программис",
-    "Учитель",
-    "Юрист",
-    "Экономист",
-    "Медицинский работник",
-    "Программис",
-    "Учитель",
-    "Юрист",
-    "Экономист",
-    "Медицинский работник",
-    "Программис",
-    "Учитель",
-    "Юрист",
-    "Экономист",
-    "Медицинский работник",
-    "Программис",
-    "Учитель",
-    "Юрист",
-    "Экономист",
-    "Медицинский работник",
-    "Программис",
-    "Учитель",
-    "Юрист",
-    "Экономист",
+    "Автомеханик",
+    "Архитектор",
+    "Веб-программист",
+    "Горнорабочий",
+    "Инженер",
+    "Конструктор ",
+    "Механик",
+    "Программист",
+    "Радиоинженер",
+    "Автомеханик",
+    "Архитектор",
+    "Веб-программист",
+    "Горнорабочий",
+    "Инженер",
+    "Конструктор ",
+    "Механик",
+    "Программист",
+    "Радиоинженер",
   ];
 
   const FormSchema = z.object({
@@ -350,12 +309,20 @@ const SelectProfession: React.FC<SelectProfessionProps> = ({ className }) => {
         <h3 className="text-[#171A1D] text-base font-semibold leading-4	my-6">
           Выберите профессию
         </h3>
-        <div className="flex flex-wrap gap-2 overflow-y-auto">
-          <CategoryButtons
-            categories={categories}
-            onClick={handleCategoryClick}
-          />
-        </div>
+
+        <ScrollArea className="h-[200px] w-full">
+          <div className="flex flex-wrap gap-1.5">
+            {categories.map((category, index) => (
+              <Badge
+                key={index}
+                onClick={() => handleCategoryClick(category)}
+                variant="secondary"
+              >
+                {category}
+              </Badge>
+            ))}
+          </div>
+        </ScrollArea>
       </div>
     </div>
   );
