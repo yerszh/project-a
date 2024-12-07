@@ -221,36 +221,28 @@ const SelectProfession: React.FC<SelectProfessionProps> = ({ className }) => {
                         </FormItem>
                       )}
                     />
-
-                    <DrawerClose asChild>
-                      <Button
-                        variant={"secondary"}
-                        className="!my-7"
-                        type="submit"
-                      >
-                        Применить
-                      </Button>
-                    </DrawerClose>
                   </form>
                 </Form>
               </TabsContent>
               <TabsContent value="subjects">
                 <Accordion type="single" collapsible defaultValue="item-1">
                   <AccordionItem value="item-1">
-                    <AccordionTrigger>Профильный предмет 1</AccordionTrigger>
+                    <AccordionTrigger className="text-sm font-semibold">
+                      Профильный предмет 1
+                    </AccordionTrigger>
                     <AccordionContent>
                       <RadioGroup defaultValue="comfortable">
-                        <div className="flex flex-row  justify-between py-3 items-center">
+                        <div className="flex flex-row  justify-between py-2 items-center">
                           <Label htmlFor="r1">Биология</Label>
                           <RadioGroupItem value="default" id="r1" />
                         </div>
                         <div className="border-t border-[#E3E6EB]"></div>
-                        <div className="flex flex-row  justify-between py-3 items-center">
+                        <div className="flex flex-row  justify-between py-2 items-center">
                           <Label htmlFor="r2">Всемирная история</Label>
                           <RadioGroupItem value="comfortable" id="r2" />
                         </div>
                         <div className="border-t border-[#E3E6EB]"></div>
-                        <div className="flex flex-row  justify-between py-3 items-center">
+                        <div className="flex flex-row  justify-between py-2 items-center">
                           <Label htmlFor="r3">География</Label>
                           <RadioGroupItem value="compact" id="r3" />
                         </div>
@@ -258,20 +250,22 @@ const SelectProfession: React.FC<SelectProfessionProps> = ({ className }) => {
                     </AccordionContent>
                   </AccordionItem>
                   <AccordionItem value="item-2">
-                    <AccordionTrigger>Профильный предмет 2</AccordionTrigger>
+                    <AccordionTrigger className="text-sm font-semibold">
+                      Профильный предмет 2
+                    </AccordionTrigger>
                     <AccordionContent>
                       <RadioGroup defaultValue="comfortable">
-                        <div className="flex flex-row  justify-between py-3 items-center">
+                        <div className="flex flex-row  justify-between py-2 items-center">
                           <Label htmlFor="r1">Биология</Label>
                           <RadioGroupItem value="default" id="r1" />
                         </div>
                         <div className="border-t border-[#E3E6EB]"></div>
-                        <div className="flex flex-row  justify-between py-3 items-center">
+                        <div className="flex flex-row  justify-between py-2 items-center">
                           <Label htmlFor="r2">Всемирная история</Label>
                           <RadioGroupItem value="comfortable" id="r2" />
                         </div>
                         <div className="border-t border-[#E3E6EB]"></div>
-                        <div className="flex flex-row  justify-between py-3 items-center">
+                        <div className="flex flex-row  justify-between py-2 items-center">
                           <Label htmlFor="r3">География</Label>
                           <RadioGroupItem value="compact" id="r3" />
                         </div>
@@ -281,6 +275,11 @@ const SelectProfession: React.FC<SelectProfessionProps> = ({ className }) => {
                 </Accordion>
               </TabsContent>
             </Tabs>
+            <DrawerClose asChild>
+              <Button variant={"secondary"} className="!my-7" type="submit">
+                Применить
+              </Button>
+            </DrawerClose>
           </DrawerContent>
         </Drawer>
       </div>
