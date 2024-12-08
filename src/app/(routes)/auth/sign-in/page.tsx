@@ -1,16 +1,14 @@
 import { redirect } from "next/navigation";
-import { SingInPage } from "./SingInPage";
 import { checkIsAuthenticated } from "@/lib/auth/checkIsAuthenticated";
+import { SignInPage } from "./SignInPage";
 
-const SingIn: React.FC = async () => {
-  // TODO
-  
+const SignIn: React.FC = async () => {
  const isAuthenticated = await checkIsAuthenticated();
   if (isAuthenticated) {
     redirect("/quiz");
   } else {
-    return <SingInPage />;
+    return <SignInPage />;
   }
 };
 
-export default SingIn;
+export default SignIn;
