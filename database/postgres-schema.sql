@@ -4,11 +4,15 @@ CREATE TYPE AuthRole AS ENUM ('USER', 'ADMIN');
 CREATE TABLE
   users (
     id uuid NOT NULL DEFAULT uuid_generate_v4(),
-    name VARCHAR(255),
-    email VARCHAR(255),
+    name VARCHAR(200),
+    email VARCHAR(100),
+    grade VARCHAR(20), 
+    age INT,           
+    phone_number VARCHAR(20), 
     "emailVerified" TIMESTAMPTZ,
     image TEXT,
     role AuthRole NOT NULL DEFAULT 'USER',
+   
     PRIMARY KEY (id)
   );
 

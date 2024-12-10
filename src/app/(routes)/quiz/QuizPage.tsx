@@ -17,10 +17,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { handleSignOut } from "@/lib/auth/signOutServerAction";
-import { useEffect, useState } from "react";
-import { getUserName } from "@/lib/auth/getUserNameServerAction";
-import { useSession } from "next-auth/react";
-import { getUserRole } from "@/lib/auth/getUserRoleServerAction";
 
 const FormSchema = z.object({
   type: z.enum(["1", "2", "3", "4", "5"], {
@@ -47,67 +43,25 @@ const mockOptions = [
   },
 ];
 
-
-
 export default function QuizPage() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });
 
   const router = useRouter();
-
   function onSubmit(data: z.infer<typeof FormSchema>) {
+    // TODO
     console.log(data);
     router.push("/result");
   }
 
-  const [username, setUsername] = useState("");
-  const [role, setRole] = useState("");
-  const { update } = useSession();
-  
-  useEffect(() => {
-    const userInfo = async () => {
-      const name = await getUserName();
-      if (name) {
-        setUsername(name);
-      }
-
-      const role = await getUserRole();
-      if (role) {
-        setRole(role);
-      }
-    };
-    
-    userInfo();
-    
-  }, []);
-
-
   return (
     <div className="p-4 w-full flex flex-col items-center">
-        <div>Username: {username}</div>
-        <div>Role: {role}</div>
-        <div className="field-input-container">
-          <input
-            className="field-input"
-            type="text"
-            placeholder={"Enter name"}
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
-          />
-          <button
-            className="update-field-button"
-            onClick={() => update({ name: username })}
-          >
-            Update Name
-          </button>
-        </div>
-      <button
-        style={{ cursor: "pointer" }}
-        onClick={() => handleSignOut()}
-      >
-        Sign Out
-      </button>
+      <div>
+        <button style={{ cursor: "pointer" }} onClick={() => handleSignOut()}>
+          Sign Out
+        </button>
+      </div>
 
       <div className="w-full flex justify-between">
         <Link href="/">
