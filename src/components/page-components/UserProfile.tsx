@@ -4,8 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { setUserInfo } from "@/lib/profile/setUserInfoServerAction";
 import { UserInfo } from "@/types/UserInfo";
+import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
-
+import { handleSignOut } from "@/lib/auth/signOutServerAction";
 interface UserProfileProps {
   userData?: UserInfo | null;
 }
@@ -32,8 +34,25 @@ const UserProfile = ({ userData }: UserProfileProps) => {
   };
 
   return (
-    <div>
-      <h1 className="text-xl text-[#171A1D] font-semibold text-center">
+    <div className="p-4 w-full flex flex-col ">
+      <div className="w-full flex justify-between">
+        <div>
+          <button style={{ cursor: "pointer" }} onClick={() => handleSignOut()}>
+            Sign Out
+          </button>
+        </div>
+
+        <Link href="/">
+          <Image
+            src="/icons/close-button.svg"
+            alt={"close-button"}
+            height={24}
+            width={24}
+          />
+        </Link>
+      </div>
+
+      <h1 className="mt-20 text-xl text-[#171A1D] font-semibold text-center">
         Краткая информация о вас
       </h1>
       <h2 className="mt-3 text-[13px] leading-[13px] text-[#A5AAB3] font-normal	 text-center">
@@ -102,7 +121,7 @@ const UserProfile = ({ userData }: UserProfileProps) => {
         </div>
 
         <Button
-          className="mt-8 w-full h-12 rounded-lg"
+          className="my-8 w-full h-12 rounded-lg"
           type="submit"
           onClick={handleSubmit}
           disabled={isSubmitting}

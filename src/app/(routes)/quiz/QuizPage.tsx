@@ -16,7 +16,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { handleSignOut } from "@/lib/auth/signOutServerAction";
 
 const FormSchema = z.object({
   type: z.enum(["1", "2", "3", "4", "5"], {
@@ -57,13 +56,7 @@ export default function QuizPage() {
 
   return (
     <div className="p-4 w-full flex flex-col items-center">
-      <div>
-        <button style={{ cursor: "pointer" }} onClick={() => handleSignOut()}>
-          Sign Out
-        </button>
-      </div>
-
-      <div className="w-full flex justify-between">
+      <div className="w-full flex justify-between mt-4">
         <Link href="/">
           <Image
             src="/icons/arrow-back.svg"

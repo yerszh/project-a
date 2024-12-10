@@ -6,12 +6,12 @@ import UserProfile from "@/components/page-components/UserProfile";
 
 const Profile: React.FC = async () => {
   const isAuthenticated = await checkIsAuthenticated();
-  const userData: UserInfo | null = await getUserInfo();
 
-  if (!isAuthenticated) {
-    redirect("/auth/sign-in");
-  } else {
+  if (isAuthenticated) {
+    const userData: UserInfo | null = await getUserInfo();
     return <UserProfile userData={userData} />;
+  } else {
+    redirect("/auth/sign-in");
   }
 };
 

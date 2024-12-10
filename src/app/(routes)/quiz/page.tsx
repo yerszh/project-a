@@ -7,14 +7,18 @@ import UserProfile from "../../../components/page-components/UserProfile";
 
 const Quiz: React.FC = async () => {
   const isAuthenticated = await checkIsAuthenticated();
-  const userData: UserInfo | null = await getUserInfo();
 
   if (!isAuthenticated) {
     redirect("/auth/sign-in");
-  } else if (userData && Object.values(userData).includes(null)) {
-    return <UserProfile userData={userData} />;
   } else {
-    return <QuizPage />;
+    if (isAuthenticated) {
+      const userData: UserInfo | null = await getUserInfo();
+      if (userData && Object.values(userData).includes(null)) {
+        return <UserProfile userData={userData} />;
+      } else {
+        return <QuizPage />;
+      }
+    }
   }
 };
 
