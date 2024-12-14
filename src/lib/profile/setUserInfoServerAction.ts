@@ -35,7 +35,8 @@ export const setUserInfo = async (userInfo: UserInfo) => {
     }
 
     return result.rows[0];
-  } catch (err) {
+  }
+   catch (err) {
     console.error("Error updating user:", err);
     throw err;
   }
