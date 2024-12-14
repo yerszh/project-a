@@ -113,10 +113,10 @@ const UserProfile = ({ userData }: UserProfileProps) => {
               "p-4 flex w-full border border-[#E3E6EB] h-12 text-sm rounded-2xl	"
             }
             type="text"
-            value={user?.phone_number || ""}
+            value={user?.phoneNumber || ""}
             placeholder="Введите номер"
             maxLength={20}
-            onChange={(e) => handleChange("phone_number", e.target.value)}
+            onChange={(e) => handleChange("phoneNumber", e.target.value)}
           />
         </div>
 

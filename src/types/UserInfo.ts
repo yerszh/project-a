@@ -1,6 +1,6 @@
 export interface UserInfo {
-  name: string;
-  grade: string;
-  age: number;
-  phone_number: string;
+  name: string | null;
+  grade: number | null;
+  age: number | null;
+  phoneNumber: string | null;
 }

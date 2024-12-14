@@ -1,10 +1,16 @@
 "use server";
 
-import { pool } from "@/lib/postgres";
+import { prisma } from "@/lib/prisma";
 
 export const clearStaleTokens = async () => {
   try {
-    await pool.query("DELETE FROM verification_token WHERE expires < NOW();");
+    await prisma.verificationToken.deleteMany({
+      where: {
+        expires: {
+          lt: new Date(),
+        },
+      },
+    });
   } catch (error) {
     throw error;
   }

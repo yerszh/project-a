@@ -1,42 +1,40 @@
 "use server";
 
+import { prisma } from "@/lib/prisma"; // Import the Prisma client
 import { auth } from "@/lib/auth/authConfig";
-import { pool } from "@/lib/postgres";
-
-interface UserInfo {
-  name: string;
-  grade: string;
-  age: number;
-  phone_number: string;
-}
+import { UserInfo } from "@/types/UserInfo";
 
 export const setUserInfo = async (userInfo: UserInfo) => {
   const session = await auth();
+
   if (!session) {
-    throw new Error("Unauthorized");
+    console.warn("Unauthorized");
+    return null;
   }
 
   const uuid: string = session.user!.id!;
 
   const uuidRegExp: RegExp =
     /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
+
   if (typeof uuid !== "string" || !uuidRegExp.test(uuid)) {
-    throw new Error("Invalid UUID");
+    console.warn("Invalid UUID");
+    return null;
   }
 
   try {
-    const result = await pool.query(
-      "UPDATE users SET name = $1, grade = $2, age = $3, phone_number = $4 WHERE id = $5 RETURNING *",
-      [userInfo.name, userInfo.grade, userInfo.age, userInfo.phone_number, uuid]
-    );
+    const updatedUser = await prisma.user.update({
+      where: { id: uuid },
+      data: {
+        name: userInfo.name,
+        grade: userInfo.grade,
+        age: userInfo.age,
+        phoneNumber: userInfo.phoneNumber,
+      },
+    });
 
-    if (result.rows.length === 0) {
-      return null;
-    }
-
-    return result.rows[0];
-  }
-   catch (err) {
+    return updatedUser;
+  } catch (err) {
     console.error("Error updating user:", err);
     throw err;
   }
