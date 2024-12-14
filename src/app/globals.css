@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: "Inter", sans-serif;
-}
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -63,6 +59,9 @@ body {
 }
 
 @layer base {
+  html {
+    font-family: var(--font-inter), sans-serif;
+  }
   * {
     @apply border-border;
   }

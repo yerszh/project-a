@@ -27,8 +27,8 @@ import { Button } from "@/components/ui/button";
 
 const SelectPage: React.FC = () => {
   return (
-    <div className="p-4 w-full h-full flex flex-col items-center">
-      <div className="w-full flex justify-between">
+    <div className="p-4 w-full min-h-[800px] flex flex-col items-center">
+      <div className="w-full flex justify-between mt-4">
         <Link href="/result">
           <Image
             src="/icons/arrow-back.svg"

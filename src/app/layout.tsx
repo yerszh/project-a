@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
+import { SessionProvider } from "next-auth/react";
 import "./globals.css";
+import { Inter } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -12,14 +20,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
-        <div className="bg-white max-480:bg-[#171A1D] max-480:flex max-480:items-center">
-          <main className="max-w-[480px] w-full h-screen max-480:h-full mx-auto flex flex-col items-center bg-white max-480:rounded-3xl">
-            {children}
-          </main>
-        </div>
-      </body>
+    <html lang="en" className={inter.variable}>
+      <SessionProvider>
+        <body>
+          <div className="bg-white  max-480:h-screen max-480:bg-[#171A1D] max-480:flex  max-480:items-center">
+            <main className="max-w-[480px] max-480:min-h-[800px] w-full mx-auto flex flex-col items-center bg-white max-480:rounded-3xl">
+              {children}
+            </main>
+          </div>
+        </body>
+      </SessionProvider>
     </html>
   );
 }

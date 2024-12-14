@@ -4,11 +4,13 @@ import Link from "next/link";
 export default function Home() {
   return (
     <>
-      <div className="flex gap-1 items-center">
-        <Image src="/icons/logo.svg" alt={"logo"} height={24} width={24} />
-        <h1 className="text-sm text-[#171A1D] font-semibold">
-          AI Профориентатор
-        </h1>
+      <div className="flex gap-1 items-center mt-9 text-[#9E9E9E]">
+        <Image
+          src="/icons/logo-main.svg"
+          alt={"logo-main"}
+          height={24}
+          width={156}
+        />
       </div>
 
       <Image
@@ -28,11 +30,14 @@ export default function Home() {
         </p>
       </div>
 
-      <Link href="/quiz" className="mt-8">
+      <Link
+        href="/quiz"
+        className="mt-8 bg-[#3761EE] flex gap-1.5 py-3 px-5 rounded-2xl	text-white"
+      >
         <Image
-          src="/icons/cursor-magic-selection-02.svg"
-          alt={"cursor-magic-selection-02"}
-          height={30}
+          src="/icons/cursor-magic.svg"
+          alt={"cursor-magic"}
+          height={20}
           width={20}
         />
         Начать тест

@@ -31,7 +31,7 @@ const chartConfig = {
 const ResultPage: React.FC = () => {
   return (
     <div className="p-4 w-full flex flex-col items-center">
-      <div className="w-full flex justify-between">
+      <div className="w-full flex justify-between mt-4">
         <Link
           href="/quiz"
           className="flex gap-2 items-center text-[#A5AAB3] text-xs	"
