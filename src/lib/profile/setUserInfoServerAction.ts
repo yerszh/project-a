@@ -1,15 +1,17 @@
 "use server";
 
-import { prisma } from "@/lib/prisma"; // Import the Prisma client
+import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth/authConfig";
 import { UserInfo } from "@/types/UserInfo";
 
-export const setUserInfo = async (userInfo: UserInfo) => {
+export const setUserInfo = async (
+  userInfo: UserInfo
+): Promise<{ success: boolean; message: string }> => {
   const session = await auth();
 
   if (!session) {
     console.warn("Unauthorized");
-    return null;
+    return { success: false, message: "Unauthorized access" };
   }
 
   const uuid: string = session.user!.id!;
@@ -19,11 +21,11 @@ export const setUserInfo = async (userInfo: UserInfo) => {
 
   if (typeof uuid !== "string" || !uuidRegExp.test(uuid)) {
     console.warn("Invalid UUID");
-    return null;
+    return { success: false, message: "Invalid UUID format" };
   }
 
   try {
-    const updatedUser = await prisma.user.update({
+    await prisma.user.update({
       where: { id: uuid },
       data: {
         name: userInfo.name,
@@ -33,9 +35,9 @@ export const setUserInfo = async (userInfo: UserInfo) => {
       },
     });
 
-    return updatedUser;
+    return { success: true, message: "User updated successfully" };
   } catch (err) {
     console.error("Error updating user:", err);
-    throw err;
+    return { success: false, message: "Error updating user" };
   }
 };

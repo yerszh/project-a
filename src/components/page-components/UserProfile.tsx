@@ -8,11 +8,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { handleSignOut } from "@/lib/auth/signOutServerAction";
+import { redirect } from "next/navigation";
+
 interface UserProfileProps {
+  type: "quiz" | "profile";
   userData?: UserInfo | null;
 }
 
-const UserProfile = ({ userData }: UserProfileProps) => {
+const UserProfile = ({ userData, type }: UserProfileProps) => {
   const [user, setUser] = useState<UserInfo | null>(userData || null);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
@@ -24,10 +27,12 @@ const UserProfile = ({ userData }: UserProfileProps) => {
 
   const handleSubmit = async () => {
     if (!user) return;
-
     setIsSubmitting(true);
     try {
-      await setUserInfo(user);
+      const response = await setUserInfo(user);
+      if (type === "quiz" && response.success) {
+        redirect("/quiz");
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -82,7 +87,7 @@ const UserProfile = ({ userData }: UserProfileProps) => {
             className={
               "p-4 flex w-full border border-[#E3E6EB] h-12 text-sm rounded-2xl	"
             }
-            type="text"
+            type="number"
             value={user?.grade || ""}
             placeholder="Введите ваш класс"
             maxLength={20}
