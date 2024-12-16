@@ -9,6 +9,7 @@ const Profile: React.FC = async () => {
 
   if (isAuthenticated) {
     const userData: UserInfo | null = await getUserInfo();
+
     return <UserProfile userData={userData} type="profile" />;
   } else {
     redirect("/auth/sign-in");

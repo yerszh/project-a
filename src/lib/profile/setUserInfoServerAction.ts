@@ -16,14 +16,6 @@ export const setUserInfo = async (
 
   const uuid: string = session.user!.id!;
 
-  const uuidRegExp: RegExp =
-    /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
-
-  if (typeof uuid !== "string" || !uuidRegExp.test(uuid)) {
-    console.warn("Invalid UUID");
-    return { success: false, message: "Invalid UUID format" };
-  }
-
   try {
     await prisma.user.update({
       where: { id: uuid },

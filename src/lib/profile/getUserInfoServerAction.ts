@@ -1,6 +1,6 @@
 "use server";
 
-import { prisma } from "@/lib/prisma"; // Import prisma client
+import { prisma } from "@/lib/prisma";
 import { auth } from "../auth/authConfig";
 import { UserInfo } from "@/types/UserInfo";
 
@@ -17,13 +17,6 @@ export const getUserInfo = async () => {
       return null;
     }
     const uuid = session.user.id;
-
-    const uuidRegExp: RegExp =
-      /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
-    if (!uuidRegExp.test(uuid)) {
-      console.warn("Invalid UUID format");
-      return null;
-    }
 
     const user = await prisma.user.findUnique({
       where: { id: uuid },
