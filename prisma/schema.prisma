@@ -10,6 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
  
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -34,6 +35,8 @@ model User {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt  
+
+  UserQuiz UserQuiz[]
 }
  
 model Account {
@@ -75,3 +78,100 @@ model VerificationToken {
   @@id([identifier, token])
 }
  
+
+model Quiz {
+  quiz_id String  @id @default(cuid()) // unique identifier for the quiz
+  name    String // name of the quiz
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  questions Question[] // One-to-many relation with Question model
+  userQuizzes UserQuiz[] // One-to-many relation with UserQuiz model
+}
+
+model Question {
+  question_id   String   @id @default(cuid()) // unique identifier for the question
+  quiz_id       String   // foreign key to Quiz model
+  text_kz       String   // question text in Kazakh
+  text_ru       String   // question text in Russian
+  question_type String   // type of question (e.g., multiple choice, true/false, etc.)
+  riasec_code   String   // RIASEC code for the question (likely related to personality types)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  // Relations
+  quiz Quiz @relation(fields: [quiz_id], references: [quiz_id], onDelete: Cascade)
+  answers Answer[] // One-to-many relation with Answer model
+  userQuestions UserQuestion[] // One-to-many relation with UserQuestion model
+}
+
+model Answer {
+  answer_id     String   @id @default(cuid())  // unique identifier for the answer
+  question_id   String   // foreign key to Question model
+  answer_text_kz String  // answer text in Kazakh
+  answer_text_ru String  // answer text in Russian
+  riasec_score  Int      // RIASEC score for the answer
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  // Relations
+  question Question @relation(fields: [question_id], references: [question_id], onDelete: Cascade)
+
+  UserAnswer UserAnswer[]
+}
+
+
+
+model UserQuiz {
+  user_quizzes_id String   @id @default(cuid())  // unique identifier for the user-quiz relation
+  user_id         String   // foreign key to User model
+  quiz_id         String   // foreign key to Quiz model
+  started         DateTime // when the user started the quiz
+  finished        DateTime? // when the user finished the quiz (nullable)
+  isActive        Boolean  @default(true) // whether the quiz is currently active
+  current_question Int      @default(0)     // the index of the current question (starting from 0)
+  createdAt       DateTime @default(now()) // timestamp when the entry was created
+  updatedAt       DateTime @default(now()) @updatedAt // timestamp when the entry was last updated
+
+  // Relations
+  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  quiz Quiz @relation(fields: [quiz_id], references: [quiz_id], onDelete: Cascade)
+  userQuestions UserQuestion[] // One-to-many relation with UserQuestion model
+}
+
+model UserQuestion {
+  user_questions_id String   @id @default(cuid())  // unique identifier for the user-question relation
+  question_id       String   // foreign key to Question model
+  user_quizzes_id   String   // foreign key to UserQuiz model
+  question_answered Boolean  @default(false) // whether the question was answered
+  question_text_kz  String   // the question text in Kazakh
+  question_text_ru  String   // the question text in Russian
+  question_type     String   // the type of the question (e.g., multiple choice, true/false)
+  riasec_code       String   // RIASEC code for the question (related to personality types)
+  updatedAt         DateTime @default(now()) @updatedAt // timestamp when the record was last updated
+
+  // Relations
+  question Question @relation(fields: [question_id], references: [question_id], onDelete: Cascade)
+  userQuiz UserQuiz @relation(fields: [user_quizzes_id], references: [user_quizzes_id], onDelete: Cascade)
+
+  UserAnswer UserAnswer[]
+}
+
+model UserAnswer {
+  user_answers_id String   @id @default(cuid())  // unique identifier for the user-answer relation
+  answer_id       String   // foreign key to Answer model
+  user_questions_id String // foreign key to UserQuestion model
+  answer_text_kz  String   // the answer text in Kazakh
+  answer_text_ru  String   // the answer text in Russian
+  isPicked        Boolean  @default(false) // whether the answer was picked by the user
+  riasec_score    Int      // RIASEC score for the answer selected by the user
+  createdAt       DateTime @default(now()) // timestamp when the answer was selected
+  updatedAt       DateTime @default(now()) @updatedAt // timestamp when the record was last updated
+
+  // Relations
+  answer Answer @relation(fields: [answer_id], references: [answer_id], onDelete: Cascade)
+  userQuestion UserQuestion @relation(fields: [user_questions_id], references: [user_questions_id], onDelete: Cascade)
+}
