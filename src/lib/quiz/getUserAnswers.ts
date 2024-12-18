@@ -26,6 +26,8 @@ export const getUserAnswers = async (
       },
     });
 
+    userAnswers.sort((a, b) => parseInt(a.answer_id) - parseInt(b.answer_id));
+
     return userAnswers;
   } catch (error) {
     console.error("Error fetching user info:", error);

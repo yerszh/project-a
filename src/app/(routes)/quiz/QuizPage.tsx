@@ -12,7 +12,12 @@ interface QuizPageProps {
 }
 
 const QuizPage: React.FC<QuizPageProps> = ({ questionData, answerData }) => {
-  console.log(answerData);
+  const pickedAnswer: UserAnswer =
+    (Array.isArray(answerData) ? answerData : [answerData]).find(
+      (answer) => answer?.isPicked
+    ) || null;
+
+  console.log(pickedAnswer);
 
   return (
     <div className="p-4 w-full flex flex-col items-center">
@@ -53,8 +58,7 @@ const QuizPage: React.FC<QuizPageProps> = ({ questionData, answerData }) => {
         </h1>
 
         <RadioGroup
-          // onValueChange={field.onChange}
-          // defaultValue={field.value}
+          defaultValue={pickedAnswer?.answer_id}
           className="mt-10 flex flex-col w-full"
         >
           {/* Check if answerData is an array */}
