@@ -1,58 +1,18 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { UserAnswer, UserQuestion } from "@prisma/client";
 
-const FormSchema = z.object({
-  type: z.enum(["1", "2", "3", "4", "5"], {
-    required_error: "You need to select a notification type.",
-  }),
-});
+interface QuizPageProps {
+  questionData?: UserQuestion;
+  answerData?: UserAnswer;
+}
 
-const mockOptions = [
-  {
-    value: "1",
-    label: "Помогать другим и решать их проблемы",
-  },
-  {
-    value: "2",
-    label: "Помогать другим и решать их проблемы",
-  },
-  {
-    value: "3",
-    label: "Работать руками, создавать что-то полезное",
-  },
-  {
-    value: "4",
-    label: "Работать с цифрами и анализировать данныеasd",
-  },
-];
-
-export default function QuizPage() {
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
-  });
-
-  const router = useRouter();
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    // TODO
-    console.log(data);
-    router.push("/result");
-  }
+const QuizPage: React.FC<QuizPageProps> = ({ questionData, answerData }) => {
+  console.log(questionData);
 
   return (
     <div className="p-4 w-full flex flex-col items-center">
@@ -84,51 +44,54 @@ export default function QuizPage() {
       </div>
 
       <div className="bg-[#212121] text-white w-fit text-xs font-semibold p-2.5 rounded-lg mt-4">
-        3 /32 вопросов
+        {questionData?.question_id} /32 вопросов
       </div>
 
-      <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className="mt-10 flex flex-col items-center"
-        >
-          <FormField
-            control={form.control}
-            name="type"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-xl font-semibold">
-                  Что тебе нравится больше всего из перечисленного?
-                </FormLabel>
+      <div className="mt-10 w-full flex flex-col items-center">
+        <h1 className="text-xl font-semibold text-center">
+          {questionData?.question_text_ru}
+        </h1>
+      </div>
 
-                <FormControl className="my-20">
-                  <RadioGroup
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                    className="flex flex-col"
-                  >
-                    {mockOptions.map((option) => (
-                      <FormItem
-                        key={option.value}
-                        className="bg-[#F1F4F8] flex gap-2.5 p-[17px_13px] rounded-lg items-center"
-                      >
-                        <FormControl>
-                          <RadioGroupItem value={option.value} />
-                        </FormControl>
-                        <FormLabel className="text-sm font-medium">
-                          {option.label}
-                        </FormLabel>
-                      </FormItem>
-                    ))}
-                  </RadioGroup>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <Button type="submit">Дальше</Button>
-        </form>
-      </Form>
+      {/* <div className="mt-10 flex flex-col items-center">
+        <FormField
+          control={form.control}
+          name="type"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-xl font-semibold">
+                {questionData?.question_text_ru}
+              </FormLabel>
+
+              <FormControl className="my-20">
+                <RadioGroup
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                  className="flex flex-col"
+                >
+                  {mockOptions.map((option) => (
+                    <FormItem
+                      key={option.value}
+                      className="bg-[#F1F4F8] flex gap-2.5 p-[17px_13px] rounded-lg items-center"
+                    >
+                      <FormControl>
+                        <RadioGroupItem value={option.value} />
+                      </FormControl>
+                      <FormLabel className="text-sm font-medium">
+                        {option.label}
+                      </FormLabel>
+                    </FormItem>
+                  ))}
+                </RadioGroup>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button type="submit">Дальше</Button>
+      </div> */}
     </div>
   );
-}
+};
+
+export default QuizPage;

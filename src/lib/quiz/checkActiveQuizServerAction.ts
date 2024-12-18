@@ -15,18 +15,17 @@ export const checkActiveQuiz = async () => {
       orderBy: {
         createdAt: "desc",
       },
-      select: {
-        isActive: true,
-      },
     });
 
     if (lastUserQuiz) {
       return lastUserQuiz;
     } else {
-      return false;
+      return null;
     }
   } catch (error) {
     console.error("Error fetching user info:", error);
     throw error;
+  } finally {
+    await prisma.$disconnect();
   }
 };

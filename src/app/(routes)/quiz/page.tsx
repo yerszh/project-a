@@ -4,12 +4,11 @@ import { checkIsAuthenticated } from "@/lib/auth/checkIsAuthenticated";
 import { UserInfo } from "@/types/UserInfo";
 import { getUserInfo } from "@/lib/profile/getUserInfoServerAction";
 import UserProfile from "@/components/page-components/UserProfile";
-import { createUserQuiz } from "@/lib/quiz/createUserQuizServerAction";
+import { checkActiveQuiz } from "@/lib/quiz/checkActiveQuizServerAction";
 
 const Quiz: React.FC = async () => {
   const isAuthenticated = await checkIsAuthenticated();
-
-  await createUserQuiz();
+  const activeQuiz = await checkActiveQuiz();
 
   if (!isAuthenticated) {
     redirect("/auth/sign-in");

@@ -21,8 +21,8 @@ enum AuthRole {
 model User {
   id            String          @id @default(cuid())
   name          String?
-  grade         Int?  
-  age           Int?
+  grade         String?  
+  age           String?
   phoneNumber   String?  
   email         String          @unique
   emailVerified DateTime?
