@@ -1,9 +1,11 @@
-import { mockChatServerAction } from "@/lib/chat/mockChatServerAction";
+import { checkActiveQuiz } from "@/lib/quiz/checkActiveQuizServerAction";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Home() {
-  mockChatServerAction();
+const Home = async () => {
+  const isActiveQuiz = await checkActiveQuiz();
+  console.log(isActiveQuiz);
+
   return (
     <>
       <div className="flex gap-1 items-center mt-9 text-[#9E9E9E]">
@@ -46,4 +48,6 @@ export default function Home() {
       </Link>
     </>
   );
-}
+};
+
+export default Home;
