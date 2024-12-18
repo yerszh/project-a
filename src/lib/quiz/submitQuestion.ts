@@ -1,32 +1,42 @@
-import { PrismaClient } from "@prisma/client";
+"use server";
 
-const prisma = new PrismaClient();
+import { prisma } from "@/lib/prisma";
 
-async function getUserAnswersAndQuestions(userQuizzesId: string) {
+export const submitQuestion = async (
+  userQuestionsId: string,
+  currentAnswers: {
+    answer_id: string;
+    isPicked: boolean;
+    user_quizzes_id: string;
+  }[]
+): Promise<{ success: boolean; message: string }> => {
   try {
-    // Fetch UserQuiz with its related UserQuestions and UserAnswers
-    const userQuizData = await prisma.userQuiz.findUnique({
+    await prisma.userQuestion.update({
       where: {
-        user_quizzes_id: userQuizzesId, // Filter by user_quizzes_id
+        user_questions_id: userQuestionsId,
       },
-      include: {
-        userQuestions: true, // Include related UserQuestions
-        UserAnswer: true, // Include related UserAnswers
+      data: {
+        question_answered: true,
       },
     });
 
-    return userQuizData;
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    throw error;
+    for (const answer of currentAnswers) {
+      await prisma.userAnswer.updateMany({
+        where: {
+          answer_id: answer.answer_id,
+          user_quizzes_id: answer.user_quizzes_id,
+        },
+        data: {
+          isPicked: answer.isPicked,
+        },
+      });
+    }
+
+    return { success: true, message: "Updated successfully" };
+  } catch (err) {
+    console.error("Error updating:", err);
+    return { success: false, message: "Error updating" };
   } finally {
     await prisma.$disconnect();
   }
-}
-
-// Example usage
-(async () => {
-  const userQuizzesId = "some_user_quizzes_id";
-  const data = await getUserAnswersAndQuestions(userQuizzesId);
-  console.log(data);
-})();
+};

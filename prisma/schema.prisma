@@ -112,6 +112,7 @@ model UserQuestion {
 model UserAnswer {
   user_answers_id String   @id @default(cuid())  // unique identifier for the user-answer relation
   answer_id       String   // foreign key to Answer model
+  question_id     String
   user_quizzes_id String // foreign key to UserQuestion model
   answer_text_kz  String   // the answer text in Kazakh
   answer_text_ru  String   // the answer text in Russian

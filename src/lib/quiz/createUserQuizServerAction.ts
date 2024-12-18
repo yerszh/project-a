@@ -47,6 +47,7 @@ export const createUserQuiz = async () => {
           await prisma.userAnswer.createMany({
             data: answers.map((answer) => ({
               answer_id: answer.id.toString(),
+              question_id: answer.question_id,
               user_quizzes_id: newUserQuiz.user_quizzes_id,
               answer_text_kz: answer.answer_text_kz,
               answer_text_ru: answer.answer_text_ru,
