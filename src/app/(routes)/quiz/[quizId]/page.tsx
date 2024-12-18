@@ -4,6 +4,7 @@ import { checkIsAuthenticated } from "@/lib/auth/checkIsAuthenticated";
 import { checkActiveQuiz } from "@/lib/quiz/checkActiveQuizServerAction";
 import { getUserQuestion } from "@/lib/quiz/getUserQuestion";
 import { getUserAnswers } from "@/lib/quiz/getUserAnswers";
+import { getUserQuestionsCount } from "@/lib/quiz/getUserQuestionsCount";
 
 const QuizId = async ({ params }: { params: Promise<{ quizId: string }> }) => {
   const isAuthenticated = await checkIsAuthenticated();
@@ -23,11 +24,15 @@ const QuizId = async ({ params }: { params: Promise<{ quizId: string }> }) => {
         activeQuizData?.user_quizzes_id,
         quizId
       );
+      const userQuestionsCount = await getUserQuestionsCount(
+        activeQuizData?.user_quizzes_id
+      );
 
       return (
         <QuizPage
           questionData={userQuestionData}
           answerData={userAnswersData}
+          questionsCount={userQuestionsCount}
         />
       );
     }
