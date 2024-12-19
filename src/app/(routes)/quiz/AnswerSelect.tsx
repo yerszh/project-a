@@ -5,7 +5,6 @@ import { UserAnswer } from "@prisma/client";
 import { Button } from "@/components/ui/button";
 import { submitQuestion } from "@/lib/quiz/submitQuestion";
 import React from "react";
-import { redirect } from "next/navigation";
 import { useRouter } from "next/navigation";
 
 interface AnswerSelectProps {
@@ -75,9 +74,15 @@ const AnswerSelect: React.FC<AnswerSelectProps> = ({
           </div>
         ))}
       </RadioGroup>
-      <Button className="m-10" type="button" onClick={handleSubmit}>
-        Дальше
-      </Button>
+      {quizId == questionsCount ? (
+        <Button className="m-10" type="button" onClick={() => {}}>
+          Завершить тест
+        </Button>
+      ) : (
+        <Button className="m-10" type="button" onClick={handleSubmit}>
+          Дальше
+        </Button>
+      )}
     </div>
   );
 };

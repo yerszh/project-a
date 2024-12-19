@@ -29,10 +29,12 @@ const QuizPage: React.FC<QuizPageProps> = async ({ quizId }) => {
       quizId
     );
 
+    const quizPage = Number(quizId);
+
     return (
       <div className="p-4 w-full flex flex-col items-center">
         <div className="w-full flex justify-between mt-4">
-          <Link href="/">
+          <Link href={quizPage !== 1 ? `/quiz/${quizPage - 1}` : "1"}>
             <Image
               src="/icons/arrow-back.svg"
               alt={"arrow-back"}

@@ -6,6 +6,11 @@ import { auth } from "../auth/authConfig";
 export const checkActiveQuiz = async () => {
   try {
     const session = await auth();
+
+    if (!session) {
+      return;
+    }
+
     const uuid = session?.user?.id;
 
     const lastUserQuiz = await prisma.userQuiz.findFirst({

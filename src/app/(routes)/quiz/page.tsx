@@ -1,5 +1,4 @@
 import { redirect } from "next/navigation";
-import QuizPage from "./QuizPage";
 import { checkIsAuthenticated } from "@/lib/auth/checkIsAuthenticated";
 import { getUserInfo } from "@/lib/profile/getUserInfoServerAction";
 import UserProfile from "@/components/page-components/UserProfile";
@@ -26,7 +25,11 @@ const Quiz = async () => {
       if (missingFieldsInfo) {
         return <UserProfile userData={userData} type="quiz" />;
       } else {
-        await createUserQuiz();
+        if (!activeQuiz) {
+          await createUserQuiz();
+        } else if (activeQuiz) {
+          redirect(`/quiz/${activeQuiz.current_question} `);
+        }
       }
     }
   }

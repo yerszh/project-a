@@ -30,9 +30,10 @@ const UserProfile = ({ userData, type }: UserProfileProps) => {
     setIsSubmitting(true);
     try {
       const response = await setUserInfo(user);
-      if (type === "quiz" && response.success) {
-        redirect("/quiz");
-      }
+      console.log(user);
+      // if (type === "quiz" && response.success) {
+      //   redirect("/quiz");
+      // }
     } finally {
       setIsSubmitting(false);
     }
