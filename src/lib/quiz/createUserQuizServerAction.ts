@@ -2,8 +2,8 @@
 
 import { prisma } from "@/lib/prisma";
 import { auth } from "../auth/authConfig";
-import { getQuestions } from "./getQuestionsServerAction";
-import { getAnswers } from "./getAnswersServerAction";
+import { getQuestions } from "../methodic-data/getQuestionsServerAction";
+import { getAnswers } from "../methodic-data/getAnswersServerAction";
 
 export const createUserQuiz = async () => {
   const session = await auth();

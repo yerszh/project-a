@@ -1,54 +1,56 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
+import { auth } from "../auth/authConfig";
 
-export const getRIASECcodes = async (userQuizId: string) => {
+interface ResultScores {
+  R: number;
+  I: number;
+  A: number;
+  S: number;
+  E: number;
+  C: number;
+}
+
+type RIASECCode = keyof ResultScores;
+
+export const getRIASECcodes = async (userQuizId: string): Promise<void> => {
+  const session = await auth();
+  const uuid = session?.user?.id;
+
   try {
     const userAnswers = await prisma.userAnswer.findMany({
-      where: {
-        user_quizzes_id: userQuizId,
-        isPicked: true,
-      },
-      include: {
-        userQuiz: {
-          include: {
-            userQuestions: true,
-          },
-        },
-      },
+      where: { user_quizzes_id: userQuizId, isPicked: true },
+      include: { userQuiz: { include: { userQuestions: true } } },
     });
 
-    const resultScores: { [key in "R" | "I" | "A" | "S" | "E" | "C"]: number } =
-      {
-        R: 0,
-        I: 0,
-        A: 0,
-        S: 0,
-        E: 0,
-        C: 0,
-      };
+    const resultScores: ResultScores = { R: 0, I: 0, A: 0, S: 0, E: 0, C: 0 };
 
-    userAnswers.forEach((answer) => {
-      const score = answer.riasec_score * 5;
-      const userQuestions = answer.userQuiz.userQuestions;
-      const userQuestion = userQuestions.find(
-        (question) => question.question_id === answer.question_id
+    userAnswers.forEach(({ riasec_score, question_id, userQuiz }) => {
+      const userQuestion = userQuiz.userQuestions.find(
+        (q) => q.question_id === question_id
       );
-
-      if (userQuestion) {
-        const riasecCode = userQuestion.riasec_code as
-          | "R"
-          | "I"
-          | "A"
-          | "S"
-          | "E"
-          | "C";
-
-        if (riasecCode in resultScores) {
-          resultScores[riasecCode] += score;
-        }
+      const riasecCode = userQuestion?.riasec_code as RIASECCode | undefined;
+      if (riasecCode && Object.keys(resultScores).includes(riasecCode)) {
+        resultScores[riasecCode as RIASECCode] += riasec_score * 5;
       }
     });
+
+    if (uuid) {
+      const result = await prisma.results.create({
+        data: {
+          user_id: uuid,
+          quiz_id: userQuizId,
+          R: resultScores.R,
+          I: resultScores.I,
+          A: resultScores.A,
+          S: resultScores.S,
+          E: resultScores.E,
+          C: resultScores.C,
+        },
+      });
+      console.log("Result created:", result);
+    }
   } catch (error) {
     console.error("Error fetching user info:", error);
     throw error;
