@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { UserAnswer, UserQuestion } from "@prisma/client";
 import AnswerSelect from "./AnswerSelect";
 import { checkActiveQuiz } from "@/lib/quiz/checkActiveQuizServerAction";
 import { getUserQuestionsCount } from "@/lib/quiz/getUserQuestionsCount";
@@ -8,33 +7,23 @@ import { getUserQuestion } from "@/lib/quiz/getUserQuestion";
 import { getUserAnswers } from "@/lib/quiz/getUserAnswers";
 
 interface QuizPageProps {
-  quizId: string;
+  id: string;
 }
 
-const QuizPage: React.FC<QuizPageProps> = async ({ quizId }) => {
+const QuizPage: React.FC<QuizPageProps> = async ({ id }) => {
+  const quizPageId = Number(id);
   const activeQuizData = await checkActiveQuiz();
+  const activeQuizId = activeQuizData?.user_quizzes_id;
 
-  if (activeQuizData) {
-    const userQuestionsCount = await getUserQuestionsCount(
-      activeQuizData?.user_quizzes_id
-    );
-
-    const userQuestionData = await getUserQuestion(
-      activeQuizData?.user_quizzes_id,
-      quizId
-    );
-
-    const userAnswersData = await getUserAnswers(
-      activeQuizData?.user_quizzes_id,
-      quizId
-    );
-
-    const quizPage = Number(quizId);
+  if (activeQuizId) {
+    const userQuestionsCount = await getUserQuestionsCount(activeQuizId);
+    const userQuestionData = await getUserQuestion(activeQuizId, id);
+    const userAnswersData = await getUserAnswers(activeQuizId, id);
 
     return (
       <div className="p-4 w-full flex flex-col items-center">
         <div className="w-full flex justify-between mt-4">
-          <Link href={quizPage !== 1 ? `/quiz/${quizPage - 1}` : "1"}>
+          <Link href={quizPageId !== 1 ? `/quiz/${quizPageId - 1}` : "1"}>
             <Image
               src="/icons/arrow-back.svg"
               alt={"arrow-back"}
@@ -70,7 +59,8 @@ const QuizPage: React.FC<QuizPageProps> = async ({ quizId }) => {
           </h1>
 
           <AnswerSelect
-            quizId={quizId}
+            activeQuizId={activeQuizId}
+            quizPageId={quizPageId}
             questionsId={userQuestionData?.user_questions_id}
             questionsCount={userQuestionsCount}
             answerData={userAnswersData ?? []}

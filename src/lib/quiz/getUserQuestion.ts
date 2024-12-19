@@ -5,7 +5,7 @@ import { prisma } from "@/lib/prisma";
 export const getUserQuestion = async (
   userQuizId: string,
   questionId: string
-): Promise<any> => {
+) => {
   try {
     const question = await prisma.userQuestion.findFirst({
       where: {

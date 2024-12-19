@@ -8,14 +8,16 @@ import React from "react";
 import { useRouter } from "next/navigation";
 
 interface AnswerSelectProps {
-  quizId: string;
+  activeQuizId: string;
+  quizPageId: number;
   questionsId?: string;
   questionsCount: string;
   answerData: UserAnswer[];
 }
 
 const AnswerSelect: React.FC<AnswerSelectProps> = ({
-  quizId,
+  activeQuizId,
+  quizPageId,
   questionsId,
   questionsCount,
   answerData,
@@ -38,13 +40,23 @@ const AnswerSelect: React.FC<AnswerSelectProps> = ({
     );
   };
 
+  const isLastQuiz = Number(questionsCount) === quizPageId;
+
   const handleSubmit = async () => {
     if (questionsId) {
-      const response = await submitQuestion(questionsId, currentAnswers);
-      if (response.success) {
-        const nextQuiz = Number(quizId) + 1;
-        router.push(`/quiz/${nextQuiz}`);
-      }
+      await submitQuestion(
+        activeQuizId,
+        quizPageId,
+        questionsId,
+        currentAnswers,
+        isLastQuiz
+      ).then(() => {
+        if (isLastQuiz) {
+          router.push("/result");
+        } else {
+          router.push(`/quiz/${quizPageId + 1}`);
+        }
+      });
     }
   };
 
@@ -74,15 +86,10 @@ const AnswerSelect: React.FC<AnswerSelectProps> = ({
           </div>
         ))}
       </RadioGroup>
-      {quizId == questionsCount ? (
-        <Button className="m-10" type="button" onClick={() => {}}>
-          Завершить тест
-        </Button>
-      ) : (
-        <Button className="m-10" type="button" onClick={handleSubmit}>
-          Дальше
-        </Button>
-      )}
+
+      <Button className="m-10" type="button" onClick={handleSubmit}>
+        {quizPageId === Number(questionsCount) ? "Завершить тест" : "Дальше"}
+      </Button>
     </div>
   );
 };
