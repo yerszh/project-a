@@ -38,6 +38,8 @@ model User {
   UserQuizzes UserQuiz[]
 
   Results Results[]
+
+  UserChats UserChats[]
 }
  
 model Account {
@@ -80,83 +82,99 @@ model VerificationToken {
 }
  
 model UserQuiz {
-  user_quizzes_id String   @id @default(cuid())  // unique identifier for the user-quiz relation
-  user_id         String   // foreign key to User model
-  quiz_id         String   @default("1")  // foreign key to Quiz model
-  started         DateTime // when the user started the quiz
-  finished        DateTime? // when the user finished the quiz (nullable)
-  isActive        Boolean  @default(true) // whether the quiz is currently active
-  current_question Int     @default(1)     // the index of the current question (starting from 0)
-  createdAt       DateTime @default(now()) // timestamp when the entry was created
-  updatedAt       DateTime @default(now()) @updatedAt // timestamp when the entry was last updated
-
-  // Relations
-  user             User        @relation(fields: [user_id], references: [id])   // related to the User model
-  userQuestions    UserQuestion[]  // relation to UserQuestions
-  UserAnswer UserAnswer[]
+  user_quizzes_id String   @id @default(cuid())
+  user_id         String
+  quiz_id         String   @default("1")
+  started         DateTime
+  finished        DateTime?
+  isActive        Boolean  @default(true)
+  current_question Int     @default(1)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @default(now()) @updatedAt
+  
+  user            User        @relation(fields: [user_id], references: [id])
+  userQuestions   UserQuestion[]
+  UserAnswer      UserAnswer[]
 }
 
 model UserQuestion {
-  user_questions_id String   @id @default(cuid())  // unique identifier for the user-question relation
-  question_id       String   // foreign key to Question model
-  user_quizzes_id   String   // foreign key to UserQuiz model
-  question_answered Boolean  @default(false) // whether the question was answered
-  question_text_kz  String   // the question text in Kazakh
-  question_text_ru  String   // the question text in Russian
-  question_type     String   // the type of the question (e.g., multiple choice, true/false)
-  riasec_code       String   // RIASEC code for the question (related to personality types)
-  updatedAt         DateTime @default(now()) @updatedAt // timestamp when the record was last updated
+  user_questions_id String   @id @default(cuid())
+  question_id       String
+  user_quizzes_id   String
+  question_answered Boolean  @default(false)
+  question_text_kz  String
+  question_text_ru  String
+  question_type     String
+  riasec_code       String
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @default(now()) @updatedAt
 
-  // Relations
-  userQuiz          UserQuiz   @relation(fields: [user_quizzes_id], references: [user_quizzes_id])  // related to UserQuizzes
+  userQuiz          UserQuiz   @relation(fields: [user_quizzes_id], references: [user_quizzes_id])
 }
 
 model UserAnswer {
-  user_answers_id String   @id @default(cuid())  // unique identifier for the user-answer relation
-  answer_id       String   // foreign key to Answer model
+  user_answers_id String   @id @default(cuid())
+  answer_id       String
   question_id     String
-  user_quizzes_id String // foreign key to UserQuestion model
-  answer_text_kz  String   // the answer text in Kazakh
-  answer_text_ru  String   // the answer text in Russian
-  isPicked        Boolean  @default(false) // whether the answer was picked by the user
-  riasec_score    Int      // RIASEC score for the answer selected by the user
-  createdAt       DateTime @default(now()) // timestamp when the answer was selected
-  updatedAt       DateTime @default(now()) @updatedAt // timestamp when the record was last updated
-
-  // Relations
-  userQuiz          UserQuiz   @relation(fields: [user_quizzes_id], references: [user_quizzes_id])  // related to UserQuizzes
+  user_quizzes_id String
+  answer_text_kz  String
+  answer_text_ru  String
+  isPicked        Boolean  @default(false)
+  riasec_score    Int
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @default(now()) @updatedAt
+  
+  userQuiz        UserQuiz   @relation(fields: [user_quizzes_id], references: [user_quizzes_id])
 }
 
-
 model Results {
-  result_id String   @id @default(cuid())  // unique identifier for the result
-  user_id   String   // foreign key to User model
+  result_id String   @id @default(cuid())
+  user_id   String
   quiz_id   String
-  R         Int      // RIASEC score for the 'R' dimension
-  I         Int      // RIASEC score for the 'I' dimension
-  A         Int      // RIASEC score for the 'A' dimension
-  S         Int      // RIASEC score for the 'S' dimension
-  E         Int      // RIASEC score for the 'E' dimension
-  C         Int      // RIASEC score for the 'C' dimension
-  createdAt DateTime @default(now()) // timestamp when the result was created
-
-  // Relations
-  user      User     @relation(fields: [user_id], references: [id])  // related to the User model
-
+  R         Int
+  I         Int
+  A         Int
+  S         Int
+  E         Int
+  C         Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+  
+  user      User     @relation(fields: [user_id], references: [id])
   UserProfessions UserProfessions[]
 }
 
-
 model UserProfessions {
-  user_professions_id String   @id @default(cuid())  // unique identifier for the user-profession record
-  result_id           String   // foreign key to Results model
-  name                String   // name of the profession
-  percent             Int      // percentage score or match for the profession
-  occupation_id       String   // unique identifier for the occupation (foreign key to occupation model, if exists)
+  user_professions_id String   @id @default(cuid())
+  result_id           String
+  name                String
+  percent             Int
+  occupation_id       String
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @default(now()) @updatedAt
+  
+  result              Results  @relation(fields: [result_id], references: [result_id])
+}
 
-  createdAt           DateTime @default(now()) // timestamp when the record was created
-  updatedAt           DateTime @default(now()) @updatedAt // timestamp when the record was last updated
+model UserChats {
+  chat_id        String   @id @default(cuid())
+  user_id        String
+  profession_id  String
+  chat_title     String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @default(now()) @updatedAt
 
-  // Relations
-  result    Results  @relation(fields: [result_id], references: [result_id])  // related to the Results model
+  user           User     @relation(fields: [user_id], references: [id])
+  ChatMessages   ChatMessages[]
+}
+
+model ChatMessages {
+  message_id     String   @id @default(cuid())
+  chat_id        String
+  role           String
+  text           String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @default(now()) @updatedAt
+
+  chat           UserChats @relation(fields: [chat_id], references: [chat_id])
 }
