@@ -2,7 +2,7 @@
 
 import { pool } from "@/lib/postgres";
 
-export const mockChatServerAction = async (): Promise<null> => {
+export const mockChatServerAction = async () => {
   try {
     const { rows } = await pool.query(
       "SELECT job_id, SOC_name, name FROM jobs"

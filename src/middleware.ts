@@ -13,5 +13,9 @@ export async function middleware(req: NextRequest) {
     }
   }
 
+  if (url.includes("/auth/sign-in") && session) {
+    return NextResponse.redirect(new URL("/", req.url));
+  }
+
   return NextResponse.next();
 }

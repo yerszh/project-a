@@ -1,13 +1,12 @@
-import { checkActiveQuiz } from "@/lib/quiz/checkActiveQuizServerAction";
 import Image from "next/image";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 
 const Home = async () => {
-  const activeQuiz = await checkActiveQuiz();
-  if (activeQuiz?.isActive) {
-    redirect(`/quiz/${activeQuiz?.current_question}`);
-  }
+  // const activeQuiz = await checkActiveQuiz();
+  // if (activeQuiz?.isActive) {
+  //   redirect(`/quiz/${activeQuiz?.current_question}`);
+  // }
+
   return (
     <>
       <div className="flex gap-1 items-center mt-9 text-[#9E9E9E]">

@@ -6,7 +6,8 @@ import { handleEmailSignIn } from "@/lib/auth/emailSignInServerAction";
 import { handleGoogleSignIn } from "@/lib/auth/googleSignInServerAction";
 import { useState, useTransition } from "react";
 import Image from "next/image";
-export const SignInPage: React.FC = () => {
+
+export const SignIn: React.FC = () => {
   const [isPending, startTransition] = useTransition();
   const [formData, setFormData] = useState({ email: "" as string });
 

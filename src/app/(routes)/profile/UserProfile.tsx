@@ -7,7 +7,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { handleSignOut } from "@/lib/auth/signOutServerAction";
-import { redirect } from "next/navigation";
 import { User } from "@prisma/client";
 
 interface UserProfileProps {
@@ -16,6 +15,7 @@ interface UserProfileProps {
 }
 
 const UserProfile = ({ userData, type }: UserProfileProps) => {
+  console.log(type);
   const [user, setUser] = useState<User | null>(userData || null);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
@@ -29,7 +29,7 @@ const UserProfile = ({ userData, type }: UserProfileProps) => {
     if (!user) return;
     setIsSubmitting(true);
     try {
-      const response = await setUserInfo(user);
+      await setUserInfo(user);
       console.log(user);
       // if (type === "quiz" && response.success) {
       //   redirect("/quiz");

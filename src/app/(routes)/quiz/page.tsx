@@ -1,19 +1,20 @@
 import { redirect } from "next/navigation";
-import { checkIsAuthenticated } from "@/lib/auth/checkIsAuthenticated";
+
 import { getUserInfo } from "@/lib/profile/getUserInfoServerAction";
-import UserProfile from "@/components/page-components/UserProfile";
+import UserProfile from "@/app/(routes)/profile/UserProfile";
 import { checkActiveQuiz } from "@/lib/quiz/checkActiveQuizServerAction";
 import { User } from "@prisma/client";
 import { createUserQuiz } from "@/lib/quiz/createUserQuizServerAction";
+import { auth } from "@/lib/auth/authConfig";
 
 const Quiz = async () => {
-  const isAuthenticated = await checkIsAuthenticated();
+  const session = await auth();
   const activeQuiz = await checkActiveQuiz();
 
-  if (!isAuthenticated) {
+  if (!session) {
     redirect("/auth/sign-in");
   } else {
-    if (isAuthenticated) {
+    if (session) {
       const userData: User | null = await getUserInfo();
 
       const missingFieldsInfo = ["name", "grade", "age", "phoneNumber"].some(

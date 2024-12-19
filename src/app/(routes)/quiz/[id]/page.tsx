@@ -1,12 +1,12 @@
 import { redirect } from "next/navigation";
 import QuizPage from "../QuizPage";
-import { checkIsAuthenticated } from "@/lib/auth/checkIsAuthenticated";
+import { auth } from "@/lib/auth/authConfig";
 
 const QuizId = async ({ params }: { params: Promise<{ id: string }> }) => {
-  const isAuthenticated = await checkIsAuthenticated();
+  const session = await auth();
   const { id } = await params;
 
-  if (!isAuthenticated) {
+  if (!session) {
     redirect("/auth/sign-in");
   } else {
     return <QuizPage id={id} />;
