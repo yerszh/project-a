@@ -36,6 +36,8 @@ model User {
 
 
   UserQuizzes UserQuiz[]
+
+  Results Results[]
 }
  
 model Account {
@@ -123,4 +125,38 @@ model UserAnswer {
 
   // Relations
   userQuiz          UserQuiz   @relation(fields: [user_quizzes_id], references: [user_quizzes_id])  // related to UserQuizzes
+}
+
+
+model Results {
+  result_id String   @id @default(cuid())  // unique identifier for the result
+  user_id   String   // foreign key to User model
+  quiz_id   String
+  R         Int      // RIASEC score for the 'R' dimension
+  I         Int      // RIASEC score for the 'I' dimension
+  A         Int      // RIASEC score for the 'A' dimension
+  S         Int      // RIASEC score for the 'S' dimension
+  E         Int      // RIASEC score for the 'E' dimension
+  C         Int      // RIASEC score for the 'C' dimension
+  createdAt DateTime @default(now()) // timestamp when the result was created
+
+  // Relations
+  user      User     @relation(fields: [user_id], references: [id])  // related to the User model
+
+  UserProfessions UserProfessions[]
+}
+
+
+model UserProfessions {
+  user_professions_id String   @id @default(cuid())  // unique identifier for the user-profession record
+  result_id           String   // foreign key to Results model
+  name                String   // name of the profession
+  percent             Int      // percentage score or match for the profession
+  occupation_id       String   // unique identifier for the occupation (foreign key to occupation model, if exists)
+
+  createdAt           DateTime @default(now()) // timestamp when the record was created
+  updatedAt           DateTime @default(now()) @updatedAt // timestamp when the record was last updated
+
+  // Relations
+  result    Results  @relation(fields: [result_id], references: [result_id])  // related to the Results model
 }

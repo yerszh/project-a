@@ -2,7 +2,7 @@
 
 import { prisma } from "@/lib/prisma";
 import { auth } from "../auth/authConfig";
-import { UserInfo } from "@/types/UserInfo";
+import { User } from "@prisma/client";
 
 export const getUserInfo = async () => {
   try {
@@ -20,12 +20,6 @@ export const getUserInfo = async () => {
 
     const user = await prisma.user.findUnique({
       where: { id: uuid },
-      select: {
-        name: true,
-        grade: true,
-        age: true,
-        phoneNumber: true,
-      },
     });
 
     if (!user) {
@@ -33,7 +27,7 @@ export const getUserInfo = async () => {
       return null;
     }
 
-    return user as UserInfo;
+    return user as User;
   } catch (error) {
     console.error("Error fetching user info:", error);
     throw error;

@@ -1,12 +1,10 @@
 import { checkActiveQuiz } from "@/lib/quiz/checkActiveQuizServerAction";
-import { createUserQuiz } from "@/lib/quiz/createUserQuizServerAction";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
 const Home = async () => {
   const activeQuiz = await checkActiveQuiz();
-  await createUserQuiz();
   if (activeQuiz?.isActive) {
     redirect(`/quiz/${activeQuiz?.current_question}`);
   }

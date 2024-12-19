@@ -2,10 +2,10 @@
 
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth/authConfig";
-import { UserInfo } from "@/types/UserInfo";
+import { User } from "@prisma/client";
 
 export const setUserInfo = async (
-  userInfo: UserInfo
+  userInfo: User
 ): Promise<{ success: boolean; message: string }> => {
   const session = await auth();
 

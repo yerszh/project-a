@@ -3,23 +3,23 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { setUserInfo } from "@/lib/profile/setUserInfoServerAction";
-import { UserInfo } from "@/types/UserInfo";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { handleSignOut } from "@/lib/auth/signOutServerAction";
 import { redirect } from "next/navigation";
+import { User } from "@prisma/client";
 
 interface UserProfileProps {
   type: "quiz" | "profile";
-  userData?: UserInfo | null;
+  userData?: User | null;
 }
 
 const UserProfile = ({ userData, type }: UserProfileProps) => {
-  const [user, setUser] = useState<UserInfo | null>(userData || null);
+  const [user, setUser] = useState<User | null>(userData || null);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
-  const handleChange = (key: keyof UserInfo, value: string | number) => {
+  const handleChange = (key: keyof User, value: string | number) => {
     if (user) {
       setUser({ ...user, [key]: value });
     }
@@ -75,7 +75,7 @@ const UserProfile = ({ userData, type }: UserProfileProps) => {
             type="text"
             value={user?.name || ""}
             placeholder="Введите ФИО"
-            maxLength={200}
+            maxLength={100}
             onChange={(e) => handleChange("name", e.target.value)}
           />
         </div>
@@ -87,10 +87,10 @@ const UserProfile = ({ userData, type }: UserProfileProps) => {
             className={
               "p-4 flex w-full border border-[#E3E6EB] h-12 text-sm rounded-2xl	"
             }
-            type="number"
+            type="text"
             value={user?.grade || ""}
             placeholder="Введите ваш класс"
-            maxLength={20}
+            maxLength={2}
             onChange={(e) => handleChange("grade", e.target.value)}
           />
         </div>
@@ -102,11 +102,11 @@ const UserProfile = ({ userData, type }: UserProfileProps) => {
             className={
               "p-4 flex w-full border border-[#E3E6EB] h-12 text-sm rounded-2xl	"
             }
-            type="number"
+            type="text"
             value={user?.age || ""}
             placeholder="Введите ваш восраст"
             maxLength={2}
-            onChange={(e) => handleChange("age", Number(e.target.value))}
+            onChange={(e) => handleChange("age", e.target.value)}
           />
         </div>
         <div className="flex flex-col gap-2 mt-4">
@@ -120,7 +120,7 @@ const UserProfile = ({ userData, type }: UserProfileProps) => {
             type="text"
             value={user?.phoneNumber || ""}
             placeholder="Введите номер"
-            maxLength={20}
+            maxLength={12}
             onChange={(e) => handleChange("phoneNumber", e.target.value)}
           />
         </div>

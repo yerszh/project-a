@@ -18,13 +18,14 @@ export const createUserQuiz = async () => {
     },
   });
 
-  if (lastUserQuiz?.isActive == false) {
+  if (true) {
     try {
       if (uuid) {
         const newUserQuiz = await prisma.userQuiz.create({
           data: {
             user_id: uuid,
             started: new Date(),
+  
           },
         });
 
