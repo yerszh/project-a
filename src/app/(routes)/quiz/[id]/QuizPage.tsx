@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import AnswerSelect from "./AnswerSelect";
-import { checkActiveQuiz } from "@/lib/quiz/checkActiveQuizServerAction";
+import AnswerSelect from "../../../../components/page-components/AnswerSelect";
+import { checkActiveQuiz } from "@/lib/quiz/checkActiveQuiz";
 import { getUserQuestionsCount } from "@/lib/quiz/getUserQuestionsCount";
 import { getUserQuestion } from "@/lib/quiz/getUserQuestion";
 import { getUserAnswers } from "@/lib/quiz/getUserAnswers";

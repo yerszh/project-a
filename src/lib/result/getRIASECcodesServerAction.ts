@@ -49,7 +49,8 @@ export const getRIASECcodes = async (userQuizId: string): Promise<void> => {
           C: resultScores.C,
         },
       });
-      console.log("Result created:", result);
+      console.log(result);
+      //return result;
     }
   } catch (error) {
     console.error("Error fetching user info:", error);

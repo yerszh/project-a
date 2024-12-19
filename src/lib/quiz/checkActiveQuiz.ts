@@ -16,6 +16,7 @@ export const checkActiveQuiz = async () => {
     const lastUserQuiz = await prisma.userQuiz.findFirst({
       where: {
         user_id: uuid,
+        isActive: true,
       },
       orderBy: {
         createdAt: "desc",

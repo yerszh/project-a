@@ -1,18 +1,10 @@
-import { redirect } from "next/navigation";
-import { getUserInfo } from "@/lib/profile/getUserInfoServerAction";
-import UserProfile from "@/app/(routes)/profile/UserProfile";
-import { User } from "@prisma/client";
-import { auth } from "@/lib/auth/authConfig";
+import { getUserInfo } from "@/lib/profile/getUserInfo";
+import UserProfile from "./UserProfile";
 
-const Profile: React.FC = async () => {
-  const session = await auth();
+const Profile = async () => {
+  const userData = await getUserInfo();
 
-  if (session) {
-    const userData: User | null = await getUserInfo();
-    return <UserProfile userData={userData} type="profile" />;
-  } else {
-    redirect("/auth/sign-in");
-  }
+  return <UserProfile userData={userData} type="profile" />;
 };
 
 export default Profile;

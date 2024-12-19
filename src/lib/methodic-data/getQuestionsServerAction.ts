@@ -9,7 +9,5 @@ export const getQuestions = async () => {
   } catch (error) {
     console.error("Error fetching questions:", error);
     throw error;
-  } finally {
-    await pool.end();
   }
 };

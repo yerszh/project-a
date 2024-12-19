@@ -2,12 +2,13 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { setUserInfo } from "@/lib/profile/setUserInfoServerAction";
+
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { handleSignOut } from "@/lib/auth/signOutServerAction";
 import { User } from "@prisma/client";
+import { setUserInfo } from "@/lib/profile/setUserInfo";
+import { handleSignOut } from "@/lib/auth/signOutServerAction";
 
 interface UserProfileProps {
   type: "quiz" | "profile";
@@ -15,39 +16,29 @@ interface UserProfileProps {
 }
 
 const UserProfile = ({ userData, type }: UserProfileProps) => {
-  console.log(type);
-  const [user, setUser] = useState<User | null>(userData || null);
-  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [formData, setFormData] = useState({
+    name: userData?.name,
+    grade: userData?.grade,
+    age: userData?.age,
+    phoneNumber: userData?.phoneNumber,
+  });
 
-  const handleChange = (key: keyof User, value: string | number) => {
-    if (user) {
-      setUser({ ...user, [key]: value });
-    }
-  };
-
-  const handleSubmit = async () => {
-    if (!user) return;
-    setIsSubmitting(true);
-    try {
-      await setUserInfo(user);
-      console.log(user);
-      // if (type === "quiz" && response.success) {
-      //   redirect("/quiz");
-      // }
-    } finally {
-      setIsSubmitting(false);
-    }
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   return (
-    <div className="p-4 w-full flex flex-col ">
+    <div className="p-4 w-full flex flex-col">
       <div className="w-full flex justify-between">
         <div>
           <button style={{ cursor: "pointer" }} onClick={() => handleSignOut()}>
             Sign Out
           </button>
         </div>
-
         <Link href="/">
           <Image
             src="/icons/close-button.svg"
@@ -61,23 +52,24 @@ const UserProfile = ({ userData, type }: UserProfileProps) => {
       <h1 className="mt-20 text-xl text-[#171A1D] font-semibold text-center">
         Краткая информация о вас
       </h1>
-      <h2 className="mt-3 text-[13px] leading-[13px] text-[#A5AAB3] font-normal	 text-center">
+      <h2 className="mt-3 text-[13px] leading-[13px] text-[#A5AAB3] font-normal text-center">
         Пожалуйста, заполните короткую анкету
       </h2>
-      <div className="mt-12">
+      <form action={setUserInfo} className="mt-12">
         <div className="flex flex-col gap-2 mt-4">
           <label className="text-[#333944] text-[13px] leading-[13px]">
             ФИО
           </label>
           <Input
             className={
-              "p-4 flex w-full border border-[#E3E6EB] h-12 text-sm rounded-2xl	"
+              "p-4 flex w-full border border-[#E3E6EB] h-12 text-sm rounded-2xl"
             }
             type="text"
-            value={user?.name || ""}
+            name="name"
+            value={formData.name || ""}
+            onChange={handleChange}
             placeholder="Введите ФИО"
             maxLength={100}
-            onChange={(e) => handleChange("name", e.target.value)}
           />
         </div>
         <div className="flex flex-col gap-2 mt-4">
@@ -86,13 +78,14 @@ const UserProfile = ({ userData, type }: UserProfileProps) => {
           </label>
           <Input
             className={
-              "p-4 flex w-full border border-[#E3E6EB] h-12 text-sm rounded-2xl	"
+              "p-4 flex w-full border border-[#E3E6EB] h-12 text-sm rounded-2xl"
             }
             type="text"
-            value={user?.grade || ""}
+            name="grade"
+            value={formData.grade || ""}
+            onChange={handleChange}
             placeholder="Введите ваш класс"
             maxLength={2}
-            onChange={(e) => handleChange("grade", e.target.value)}
           />
         </div>
         <div className="flex flex-col gap-2 mt-4">
@@ -101,13 +94,14 @@ const UserProfile = ({ userData, type }: UserProfileProps) => {
           </label>
           <Input
             className={
-              "p-4 flex w-full border border-[#E3E6EB] h-12 text-sm rounded-2xl	"
+              "p-4 flex w-full border border-[#E3E6EB] h-12 text-sm rounded-2xl"
             }
             type="text"
-            value={user?.age || ""}
-            placeholder="Введите ваш восраст"
+            name="age"
+            value={formData.age || ""}
+            onChange={handleChange}
+            placeholder="Введите ваш возраст"
             maxLength={2}
-            onChange={(e) => handleChange("age", e.target.value)}
           />
         </div>
         <div className="flex flex-col gap-2 mt-4">
@@ -116,25 +110,21 @@ const UserProfile = ({ userData, type }: UserProfileProps) => {
           </label>
           <Input
             className={
-              "p-4 flex w-full border border-[#E3E6EB] h-12 text-sm rounded-2xl	"
+              "p-4 flex w-full border border-[#E3E6EB] h-12 text-sm rounded-2xl"
             }
             type="text"
-            value={user?.phoneNumber || ""}
+            name="phoneNumber"
+            value={formData.phoneNumber || ""}
+            onChange={handleChange}
             placeholder="Введите номер"
             maxLength={12}
-            onChange={(e) => handleChange("phoneNumber", e.target.value)}
           />
         </div>
 
-        <Button
-          className="my-8 w-full h-12 rounded-lg"
-          type="submit"
-          onClick={handleSubmit}
-          disabled={isSubmitting}
-        >
+        <Button className="my-8 w-full h-12 rounded-lg" type="submit">
           Продолжить
         </Button>
-      </div>
+      </form>
     </div>
   );
 };

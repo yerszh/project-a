@@ -51,7 +51,6 @@ export const submitQuestion = async (
 
     return { success: true, message: "Updated successfully" };
   } catch (err) {
-    console.error("Error updating:", err);
     return { success: false, message: "Error updating" };
   } finally {
     await prisma.$disconnect();
