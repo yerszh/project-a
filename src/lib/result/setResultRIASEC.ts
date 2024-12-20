@@ -14,11 +14,10 @@ interface ResultScores {
 
 type RIASECCode = keyof ResultScores;
 
-export const getRIASECcodes = async (userQuizId: string): Promise<void> => {
-  const session = await auth();
-  const uuid = session?.user?.id;
-
+export const setResultRIASEC = async (userQuizId: string) => {
   try {
+    const session = await auth();
+    const uuid = session?.user?.id;
     const userAnswers = await prisma.userAnswer.findMany({
       where: { user_quizzes_id: userQuizId, isPicked: true },
       include: { userQuiz: { include: { userQuestions: true } } },
@@ -49,8 +48,8 @@ export const getRIASECcodes = async (userQuizId: string): Promise<void> => {
           C: resultScores.C,
         },
       });
-      console.log(result);
-      //return result;
+
+      return result;
     }
   } catch (error) {
     console.error("Error fetching user info:", error);

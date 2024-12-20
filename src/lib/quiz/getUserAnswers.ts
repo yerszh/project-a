@@ -5,7 +5,7 @@ import { prisma } from "@/lib/prisma";
 export const getUserAnswers = async (
   userQuizId: string,
   questionId: string
-): Promise<any> => {
+) => {
   try {
     const userAnswers = await prisma.userAnswer.findMany({
       where: {

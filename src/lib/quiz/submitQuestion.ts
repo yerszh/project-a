@@ -1,6 +1,8 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
+import { setResultRIASEC } from "../result/setResultRIASEC";
+import { setUserProfessions } from "../result/setUserProfessions";
 
 export const submitQuestion = async (
   activeQuizId: string,
@@ -46,7 +48,14 @@ export const submitQuestion = async (
       },
     });
 
+    // if (isLastQuiz) {
+    //   setResultRIASEC(activeQuizId).then(async (result) => {
+    //     setUserProfessions(result);
+    //   });
+    // }
+
     if (isLastQuiz) {
+      const result = setResultRIASEC(activeQuizId);
     }
 
     return { success: true, message: "Updated successfully" };

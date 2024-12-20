@@ -12,15 +12,6 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 
-const chartData = [
-  { profs: "Технические", points: 186 },
-  { profs: "Юридические", points: 305 },
-  { profs: "Военные", points: 153 },
-  { profs: "Экономические", points: 237 },
-  { profs: "Безопасность", points: 109 },
-  { profs: "Творческие", points: 214 },
-];
-
 const chartConfig = {
   desktop: {
     label: "Desktop",
@@ -28,7 +19,29 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-const ResultPage: React.FC = () => {
+interface RIASEC {
+  R: number;
+  I: number;
+  A: number;
+  S: number;
+  E: number;
+  C: number;
+}
+
+interface ResultPageProps {
+  riasec?: RIASEC;
+}
+
+const ResultPage: React.FC<ResultPageProps> = ({ riasec }) => {
+  const chartData = [
+    { profs: "R", points: riasec?.R },
+    { profs: "I", points: riasec?.I },
+    { profs: "A", points: riasec?.A },
+    { profs: "S", points: riasec?.S },
+    { profs: "E", points: riasec?.E },
+    { profs: "C", points: riasec?.C },
+  ];
+
   return (
     <div className="p-4 w-full flex flex-col items-center">
       <div className="w-full flex justify-between mt-4">

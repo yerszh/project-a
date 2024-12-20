@@ -2,9 +2,7 @@
 
 import { prisma } from "@/lib/prisma";
 
-export const getUserQuestionsCount = async (
-  userQuizId: string
-): Promise<any> => {
+export const getUserQuestionsCount = async (userQuizId: string) => {
   try {
     const userQuestionsCount = await prisma.userQuestion.count({
       where: {
