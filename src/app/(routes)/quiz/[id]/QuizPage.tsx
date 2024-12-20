@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import AnswerSelect from "../../../../components/page-components/AnswerSelect";
+import AnswerSelect from "../../../../components/AnswerSelect/AnswerSelect";
 import { checkActiveQuiz } from "@/lib/quiz/checkActiveQuiz";
 import { getUserQuestionsCount } from "@/lib/quiz/getUserQuestionsCount";
 import { getUserQuestion } from "@/lib/quiz/getUserQuestion";

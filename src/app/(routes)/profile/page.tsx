@@ -1,5 +1,5 @@
 import { getUserInfo } from "@/lib/profile/getUserInfo";
-import UserProfile from "./UserProfile";
+import UserProfile from "./_ProfilePage";
 
 const Profile = async () => {
   const userData = await getUserInfo();

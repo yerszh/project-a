@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 
-import UserProfile from "@/app/(routes)/profile/UserProfile";
+import UserProfile from "@/app/(routes)/profile/_ProfilePage";
 import { checkActiveQuiz } from "@/lib/quiz/checkActiveQuiz";
 import { User } from "@prisma/client";
 import { createUserQuiz } from "@/lib/quiz/createUserQuiz";
