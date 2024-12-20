@@ -9,6 +9,7 @@ import { useState } from "react";
 import { User } from "@prisma/client";
 import { setUserInfo } from "@/lib/profile/setUserInfo";
 import { handleSignOut } from "@/lib/auth/signOutServerAction";
+import { useTranslations } from "next-intl";
 
 interface UserProfileProps {
   type: "quiz" | "profile";
@@ -22,7 +23,7 @@ const UserProfile = ({ userData, type }: UserProfileProps) => {
     age: userData?.age,
     phoneNumber: userData?.phoneNumber,
   });
-
+  const t = useTranslations("HomePage");
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -33,6 +34,7 @@ const UserProfile = ({ userData, type }: UserProfileProps) => {
 
   return (
     <div className="p-4 w-full flex flex-col">
+      <h2>{t("title")}</h2>
       <div className="w-full flex justify-between">
         <div>
           <button style={{ cursor: "pointer" }} onClick={() => handleSignOut()}>

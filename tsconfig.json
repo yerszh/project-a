@@ -28,6 +28,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/lib/profile/setUserInfo.ts"
-  ],
+, "next.config.ts"  ],
   "exclude": ["node_modules"]
 }
