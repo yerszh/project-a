@@ -48,14 +48,12 @@ export const submitQuestion = async (
       },
     });
 
-    // if (isLastQuiz) {
-    //   setResultRIASEC(activeQuizId).then(async (result) => {
-    //     setUserProfessions(result);
-    //   });
-    // }
-
     if (isLastQuiz) {
-      const result = setResultRIASEC(activeQuizId);
+      setResultRIASEC(activeQuizId).then(async (result) => {
+        if (result) {
+          await setUserProfessions(result);
+        }
+      });
     }
 
     return { success: true, message: "Updated successfully" };

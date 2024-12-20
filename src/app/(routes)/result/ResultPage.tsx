@@ -11,6 +11,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const chartConfig = {
   desktop: {
@@ -19,27 +20,31 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-interface RIASEC {
+interface UserResult {
   R: number;
   I: number;
   A: number;
   S: number;
   E: number;
   C: number;
+  userProfessions: {
+    name: string;
+    percent: number;
+  }[];
 }
 
 interface ResultPageProps {
-  riasec?: RIASEC;
+  userResult?: UserResult;
 }
 
-const ResultPage: React.FC<ResultPageProps> = ({ riasec }) => {
+const ResultPage = ({ userResult }: ResultPageProps) => {
   const chartData = [
-    { profs: "R", points: riasec?.R },
-    { profs: "I", points: riasec?.I },
-    { profs: "A", points: riasec?.A },
-    { profs: "S", points: riasec?.S },
-    { profs: "E", points: riasec?.E },
-    { profs: "C", points: riasec?.C },
+    { profs: "R", points: userResult?.R },
+    { profs: "I", points: userResult?.I },
+    { profs: "A", points: userResult?.A },
+    { profs: "S", points: userResult?.S },
+    { profs: "E", points: userResult?.E },
+    { profs: "C", points: userResult?.C },
   ];
 
   return (
@@ -109,21 +114,19 @@ const ResultPage: React.FC<ResultPageProps> = ({ riasec }) => {
           Подобранные профессии
         </h3>
 
-        <div className="flex flex-col gap-1.5 mt-4">
-          <div className="border-[#E3E6EB] border border-solid rounded-lg shadow-sm p-4">
-            <div className="w-full flex justify-between mb-3">
-              <p>Программист</p> <p>91%</p>
+        <ScrollArea className="h-[200px] w-full flex flex-col gap-1.5 mt-4">
+          {userResult?.userProfessions.map((profession) => (
+            <div
+              key={profession.name}
+              className="border-[#E3E6EB] border border-solid rounded-lg shadow-sm p-4"
+            >
+              <div className="w-full flex justify-between mb-3">
+                <p>{profession.name}</p> <p>{profession.percent / 100}%</p>
+              </div>
+              <Progress value={profession.percent / 100} />
             </div>
-            <Progress value={91} />
-          </div>
-
-          <div className="border-[#E3E6EB] border border-solid rounded-lg shadow-sm p-4">
-            <div className="w-full flex justify-between mb-3">
-              <p>Учитель (технические)</p> <p>57%</p>
-            </div>
-            <Progress value={57} />
-          </div>
-        </div>
+          ))}
+        </ScrollArea>
       </div>
 
       <Link
