@@ -38,7 +38,7 @@ const ProfilePage = ({ userData, type }: ProfilePageProps) => {
   return (
     <div className="p-4 w-full flex flex-col">
       <div className="w-full flex justify-between">
-        <div>
+        <div className="flex gap-3">
           <button style={{ cursor: "pointer" }} onClick={handleSignOut}>
             {t("signOut")}
           </button>

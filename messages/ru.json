@@ -21,5 +21,12 @@
     "phoneNumber": "Номер телефона",
     "phoneNumberPlaceholder": "Введите номер",
     "continue": "Продолжить"
+  },
+  "QuizPage": {
+    "arrowBack": "Назад",
+    "closeButton": "Закрыть",
+    "quizTitle": "AI Профориентатор",
+    "questionCounter": "вопросов",
+    "errorMessage": "Ошибка"
   }
 }

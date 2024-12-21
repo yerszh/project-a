@@ -1,9 +1,11 @@
-import QuizPage from "./QuizPage";
+import { getUserQuestionAndAnswers } from "@/lib/quiz/getUserQuestionAndAnswers";
+import QuizPage from "./_QuizPage";
 
-const QuizId = async ({ params }: { params: Promise<{ id: string }> }) => {
+const QuizId = async ({ params }: { params: any }) => {
   const { id } = await params;
+  const questionData = await getUserQuestionAndAnswers(id);
 
-  return <QuizPage id={id} />;
+  return <QuizPage questionData={questionData} />;
 };
 
 export default QuizId;

@@ -3,7 +3,7 @@
 import { cookies } from "next/headers";
 import { Locale, defaultLocale } from "@/i18n/config";
 
-const COOKIE_NAME = "NEXT_LOCALE";
+const COOKIE_NAME = "LOCALE";
 
 export async function getUserLocale() {
   return (await cookies()).get(COOKIE_NAME)?.value || defaultLocale;

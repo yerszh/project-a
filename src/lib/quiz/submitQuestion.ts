@@ -3,22 +3,24 @@
 import { prisma } from "@/lib/prisma";
 import { setResultRIASEC } from "../result/setResultRIASEC";
 import { setUserProfessions } from "../result/setUserProfessions";
+import { checkActiveQuiz } from "./checkActiveQuiz";
 
 export const submitQuestion = async (
-  activeQuizId: string,
-  quizPageId: number,
-  userQuestionsId: string,
+  isLastQuiz: boolean,
+  quizPageId: string,
   currentAnswers: {
     answer_id: string;
     isPicked: boolean;
     user_quizzes_id: string;
-  }[],
-  isLastQuiz: boolean
+  }[]
 ): Promise<{ success: boolean; message: string }> => {
   try {
-    await prisma.userQuestion.update({
+    const activeQuiz = await checkActiveQuiz();
+    console.log(quizPageId);
+    await prisma.userQuestion.updateMany({
       where: {
-        user_questions_id: userQuestionsId,
+        user_quizzes_id: activeQuiz?.user_quizzes_id,
+        question_id: quizPageId,
       },
       data: {
         question_answered: true,
@@ -39,17 +41,19 @@ export const submitQuestion = async (
 
     await prisma.userQuiz.update({
       where: {
-        user_quizzes_id: activeQuizId,
+        user_quizzes_id: activeQuiz?.user_quizzes_id,
       },
       data: {
-        current_question: isLastQuiz ? quizPageId : quizPageId + 1,
+        current_question: isLastQuiz
+          ? Number(quizPageId)
+          : Number(quizPageId) + 1,
         finished: isLastQuiz ? new Date() : null,
         isActive: isLastQuiz ? false : true,
       },
     });
 
-    if (isLastQuiz) {
-      setResultRIASEC(activeQuizId).then(async (result) => {
+    if (activeQuiz) {
+      setResultRIASEC(activeQuiz?.user_quizzes_id).then(async (result) => {
         if (result) {
           await setUserProfessions(result);
         }

@@ -1,6 +1,5 @@
 "use client";
 
-import clsx from "clsx";
 import { useTransition } from "react";
 import { Locale } from "@/i18n/config";
 import { setUserLocale } from "@/services/locale";

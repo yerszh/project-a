@@ -21,5 +21,12 @@
     "phoneNumber": "Телефон нөмірі",
     "phoneNumberPlaceholder": "Нөмірді енгізіңіз",
     "continue": "Жалғастыру"
+  },
+  "QuizPage": {
+    "arrowBack": "Артқа",
+    "closeButton": "Жабу",
+    "quizTitle": "AI Профориентатор",
+    "questionCounter": "сұрақ",
+    "errorMessage": "Қате"
   }
 }
