@@ -1,4 +1,4 @@
-import ResultPage from "./ResultPage";
+import ResultPage from "./_ResultPage";
 import { getLastUserResult } from "@/lib/result/getLastUserResult";
 
 const Result = async () => {
