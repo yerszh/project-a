@@ -1,36 +1,17 @@
-import { generatePrompt } from "@/lib/chat/promptGenerator";
-import { NextRequest, NextResponse } from "next/server";
+import { generatePrompt } from "@/lib/chat/openAI/promptGenerator";
+import { setUserChat } from "@/lib/chat/setUserChat";
+import { openai } from "@ai-sdk/openai";
+import { streamText } from "ai";
 
-import OpenAI from "openai";
+export const maxDuration = 30;
 
-export async function POST(request: NextRequest) {
-  const { text, code } = await request.json();
+export async function POST(req: Request) {
+  const { messages, professionId } = await req.json();
 
-  // Generate the prompt using the provided code
-  const promptText = await generatePrompt(code);
-
-  // Initialize OpenAI client
-  const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
-    // Optionally, set the default organization
-    organization: process.env.OPENAI_ORGANIZATION,
+  const result = streamText({
+    model: openai("gpt-4o-mini"),
+    messages,
   });
 
-  // Prepare the conversation
-  const messages = [
-    { role: "system", content: promptText },
-    { role: "user", content: text },
-  ];
-
-  // Call the OpenAI Chat API
-  const completion = await openai.chat.completions.create({
-    model: "gpt-4o-mini", // or 'gpt-4' if you have access
-    messages: messages,
-  });
-
-  // Extract the assistant's response
-  const assistantResponse = completion.choices[0].message.content;
-
-  // Return the response to the client
-  return NextResponse.json({ response: assistantResponse });
+  return result.toDataStreamResponse();
 }

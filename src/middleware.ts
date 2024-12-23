@@ -5,7 +5,7 @@ export async function middleware(req: NextRequest) {
   const url = req.url;
   const session = req.cookies.get("__Secure-authjs.session-token");
 
-  const restrictedRoutes = ["/profile", "/chat", "/quiz", "/result", "/select"];
+  const restrictedRoutes = ["/profile", "/chat", "/quiz", "/result"];
 
   if (restrictedRoutes.some((route) => url.includes(route))) {
     if (!session) {

@@ -27,10 +27,13 @@ interface UserResult {
   S: number;
   E: number;
   C: number;
-  userProfessions: {
-    name: string;
-    percent: number;
-  }[];
+  UserProfessions:
+    | {
+        name: string;
+        percent: number;
+        occupation_id: string;
+      }[]
+    | null;
 }
 
 interface ResultPageProps {
@@ -115,7 +118,7 @@ const ResultPage = ({ userResult }: ResultPageProps) => {
         </h3>
 
         <ScrollArea className="h-[200px] w-full flex flex-col gap-1.5 mt-4">
-          {userResult?.userProfessions.map((profession) => (
+          {userResult?.UserProfessions?.map((profession) => (
             <div
               key={profession.name}
               className="border-[#E3E6EB] border border-solid rounded-lg shadow-sm p-4"
@@ -131,7 +134,7 @@ const ResultPage = ({ userResult }: ResultPageProps) => {
 
       <Link
         className="bg-[#212121] w-full flex gap-2 py-5 text-white justify-center rounded-lg !my-10"
-        href={"/select"}
+        href={"/chat"}
       >
         <Image
           src="/icons/chat-button.svg"

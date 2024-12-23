@@ -1,13 +1,9 @@
-import { Pool } from "pg";
-
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-});
+import { pool } from "@/lib/postgres";
 
 export async function generatePrompt(code: string): Promise<string> {
   try {
     // Query the 'jobs' table
-    const jobQuery = "SELECT * FROM jobs WHERE soc_name = $1 LIMIT 1";
+    const jobQuery = "SELECT * FROM jobs WHERE job_id = $1 LIMIT 1";
     const jobValues = [code];
     const jobResult = await pool.query(jobQuery, jobValues);
 
