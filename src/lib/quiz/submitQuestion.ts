@@ -16,7 +16,6 @@ export const submitQuestion = async (
 ): Promise<{ success: boolean; message: string }> => {
   try {
     const activeQuiz = await checkActiveQuiz();
-    console.log(quizPageId);
     await prisma.userQuestion.updateMany({
       where: {
         user_quizzes_id: activeQuiz?.user_quizzes_id,
@@ -39,6 +38,14 @@ export const submitQuestion = async (
       });
     }
 
+    if (isLastQuiz && activeQuiz) {
+      setResultRIASEC(activeQuiz?.user_quizzes_id).then(async (result) => {
+        if (result) {
+          await setUserProfessions(result);
+        }
+      });
+    }
+
     await prisma.userQuiz.update({
       where: {
         user_quizzes_id: activeQuiz?.user_quizzes_id,
@@ -51,14 +58,6 @@ export const submitQuestion = async (
         isActive: isLastQuiz ? false : true,
       },
     });
-
-    if (activeQuiz) {
-      setResultRIASEC(activeQuiz?.user_quizzes_id).then(async (result) => {
-        if (result) {
-          await setUserProfessions(result);
-        }
-      });
-    }
 
     return { success: true, message: "Updated successfully" };
   } catch (err) {

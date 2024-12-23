@@ -4,12 +4,13 @@ import { prisma } from "@/lib/prisma";
 import { auth } from "../auth/authConfig";
 import { getQuestions } from "../methodic-data/getQuestionsServerAction";
 import { getAnswers } from "../methodic-data/getAnswersServerAction";
+import { redirect } from "next/navigation";
 
 export const createUserQuiz = async () => {
   try {
     const session = await auth();
     const uuid = session?.user?.id;
-    
+
     if (uuid) {
       const newUserQuiz = await prisma.userQuiz.create({
         data: {

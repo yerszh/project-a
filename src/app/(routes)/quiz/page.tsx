@@ -22,6 +22,7 @@ const Quiz = async () => {
 
   if (!activeQuiz) {
     await createUserQuiz();
+    redirect("/quiz/1");
   } else {
     redirect(`/quiz/${activeQuiz.current_question} `);
   }
