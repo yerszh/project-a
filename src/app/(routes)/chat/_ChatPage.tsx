@@ -24,51 +24,64 @@ interface ChatPageProps {
 
 const ChatPage = ({ userProfessions, userChats }: ChatPageProps) => {
   const [currentChatId, setCurrentChatId] = useState("");
-
+  const [copied, setCopied] = useState(false);
+  const [isMessageFinish, setIsMessageFinish] = useState(false);
   const [selectedProfession, setSelectedProfession] =
     useState<UserProfessions | null>(null);
 
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  const { messages, input, setInput, handleSubmit, handleInputChange } =
-    useChat({
-      onFinish: (message) => {
-        const assistantMessage = message.content;
+  const {
+    messages,
+    setMessages,
+    input,
+    setInput,
+    handleSubmit,
+    handleInputChange,
+  } = useChat({
+    onFinish: (message) => {
+      setIsMessageFinish(true);
 
-        if (currentChatId === "" && selectedProfession?.occupation_id) {
-          setUserChat(
-            selectedProfession?.occupation_id,
-            selectedProfession?.name
-          ).then((chatId) => {
-            if (chatId) {
-              setCurrentChatId(chatId);
-              setChatMessages(chatId, input, assistantMessage);
-            }
-          });
-        } else {
-          if (currentChatId) {
-            setChatMessages(currentChatId, input, assistantMessage);
+      const assistantMessage = message.content;
+      if (currentChatId === "" && selectedProfession?.occupation_id) {
+        setUserChat(
+          selectedProfession?.occupation_id,
+          selectedProfession?.name
+        ).then((chatId) => {
+          if (chatId) {
+            setCurrentChatId(chatId);
+            setChatMessages(chatId, input, assistantMessage);
           }
+        });
+      } else {
+        if (currentChatId) {
+          setChatMessages(currentChatId, input, assistantMessage);
         }
-      },
-    });
+      }
+    },
+  });
 
   useEffect(() => {
     if (scrollAreaRef.current) {
       scrollAreaRef.current.scrollTop = scrollAreaRef.current.scrollHeight;
     }
-  }, [messages]);
+  }, [messages, isMessageFinish]);
 
   const handleProfessionSelect = (profession: UserProfessions) => {
     setSelectedProfession(profession);
     setInput(profession.name);
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault();
-      handleSubmit(e);
+  const handleCopy = () => {
+    if (messages.length > 0) {
+      const lastMessage = messages[messages.length - 1].content;
+      navigator.clipboard.writeText(lastMessage).then(() => {
+        setCopied(true);
+        setTimeout(() => {
+          setCopied(false);
+        }, 2000);
+      });
     }
   };
 
@@ -78,7 +91,8 @@ const ChatPage = ({ userProfessions, userChats }: ChatPageProps) => {
     target.style.height = `${target.scrollHeight}px`;
   };
 
-  const handleFormSubmit = (event: React.FormEvent) => {
+  const submitForm = (event: React.FormEvent | React.KeyboardEvent) => {
+    setIsMessageFinish(false);
     handleSubmit(event, {
       body: {
         professionId: selectedProfession?.occupation_id,
@@ -88,6 +102,25 @@ const ChatPage = ({ userProfessions, userChats }: ChatPageProps) => {
     if (textareaRef.current) {
       textareaRef.current.style.height = "20px";
     }
+  };
+
+  const handleFormSubmit = (event: React.FormEvent) => {
+    submitForm(event);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      submitForm(e);
+    }
+  };
+
+  const resetState = () => {
+    setSelectedProfession(null);
+    setCurrentChatId("");
+    setInput("");
+    setIsMessageFinish(false);
+    setMessages([]);
   };
 
   return (
@@ -113,7 +146,7 @@ const ChatPage = ({ userProfessions, userChats }: ChatPageProps) => {
 
       {messages.length !== 0 ? (
         <ScrollArea ref={scrollAreaRef} className="flex-1 px-4 flex gap-2">
-          {messages.map((m) => (
+          {messages.map((m, index) => (
             <div
               key={m.id}
               className={`whitespace-pre-wrap text-sm font-normal items-start mb-8 ${
@@ -132,7 +165,51 @@ const ChatPage = ({ userProfessions, userChats }: ChatPageProps) => {
                   width={24}
                 />
               )}
-              {m.content}
+              <span>
+                {m.content}
+                {m.role !== "user" &&
+                  index === messages.length - 1 &&
+                  isMessageFinish && (
+                    <div className="flex gap-2 mt-3">
+                      <Button
+                        variant={"outline"}
+                        onClick={handleCopy}
+                        className="!bg-[#fff] h-9 rounded-[20px] !py-3 px-4 font-semibold text-[11px]"
+                      >
+                        {copied ? (
+                          <Image
+                            src="/icons/message-copied.svg"
+                            alt="copy"
+                            height={12}
+                            width={12}
+                          />
+                        ) : (
+                          <Image
+                            src="/icons/message-copy.svg"
+                            alt="copied"
+                            height={12}
+                            width={12}
+                          />
+                        )}
+                        Копировать
+                      </Button>
+
+                      <Button
+                        onClick={resetState}
+                        variant={"outline"}
+                        className="!bg-[#fff] h-9 rounded-[20px] !py-3 px-4 font-semibold text-[11px]"
+                      >
+                        <Image
+                          src="/icons/message-search.svg"
+                          alt="copy"
+                          height={12}
+                          width={12}
+                        />
+                        Обсудить другую профессию
+                      </Button>
+                    </div>
+                  )}
+              </span>
             </div>
           ))}
         </ScrollArea>
@@ -149,11 +226,6 @@ const ChatPage = ({ userProfessions, userChats }: ChatPageProps) => {
       <div className="px-4 mb-4">
         <form
           onSubmit={handleFormSubmit}
-          // action={
-          //   selectedProfession
-          //     ? setUserChat.bind(null, selectedProfession)
-          //     : undefined
-          // }
           onKeyDown={handleKeyDown}
           className="bg-[#F5F5F5] flex w-full items-center rounded-3xl p-1.5 "
         >
