@@ -185,7 +185,7 @@ export async function generatePrompt(code: string): Promise<string> {
         } else {
           const result = await pool.query(item.query, [job_id]);
           // Extract the desired column values into an array
-          const values = result.rows.map((row) => row[item.column]);
+          const values = result.rows.map((row) => row[Number(item.column)]);
           return { [item.name]: values };
         }
       } catch (err) {
@@ -204,7 +204,7 @@ export async function generatePrompt(code: string): Promise<string> {
 
     // Clean up the 'technology' array to remove unwanted parts
     if (Array.isArray(jobData.technology)) {
-      jobData.technology = jobData.technology.map((techString) => {
+      jobData.technology = jobData.technology.map((techString: string) => {
         // Find the index of ',/' where the unwanted part starts
         const index = techString.indexOf(",/");
         if (index !== -1) {
