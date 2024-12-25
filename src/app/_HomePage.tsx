@@ -2,7 +2,15 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 
-const HomePage = () => {
+interface HomePageProps {
+  activeQuiz?: {
+    user_quizzes_id: string;
+    isActive: boolean;
+    current_question: number;
+  } | null;
+}
+
+const HomePage = ({ activeQuiz }: HomePageProps) => {
   const t = useTranslations("HomePage");
 
   return (
@@ -42,7 +50,7 @@ const HomePage = () => {
           height={20}
           width={20}
         />
-        {t("startTest")}
+        {activeQuiz?.isActive ? "continue" : t("startTest")}
       </Link>
     </>
   );

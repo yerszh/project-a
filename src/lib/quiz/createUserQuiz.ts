@@ -4,7 +4,6 @@ import { prisma } from "@/lib/prisma";
 import { auth } from "../auth/authConfig";
 import { getQuestions } from "../methodic-data/getQuestionsServerAction";
 import { getAnswers } from "../methodic-data/getAnswersServerAction";
-import { redirect } from "next/navigation";
 
 export const createUserQuiz = async () => {
   try {
@@ -20,6 +19,7 @@ export const createUserQuiz = async () => {
       });
 
       const questions = await getQuestions();
+      console.log(questions);
       const answers = await getAnswers();
 
       if (newUserQuiz.user_quizzes_id && questions && answers) {

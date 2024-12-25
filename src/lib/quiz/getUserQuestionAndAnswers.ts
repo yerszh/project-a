@@ -1,52 +1,49 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
-import { checkActiveQuiz } from "./checkActiveQuiz";
 
-export const getUserQuestionAndAnswers = async (questionId: string) => {
+export const getUserQuestionAndAnswers = async (quizId: string) => {
   try {
-    const activeQuiz = await checkActiveQuiz();
-
-    if (activeQuiz?.isActive) {
-      const userQuestionsCount = await prisma.userQuestion.count({
+    if (quizId) {
+      const userQuestionAndAnswers = await prisma.userQuiz.findUnique({
         where: {
-          user_quizzes_id: activeQuiz.user_quizzes_id,
+          user_quizzes_id: quizId,
         },
-      });
 
-      const userQuestion = await prisma.userQuestion.findFirst({
-        where: {
-          user_quizzes_id: activeQuiz.user_quizzes_id,
-          question_id: questionId,
-        },
         select: {
-          question_id: true,
-          question_answered: true,
-          question_text_kz: true,
-          question_text_ru: true,
-          question_type: true,
-        },
-      });
-
-      const userAnswers = await prisma.userAnswer.findMany({
-        where: {
-          user_quizzes_id: activeQuiz.user_quizzes_id,
-          question_id: questionId,
-        },
-        select: {
-          answer_id: true,
-          question_id: true,
-          answer_text_kz: true,
-          answer_text_ru: true,
           user_quizzes_id: true,
-          isPicked: true,
+          quiz_id: true,
+          isActive: true,
+          current_question: true,
+
+          userQuestions: {
+            select: {
+              user_questions_id: true,
+              question_id: true,
+              question_answered: true,
+              question_text_kz: true,
+              question_text_ru: true,
+              question_type: true,
+            },
+          },
+
+          UserAnswer: {
+            orderBy: {
+              user_answers_id: "asc",
+            },
+            select: {
+              user_answers_id: true,
+              answer_id: true,
+              question_id: true,
+              answer_text_kz: true,
+              answer_text_ru: true,
+              isPicked: true,
+            },
+          },
         },
       });
-      userAnswers.sort((a, b) => parseInt(a.answer_id) - parseInt(b.answer_id));
 
-      if (userQuestionsCount && userQuestion && userAnswers) {
-        return { userQuestionsCount, userQuestion, userAnswers };
-      }
+      return userQuestionAndAnswers;
     }
     return null;
   } catch (error) {

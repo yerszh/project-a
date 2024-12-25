@@ -1,12 +1,10 @@
+import { checkActiveQuiz } from "@/lib/quiz/checkActiveQuiz";
 import HomePage from "./_HomePage";
 
 const Home = async () => {
-  // const activeQuiz = await checkActiveQuiz();
-  // if (activeQuiz?.isActive) {
-  //   redirect(`/quiz/${activeQuiz?.current_question}`);
-  // }
+  const activeQuiz = await checkActiveQuiz();
 
-  return <HomePage />;
+  return <HomePage activeQuiz={activeQuiz} />;
 };
 
 export default Home;

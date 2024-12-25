@@ -1,30 +1,35 @@
-import { redirect } from "next/navigation";
-
-import UserProfile from "@/app/(routes)/profile/_ProfilePage";
 import { checkActiveQuiz } from "@/lib/quiz/checkActiveQuiz";
 import { User } from "@prisma/client";
 import { createUserQuiz } from "@/lib/quiz/createUserQuiz";
 
 import { getUserInfo } from "@/lib/profile/getUserInfo";
+import { getUserQuestionAndAnswers } from "@/lib/quiz/getUserQuestionAndAnswers";
+
+import { redirect } from "next/navigation";
+import ProfilePage from "../profile/_ProfilePage";
+import QuizPage from "./_QuizPage";
 
 const Quiz = async () => {
   const userData = await getUserInfo();
+  // const missingFieldsInfo = ["name", "grade", "age", "phoneNumber"].some(
+  //   (field) => {
+  //     return userData?.[field as keyof User] == null;
+  //   }
+  // );
+  // if (missingFieldsInfo) {
+  //   return <ProfilePage userData={userData} type="quiz" />;
+  // }
+
   const activeQuiz = await checkActiveQuiz();
-  const missingFieldsInfo = ["name", "grade", "age", "phoneNumber"].some(
-    (field) => {
-      return userData?.[field as keyof User] == null;
-    }
-  );
 
-  if (missingFieldsInfo) {
-    return <UserProfile type="quiz" />;
-  }
+  if (activeQuiz) {
+    const questionData = await getUserQuestionAndAnswers(
+      activeQuiz?.user_quizzes_id
+    );
 
-  if (!activeQuiz) {
-    await createUserQuiz();
-    redirect("/quiz/1");
+    return <QuizPage questionData={questionData} />;
   } else {
-    redirect(`/quiz/${activeQuiz.current_question} `);
+    redirect(`/`);
   }
 };
 
