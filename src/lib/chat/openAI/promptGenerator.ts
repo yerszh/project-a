@@ -185,7 +185,7 @@ export async function generatePrompt(code: string): Promise<string> {
         } else {
           const result = await pool.query(item.query, [job_id]);
           // Extract the desired column values into an array
-          const values = result.rows.map((row) => row[Number(item.column)]);
+          const values = result.rows.map((row) => row[item.column as any]);
           return { [item.name]: values };
         }
       } catch (err) {
@@ -347,7 +347,7 @@ export async function generatePrompt(code: string): Promise<string> {
       prepLevelDescriptions[filteredJobData.prep_needed] ||
       "Unknown preparation level";
     promptLines.push(
-      `Return text very short. Just most important moments. It is very important. Text should be super short. only most imporant moments.`
+      `Return text very short. Just most important moments. It is very important. Text should be super short. only most imporant moments. Return your response only in KAzakh or Russian. Depends on what language question is asked. By default return in Russian.`
     );
     promptLines.push(`**Education and Preparation Needed:**\n`);
     promptLines.push(

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
+import ReactMarkdown from "react-markdown";
 import Link from "next/link";
 import Image from "next/image";
 import { Textarea } from "@/components/ui/textarea";
@@ -165,8 +166,8 @@ const ChatPage = ({ userProfessions, userChats }: ChatPageProps) => {
                   width={24}
                 />
               )}
-              <span>
-                {m.content}
+              <div>
+                <ReactMarkdown>{m.content}</ReactMarkdown>
                 {m.role !== "user" &&
                   index === messages.length - 1 &&
                   isMessageFinish && (
@@ -209,7 +210,7 @@ const ChatPage = ({ userProfessions, userChats }: ChatPageProps) => {
                       </Button>
                     </div>
                   )}
-              </span>
+              </div>
             </div>
           ))}
         </ScrollArea>
@@ -233,6 +234,7 @@ const ChatPage = ({ userProfessions, userChats }: ChatPageProps) => {
             ref={textareaRef}
             className="mx-3"
             placeholder="Сообщение"
+            readOnly={messages.length == 0}
             value={input}
             // value={selectedProfession?.name || ""}
             onInput={handleInput}
