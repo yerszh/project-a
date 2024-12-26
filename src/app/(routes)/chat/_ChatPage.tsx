@@ -32,6 +32,7 @@ const ChatPage = ({ userProfessions, userChats }: ChatPageProps) => {
 
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
 
   const {
     messages,
@@ -69,11 +70,6 @@ const ChatPage = ({ userProfessions, userChats }: ChatPageProps) => {
     }
   }, [messages, isMessageFinish]);
 
-  const handleProfessionSelect = (profession: UserProfessions) => {
-    setSelectedProfession(profession);
-    setInput(profession.name);
-  };
-
   const handleCopy = () => {
     if (messages.length > 0) {
       const lastMessage = messages[messages.length - 1].content;
@@ -91,6 +87,24 @@ const ChatPage = ({ userProfessions, userChats }: ChatPageProps) => {
     target.style.height = "20px";
     target.style.height = `${target.scrollHeight}px`;
   };
+
+  const handleProfessionSelect = (profession: UserProfessions) => {
+    setSelectedProfession(profession);
+    setInput(profession.name);
+  };
+
+  useEffect(() => {
+    if (selectedProfession) {
+      if (formRef.current) {
+        const formEvent = {
+          preventDefault: () => {},
+          stopPropagation: () => {},
+        } as React.FormEvent;
+
+        submitForm(formEvent);
+      }
+    }
+  }, [selectedProfession]);
 
   const submitForm = (event: React.FormEvent | React.KeyboardEvent) => {
     setIsMessageFinish(false);
@@ -226,6 +240,7 @@ const ChatPage = ({ userProfessions, userChats }: ChatPageProps) => {
 
       <div className="px-4 mb-4">
         <form
+          ref={formRef}
           onSubmit={handleFormSubmit}
           onKeyDown={handleKeyDown}
           className="bg-[#F5F5F5] flex w-full items-center rounded-3xl p-1.5 "
@@ -233,33 +248,35 @@ const ChatPage = ({ userProfessions, userChats }: ChatPageProps) => {
           <Textarea
             ref={textareaRef}
             className="mx-3"
-            placeholder="Сообщение"
-            readOnly={messages.length == 0}
+            placeholder={
+              messages.length === 0 ? "Выберите профессию" : "Сообщение"
+            }
+            readOnly={messages.length === 0}
             value={input}
-            // value={selectedProfession?.name || ""}
             onInput={handleInput}
             onChange={handleInputChange}
           />
           <div className="w-7 h-7">
-            <Button
-              type="submit"
-              variant={"icon"}
-              size={"icon"}
-              // disabled={!selectedProfession}
-              className={`${
-                selectedProfession ? "bg-[#009688]" : "bg-[#BDBDBD]"
-              } cursor-${
-                selectedProfession ? "pointer" : "not-allowed"
-              } w-7 h-7 rounded-full flex justify-center items-center`}
-            >
-              <Image
-                className=""
-                src="/icons/send-message-arrow.svg"
-                alt={"send-message-arrow"}
-                height={11}
-                width={11}
-              />
-            </Button>
+            {messages.length !== 0 && (
+              <Button
+                type="submit"
+                variant={"icon"}
+                size={"icon"}
+                className={`${
+                  selectedProfession ? "bg-[#009688]" : "bg-[#BDBDBD]"
+                } cursor-${
+                  selectedProfession ? "pointer" : "not-allowed"
+                } w-7 h-7 rounded-full flex justify-center items-center`}
+              >
+                <Image
+                  className=""
+                  src="/icons/send-message-arrow.svg"
+                  alt={"send-message-arrow"}
+                  height={11}
+                  width={11}
+                />
+              </Button>
+            )}
           </div>
         </form>
       </div>

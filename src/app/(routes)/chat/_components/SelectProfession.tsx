@@ -129,7 +129,6 @@ const SelectProfession: React.FC<SelectProfessionProps> = ({
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
     //TODO onSubmit
-    console.log(data);
   }
 
   return (
