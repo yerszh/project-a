@@ -17,6 +17,9 @@ export const getUserQuestionAndAnswers = async (quizId: string) => {
           current_question: true,
 
           userQuestions: {
+            orderBy: {
+              user_questions_id: "asc",
+            },
             select: {
               user_questions_id: true,
               question_id: true,

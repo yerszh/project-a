@@ -12,6 +12,9 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { useRouter } from "next/navigation";
+import { createUserQuiz } from "@/lib/quiz/createUserQuiz";
+import { Button } from "@/components/ui/button";
 
 const chartConfig = {
   desktop: {
@@ -49,12 +52,20 @@ const ResultPage = ({ userResult }: ResultPageProps) => {
     { profs: "E", points: userResult?.E },
     { profs: "C", points: userResult?.C },
   ];
+  const router = useRouter();
 
+  const handleSubmit = async () => {
+    await createUserQuiz().then(() => {
+      router.push("/quiz");
+    });
+  };
   return (
     <div className="p-4 w-full flex flex-col items-center">
       <div className="w-full flex justify-between mt-4">
-        <Link
-          href="/quiz"
+        <Button
+          onClick={handleSubmit}
+          variant={"ghost"}
+          size={"icon"}
           className="flex gap-2 items-center text-[#A5AAB3] text-xs	"
         >
           <Image
@@ -64,7 +75,7 @@ const ResultPage = ({ userResult }: ResultPageProps) => {
             width={20}
           />
           Пройти заново
-        </Link>
+        </Button>
 
         <Link href="/">
           <Image
@@ -93,7 +104,7 @@ const ResultPage = ({ userResult }: ResultPageProps) => {
         </p>
       </div>
 
-      <div className="mt-9 w-full">
+      <div className="mt-8 w-full">
         <h2 className="text-base text-[#A5AAB3] font-normal text-center ">
           Направления
         </h2>
@@ -111,29 +122,31 @@ const ResultPage = ({ userResult }: ResultPageProps) => {
         </ChartContainer>
       </div>
 
-      <div className="mt-10 w-full">
+      <div className="mt-8 w-full">
         <h2 className="text-base text-[#171A1D] font-semibold">Профессии</h2>
         <h3 className="text-xs	 text-[#A5AAB3] font-normal">
           Подобранные профессии
         </h3>
 
-        <ScrollArea className="h-[200px] w-full flex flex-col gap-1.5 mt-4">
-          {userResult?.UserProfessions?.map((profession) => (
-            <div
-              key={profession.name}
-              className="border-[#E3E6EB] border border-solid rounded-lg shadow-sm p-4"
-            >
-              <div className="w-full flex justify-between mb-3">
-                <p>{profession.name}</p> <p>{profession.percent / 100}%</p>
+        <ScrollArea className="h-[170px] w-full mt-3">
+          <div className="flex flex-col gap-1.5 ">
+            {userResult?.UserProfessions?.map((profession) => (
+              <div
+                key={profession.name}
+                className="border-[#E3E6EB] border border-solid rounded-lg shadow-sm p-4"
+              >
+                <div className="w-full flex justify-between mb-3">
+                  <p>{profession.name}</p> <p>{profession.percent / 100}%</p>
+                </div>
+                <Progress value={profession.percent / 100} />
               </div>
-              <Progress value={profession.percent / 100} />
-            </div>
-          ))}
+            ))}
+          </div>
         </ScrollArea>
       </div>
 
       <Link
-        className="bg-[#212121] w-full flex gap-2 py-5 text-white justify-center rounded-lg !my-10"
+        className="bg-[#212121] w-full flex gap-2 py-5 text-white justify-center rounded-lg !mb-10 !mt-8"
         href={"/chat"}
       >
         <Image

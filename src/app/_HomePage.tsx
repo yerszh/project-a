@@ -1,6 +1,10 @@
+"use client";
+
+import { Button } from "@/components/ui/button";
+import { createUserQuiz } from "@/lib/quiz/createUserQuiz";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 interface HomePageProps {
   activeQuiz?: {
@@ -12,7 +16,13 @@ interface HomePageProps {
 
 const HomePage = ({ activeQuiz }: HomePageProps) => {
   const t = useTranslations("HomePage");
+  const router = useRouter();
 
+  const handleSubmit = async () => {
+    await createUserQuiz().then(() => {
+      router.push("/quiz");
+    });
+  };
   return (
     <>
       <div className="flex gap-1 items-center mt-9 text-[#9E9E9E]">
@@ -40,9 +50,9 @@ const HomePage = ({ activeQuiz }: HomePageProps) => {
         </p>
       </div>
 
-      <Link
-        href="/quiz"
-        className="mt-8 bg-[#3761EE] flex gap-1.5 py-3 px-5 rounded-2xl text-white"
+      <Button
+        className="mt-8 bg-[#3761EE] flex gap-1.5 py-6 px-5 rounded-2xl text-white"
+        onClick={handleSubmit}
       >
         <Image
           src="/icons/cursor-magic.svg"
@@ -51,7 +61,7 @@ const HomePage = ({ activeQuiz }: HomePageProps) => {
           width={20}
         />
         {activeQuiz?.isActive ? "continue" : t("startTest")}
-      </Link>
+      </Button>
     </>
   );
 };

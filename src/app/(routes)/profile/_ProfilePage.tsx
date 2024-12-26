@@ -11,6 +11,7 @@ import { setUserInfo } from "@/lib/profile/setUserInfo";
 import { handleSignOut } from "@/lib/auth/signOutServerAction";
 import { useTranslations } from "next-intl";
 import LocaleSwitcher from "@/components/LocaleSwitcher/LocaleSwitcher";
+import { useRouter } from "next/navigation";
 
 interface ProfilePageProps {
   type: "quiz" | "profile";
@@ -19,6 +20,7 @@ interface ProfilePageProps {
 
 const ProfilePage = ({ userData, type }: ProfilePageProps) => {
   const t = useTranslations("ProfilePage");
+  const router = useRouter();
 
   const [formData, setFormData] = useState({
     name: userData?.name,
@@ -33,6 +35,10 @@ const ProfilePage = ({ userData, type }: ProfilePageProps) => {
       ...prev,
       [name]: value,
     }));
+  };
+
+  const handleSubmit = async () => {
+    router.push("/quiz");
   };
 
   return (
@@ -118,7 +124,11 @@ const ProfilePage = ({ userData, type }: ProfilePageProps) => {
           />
         </div>
 
-        <Button className="my-8 w-full h-12 rounded-lg" type="submit">
+        <Button
+          onClick={handleSubmit}
+          className="my-8 w-full h-12 rounded-lg"
+          type="submit"
+        >
           {t("continue")}
         </Button>
       </form>

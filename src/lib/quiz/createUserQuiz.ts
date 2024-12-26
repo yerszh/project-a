@@ -19,7 +19,6 @@ export const createUserQuiz = async () => {
       });
 
       const questions = await getQuestions();
-      console.log(questions);
       const answers = await getAnswers();
 
       if (newUserQuiz.user_quizzes_id && questions && answers) {
@@ -48,7 +47,6 @@ export const createUserQuiz = async () => {
       }
     } else return null;
   } catch (error) {
-    console.error("Error fetching user info:", error);
     throw error;
   } finally {
     await prisma.$disconnect();

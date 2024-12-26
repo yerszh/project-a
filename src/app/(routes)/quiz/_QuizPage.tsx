@@ -5,14 +5,15 @@ import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Button } from "@/components/ui/button";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { submitQuestion } from "@/lib/quiz/submitQuestion";
-import { useRouter } from "next/navigation";
 import { Label } from "@/components/ui/label";
 import { motion } from "motion/react";
+import { finishQuiz } from "@/lib/quiz/finishQuiz";
+import { useRouter } from "next/navigation";
 
 type QuizPageProps = {
-  questionData?: {
+  questionData: {
     user_quizzes_id: string;
     quiz_id: string;
     isActive: boolean;
@@ -35,43 +36,49 @@ type QuizPageProps = {
       answer_text_ru: string;
       isPicked: boolean;
     }[];
-  } | null;
+  };
 };
 
 const QuizPage: React.FC<QuizPageProps> = ({ questionData }) => {
   const t = useTranslations("QuizPage");
   const locale = useLocale();
+  const router = useRouter();
+
   const [direction, setDirection] = useState<"next" | "previous">("next");
+  const lastQuizNumber = questionData?.userQuestions.length;
 
   const [questionNumber, setQuestionNumber] = useState(
-    questionData?.current_question || 1
+    questionData?.current_question > lastQuizNumber
+      ? lastQuizNumber
+      : questionData?.current_question
   );
-  const isLastQuiz = questionData?.userQuestions.length === questionNumber;
 
+  const isLastQuiz = lastQuizNumber === questionNumber;
   const currentQuestion = questionData?.userQuestions[questionNumber - 1];
   const [answers, setAnswers] = useState(questionData?.UserAnswer);
-
   const currentAnswer = answers
     ?.filter((item) => Number(item.question_id) === questionNumber)
     .find((answer) => answer.isPicked);
 
   const handleNextQuestion = () => {
     setDirection("next");
-    setQuestionNumber(questionNumber + 1);
+    if (lastQuizNumber && questionNumber < lastQuizNumber) {
+      setQuestionNumber(questionNumber + 1);
+    }
   };
   const handlePreviousQuestion = () => {
     setDirection("previous");
-    if (questionNumber > 0) {
+    if (questionNumber > 1) {
       setQuestionNumber(questionNumber - 1);
     }
   };
 
-  const handleAnswerChange = (value: string) => {
+  const handleAnswerChange = async (pickedAnswerId: string) => {
     const updatedAnswers = answers?.map((answer) => {
       if (answer.question_id === currentQuestion?.question_id) {
         return {
           ...answer,
-          isPicked: answer.answer_id === value ? true : false,
+          isPicked: answer.answer_id === pickedAnswerId ? true : false,
         };
       }
       return answer;
@@ -79,24 +86,21 @@ const QuizPage: React.FC<QuizPageProps> = ({ questionData }) => {
 
     setAnswers(updatedAnswers);
     handleNextQuestion();
-    console.log(value);
+
+    if (!questionData || !currentQuestion?.question_id) return;
+    await submitQuestion(
+      questionData.user_quizzes_id,
+      currentQuestion.question_id,
+      pickedAnswerId
+    );
   };
 
-  // const handleSubmit = async () => {
-  //   if (questionData?.userQuestion?.question_id && currentAnswers) {
-  //     await submitQuestion(
-  //       isLastQuiz,
-  //       questionData?.userQuestion?.question_id,
-  //       currentAnswers
-  //     ).then(() => {
-  //       if (isLastQuiz) {
-  //         router.push("/result");
-  //       } else {
-  //         router.push(`/quiz/${currentQuestion + 1}`);
-  //       }
-  //     });
-  //   }
-  // };
+  const handleSubmit = async () => {
+    if (!questionData || !currentQuestion?.question_id) return;
+    await finishQuiz(questionData?.user_quizzes_id).then(() => {
+      router.push("/result");
+    });
+  };
 
   return (
     <div className="p-4 w-full flex flex-col items-center">
@@ -137,7 +141,7 @@ const QuizPage: React.FC<QuizPageProps> = ({ questionData }) => {
       </div>
 
       <div className="bg-[#212121] text-white w-fit text-xs font-semibold p-2.5 rounded-lg mt-4">
-        {questionNumber ?? 0} /{questionData?.userQuestions.length ?? 0}{" "}
+        {questionNumber ?? 0} /{lastQuizNumber ?? 0}{" "}
         {" " + t("questionCounter")}
       </div>
 
@@ -150,16 +154,10 @@ const QuizPage: React.FC<QuizPageProps> = ({ questionData }) => {
         transition={{ duration: 0.2 }}
       >
         <h1 className="text-xl font-semibold text-center">
-          <p>
-            {currentQuestion?.question_text_ru}
-            {currentQuestion?.question_text_kz}
-          </p>
+          <p>{currentQuestion?.question_text_ru}</p>
         </h1>
 
-        <form
-          onSubmit={(e) => {}}
-          className="mt-10 w-full flex flex-col items-center"
-        >
+        <form className="mt-10 w-full flex flex-col items-center">
           <RadioGroup
             className="flex flex-col w-full"
             value={currentAnswer?.answer_id || ""}
@@ -170,7 +168,7 @@ const QuizPage: React.FC<QuizPageProps> = ({ questionData }) => {
               ?.map((answer, index) => (
                 <div
                   key={index}
-                  className="bg-[#F1F4F8] flex gap-2.5 p-[17px_13px] rounded-lg items-center"
+                  className="bg-[#F1F4F8] flex gap-2.5 p-[17px_13px] rounded-lg items-center "
                 >
                   <RadioGroupItem
                     value={answer.answer_id}
@@ -187,7 +185,7 @@ const QuizPage: React.FC<QuizPageProps> = ({ questionData }) => {
           </RadioGroup>
 
           {isLastQuiz && (
-            <Button className="m-10" type="button">
+            <Button className="m-10" type="button" onClick={handleSubmit}>
               Завершить тест
             </Button>
           )}

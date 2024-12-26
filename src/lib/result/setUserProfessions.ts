@@ -24,10 +24,7 @@ export const setUserProfessions = async (userResult: Results) => {
         })
       )
     );
-
-    console.log("User professions have been set successfully.");
   } catch (error) {
-    console.error("Error setting user professions:", error);
     throw error;
   } finally {
     await prisma.$disconnect();

@@ -1,67 +1,46 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
-import { setResultRIASEC } from "../result/setResultRIASEC";
-import { setUserProfessions } from "../result/setUserProfessions";
-import { checkActiveQuiz } from "./checkActiveQuiz";
 
 export const submitQuestion = async (
-  isLastQuiz: boolean,
-  quizPageId: string,
-  currentAnswers: {
-    answer_id: string;
-    isPicked: boolean;
-    user_quizzes_id: string;
-  }[]
-): Promise<{ success: boolean; message: string }> => {
+  quizId: string,
+  questionId: string,
+  answerId: string
+) => {
   try {
-    const activeQuiz = await checkActiveQuiz();
+    await prisma.userAnswer.updateMany({
+      where: {
+        user_quizzes_id: quizId,
+        question_id: questionId,
+        answer_id: answerId,
+      },
+      data: {
+        isPicked: true,
+      },
+    });
+
     await prisma.userQuestion.updateMany({
       where: {
-        user_quizzes_id: activeQuiz?.user_quizzes_id,
-        question_id: quizPageId,
+        user_quizzes_id: quizId,
+        question_id: questionId,
       },
       data: {
         question_answered: true,
       },
     });
 
-    for (const answer of currentAnswers) {
-      await prisma.userAnswer.updateMany({
-        where: {
-          answer_id: answer.answer_id,
-          user_quizzes_id: answer.user_quizzes_id,
-        },
-        data: {
-          isPicked: answer.isPicked,
-        },
-      });
-    }
-
-    if (isLastQuiz && activeQuiz) {
-      setResultRIASEC(activeQuiz?.user_quizzes_id).then(async (result) => {
-        if (result) {
-          await setUserProfessions(result);
-        }
-      });
-    }
-
     await prisma.userQuiz.update({
       where: {
-        user_quizzes_id: activeQuiz?.user_quizzes_id,
+        user_quizzes_id: quizId,
       },
       data: {
-        current_question: isLastQuiz
-          ? Number(quizPageId)
-          : Number(quizPageId) + 1,
-        finished: isLastQuiz ? new Date() : null,
-        isActive: isLastQuiz ? false : true,
+        current_question: Number(questionId) + 1,
       },
     });
 
-    return { success: true, message: "Updated successfully" };
+    return;
   } catch (err) {
-    return { success: false, message: "Error updating" };
+    throw err;
   } finally {
     await prisma.$disconnect();
   }

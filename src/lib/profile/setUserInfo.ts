@@ -9,10 +9,10 @@ export const setUserInfo = async (formData: FormData) => {
     const uuid = session?.user?.id;
 
     if (uuid) {
-      const name = formData.get("name")?.toString();
-      const grade = formData.get("grade")?.toString();
-      const age = formData.get("age")?.toString();
-      const phoneNumber = formData.get("phoneNumber")?.toString();
+      const name = formData.get("name")?.toString() || null;
+      const grade = formData.get("grade")?.toString() || null;
+      const age = formData.get("age")?.toString() || null;
+      const phoneNumber = formData.get("phoneNumber")?.toString() || null;
 
       await prisma.user.update({
         where: { id: uuid },
