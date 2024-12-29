@@ -1,13 +1,14 @@
 "use server";
 
-import { pool } from "@/lib/postgres";
+import { prisma } from "@/lib/prisma";
 
 export const getQuestions = async () => {
   try {
-    const { rows } = await pool.query("SELECT * FROM questions");
-    return rows || null;
+    const allQuestions = await prisma.methodic_questions.findMany();
+    return allQuestions || null;
   } catch (error) {
-    console.error("Error fetching questions:", error);
     throw error;
+  } finally {
+    await prisma.$disconnect();
   }
 };

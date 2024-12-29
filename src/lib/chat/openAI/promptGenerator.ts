@@ -1,11 +1,13 @@
-import { pool } from "@/lib/postgres";
+import { prisma } from "@/lib/prisma";
 
 export async function generatePrompt(code: string): Promise<string> {
   try {
     // Query the 'jobs' table
     const jobQuery = "SELECT * FROM jobs WHERE job_id = $1 LIMIT 1";
-    const jobValues = [code];
-    const jobResult = await pool.query(jobQuery, jobValues);
+    const jobResult = await prisma.$queryRaw`SELECT * FROM jobs WHERE job_id = ${code} LIMIT 1`;
+    
+
+
 
     if (jobResult.rows.length === 0) {
       throw new Error("No matching record found");

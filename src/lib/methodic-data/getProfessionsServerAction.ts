@@ -1,6 +1,6 @@
 "use server";
 
-import { pool } from "@/lib/postgres";
+import { prisma } from "@/lib/prisma";
 
 export const getProfessions = async (
   r: number,
@@ -11,19 +11,16 @@ export const getProfessions = async (
   c: number
 ) => {
   try {
-    const { rows } = await pool.query(
-      `
+    const professions = await prisma.$queryRaw`
       SELECT job_id, soc_name, group_name, name, featured,
-      (r - $1)^2 + (i - $2)^2 + (a - $3)^2 + (s - $4)^2 + (e - $5)^2 + (c - $6)^2 AS score
-      FROM jobs
-      WHERE group_name IN ('Health Science', 'Education & Training')
-      AND (r - $1)^2 + (i - $2)^2 + (a - $3)^2 + (s - $4)^2 + (e - $5)^2 + (c - $6)^2 < 10000
-      ORDER BY featured DESC, score ASC LIMIT 10;
-    `,
-      [r, i, a, s, e, c]
-    );
+      (r - ${r})^2 + (i - ${i})^2 + (a - ${a})^2 + (s - ${s})^2 + (e - ${e})^2 + (c - ${c})^2 AS score
+      FROM methodic_jobs
+      WHERE (r - ${r})^2 + (i - ${i})^2 + (a - ${a})^2 + (s - ${s})^2 + (e - ${e})^2 + (c - ${c})^2 < 10000
+      ORDER BY featured DESC, score ASC
+      LIMIT 10;
+    `;
 
-    return rows || null;
+    return professions || null;
   } catch (error) {
     console.error("Error fetching professions:", error);
     throw error;
