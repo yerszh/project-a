@@ -1,0 +1,290 @@
+model methodic_answers {
+  id             Int     @id
+  question_id    String?
+  answer_text_kz String?
+  answer_text_ru String?
+  riasec_score   Int?
+}
+
+model methodic_categories {
+  id    String   @id
+  name  String?
+  jobs  methodic_jobs[] @relation("JobCategories")
+}
+
+model methodic_jobs {
+  job_id               String                                @id @default(uuid())
+  soc_name             String?
+  category_id          String?
+  prep_needed          String?
+  education            String?
+  related_experience   String?
+  job_training         String?
+  job_zone_examples    String?
+  svp_range            String?
+  median_wage          Int?
+  employment_growth    String?
+  job_openings         String?
+  industry             String?
+  interest_code        String?
+  r                    Int?
+  i                    Int?
+  a                    Int?
+  s                    Int?
+  e                    Int?
+  c                    Int?
+  emloyees             Int?
+  job_id2              Int?
+  group_name           String?
+  name                 String?
+  featured             String?
+  name_ru              String?
+  name_kz              String?
+
+  // Relations
+  category                     methodic_categories?                  @relation("JobCategories", fields: [category_id], references: [id])
+  abilities                    methodic_jobs_abilities[]
+  activities                   methodic_jobs_activities[]
+  additional_related_occupations methodic_jobs_additional_related_occupations[]
+  context                      methodic_jobs_context[]
+  detailed_activities          methodic_jobs_detailed_activities[]
+  intereducationprograms        methodic_jobs_intereducationprograms[]
+  interest                     methodic_jobs_interest[]
+  knowledge                    methodic_jobs_knowledge[]
+  kzeducationprograms           methodic_jobs_kzeducationprograms[]
+  professional_associations     methodic_jobs_professionalassociations[]
+  related_occupations          methodic_jobs_related_occupation[]
+  skills                       methodic_jobs_skills[]
+  specs                        methodic_jobs_specs[]
+  styles                       methodic_jobs_styles[]
+  tasks                        methodic_jobs_tasks[]
+  technology                   methodic_jobs_technology[]
+  tools                        methodic_jobs_tools[]
+  values                       methodic_jobs_values[]
+}
+
+model methodic_jobs_abilities {
+  id           Int          @id @default(autoincrement())
+  job_id       String?
+  importance   Int?
+  abilities    String?
+  occupationid Int?
+
+  job          methodic_jobs? @relation(fields: [job_id], references: [job_id])
+}
+
+model methodic_jobs_activities {
+  id         Int          @id @default(autoincrement())
+  job_id     String?
+  importance Int?
+  activity   String?
+
+  job        methodic_jobs? @relation(fields: [job_id], references: [job_id])
+}
+
+model methodic_jobs_additional_related_occupations {
+  id    Int     @id @default(autoincrement())
+  job_id String?
+  soc    String?
+
+  job    methodic_jobs? @relation(fields: [job_id], references: [job_id])
+}
+
+model methodic_jobs_context {
+  id      Int     @id @default(autoincrement())
+  job_id  String?
+  percent Int?
+  context String?
+
+  job     methodic_jobs? @relation(fields: [job_id], references: [job_id])
+}
+
+model methodic_jobs_detailed_activities {
+  id               Int     @id @default(autoincrement())
+  job_id           String?
+  detailed_activity String?
+
+  job              methodic_jobs? @relation(fields: [job_id], references: [job_id])
+}
+
+model methodic_jobs_intereducationprograms {
+  id                 Int    @id @default(autoincrement())
+  job_id             String?
+  international_code String?
+  international_name String?
+
+job                methodic_jobs? @relation(fields: [job_id], references: [job_id])
+}
+
+model methodic_jobs_interest {
+  id       Int     @id @default(autoincrement())
+  job_id   String?
+  percent  Int?
+  interest String?
+
+  job      methodic_jobs? @relation(fields: [job_id], references: [job_id])
+}
+
+model methodic_jobs_knowledge {
+  id         Int     @id @default(autoincrement())
+  job_id     String?
+  importance Int?
+  knowledge  String?
+
+  job        methodic_jobs? @relation(fields: [job_id], references: [job_id])
+}
+
+model methodic_jobs_kzeducationprograms {
+  id      Int     @id @default(autoincrement())
+  job_id  String?
+  kz_code String?
+  kz_name String?
+
+  job     methodic_jobs? @relation(fields: [job_id], references: [job_id])
+}
+
+model methodic_jobs_professionalassociations {
+  id          Int     @id @default(autoincrement())
+  job_id      String?
+  occupation  String?
+  url         String?
+
+  job         methodic_jobs? @relation(fields: [job_id], references: [job_id])
+}
+
+model methodic_jobs_related_occupation {
+  id    Int    @id @default(autoincrement())
+  job_id String?
+  soc    String?
+
+  job    methodic_jobs? @relation(fields: [job_id], references: [job_id])
+}
+
+model methodic_jobs_skills {
+  id         Int     @id @default(autoincrement())
+  job_id     String?
+  importance Int?
+  skill      String?
+
+  job        methodic_jobs? @relation(fields: [job_id], references: [job_id])
+}
+
+model methodic_jobs_specs {
+  id      Int     @id @default(autoincrement())
+  job_id  String?
+  spec_id String?
+
+  job     methodic_jobs?    @relation(fields: [job_id], references: [job_id])
+  spec    methodic_specs?     @relation(fields: [spec_id], references: [spec_id])
+}
+
+model methodic_jobs_styles {
+  id         Int     @id @default(autoincrement())
+  job_id     String?
+  importance Int?
+  style      String?
+
+  job        methodic_jobs? @relation(fields: [job_id], references: [job_id])
+}
+
+model methodic_jobs_tasks {
+  task_id    Int     @id @default(autoincrement())
+  job_id     String?
+  importance Int?
+  category   String?
+  task       String?
+
+  job        methodic_jobs? @relation(fields: [job_id], references: [job_id])
+}
+
+model methodic_jobs_technology {
+  id     Int     @id @default(autoincrement())
+  job_id String?
+  value  String?
+
+  job    methodic_jobs? @relation(fields: [job_id], references: [job_id])
+}
+
+model methodic_jobs_tools {
+  id     Int     @id @default(autoincrement())
+  job_id String?
+  tools  String?
+
+  job    methodic_jobs? @relation(fields: [job_id], references: [job_id])
+}
+
+model methodic_jobs_values {
+  id      Int     @id @default(autoincrement())
+  job_id  String?
+  percent Int?
+  value   String?
+
+  job     methodic_jobs? @relation(fields: [job_id], references: [job_id])
+}
+
+model methodic_quiz {
+  id        Int                 @id @default(autoincrement())
+  name      String?
+  questions methodic_questions[]
+}
+
+model methodic_questions {
+  id              Int          @id @default(autoincrement())
+  question_group  String?      @db.Char(1)
+  question        String?
+  text_kz         String?
+  quiz_id         Int?
+  question_type   String?
+
+  quiz            methodic_quiz? @relation(fields: [quiz_id], references: [id])
+}
+
+model methodic_specs {
+  spec_id    String                         @id @default(uuid())
+  code       String?
+  group_name String?
+  name       String?
+  subjects   String?
+  count      Int?
+
+  specs_univers    methodic_specs_univers[]
+  jobs_specs       methodic_jobs_specs[]
+}
+
+model methodic_univers {
+  univer_id         String                      @id @default(uuid())
+  code              String?
+  name_ru           String?
+  abbreviation      String?
+  address           String?
+  region_name       String?
+  university_type   String?
+  website           String?
+  social            String?
+  phone1            String?
+  phone2            String?
+  teacher_quota     String?
+  serpin_quota      String?
+  military_factory  String?
+  dormitory         String?
+
+  specs_univers     methodic_specs_univers[]
+}
+
+
+model methodic_specs_univers {
+  id                      Int                       @id @default(autoincrement())
+  spec_id                 String?
+  univer_id               String?
+  is_english_available    String?
+  min_grant               Int?
+  min_point_gen_2023      Int?
+  count_grant_gen_2023    Int?
+  max_point_gen_2023      Int?
+  min_point_aul_2023      Int?
+  max_point_aul_2023      Int?
+  count_grant_aul_2023    Int?
+
+  spec                    methodic_specs?       @relation(fields: [spec_id], references: [spec_id])
+  univers                 methodic_univers?     @relation(fields: [univer_id], references: [univer_id])
+}
