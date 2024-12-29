@@ -8,7 +8,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import SelectProfession from "./_components/SelectProfession";
 import { setUserChat } from "@/lib/chat/setUserChat";
-import { UserProfessions } from "@prisma/client";
 import { useChat } from "ai/react";
 import ChatHistory from "./_components/ChatHistory";
 import ChatHelp from "./_components/ChatHelp";

@@ -33,6 +33,8 @@ interface UserResult {
   UserProfessions:
     | {
         name: string;
+        name_kz: string;
+        name_ru: string;
         percent: number;
         occupation_id: string;
       }[]
@@ -136,7 +138,7 @@ const ResultPage = ({ userResult }: ResultPageProps) => {
                 className="border-[#E3E6EB] border border-solid rounded-lg shadow-sm p-4"
               >
                 <div className="w-full flex justify-between mb-3">
-                  <p>{profession.name}</p> <p>{profession.percent / 100}%</p>
+                  <p>{profession.name_ru}</p> <p>{100 - profession.percent / 100}%</p>
                 </div>
                 <Progress value={profession.percent / 100} />
               </div>
