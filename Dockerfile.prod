@@ -1,5 +1,7 @@
-# Dockerfile.prod
 FROM node:18-alpine AS builder
+
+# Install netcat for wait mechanism
+RUN apk add --no-cache netcat-openbsd
 
 # Set working directory
 WORKDIR /app
@@ -17,6 +19,9 @@ RUN npm run build
 # Production image
 FROM node:18-alpine
 
+# Install netcat for wait mechanism
+RUN apk add --no-cache netcat-openbsd
+
 # Set working directory
 WORKDIR /app
 
@@ -29,5 +34,5 @@ RUN npm ci --only=production
 # Expose the production port
 EXPOSE 3000
 
-# Start Next.js in production mode
-CMD ["npm", "run", "start"]
+# Start Next.js in production mode with wait mechanism
+CMD ["sh", "-c", "until nc -z db 5432; do echo Waiting for db; sleep 1; done && npm run start"]

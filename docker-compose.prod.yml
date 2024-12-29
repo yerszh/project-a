@@ -10,6 +10,7 @@ services:
       NEXT_PUBLIC_API_URL: "https://localhost:3000"
     depends_on:
       - db
+    command: sh -c "until nc -z db 5432; do echo Waiting for db; sleep 1; done && npm run start"
 
   db:
     image: postgres:latest
