@@ -1,14 +1,13 @@
-version: '3.8'
 services:
   app:
     build:
       context: .
-      dockerfile: ./app/Dockerfile.prod
+      dockerfile: ./Dockerfile.prod
     ports:
       - '80:3000'
     environment:
-      DDATABASE_URL: "postgresql://dbuser:dbpassword@db:5432/prisma_db"
-      NEXT_PUBLIC_API_URL: ""
+      DATABASE_URL: "postgresql://dbuser:dbpassword@db:5432/prisma_db"
+      NEXT_PUBLIC_API_URL: "https://localhost:3000"
     depends_on:
       - db
 
@@ -22,4 +21,4 @@ services:
       - pg_data:/var/lib/postgresql/data
 
 volumes:
-  pg-data:
+  pg_data:
