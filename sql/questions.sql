@@ -1,4 +1,5 @@
-INSERT INTO public.questions (id,question_group,question,text_kz,quiz_id,question_type) VALUES
+TRUNCATE TABLE public.methodic_questions RESTART IDENTITY CASCADE;
+INSERT INTO public.methodic_questions (id,question_group,question,text_kz,quiz_id,question_type) VALUES
 	 (1,'R','Починить сломанный бытовой прибор.','Бүлінген тұрмыстық құрылғыны жөндеу.',1,'single_choice'),
 	 (2,'R','Высаживать деревья или участвовать в озеленении парка.','Ағаш отырғызу немесе саябақты көгалдандыруға қатысу.',1,'single_choice'),
 	 (3,'R','Помогать в ремонте дома или школы.','Үйді немесе мектепті жөндеуге көмектесу.',1,'single_choice'),
@@ -9,7 +10,7 @@ INSERT INTO public.questions (id,question_group,question,text_kz,quiz_id,questio
 	 (8,'I','Участвовать в научных олимпиадах или конкурсах.','Ғылыми олимпиадаларға немесе конкурстарға қатысу.',1,'single_choice'),
 	 (9,'A','Играть на музыкальном инструменте или брать уроки пения.','Музыкалық аспапта ойнау немесе вокал сабақтарын алу.',1,'single_choice'),
 	 (10,'A','Рисовать, заниматься живописью или создавать цифровое искусство.','Сурет салу, кескіндеме немесе цифрлық өнер жасау.',1,'single_choice');
-INSERT INTO public.questions (id,question_group,question,text_kz,quiz_id,question_type) VALUES
+INSERT INTO public.methodic_questions (id,question_group,question,text_kz,quiz_id,question_type) VALUES
 	 (11,'A','Снимать и монтировать видео или создавать анимацию.','Бейне түсіру және монтаждау немесе анимация жасау.',1,'single_choice'),
 	 (12,'A','Танцевать или придумывать собственные танцевальные номера.','Би билеу немесе өз би нөмірлерін ойлап табу.',1,'single_choice'),
 	 (13,'S','Помогать одноклассникам с учебой или проектами.','Сыныптастарына оқуда немесе жобаларда көмектесу.',1,'single_choice'),
@@ -20,7 +21,7 @@ INSERT INTO public.questions (id,question_group,question,text_kz,quiz_id,questio
 	 (18,'E','Организовать школьный клуб по интересам.','Қызығушылық бойынша мектеп клубын ұйымдастыру.',1,'single_choice'),
 	 (19,'E','Руководить командным проектом или группой.','Топтық жобаны немесе топты басқару.',1,'single_choice'),
 	 (20,'E','Выступать с презентациями или докладами перед аудиторией.','Аудитория алдында презентациялар немесе баяндамалар жасау.',1,'single_choice');
-INSERT INTO public.questions (id,question_group,question,text_kz,quiz_id,question_type) VALUES
+INSERT INTO public.methodic_questions (id,question_group,question,text_kz,quiz_id,question_type) VALUES
 	 (21,'C','Организовывать книги, файлы или цифровые документы.','Кітаптарды, файлдарды немесе цифрлық құжаттарды ұйымдастыру.',1,'single_choice'),
 	 (22,'C','Создавать и заполнять таблицы в Excel или аналогичных программах.','Excel немесе ұқсас бағдарламаларда кестелер жасау және толтыру.',1,'single_choice'),
 	 (23,'C','Следить за личными финансами или планировать бюджет мероприятия.','Жеке қаржыны бақылау немесе іс-шараның бюджетін жоспарлау.',1,'single_choice'),

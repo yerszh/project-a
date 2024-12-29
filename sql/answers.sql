@@ -1,4 +1,5 @@
-INSERT INTO public.answers (id,question_id,answer_text_kz,answer_text_ru,riasec_score) VALUES
+TRUNCATE TABLE public.methodic_answers RESTART IDENTITY CASCADE;
+INSERT INTO public.methodic_answers (id,question_id,answer_text_kz,answer_text_ru,riasec_score) VALUES
 	 (1,'1','Ұнамайды','Не нравится',0),
 	 (2,'1','Бейтарап','Нейтрально',1),
 	 (3,'1','Ұнайды','Нравится',3),
@@ -9,7 +10,7 @@ INSERT INTO public.answers (id,question_id,answer_text_kz,answer_text_ru,riasec_
 	 (8,'2','Өте ұнайды','Очень нравится',5),
 	 (9,'3','Ұнамайды','Не нравится',0),
 	 (10,'3','Бейтарап','Нейтрально',1);
-INSERT INTO public.answers (id,question_id,answer_text_kz,answer_text_ru,riasec_score) VALUES
+INSERT INTO public.methodic_answers (id,question_id,answer_text_kz,answer_text_ru,riasec_score) VALUES
 	 (11,'3','Ұнайды','Нравится',3),
 	 (12,'3','Өте ұнайды','Очень нравится',5),
 	 (13,'4','Ұнамайды','Не нравится',0),
@@ -20,7 +21,7 @@ INSERT INTO public.answers (id,question_id,answer_text_kz,answer_text_ru,riasec_
 	 (18,'5','Бейтарап','Нейтрально',1),
 	 (19,'5','Ұнайды','Нравится',3),
 	 (20,'5','Өте ұнайды','Очень нравится',5);
-INSERT INTO public.answers (id,question_id,answer_text_kz,answer_text_ru,riasec_score) VALUES
+INSERT INTO public.methodic_answers (id,question_id,answer_text_kz,answer_text_ru,riasec_score) VALUES
 	 (21,'6','Ұнамайды','Не нравится',0),
 	 (22,'6','Бейтарап','Нейтрально',1),
 	 (23,'6','Ұнайды','Нравится',3),
@@ -31,7 +32,7 @@ INSERT INTO public.answers (id,question_id,answer_text_kz,answer_text_ru,riasec_
 	 (28,'7','Өте ұнайды','Очень нравится',5),
 	 (29,'8','Ұнамайды','Не нравится',0),
 	 (30,'8','Бейтарап','Нейтрально',1);
-INSERT INTO public.answers (id,question_id,answer_text_kz,answer_text_ru,riasec_score) VALUES
+INSERT INTO public.methodic_answers (id,question_id,answer_text_kz,answer_text_ru,riasec_score) VALUES
 	 (31,'8','Ұнайды','Нравится',3),
 	 (32,'8','Өте ұнайды','Очень нравится',5),
 	 (33,'9','Ұнамайды','Не нравится',0),
@@ -42,7 +43,7 @@ INSERT INTO public.answers (id,question_id,answer_text_kz,answer_text_ru,riasec_
 	 (38,'10','Бейтарап','Нейтрально',1),
 	 (39,'10','Ұнайды','Нравится',3),
 	 (40,'10','Өте ұнайды','Очень нравится',5);
-INSERT INTO public.answers (id,question_id,answer_text_kz,answer_text_ru,riasec_score) VALUES
+INSERT INTO public.methodic_answers (id,question_id,answer_text_kz,answer_text_ru,riasec_score) VALUES
 	 (41,'11','Ұнамайды','Не нравится',0),
 	 (42,'11','Бейтарап','Нейтрально',1),
 	 (43,'11','Ұнайды','Нравится',3),
@@ -53,7 +54,7 @@ INSERT INTO public.answers (id,question_id,answer_text_kz,answer_text_ru,riasec_
 	 (48,'12','Өте ұнайды','Очень нравится',5),
 	 (49,'13','Ұнамайды','Не нравится',0),
 	 (50,'13','Бейтарап','Нейтрально',1);
-INSERT INTO public.answers (id,question_id,answer_text_kz,answer_text_ru,riasec_score) VALUES
+INSERT INTO public.methodic_answers (id,question_id,answer_text_kz,answer_text_ru,riasec_score) VALUES
 	 (51,'13','Ұнайды','Нравится',3),
 	 (52,'13','Өте ұнайды','Очень нравится',5),
 	 (53,'14','Ұнамайды','Не нравится',0),
@@ -64,7 +65,7 @@ INSERT INTO public.answers (id,question_id,answer_text_kz,answer_text_ru,riasec_
 	 (58,'15','Бейтарап','Нейтрально',1),
 	 (59,'15','Ұнайды','Нравится',3),
 	 (60,'15','Өте ұнайды','Очень нравится',5);
-INSERT INTO public.answers (id,question_id,answer_text_kz,answer_text_ru,riasec_score) VALUES
+INSERT INTO public.methodic_answers (id,question_id,answer_text_kz,answer_text_ru,riasec_score) VALUES
 	 (61,'16','Ұнамайды','Не нравится',0),
 	 (62,'16','Бейтарап','Нейтрально',1),
 	 (63,'16','Ұнайды','Нравится',3),
@@ -75,7 +76,7 @@ INSERT INTO public.answers (id,question_id,answer_text_kz,answer_text_ru,riasec_
 	 (68,'17','Өте ұнайды','Очень нравится',5),
 	 (69,'18','Ұнамайды','Не нравится',0),
 	 (70,'18','Бейтарап','Нейтрально',1);
-INSERT INTO public.answers (id,question_id,answer_text_kz,answer_text_ru,riasec_score) VALUES
+INSERT INTO public.methodic_answers (id,question_id,answer_text_kz,answer_text_ru,riasec_score) VALUES
 	 (71,'18','Ұнайды','Нравится',3),
 	 (72,'18','Өте ұнайды','Очень нравится',5),
 	 (73,'19','Ұнамайды','Не нравится',0),
@@ -86,7 +87,7 @@ INSERT INTO public.answers (id,question_id,answer_text_kz,answer_text_ru,riasec_
 	 (78,'20','Бейтарап','Нейтрально',1),
 	 (79,'20','Ұнайды','Нравится',3),
 	 (80,'20','Өте ұнайды','Очень нравится',5);
-INSERT INTO public.answers (id,question_id,answer_text_kz,answer_text_ru,riasec_score) VALUES
+INSERT INTO public.methodic_answers (id,question_id,answer_text_kz,answer_text_ru,riasec_score) VALUES
 	 (81,'21','Ұнамайды','Не нравится',0),
 	 (82,'21','Бейтарап','Нейтрально',1),
 	 (83,'21','Ұнайды','Нравится',3),
@@ -97,7 +98,7 @@ INSERT INTO public.answers (id,question_id,answer_text_kz,answer_text_ru,riasec_
 	 (88,'22','Өте ұнайды','Очень нравится',5),
 	 (89,'23','Ұнамайды','Не нравится',0),
 	 (90,'23','Бейтарап','Нейтрально',1);
-INSERT INTO public.answers (id,question_id,answer_text_kz,answer_text_ru,riasec_score) VALUES
+INSERT INTO public.methodic_answers (id,question_id,answer_text_kz,answer_text_ru,riasec_score) VALUES
 	 (91,'23','Ұнайды','Нравится',3),
 	 (92,'23','Өте ұнайды','Очень нравится',5),
 	 (93,'24','Ұнамайды','Не нравится',0),

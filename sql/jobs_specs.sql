@@ -1,4 +1,5 @@
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+TRUNCATE TABLE public.methodic_jobs_specs RESTART IDENTITY CASCADE;
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('3a0b3a0c-48de-4f99-8594-faf186171008','cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3'),
 	 ('2b2d1ced-1def-4250-8227-62a2356d1492','9006ff0b-8abb-4697-8cf8-66e06d93b085'),
 	 ('6e257db9-48e1-40c1-a0b0-b2672272ab30','ff4d5019-f0c1-46eb-8b37-38620d9bc958'),
@@ -9,7 +10,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('2eea014b-ecfc-425e-99b6-b6e133e56e7e','419697b9-c262-4aea-b02c-acf24c5d56e9'),
 	 ('2eea014b-ecfc-425e-99b6-b6e133e56e7e','1764b11d-6aae-4f12-8b91-b7da5262de83'),
 	 ('31736533-a64c-4952-b883-c0d2391b73ae','cfeac907-17cc-404a-8506-52487e3555eb');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('31736533-a64c-4952-b883-c0d2391b73ae','29a9bee8-fe62-4e70-83e5-1bcbf1e3d009'),
 	 ('ea04dcfb-a37d-4ede-9de8-673311f706ef','cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3'),
 	 ('38d4c10c-778f-449e-a255-ce02bba32e60','419697b9-c262-4aea-b02c-acf24c5d56e9'),
@@ -20,7 +21,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('83c0f966-82cd-4825-a451-88cda195481f','ff4d5019-f0c1-46eb-8b37-38620d9bc958'),
 	 ('6bc13830-f8ef-4473-9dce-1c16a4756a3b','e0455258-2b5f-4722-9b33-95655c9c2ba3'),
 	 ('314b5855-1090-474f-bf83-85e77cd582fe','5f4334c9-eb60-4fef-98f7-012bef525f99');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('0897cc52-25c0-4d1e-8a88-32095487ae95','cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3'),
 	 ('0897cc52-25c0-4d1e-8a88-32095487ae95','1764b11d-6aae-4f12-8b91-b7da5262de83'),
 	 ('5e447c15-5404-419b-af4d-ca1feb7e197f','cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3'),
@@ -31,7 +32,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('c898ec4e-93e6-4c47-ad2c-11e2c9bae73e','1764b11d-6aae-4f12-8b91-b7da5262de83'),
 	 ('52d43044-8bc8-486b-a514-4644577d0835','cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3'),
 	 ('52d43044-8bc8-486b-a514-4644577d0835','5f4334c9-eb60-4fef-98f7-012bef525f99');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('698484f4-7399-4890-a3e9-33198f843106','cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3'),
 	 ('698484f4-7399-4890-a3e9-33198f843106','b75d8a36-2640-47eb-81ea-9dfc9c109031'),
 	 ('698484f4-7399-4890-a3e9-33198f843106','1764b11d-6aae-4f12-8b91-b7da5262de83'),
@@ -42,7 +43,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('2a4bdcea-a5b9-431d-823b-02af799c33c0','031c3181-20ce-447e-b178-423bd70fa001'),
 	 ('ef7659da-1a08-459c-b91e-09fb43176982','cf69439b-67b6-4fd7-a701-13c8be94ed21'),
 	 ('ef7659da-1a08-459c-b91e-09fb43176982','e73a6036-b1ec-442c-9172-5e5ece53404c');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('f188a14b-cdf5-41ee-8cab-dac275ed8b59','cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3'),
 	 ('f01b7a3f-0fe5-4939-97c9-55c813584002','7864108f-af86-4dd9-aebf-465fe765a524'),
 	 ('f01b7a3f-0fe5-4939-97c9-55c813584002','37526a2a-0547-4c5b-ab77-2d63ac4a467a'),
@@ -53,7 +54,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('afa0e307-48fb-4939-902d-2d621edc87cc','799bb59b-e8db-4700-b5ce-f5d003f0a0cf'),
 	 ('afa0e307-48fb-4939-902d-2d621edc87cc','22b17839-d90e-4ce0-b96a-311bb13039e4'),
 	 ('6d13881d-5680-4e68-8c2a-74bab3986634','7864108f-af86-4dd9-aebf-465fe765a524');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('6d13881d-5680-4e68-8c2a-74bab3986634','37526a2a-0547-4c5b-ab77-2d63ac4a467a'),
 	 ('2a71f0d1-ed9f-483b-a3e4-7fe303d59748','cfeac907-17cc-404a-8506-52487e3555eb'),
 	 ('2dc9531e-8d03-4733-8d93-05a3bdf5ab6b','cfeac907-17cc-404a-8506-52487e3555eb'),
@@ -64,7 +65,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('2dc9531e-8d03-4733-8d93-05a3bdf5ab6b','cfeac907-17cc-404a-8506-52487e3555eb'),
 	 ('2dc9531e-8d03-4733-8d93-05a3bdf5ab6b','ecfb3b2b-1c2e-4324-b6bc-4ea21480d71d'),
 	 ('2dc9531e-8d03-4733-8d93-05a3bdf5ab6b','a3e60bd8-0358-48f1-9f3d-30f599b98b92');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('2dc9531e-8d03-4733-8d93-05a3bdf5ab6b','898d9433-818a-4e5e-ac01-3329656f9ae0'),
 	 ('2dc9531e-8d03-4733-8d93-05a3bdf5ab6b','880016b9-5c6b-449e-980f-f0ad3994e5f6'),
 	 ('aa443a1a-7609-47d1-8cdd-1295df99bf04','a2fd0858-fbf4-4b51-859d-c1c5e9928514'),
@@ -75,7 +76,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('aa443a1a-7609-47d1-8cdd-1295df99bf04','343d4de5-ae93-44db-8979-c9ad34bb32a5'),
 	 ('aa443a1a-7609-47d1-8cdd-1295df99bf04','dcd3f8e8-d032-4316-bd7b-80ee20599438'),
 	 ('aa443a1a-7609-47d1-8cdd-1295df99bf04','3261f8b0-9486-490a-a5d5-56f9d0a72f5b');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('aa443a1a-7609-47d1-8cdd-1295df99bf04','4e3e8d13-59f5-4fae-a38c-e1ec8a144ea5'),
 	 ('aa443a1a-7609-47d1-8cdd-1295df99bf04','d4715d94-b64c-4d3e-8cb6-c03f539b1631'),
 	 ('e32a5653-30a2-4478-b31b-86bc6ef44cd4','db0f8552-ee55-48c3-a09b-81fb431247f8'),
@@ -86,7 +87,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('310e3aad-2501-4c85-9492-05240f1e3288','e0455258-2b5f-4722-9b33-95655c9c2ba3'),
 	 ('de06aebb-73a5-4d1e-8947-7ad6d939f03e','cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3'),
 	 ('064a08bd-079b-482d-9f8a-9a0316516c3d','cf69439b-67b6-4fd7-a701-13c8be94ed21');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('064a08bd-079b-482d-9f8a-9a0316516c3d','e73a6036-b1ec-442c-9172-5e5ece53404c'),
 	 ('f476bdc1-8052-489a-a3b1-4ff2a5f7c087','cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3'),
 	 ('f476bdc1-8052-489a-a3b1-4ff2a5f7c087','5f4334c9-eb60-4fef-98f7-012bef525f99'),
@@ -97,7 +98,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('e12bf0d9-c8ba-4005-8ead-a664e5181515','cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3'),
 	 ('6ba15301-1423-48cb-83e7-b20db173c881','e30f81f5-509c-4f17-ac03-b868ebb1184e'),
 	 ('dc5ccdba-08da-4011-8ebe-92942d5b8f90','7864108f-af86-4dd9-aebf-465fe765a524');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('dc5ccdba-08da-4011-8ebe-92942d5b8f90','37526a2a-0547-4c5b-ab77-2d63ac4a467a'),
 	 ('dc5ccdba-08da-4011-8ebe-92942d5b8f90','cfeac907-17cc-404a-8506-52487e3555eb'),
 	 ('dc5ccdba-08da-4011-8ebe-92942d5b8f90','7864108f-af86-4dd9-aebf-465fe765a524'),
@@ -108,7 +109,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('884fad46-15bf-4b95-b134-b59ea9600b90','e0455258-2b5f-4722-9b33-95655c9c2ba3'),
 	 ('eb36518f-5143-4abb-8d29-1c43217edcd4','ab1e890f-6845-4681-8589-e9ce32d688ba'),
 	 ('e048b43b-8727-4dd1-ad70-2e237eadfa3f','b7b148c0-5111-47fd-b898-c8a971ca6054');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('d2bca9b2-71e5-4f79-885a-0d41e28a0524','5f4334c9-eb60-4fef-98f7-012bef525f99'),
 	 ('6b496b2f-89c8-47ec-8bcc-4a36c82145c1','7a70e183-1106-4c83-af24-1521cdd8d9e5'),
 	 ('d44b677b-d455-4041-9086-50c6eba9445c','799bb59b-e8db-4700-b5ce-f5d003f0a0cf'),
@@ -119,7 +120,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('417b3f1f-3649-4afe-9c36-3d99972d3634','22b17839-d90e-4ce0-b96a-311bb13039e4'),
 	 ('417b3f1f-3649-4afe-9c36-3d99972d3634','948d49ed-3838-4316-b25c-8a7de08dce10'),
 	 ('121c12aa-448a-42b4-9039-2885ed18aa3d','fb25bca9-7103-4a83-83e7-e234f6505584');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('d10bd92f-6105-446a-a228-a5c73049381c','fb25bca9-7103-4a83-83e7-e234f6505584'),
 	 ('f7d650d7-93da-4bf2-9d4d-cf5c02d1a4f1','cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3'),
 	 ('86d71ccd-1f03-4d4e-b002-ed15ed47355d','f7a7de5a-505a-4093-85ea-5a2058b23336'),
@@ -130,7 +131,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('39fd9646-6561-4a62-9ec8-24c6b9229036','d4715d94-b64c-4d3e-8cb6-c03f539b1631'),
 	 ('b6249afe-eb3b-4e18-bbfe-d9695bec08ff','5f4334c9-eb60-4fef-98f7-012bef525f99'),
 	 ('fbfe5ddc-b532-44d1-af09-5e3b5043a708','cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('fbfe5ddc-b532-44d1-af09-5e3b5043a708','e0455258-2b5f-4722-9b33-95655c9c2ba3'),
 	 ('ad9437ba-8aa8-4de6-89bc-e2c779b87e48','b75d8a36-2640-47eb-81ea-9dfc9c109031'),
 	 ('f35a75f0-e09b-460e-9ed7-bce8f0752ee9','e30f81f5-509c-4f17-ac03-b868ebb1184e'),
@@ -141,7 +142,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('e0e3007b-ca4a-4885-80a4-3e99725d4e27','e0455258-2b5f-4722-9b33-95655c9c2ba3'),
 	 ('056f02a5-481e-418a-94e5-b2d48f96b7db','b75d8a36-2640-47eb-81ea-9dfc9c109031'),
 	 ('2ef27478-5b7d-4f24-8c18-0ba65c5bcf24','e30f81f5-509c-4f17-ac03-b868ebb1184e');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('f15d9d9f-0627-4f2f-90f9-2aea870172fe','e30f81f5-509c-4f17-ac03-b868ebb1184e'),
 	 ('34a69b8e-e223-439f-81f5-21d794e950a6','e30f81f5-509c-4f17-ac03-b868ebb1184e'),
 	 ('e2e930df-33be-45ed-8de1-18ad30fcbe11','e0455258-2b5f-4722-9b33-95655c9c2ba3'),
@@ -152,7 +153,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('69fd1b2d-0e5c-49bc-bbfb-3828257b5fa3','b75d8a36-2640-47eb-81ea-9dfc9c109031'),
 	 ('19f4b487-2880-4330-b18a-432a4efd5ba8','b75d8a36-2640-47eb-81ea-9dfc9c109031'),
 	 ('7d9e88ed-8c3c-48d5-b1eb-bfdb15302085','b75d8a36-2640-47eb-81ea-9dfc9c109031');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('441cc4cf-29a1-43a2-8b1e-c7818d892143','9b291fa8-a072-4b17-a06d-174cd7e833ac'),
 	 ('441cc4cf-29a1-43a2-8b1e-c7818d892143','37d20dce-712c-43b4-bd73-2468b5ba4f04'),
 	 ('2ad98a32-b9b3-4130-abdf-136a5585d583','b75d8a36-2640-47eb-81ea-9dfc9c109031'),
@@ -163,7 +164,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('1f44a53a-35e5-465d-a160-bac5563fcaa2','e0455258-2b5f-4722-9b33-95655c9c2ba3'),
 	 ('840b79b4-5a00-4124-b9f4-c829251f6e08','e0455258-2b5f-4722-9b33-95655c9c2ba3'),
 	 ('3ea23fbf-adb1-45ed-be7d-e26b5779a871','7a70e183-1106-4c83-af24-1521cdd8d9e5');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('68258dbf-e39d-4d0a-90ca-f42fb8834d0a','ff4d5019-f0c1-46eb-8b37-38620d9bc958'),
 	 ('a3686f62-1088-4302-97c8-607a14b0d34f','ff4d5019-f0c1-46eb-8b37-38620d9bc958'),
 	 ('187c3599-6280-4871-a6c0-b284fa174723','cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3'),
@@ -174,7 +175,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('e8442c19-9233-48be-9d26-29a789f8eb82','31003983-8973-420d-97e6-1e141fe8577a'),
 	 ('e8442c19-9233-48be-9d26-29a789f8eb82','aab5836f-2471-4d6b-8c6c-8bf181bdc087'),
 	 ('e8442c19-9233-48be-9d26-29a789f8eb82','dcd0cf77-c965-48c6-998b-99a3401a8adc');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('e8442c19-9233-48be-9d26-29a789f8eb82','185225a3-e819-4d85-bdb8-07aff646d70c'),
 	 ('e8442c19-9233-48be-9d26-29a789f8eb82','31003983-8973-420d-97e6-1e141fe8577a'),
 	 ('e8442c19-9233-48be-9d26-29a789f8eb82','aab5836f-2471-4d6b-8c6c-8bf181bdc087'),
@@ -185,7 +186,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('eaec5e89-93c3-4146-9742-9b88968f901a','b8ee7908-762e-453f-8aa5-7abc8cef3bb2'),
 	 ('eaec5e89-93c3-4146-9742-9b88968f901a','7864108f-af86-4dd9-aebf-465fe765a524'),
 	 ('d1194127-e912-441c-95b2-9836149bf10e','7864108f-af86-4dd9-aebf-465fe765a524');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('f95a1c96-d3e2-40d3-8a5f-4638cb26d237','cfeac907-17cc-404a-8506-52487e3555eb'),
 	 ('088ca6a1-8109-4473-9800-ca5a72883845','cfeac907-17cc-404a-8506-52487e3555eb'),
 	 ('abcaca1e-9396-4295-bc96-48b01d89181c','7864108f-af86-4dd9-aebf-465fe765a524'),
@@ -196,7 +197,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('ca352586-ed0b-4d2a-ba18-5a494930e246','ba0ebff4-5d5a-4040-b34c-f333aaf30581'),
 	 ('ca352586-ed0b-4d2a-ba18-5a494930e246','ff4d5019-f0c1-46eb-8b37-38620d9bc958'),
 	 ('a5de71d8-0ace-4724-b13d-be505fd14df6','ff4d5019-f0c1-46eb-8b37-38620d9bc958');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('e7397bba-656b-48af-be3a-f5f63caa466e','ff4d5019-f0c1-46eb-8b37-38620d9bc958'),
 	 ('60d97cd1-f946-4e7b-ad86-35051ac99b4b','69169118-aafe-417a-ae64-6e292e40c3f6'),
 	 ('ecf89505-45dc-407c-9e3d-997a8349e014','8fbc5faf-b691-406c-8111-54586460c1a2'),
@@ -207,7 +208,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('25392118-854c-432e-9db6-8662dfda5d49','948d49ed-3838-4316-b25c-8a7de08dce10'),
 	 ('25392118-854c-432e-9db6-8662dfda5d49','f2b60988-bc17-4464-86f8-b26b21eb0ccd'),
 	 ('63cd28b6-8f16-459f-af3a-1510640e5d53','22b17839-d90e-4ce0-b96a-311bb13039e4');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('220bc328-e945-4786-86d9-6c40d2b68568','31003983-8973-420d-97e6-1e141fe8577a'),
 	 ('7e247f67-f47e-49bf-a31f-ae373187f367','5f4334c9-eb60-4fef-98f7-012bef525f99'),
 	 ('24ac81e9-7b96-44ba-889f-ea0ae3702147','7a70e183-1106-4c83-af24-1521cdd8d9e5'),
@@ -218,7 +219,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('475cc8ba-ea6c-4a39-9cc7-a06687b01429','9006ff0b-8abb-4697-8cf8-66e06d93b085'),
 	 ('475cc8ba-ea6c-4a39-9cc7-a06687b01429','ff4d5019-f0c1-46eb-8b37-38620d9bc958'),
 	 ('3e956ca7-f6f9-4397-a1e0-9a7897160d69','e30f81f5-509c-4f17-ac03-b868ebb1184e');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('4775e688-7c72-4bf4-a5a9-ca22850d8790','e30f81f5-509c-4f17-ac03-b868ebb1184e'),
 	 ('5c894509-a1f0-454e-9865-911426971103','7a70e183-1106-4c83-af24-1521cdd8d9e5'),
 	 ('7d9e7b5e-bcbc-4dc5-a4a9-0ca213efd03a','f8d37b18-f591-4a7a-ad79-dc63df618e57'),
@@ -229,7 +230,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('a97e9f63-ca5b-4db1-8bea-68bab01d6334','37526a2a-0547-4c5b-ab77-2d63ac4a467a'),
 	 ('a97e9f63-ca5b-4db1-8bea-68bab01d6334','4ad718ce-1644-4c88-8cee-1f89be610386'),
 	 ('a97e9f63-ca5b-4db1-8bea-68bab01d6334','08fd2b64-37dc-43c2-8b46-c6829cac8a8e');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('a97e9f63-ca5b-4db1-8bea-68bab01d6334','6fb3f74f-aa69-46ef-a2a2-f5363a8f9b5f'),
 	 ('53f087c9-f7f0-4140-a34d-37cf025a4365','cfeac907-17cc-404a-8506-52487e3555eb'),
 	 ('6b1d4b2b-54a2-4b85-b41c-219303a69df4','cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3'),
@@ -240,7 +241,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('5cbf1460-c26a-46ee-9a10-75f0c5996e6b','ab1e890f-6845-4681-8589-e9ce32d688ba'),
 	 ('ea2dc064-61f6-4dda-a88b-73f6c77a86ce','209b2153-769b-4d90-9534-4ab19a52b96c'),
 	 ('6321469e-6965-4f32-b9a8-e72fa1f21058','b75d8a36-2640-47eb-81ea-9dfc9c109031');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('1be62f00-5462-41af-81c6-d4cf7f823340','22b17839-d90e-4ce0-b96a-311bb13039e4'),
 	 ('6f5e4688-ed9f-42be-a838-031b1c550515','ab1e890f-6845-4681-8589-e9ce32d688ba'),
 	 ('efdc6f4a-5e3c-4ad7-a969-7ef7b0321b56','b8ee7908-762e-453f-8aa5-7abc8cef3bb2'),
@@ -251,7 +252,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('c3a6d1a7-4db0-4d43-8668-297427050f7b','cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3'),
 	 ('c3a6d1a7-4db0-4d43-8668-297427050f7b','5f4334c9-eb60-4fef-98f7-012bef525f99'),
 	 ('d98758e7-1941-40d5-9563-499e525d72ec','948d49ed-3838-4316-b25c-8a7de08dce10');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('d98758e7-1941-40d5-9563-499e525d72ec','f2b60988-bc17-4464-86f8-b26b21eb0ccd'),
 	 ('99937ca6-c0bd-47d3-a81e-4bb5f71fbf4c','cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3'),
 	 ('99937ca6-c0bd-47d3-a81e-4bb5f71fbf4c','5f4334c9-eb60-4fef-98f7-012bef525f99'),
@@ -262,7 +263,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('baad1199-d171-4506-9266-2d906875861c','e0455258-2b5f-4722-9b33-95655c9c2ba3'),
 	 ('eabe54b4-3da0-4b45-842e-2613d3b5f8c4','4185d6ef-6c16-4962-be7e-dbed136164d1'),
 	 ('dadc7c8f-b1b7-4b02-b73a-89f5dc6cfee6','e30f81f5-509c-4f17-ac03-b868ebb1184e');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('e6476ff8-eada-4e27-8f5c-1a904f239bba','5f4334c9-eb60-4fef-98f7-012bef525f99'),
 	 ('016989f8-e5a1-4ed9-b3d7-68733757c855','29f4909c-9c48-49ae-bc7b-e91a84ba4fd8'),
 	 ('7a5f6bc6-923f-4ea2-a8e5-e03274d9f0cb','8fbc5faf-b691-406c-8111-54586460c1a2'),
@@ -273,7 +274,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('d17edb20-ec12-4cbc-8e88-ccf15e4406f0','8229ae86-bf2b-486b-bf39-561bfdea08cc'),
 	 ('d17edb20-ec12-4cbc-8e88-ccf15e4406f0','1bde7005-a39d-4ef7-9aab-2f3e2ba56b36'),
 	 ('bf4c25bd-564e-42a6-b731-e946269b7d01','74585823-3571-4985-af35-53a306d6dc8d');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('bf4c25bd-564e-42a6-b731-e946269b7d01','cb912724-60f2-439d-930f-e0314b743568'),
 	 ('a12d717e-07e3-40b3-b39f-90af5be55596','74585823-3571-4985-af35-53a306d6dc8d'),
 	 ('8d4ac963-e505-48b8-a4ea-b26767947ba5','22b17839-d90e-4ce0-b96a-311bb13039e4'),
@@ -284,7 +285,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('3998841c-e6d4-4882-b765-8a2fab963d03','e30f81f5-509c-4f17-ac03-b868ebb1184e'),
 	 ('a25b26e4-5d99-456d-8813-813f0845f96b','f2630995-d6f9-462a-88e6-891e8b78bd6f'),
 	 ('a25b26e4-5d99-456d-8813-813f0845f96b','a3e60bd8-0358-48f1-9f3d-30f599b98b92');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('00d9f61b-79e5-4aba-9e6c-ea34b5dff4eb','799bb59b-e8db-4700-b5ce-f5d003f0a0cf'),
 	 ('00d9f61b-79e5-4aba-9e6c-ea34b5dff4eb','22b17839-d90e-4ce0-b96a-311bb13039e4'),
 	 ('10920730-74fd-43b5-bfe6-81957eb6dded','031c3181-20ce-447e-b178-423bd70fa001'),
@@ -295,7 +296,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('8f03c8a8-e17b-4bec-8fb6-13da3532c6d2','b7b148c0-5111-47fd-b898-c8a971ca6054'),
 	 ('362d262b-541a-47ed-ba9a-8cf92af4eb22','ba1011e7-60ca-4863-8d5c-a0a5d88833ab'),
 	 ('bdeeec4b-691b-44ea-a35f-74046b265749','ae842826-e0c3-435c-bc91-eab0d2d590f2');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('b06e1a9e-86e9-4355-ad75-36c3d38066a5','371fde35-4829-438d-a770-1e4e9e3dc9cb'),
 	 ('eb71d540-cf45-45d2-a2b7-c47d11e58937','ae842826-e0c3-435c-bc91-eab0d2d590f2'),
 	 ('ae373612-54dc-4d6b-a6f7-8abcb4cec9fb','371fde35-4829-438d-a770-1e4e9e3dc9cb'),
@@ -306,7 +307,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('c5a94000-8df2-4b50-8731-21424532f1e6','ff4d5019-f0c1-46eb-8b37-38620d9bc958'),
 	 ('d3aec896-9a34-4544-a9fa-8556ee9c3d5c','e19104e9-bda3-4041-9123-17e8eb01a75b'),
 	 ('60bf2f84-c67a-47a3-b665-230f1df3d853','bbaa0f50-d133-4b60-8f95-c179f774314d');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('a00c0353-b909-45b1-b4f6-ef01ed4a67e8','ff4d5019-f0c1-46eb-8b37-38620d9bc958'),
 	 ('5dab4788-fe40-406f-a045-105d4c83e7de','bbaa0f50-d133-4b60-8f95-c179f774314d'),
 	 ('219f4551-bb48-416d-97b5-9c48012cee41','ff4d5019-f0c1-46eb-8b37-38620d9bc958'),
@@ -317,7 +318,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('447f254d-a092-43f2-9a1b-8f4c17037313','37526a2a-0547-4c5b-ab77-2d63ac4a467a'),
 	 ('50856026-ea87-4bc9-9572-ccc2b2f4e6aa','031c3181-20ce-447e-b178-423bd70fa001'),
 	 ('b3dd3829-452a-4c1e-9f2b-a34d0289b695','e30f81f5-509c-4f17-ac03-b868ebb1184e');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('99699b27-f260-4b96-9620-591a5f3d4776','419697b9-c262-4aea-b02c-acf24c5d56e9'),
 	 ('3d083be9-fe9e-40f5-9eaf-9f441d13d289','e30f81f5-509c-4f17-ac03-b868ebb1184e'),
 	 ('80cd62f2-45b2-4566-b067-40bb66e44b9a','371fde35-4829-438d-a770-1e4e9e3dc9cb'),
@@ -328,7 +329,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('3d199c60-14ca-47ee-abdf-e5bce9b3a3d4','5f4334c9-eb60-4fef-98f7-012bef525f99'),
 	 ('1614c626-641d-4091-8f64-b1d8e2fce9cb','29a9bee8-fe62-4e70-83e5-1bcbf1e3d009'),
 	 ('1614c626-641d-4091-8f64-b1d8e2fce9cb','f2630995-d6f9-462a-88e6-891e8b78bd6f');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('c2740d97-c7cb-45cd-a746-6025fadc26c0','37d20dce-712c-43b4-bd73-2468b5ba4f04'),
 	 ('c2740d97-c7cb-45cd-a746-6025fadc26c0','9b291fa8-a072-4b17-a06d-174cd7e833ac'),
 	 ('c5db4ab8-5b12-4415-a697-a31fa49d0845','c912bc9c-3ece-4594-a059-587ad9f0698e'),
@@ -339,7 +340,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('fc8bc792-3ca6-4d86-b61f-67300295827a','ba0ebff4-5d5a-4040-b34c-f333aaf30581'),
 	 ('97157bb6-067b-42e6-9191-f00262190650','e0455258-2b5f-4722-9b33-95655c9c2ba3'),
 	 ('33b31e0f-ec43-4662-b995-9900f0143b5f','7864108f-af86-4dd9-aebf-465fe765a524');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('d0bd7003-ee66-44e5-a7e9-b64891d3603f','fb25bca9-7103-4a83-83e7-e234f6505584'),
 	 ('56a4f8d0-1275-4e92-a23b-f7ddcfd783c9','37526a2a-0547-4c5b-ab77-2d63ac4a467a'),
 	 ('56a4f8d0-1275-4e92-a23b-f7ddcfd783c9','cfeac907-17cc-404a-8506-52487e3555eb'),
@@ -350,7 +351,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('ac88bf38-ec9e-4c25-9d56-59bf1e6d4cc5','7864108f-af86-4dd9-aebf-465fe765a524'),
 	 ('ac88bf38-ec9e-4c25-9d56-59bf1e6d4cc5','37526a2a-0547-4c5b-ab77-2d63ac4a467a'),
 	 ('bc3740e8-b323-4cd7-9cf2-24e7fc29f152','419697b9-c262-4aea-b02c-acf24c5d56e9');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('bc3740e8-b323-4cd7-9cf2-24e7fc29f152','5f4334c9-eb60-4fef-98f7-012bef525f99'),
 	 ('f0839acb-af16-4256-b05e-eca6afec5545','7864108f-af86-4dd9-aebf-465fe765a524'),
 	 ('23d10315-5d1b-4ef3-a742-5e09d49570de','898d9433-818a-4e5e-ac01-3329656f9ae0'),
@@ -361,7 +362,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('b3ab723c-f311-4946-b8af-44081a7ff92d','e0455258-2b5f-4722-9b33-95655c9c2ba3'),
 	 ('20ab8da4-ec97-4397-928e-6f5ec0209be1','e30f81f5-509c-4f17-ac03-b868ebb1184e'),
 	 ('20ab8da4-ec97-4397-928e-6f5ec0209be1','031c3181-20ce-447e-b178-423bd70fa001');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('d62de69f-695d-4914-a315-22092bc8ca3b','3d4db5b5-f42f-442b-bebe-27d500886969'),
 	 ('d62de69f-695d-4914-a315-22092bc8ca3b','8746c70d-7354-4446-99f8-df18f02f32ec'),
 	 ('d62de69f-695d-4914-a315-22092bc8ca3b','f8d37b18-f591-4a7a-ad79-dc63df618e57'),
@@ -372,7 +373,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('97d1a29f-1073-4051-a02e-0ad3d7812a1e','70fdfcb8-600b-4f24-b06a-9fb4a5f4d064'),
 	 ('97d1a29f-1073-4051-a02e-0ad3d7812a1e','8bde249d-d6bf-4d3a-ace8-d0fd50073dc4'),
 	 ('5eaf3d4b-ed96-478f-85bc-fcdb7faa0c2a','ff4d5019-f0c1-46eb-8b37-38620d9bc958');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('4b58572b-6c13-4487-a4d4-0421db55651c','9006ff0b-8abb-4697-8cf8-66e06d93b085'),
 	 ('4b58572b-6c13-4487-a4d4-0421db55651c','8229ae86-bf2b-486b-bf39-561bfdea08cc'),
 	 ('4b58572b-6c13-4487-a4d4-0421db55651c','9006ff0b-8abb-4697-8cf8-66e06d93b085'),
@@ -383,7 +384,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('4965d2ba-c376-4e53-a8ea-f33819bbee15','7864108f-af86-4dd9-aebf-465fe765a524'),
 	 ('4965d2ba-c376-4e53-a8ea-f33819bbee15','37526a2a-0547-4c5b-ab77-2d63ac4a467a'),
 	 ('4965d2ba-c376-4e53-a8ea-f33819bbee15','e30f81f5-509c-4f17-ac03-b868ebb1184e');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('4965d2ba-c376-4e53-a8ea-f33819bbee15','031c3181-20ce-447e-b178-423bd70fa001'),
 	 ('4965d2ba-c376-4e53-a8ea-f33819bbee15','ffcb7274-ad02-47c2-a736-a0694144c200'),
 	 ('fbebc4ec-abc1-4196-a338-a016bddf3e7d','ff4d5019-f0c1-46eb-8b37-38620d9bc958'),
@@ -394,7 +395,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('6f3921b8-c609-4951-acbe-cb3a6b26eacf','1bde7005-a39d-4ef7-9aab-2f3e2ba56b36'),
 	 ('f1e3f8c5-9ff6-4969-9431-99b1a25a77ba','cd362f75-6304-4532-95b4-a75e71ee1dae'),
 	 ('7ef6ed69-bc14-433a-a8fd-37c04ea0120f','799bb59b-e8db-4700-b5ce-f5d003f0a0cf');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('7ef6ed69-bc14-433a-a8fd-37c04ea0120f','22b17839-d90e-4ce0-b96a-311bb13039e4'),
 	 ('cf257402-3f8d-47f6-98ca-08b9346b0916','db0f8552-ee55-48c3-a09b-81fb431247f8'),
 	 ('ed4d870e-c256-400e-8cdf-3497a8ad85da','309e940e-7b90-49e6-8193-bd4f327c27a4'),
@@ -405,7 +406,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('9c9a89f7-57d6-42f1-93be-f71b2137a604','419697b9-c262-4aea-b02c-acf24c5d56e9'),
 	 ('9c9a89f7-57d6-42f1-93be-f71b2137a604','5f4334c9-eb60-4fef-98f7-012bef525f99'),
 	 ('4acf15d8-1315-46a2-b11c-ae1dc5d83231','b75d8a36-2640-47eb-81ea-9dfc9c109031');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('f7bb77c5-2931-499e-a929-bc98da38884f','b75d8a36-2640-47eb-81ea-9dfc9c109031'),
 	 ('9e920e9f-30b7-4182-b043-8e7a00b7d406','c912bc9c-3ece-4594-a059-587ad9f0698e'),
 	 ('9e920e9f-30b7-4182-b043-8e7a00b7d406','ba1011e7-60ca-4863-8d5c-a0a5d88833ab'),
@@ -416,7 +417,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('4d91a3e2-3874-4b6d-b523-89c715d327f2','9b291fa8-a072-4b17-a06d-174cd7e833ac'),
 	 ('32bbf574-a89d-4155-b758-28ccb21a9784','799bb59b-e8db-4700-b5ce-f5d003f0a0cf'),
 	 ('17c591b1-27c0-41c3-bf73-a91bc228216a','8bde249d-d6bf-4d3a-ace8-d0fd50073dc4');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('b2640c52-50c1-4383-adeb-12146480feca','ba0ebff4-5d5a-4040-b34c-f333aaf30581'),
 	 ('b2640c52-50c1-4383-adeb-12146480feca','ff4d5019-f0c1-46eb-8b37-38620d9bc958'),
 	 ('b2640c52-50c1-4383-adeb-12146480feca','ba0ebff4-5d5a-4040-b34c-f333aaf30581'),
@@ -427,7 +428,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('a582f311-18c0-4f6e-81fa-2cf19f34c8fd','ff4d5019-f0c1-46eb-8b37-38620d9bc958'),
 	 ('9de4023e-d42a-478d-8669-2d14dc6e51bf','df4d0ec2-c98d-4594-9966-7d796b9742a4'),
 	 ('49f9afbf-15fd-49be-8b8b-885e37921170','cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('49f9afbf-15fd-49be-8b8b-885e37921170','419697b9-c262-4aea-b02c-acf24c5d56e9'),
 	 ('feccfe35-62fa-4dcb-a9a2-6367d37d519a','ae842826-e0c3-435c-bc91-eab0d2d590f2'),
 	 ('991185ca-ee86-4501-9392-156e599a09ef','ab1e890f-6845-4681-8589-e9ce32d688ba'),
@@ -438,7 +439,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('7a1585dc-9004-4a9d-b428-8621cf2fc29b','c912bc9c-3ece-4594-a059-587ad9f0698e'),
 	 ('ca2de73a-8e33-404b-9571-f6db11b8a07d','b7b148c0-5111-47fd-b898-c8a971ca6054'),
 	 ('ca2de73a-8e33-404b-9571-f6db11b8a07d','4185d6ef-6c16-4962-be7e-dbed136164d1');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('ac513e09-cabb-47af-b033-a0bd5da11a07','b75d8a36-2640-47eb-81ea-9dfc9c109031'),
 	 ('2a510ca6-c62f-476f-af24-898d3e1228be','7864108f-af86-4dd9-aebf-465fe765a524'),
 	 ('2a510ca6-c62f-476f-af24-898d3e1228be','37526a2a-0547-4c5b-ab77-2d63ac4a467a'),
@@ -449,7 +450,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('73d4147e-4bb9-47a7-afa0-203b222223f1','185225a3-e819-4d85-bdb8-07aff646d70c'),
 	 ('a68b64c2-58c3-4216-947c-8abaa6175eb0','69169118-aafe-417a-ae64-6e292e40c3f6'),
 	 ('ad204f79-64e4-4af2-829c-7952b35b11fe','cfeac907-17cc-404a-8506-52487e3555eb');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('2a763fff-03b5-4384-bfa0-4fa379065b4a','df4d0ec2-c98d-4594-9966-7d796b9742a4'),
 	 ('258807cd-e9c3-4340-a8d9-5c46b01220f7','a3e60bd8-0358-48f1-9f3d-30f599b98b92'),
 	 ('1f0bae04-d180-46a7-98aa-2ae58c9c38f2','ae842826-e0c3-435c-bc91-eab0d2d590f2'),
@@ -460,7 +461,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('2165cbfb-9fad-4693-98ed-cc5f2a135e26','7864108f-af86-4dd9-aebf-465fe765a524'),
 	 ('e3c739b8-9a45-4d97-9cc9-0d8ed3824779','419697b9-c262-4aea-b02c-acf24c5d56e9'),
 	 ('e3c739b8-9a45-4d97-9cc9-0d8ed3824779','1764b11d-6aae-4f12-8b91-b7da5262de83');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('3936c73a-aec0-48a7-82a9-ddba789768fc','cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3'),
 	 ('6aad65a9-c01b-4fc7-adba-d7ce805e1962','e30f81f5-509c-4f17-ac03-b868ebb1184e'),
 	 ('dfa58a58-ecdb-4e87-a215-2742ed6ce50b','cfeac907-17cc-404a-8506-52487e3555eb'),
@@ -471,7 +472,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('73de13d5-c341-4a63-b732-6ce13e2583a4','cfeac907-17cc-404a-8506-52487e3555eb'),
 	 ('73de13d5-c341-4a63-b732-6ce13e2583a4','29a9bee8-fe62-4e70-83e5-1bcbf1e3d009'),
 	 ('32b0a426-9823-46ff-8981-60c8a2ced1a7','7864108f-af86-4dd9-aebf-465fe765a524');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('32b0a426-9823-46ff-8981-60c8a2ced1a7','37526a2a-0547-4c5b-ab77-2d63ac4a467a'),
 	 ('32b0a426-9823-46ff-8981-60c8a2ced1a7','cfeac907-17cc-404a-8506-52487e3555eb'),
 	 ('32b0a426-9823-46ff-8981-60c8a2ced1a7','b8ee7908-762e-453f-8aa5-7abc8cef3bb2'),
@@ -482,7 +483,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('ac2a8614-9255-43cc-9833-d71f366a6cc7','419697b9-c262-4aea-b02c-acf24c5d56e9'),
 	 ('ac2a8614-9255-43cc-9833-d71f366a6cc7','5f4334c9-eb60-4fef-98f7-012bef525f99'),
 	 ('bca66e95-2e02-4948-9af9-b046fd0486ee','880016b9-5c6b-449e-980f-f0ad3994e5f6');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('b3a8e8a4-a640-457f-b6b9-c2e33922be9b','880016b9-5c6b-449e-980f-f0ad3994e5f6'),
 	 ('2a060355-eaba-4284-aebf-5bc19708971f','e30f81f5-509c-4f17-ac03-b868ebb1184e'),
 	 ('73188380-46fb-4ca5-b874-4847404374ed','ba0ebff4-5d5a-4040-b34c-f333aaf30581'),
@@ -493,7 +494,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('b39cc8fa-d400-4834-bbc5-491468f32621','cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3'),
 	 ('b39cc8fa-d400-4834-bbc5-491468f32621','b75d8a36-2640-47eb-81ea-9dfc9c109031'),
 	 ('1f69d1f7-010c-47e9-a90a-b88f3c40e79f','d4715d94-b64c-4d3e-8cb6-c03f539b1631');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('98cbb419-6f44-4480-87fd-7a226876d009','9a53f91c-d5f8-422f-8f1e-df461991b0aa'),
 	 ('053c1e28-7a3a-4810-9c78-4e72f6aca0d3','cfeac907-17cc-404a-8506-52487e3555eb'),
 	 ('a261c3bb-64ed-401a-a420-c423bc855e99','e19104e9-bda3-4041-9123-17e8eb01a75b'),
@@ -504,7 +505,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('beb6e9d1-cfa2-4e7c-801f-f2931edb5666','60de70b8-c264-41aa-9fc6-ee4c00be754d'),
 	 ('2aca3e89-d136-4709-a1de-05227d519d23','cfeac907-17cc-404a-8506-52487e3555eb'),
 	 ('2aca3e89-d136-4709-a1de-05227d519d23','22b17839-d90e-4ce0-b96a-311bb13039e4');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('87c68dac-47ac-4e1b-bb5d-19261d86a56c','568bd7b2-73ec-4d9c-96b8-22c89ed3ef9f'),
 	 ('15f3f48d-c127-474e-807d-304ee33548c2','edc0d87e-493a-49e6-80be-0f9714f086a3'),
 	 ('2741e778-7973-4742-8adf-4fd825fe92c3','5f4334c9-eb60-4fef-98f7-012bef525f99'),
@@ -515,7 +516,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('0c7a4a1a-f435-4075-b0bd-b9527fe2f31a','b75d8a36-2640-47eb-81ea-9dfc9c109031'),
 	 ('b1a63cea-6b59-40dc-bc67-ab6b56cd4d77','4185d6ef-6c16-4962-be7e-dbed136164d1'),
 	 ('46b6ec30-d54f-479e-8d61-dbf22de8ad3f','29f4909c-9c48-49ae-bc7b-e91a84ba4fd8');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('d989dfdc-5834-4ab0-98cf-15f7483919ef','185225a3-e819-4d85-bdb8-07aff646d70c'),
 	 ('21d27582-7fb8-4dac-b244-07324ea38793','e30f81f5-509c-4f17-ac03-b868ebb1184e'),
 	 ('4339af52-4323-4282-91b8-9bb8f25fe53e','e30f81f5-509c-4f17-ac03-b868ebb1184e'),
@@ -526,7 +527,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('23605396-0157-47f5-9bae-001a2a79e548','7a70e183-1106-4c83-af24-1521cdd8d9e5'),
 	 ('23605396-0157-47f5-9bae-001a2a79e548','d4715d94-b64c-4d3e-8cb6-c03f539b1631'),
 	 ('91711f93-831e-4f9f-93c3-3ee930bc3c3c','e32d3ed6-8080-4d66-a739-1be8eaf7cc0e');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('d6f5f3b1-8e65-4a08-8a56-4a4e6dd0fce8','c912bc9c-3ece-4594-a059-587ad9f0698e'),
 	 ('fb1e3c3a-20b9-4c05-936f-89e4e3fc15f5','7864108f-af86-4dd9-aebf-465fe765a524'),
 	 ('fb1e3c3a-20b9-4c05-936f-89e4e3fc15f5','37526a2a-0547-4c5b-ab77-2d63ac4a467a'),
@@ -537,7 +538,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('4fb04c40-371e-4e7b-96b5-31128ed41939','69169118-aafe-417a-ae64-6e292e40c3f6'),
 	 ('062cfc8b-eb56-4653-ad99-cffef3506f2f','69169118-aafe-417a-ae64-6e292e40c3f6'),
 	 ('7c69de3a-0a2a-437d-9ede-cc950775a4f5','ae842826-e0c3-435c-bc91-eab0d2d590f2');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('5c4b4d7e-7022-4f4d-bd46-27a2607bc935','ecfb3b2b-1c2e-4324-b6bc-4ea21480d71d'),
 	 ('18e87ae6-6630-49f7-ac4c-39cffc679311','fb25bca9-7103-4a83-83e7-e234f6505584'),
 	 ('41eb3dad-06f7-4b10-a0b2-c69379bd33d6','ff4d5019-f0c1-46eb-8b37-38620d9bc958'),
@@ -548,7 +549,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('50c4f219-b6c6-43eb-99de-6f1f879fd1ea','c912bc9c-3ece-4594-a059-587ad9f0698e'),
 	 ('15cea5da-3663-4613-9d76-0e1012ac962a','799bb59b-e8db-4700-b5ce-f5d003f0a0cf'),
 	 ('bb0e0340-cab1-4d3d-b4ff-a75681cbb1dc','b8ee7908-762e-453f-8aa5-7abc8cef3bb2');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('bb0e0340-cab1-4d3d-b4ff-a75681cbb1dc','cfeac907-17cc-404a-8506-52487e3555eb'),
 	 ('593a25d1-fa00-4c3b-beec-660f26dc86cb','cfeac907-17cc-404a-8506-52487e3555eb'),
 	 ('d56b4d9e-fade-47bd-87de-31e52fda3400','b8ee7908-762e-453f-8aa5-7abc8cef3bb2'),
@@ -559,7 +560,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('9caeb09b-f16d-47a0-b983-7b8b91056fd2','ff4d5019-f0c1-46eb-8b37-38620d9bc958'),
 	 ('ac2e499d-7a34-4ef3-9b5b-6c3213e73da4','5f4334c9-eb60-4fef-98f7-012bef525f99'),
 	 ('32eca8b5-c765-4282-a02f-1cf56821d45b','e30f81f5-509c-4f17-ac03-b868ebb1184e');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('5a14c35d-d590-49b7-af05-bb36531c4a88','cfeac907-17cc-404a-8506-52487e3555eb'),
 	 ('00ddc453-7cd2-4997-8a68-beeb5b83dd3d','f8d37b18-f591-4a7a-ad79-dc63df618e57'),
 	 ('7902db82-6371-4dc4-bcd3-97e98d91e6a8','c912bc9c-3ece-4594-a059-587ad9f0698e'),
@@ -570,7 +571,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('54a20cf3-49db-41ad-af3d-77b31d3d6371','ae842826-e0c3-435c-bc91-eab0d2d590f2'),
 	 ('5132f9b8-43f2-4c6a-b132-32c34a83a108','ba0ebff4-5d5a-4040-b34c-f333aaf30581'),
 	 ('5132f9b8-43f2-4c6a-b132-32c34a83a108','8d8404f6-43cd-47b1-a5e7-5854339c7d97');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('3d650a8a-c282-49ea-b9a5-166f15df6b56','ff4d5019-f0c1-46eb-8b37-38620d9bc958'),
 	 ('843a5408-2c79-4c68-8396-af381af240fb','cf69439b-67b6-4fd7-a701-13c8be94ed21'),
 	 ('843a5408-2c79-4c68-8396-af381af240fb','e73a6036-b1ec-442c-9172-5e5ece53404c'),
@@ -581,7 +582,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('d7530262-d3a2-4d23-ad31-dc7020e9c6ed','cf69439b-67b6-4fd7-a701-13c8be94ed21'),
 	 ('b0c59641-69e9-4681-ba37-e8f784e6befd','185225a3-e819-4d85-bdb8-07aff646d70c'),
 	 ('b0c59641-69e9-4681-ba37-e8f784e6befd','185225a3-e819-4d85-bdb8-07aff646d70c');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('f413d97c-45ed-4f3c-a2ff-7f80ad39048d','dcd0cf77-c965-48c6-998b-99a3401a8adc'),
 	 ('35502f0f-05ec-4326-8f3d-b5618411a623','e0455258-2b5f-4722-9b33-95655c9c2ba3'),
 	 ('76526172-c39c-42eb-9df3-cbacd4904c15','dcd0cf77-c965-48c6-998b-99a3401a8adc'),
@@ -592,7 +593,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('76f3dac5-6e80-4c48-b362-9b6cbf2fd331','031c3181-20ce-447e-b178-423bd70fa001'),
 	 ('589fe065-fded-4896-8d36-c58045eed244','ff4d5019-f0c1-46eb-8b37-38620d9bc958'),
 	 ('869f493e-fb11-466f-8f8d-e33f28359f0e','ba1011e7-60ca-4863-8d5c-a0a5d88833ab');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('e17a631b-9af1-4c9c-a8b2-c71e88c61f03','dca89c37-27a3-4955-a87f-312614f46cc1'),
 	 ('c8cd623a-9212-45d3-a640-b683406db1fa','6e6a3c9b-9407-439a-9aaf-7b24aa261bc2'),
 	 ('e90c2e62-ac82-46fd-afc3-aaff215c95e5','cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3'),
@@ -603,7 +604,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('b1f63cbb-38b4-4756-9dbb-c30badc7e04f','f2b60988-bc17-4464-86f8-b26b21eb0ccd'),
 	 ('95ba2a31-d308-42ea-b08e-d890147804c0','8746c70d-7354-4446-99f8-df18f02f32ec'),
 	 ('452edc4b-3114-4847-b317-ef215c62906c','9b291fa8-a072-4b17-a06d-174cd7e833ac');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('7eb3f636-6723-4da8-9ad5-d14e2d1cbc80','91cb0d5f-084c-462d-bd66-15decbfbebe5'),
 	 ('0b3bafb1-b6d3-4d14-b2c3-6dfcd42f1772','9b291fa8-a072-4b17-a06d-174cd7e833ac'),
 	 ('291aa649-024d-4ce9-817c-eb3c1f4837ac','07587d0a-f476-4b74-9369-717f0a20b632'),
@@ -614,7 +615,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('17148a30-a23d-465a-9563-237e77dfcffe','8413d5b4-60a4-44e6-9584-57f50a8ebaf7'),
 	 ('dabba44b-7218-46e9-8028-ace365c153d8','419697b9-c262-4aea-b02c-acf24c5d56e9'),
 	 ('dabba44b-7218-46e9-8028-ace365c153d8','5f4334c9-eb60-4fef-98f7-012bef525f99');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('dabba44b-7218-46e9-8028-ace365c153d8','419697b9-c262-4aea-b02c-acf24c5d56e9'),
 	 ('dabba44b-7218-46e9-8028-ace365c153d8','5f4334c9-eb60-4fef-98f7-012bef525f99'),
 	 ('ad157a4b-a133-4958-b63f-eebdfd6f19e3','6e6a3c9b-9407-439a-9aaf-7b24aa261bc2'),
@@ -625,7 +626,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('10c32566-66eb-4af2-a7b8-1f9a3966ce88','ba0ebff4-5d5a-4040-b34c-f333aaf30581'),
 	 ('5bcfc151-15ac-49a6-9928-59336b5b9553','0a4347d8-076b-45db-9671-2f9e0e8b7d03'),
 	 ('6ac5951a-9455-4eda-94ed-c08e71153ac0','7864108f-af86-4dd9-aebf-465fe765a524');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('c6e35266-7be6-4793-bce3-8f857d1b4d5b','ae842826-e0c3-435c-bc91-eab0d2d590f2'),
 	 ('28db6ffc-8183-4281-9d32-ff50e544cfab','22b17839-d90e-4ce0-b96a-311bb13039e4'),
 	 ('9e4ffa07-017b-4311-b67c-f5acc345b868','185225a3-e819-4d85-bdb8-07aff646d70c'),
@@ -636,7 +637,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('940e3cfe-a813-4d63-854c-6f6ff249e325','37526a2a-0547-4c5b-ab77-2d63ac4a467a'),
 	 ('74e3e48a-20bb-4e20-8314-50cc205c0452','91cb0d5f-084c-462d-bd66-15decbfbebe5'),
 	 ('e897007c-fd9e-459a-9473-1979a319ac3e','7864108f-af86-4dd9-aebf-465fe765a524');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('e897007c-fd9e-459a-9473-1979a319ac3e','37526a2a-0547-4c5b-ab77-2d63ac4a467a'),
 	 ('e897007c-fd9e-459a-9473-1979a319ac3e','cfeac907-17cc-404a-8506-52487e3555eb'),
 	 ('e897007c-fd9e-459a-9473-1979a319ac3e','7864108f-af86-4dd9-aebf-465fe765a524'),
@@ -647,7 +648,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('1b5b2c7c-3ee8-438b-bf08-3d082bf4f2c8','22b17839-d90e-4ce0-b96a-311bb13039e4'),
 	 ('1b5b2c7c-3ee8-438b-bf08-3d082bf4f2c8','799bb59b-e8db-4700-b5ce-f5d003f0a0cf'),
 	 ('1b5b2c7c-3ee8-438b-bf08-3d082bf4f2c8','22b17839-d90e-4ce0-b96a-311bb13039e4');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('048a0e6a-c9bd-4483-8fd9-2a21e4ac5bfd','371fde35-4829-438d-a770-1e4e9e3dc9cb'),
 	 ('29c5a761-fe4b-4167-ab45-98649f27c2e7','ff4d5019-f0c1-46eb-8b37-38620d9bc958'),
 	 ('713f0d98-8908-4c32-a736-6ba356124fe7','9e21b36e-cf5b-4ad2-9a73-e5259ee0c0a2'),
@@ -658,7 +659,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('349716e7-4bf9-4f26-b43f-9276d0a75f7a','b75d8a36-2640-47eb-81ea-9dfc9c109031'),
 	 ('0d6ddeca-7082-4df4-a2f5-3699355d2068','ba0ebff4-5d5a-4040-b34c-f333aaf30581'),
 	 ('a55e65ea-2531-4e88-93f1-b7511d409090','b77221e0-134b-4991-bf89-14f7fa6d384e');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('60a72602-f3e3-414d-996a-f611cc74cb93','7864108f-af86-4dd9-aebf-465fe765a524'),
 	 ('60a72602-f3e3-414d-996a-f611cc74cb93','37526a2a-0547-4c5b-ab77-2d63ac4a467a'),
 	 ('a67ea029-6af7-405b-a1e4-5bf89b5f04bd','185225a3-e819-4d85-bdb8-07aff646d70c'),
@@ -669,7 +670,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('42b62c3c-e120-4ff8-a2f8-32e598f3b755','b8ee7908-762e-453f-8aa5-7abc8cef3bb2'),
 	 ('42b62c3c-e120-4ff8-a2f8-32e598f3b755','dcd0cf77-c965-48c6-998b-99a3401a8adc'),
 	 ('42b62c3c-e120-4ff8-a2f8-32e598f3b755','b8ee7908-762e-453f-8aa5-7abc8cef3bb2');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('a6480335-d880-4d8b-b65c-3e5f1297e408','898d9433-818a-4e5e-ac01-3329656f9ae0'),
 	 ('a4bee5cb-f21c-41b0-b828-e11fd0eabf93','4e3e8d13-59f5-4fae-a38c-e1ec8a144ea5'),
 	 ('a4bee5cb-f21c-41b0-b828-e11fd0eabf93','689df211-73b4-4373-adce-5dd7e9f0f3e2'),
@@ -680,7 +681,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('4933baf6-90b2-4e08-a9f7-fef4937c449c','ae842826-e0c3-435c-bc91-eab0d2d590f2'),
 	 ('acb62dbd-f1cb-4ca8-8d8f-562787bfee12','ff4d5019-f0c1-46eb-8b37-38620d9bc958'),
 	 ('2583801e-234c-4b7d-a236-efcb8dfb39c6','cfeac907-17cc-404a-8506-52487e3555eb');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('2583801e-234c-4b7d-a236-efcb8dfb39c6','22b17839-d90e-4ce0-b96a-311bb13039e4'),
 	 ('2583801e-234c-4b7d-a236-efcb8dfb39c6','f2b60988-bc17-4464-86f8-b26b21eb0ccd'),
 	 ('e4a400d2-e9cd-4dfd-9437-34f6a3b723c5','29a9bee8-fe62-4e70-83e5-1bcbf1e3d009'),
@@ -691,7 +692,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('afcdecc7-b658-489f-ba37-6a57484993fd','91cb0d5f-084c-462d-bd66-15decbfbebe5'),
 	 ('4843fdcd-c1c1-42f3-8d89-404f125be395','568bd7b2-73ec-4d9c-96b8-22c89ed3ef9f'),
 	 ('c9a176d9-f868-4900-8cbd-cccb454862a0','82c52cd0-83d8-4cdf-98dd-07cbbdca8252');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('544190a9-b401-471f-a63a-32b37599af7c','2ce70ff9-000b-4ece-acc8-b77c6620557c'),
 	 ('64230911-459a-4628-a17d-c10ecc2184ac','37526a2a-0547-4c5b-ab77-2d63ac4a467a'),
 	 ('85f18805-350f-4398-9d4a-6f6c89840f3f','6fb3f74f-aa69-46ef-a2a2-f5363a8f9b5f'),
@@ -702,7 +703,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('a986816b-a5de-43e6-b3ca-4f4842f144dd','cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3'),
 	 ('54d6af55-b9f6-4a06-9143-292418e67481','ff4d5019-f0c1-46eb-8b37-38620d9bc958'),
 	 ('404e68b7-0906-496e-ae23-003aee340ff0','689df211-73b4-4373-adce-5dd7e9f0f3e2');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('797faa26-d593-4f6b-bb70-ce874b7d4c9d','6e6a3c9b-9407-439a-9aaf-7b24aa261bc2'),
 	 ('2eda1638-ae65-4305-8893-e007b325042d','7a70e183-1106-4c83-af24-1521cdd8d9e5'),
 	 ('835ec49c-bf04-43af-bd7c-ee583d962ba2','8413d5b4-60a4-44e6-9584-57f50a8ebaf7'),
@@ -713,7 +714,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('346b39a0-7ce9-4db4-8c52-11de4dfc043a','37d20dce-712c-43b4-bd73-2468b5ba4f04'),
 	 ('5cf6777d-9d21-4621-8153-1ccd6986070d','689df211-73b4-4373-adce-5dd7e9f0f3e2'),
 	 ('9244bcbd-7488-4f73-84d2-4ef56510038d','738f296c-c88f-42ca-a866-58dad13b6a75');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('9edff072-049a-46b5-b114-bb5eebf466ed','74585823-3571-4985-af35-53a306d6dc8d'),
 	 ('9edff072-049a-46b5-b114-bb5eebf466ed','26ad2a37-9a60-4f9b-aac9-65a44f981bb5'),
 	 ('9edff072-049a-46b5-b114-bb5eebf466ed','1bbef426-aac7-4d7c-9bdb-59a1d5c57c6f'),
@@ -724,7 +725,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('d6894977-d2e0-4f93-92d1-ef04a0cd592c','37d20dce-712c-43b4-bd73-2468b5ba4f04'),
 	 ('19dc39fb-79fb-421e-90eb-77e1520229e8','bbaa0f50-d133-4b60-8f95-c179f774314d'),
 	 ('e088025e-df28-43df-a9d4-6fe7b4f5a5d1','7864108f-af86-4dd9-aebf-465fe765a524');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('5de79eb9-499c-427e-a949-94fb1db6b051','9006ff0b-8abb-4697-8cf8-66e06d93b085'),
 	 ('5970e034-f39f-494b-9b21-f68630880472','69169118-aafe-417a-ae64-6e292e40c3f6'),
 	 ('0c143cce-69d2-405a-8075-c26dc39c2092','ab1e890f-6845-4681-8589-e9ce32d688ba'),
@@ -735,7 +736,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('38c66a3b-89e5-4b33-a421-8a5d224261ee','ff4d5019-f0c1-46eb-8b37-38620d9bc958'),
 	 ('896ca8f3-46f4-4f25-9b05-94bf6bb6be7e','9b291fa8-a072-4b17-a06d-174cd7e833ac'),
 	 ('5002932a-f8ca-4c02-9d31-4b9abeef692c','b75d8a36-2640-47eb-81ea-9dfc9c109031');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('2a270973-7532-40b0-9a11-c643f4cfbf52','b75d8a36-2640-47eb-81ea-9dfc9c109031'),
 	 ('ec55e13d-4a34-4048-b3c1-62bcb7e868be','31003983-8973-420d-97e6-1e141fe8577a'),
 	 ('340fb545-42e5-48be-846a-af313d7b2773','dcd0cf77-c965-48c6-998b-99a3401a8adc'),
@@ -746,7 +747,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('30b923f8-c477-4352-9ee8-1de6d8711d90','fb25bca9-7103-4a83-83e7-e234f6505584'),
 	 ('45951e8d-3935-4627-9ee6-526346856db9','22b17839-d90e-4ce0-b96a-311bb13039e4'),
 	 ('677e257e-2fe1-434d-99ce-6b00572749d3','a2440d23-5d06-470d-836b-4930f953df2b');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('b1143cd7-c982-4dbb-9613-e0033e8c8af6','ff4d5019-f0c1-46eb-8b37-38620d9bc958'),
 	 ('40667fb8-25dd-45f9-9f64-4cdd26e5d9d6','ff4d5019-f0c1-46eb-8b37-38620d9bc958'),
 	 ('91e2ec95-01c8-4587-a58e-ea2614a5968a','309e940e-7b90-49e6-8193-bd4f327c27a4'),
@@ -757,7 +758,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('12111696-b482-4753-995e-5394375e330c','37d20dce-712c-43b4-bd73-2468b5ba4f04'),
 	 ('94368785-b94c-4441-891c-b5e16c55e255','cf69439b-67b6-4fd7-a701-13c8be94ed21'),
 	 ('94368785-b94c-4441-891c-b5e16c55e255','e73a6036-b1ec-442c-9172-5e5ece53404c');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('94368785-b94c-4441-891c-b5e16c55e255','edc0d87e-493a-49e6-80be-0f9714f086a3'),
 	 ('de306db0-d762-4e99-953a-6c04012f29a2','cf69439b-67b6-4fd7-a701-13c8be94ed21'),
 	 ('de306db0-d762-4e99-953a-6c04012f29a2','e73a6036-b1ec-442c-9172-5e5ece53404c'),
@@ -768,7 +769,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('de306db0-d762-4e99-953a-6c04012f29a2','e73a6036-b1ec-442c-9172-5e5ece53404c'),
 	 ('e5cfcd6c-d4bb-4cbe-a1dc-8c7671be7fbf','ff4d5019-f0c1-46eb-8b37-38620d9bc958'),
 	 ('7b930ffe-cb68-48d5-bff3-6513442a1672','ff4d5019-f0c1-46eb-8b37-38620d9bc958');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('31c9d42d-2404-4b3a-84b6-b2aa03b48e91','799bb59b-e8db-4700-b5ce-f5d003f0a0cf'),
 	 ('31c9d42d-2404-4b3a-84b6-b2aa03b48e91','3d4db5b5-f42f-442b-bebe-27d500886969'),
 	 ('944cbdae-4190-47eb-ab44-1f84a4452bd8','37526a2a-0547-4c5b-ab77-2d63ac4a467a'),
@@ -779,7 +780,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('97a18ba4-84f3-4235-b2c0-f352be8db006','a3e60bd8-0358-48f1-9f3d-30f599b98b92'),
 	 ('516021d8-3806-4c8c-87f4-4a416b087eff','9b291fa8-a072-4b17-a06d-174cd7e833ac'),
 	 ('516021d8-3806-4c8c-87f4-4a416b087eff','37d20dce-712c-43b4-bd73-2468b5ba4f04');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('dcbfe1ee-cc6e-4f3b-a6a3-5e1d52fdf8ce','7864108f-af86-4dd9-aebf-465fe765a524'),
 	 ('fb47b9b5-bc25-4c50-86fe-b7bb0e104c70','9006ff0b-8abb-4697-8cf8-66e06d93b085'),
 	 ('fb47b9b5-bc25-4c50-86fe-b7bb0e104c70','ff4d5019-f0c1-46eb-8b37-38620d9bc958'),
@@ -790,7 +791,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('fb9ab40a-703c-41f1-b5bc-63d6b6b15488','70fdfcb8-600b-4f24-b06a-9fb4a5f4d064'),
 	 ('fb9ab40a-703c-41f1-b5bc-63d6b6b15488','91cb0d5f-084c-462d-bd66-15decbfbebe5'),
 	 ('fb9ab40a-703c-41f1-b5bc-63d6b6b15488','70fdfcb8-600b-4f24-b06a-9fb4a5f4d064');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('a4026d01-12f8-4ac1-8335-acc8c6ff9f49','c912bc9c-3ece-4594-a059-587ad9f0698e'),
 	 ('930f0b5c-c32e-4476-abc6-10a69a24b80a','ff4d5019-f0c1-46eb-8b37-38620d9bc958'),
 	 ('1aa11714-8f97-42c3-a1b1-3fcdb3db46d7','b75d8a36-2640-47eb-81ea-9dfc9c109031'),
@@ -801,7 +802,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('581dcdb2-6320-4570-837b-2620c13cc25b','fb25bca9-7103-4a83-83e7-e234f6505584'),
 	 ('802bf339-497f-460b-9bb3-318546895a54','031c3181-20ce-447e-b178-423bd70fa001'),
 	 ('8d9246f8-9428-4c6a-916f-88925b9f5538','37d20dce-712c-43b4-bd73-2468b5ba4f04');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('3452162f-908b-46ed-a526-8ae2cc80d0ad','b77221e0-134b-4991-bf89-14f7fa6d384e'),
 	 ('03be5341-a8b0-4962-98b3-d3e637a24320','dca89c37-27a3-4955-a87f-312614f46cc1'),
 	 ('bf2f667b-70b0-4f04-87c4-73883f3b3fef','7864108f-af86-4dd9-aebf-465fe765a524'),
@@ -812,7 +813,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('80b0ab02-b2df-4500-8407-6ddc7bc6e7d2','ff4d5019-f0c1-46eb-8b37-38620d9bc958'),
 	 ('8d29e4f7-3b09-4fe2-8c5d-5d8ba52e4a9d','bbaa0f50-d133-4b60-8f95-c179f774314d'),
 	 ('4c5a8094-d743-4245-8cb4-4e6126125e0a','ff4d5019-f0c1-46eb-8b37-38620d9bc958');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('c7fbdab3-3bb5-4169-a4a4-7f371ad401f8','ceb52a41-1897-4153-8aa4-92fe31f06a16'),
 	 ('ac3b44aa-dac6-45c3-8b2e-16b87fccbdec','ba0ebff4-5d5a-4040-b34c-f333aaf30581'),
 	 ('eda1d5b5-e7a9-4722-b9db-92950a073a8c','b77221e0-134b-4991-bf89-14f7fa6d384e'),
@@ -823,7 +824,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('bd44646b-2ce8-413d-82e6-14a9159acb4d','7a70e183-1106-4c83-af24-1521cdd8d9e5'),
 	 ('d0b04652-f350-479f-ab42-ee0946f219eb','343d4de5-ae93-44db-8979-c9ad34bb32a5'),
 	 ('7284c2c6-ea78-49fe-a006-6ff55003437d','b75d8a36-2640-47eb-81ea-9dfc9c109031');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('56225aa5-e87c-4691-a12f-882f4c069e35','ba0ebff4-5d5a-4040-b34c-f333aaf30581'),
 	 ('136fa403-e1b5-49fa-8d08-524647fa7e93','cfeac907-17cc-404a-8506-52487e3555eb'),
 	 ('f5891a58-64cc-4629-8acb-774ca6a428e7','91cb0d5f-084c-462d-bd66-15decbfbebe5'),
@@ -834,7 +835,7 @@ INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
 	 ('63863117-6161-40be-b9a6-515d261682f6','2ce70ff9-000b-4ece-acc8-b77c6620557c'),
 	 ('df90fb54-ee5a-45e1-8977-76a6175acd9e','0a4347d8-076b-45db-9671-2f9e0e8b7d03'),
 	 ('c5cc250a-f20b-44b9-9f68-d6f72fd848e1','4185d6ef-6c16-4962-be7e-dbed136164d1');
-INSERT INTO public.jobs_specs (job_id,spec_id) VALUES
+INSERT INTO public.methodic_jobs_specs (job_id,spec_id) VALUES
 	 ('95982ec2-f1f7-4007-ad48-6cde6363abd0','e73a6036-b1ec-442c-9172-5e5ece53404c'),
 	 ('5bd9fe05-72fa-4285-905f-48a8e9b2aee2','cfeac907-17cc-404a-8506-52487e3555eb'),
 	 ('fddead76-4179-43d2-a3a9-1db9a8d739d0','898d9433-818a-4e5e-ac01-3329656f9ae0'),

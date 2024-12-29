@@ -45,18 +45,10 @@ model methodic_jobs {
   category                     methodic_categories?                  @relation("JobCategories", fields: [category_id], references: [id])
   abilities                    methodic_jobs_abilities[]
   activities                   methodic_jobs_activities[]
-  additional_related_occupations methodic_jobs_additional_related_occupations[]
-  context                      methodic_jobs_context[]
   detailed_activities          methodic_jobs_detailed_activities[]
-  intereducationprograms        methodic_jobs_intereducationprograms[]
-  interest                     methodic_jobs_interest[]
   knowledge                    methodic_jobs_knowledge[]
-  kzeducationprograms           methodic_jobs_kzeducationprograms[]
-  professional_associations     methodic_jobs_professionalassociations[]
-  related_occupations          methodic_jobs_related_occupation[]
   skills                       methodic_jobs_skills[]
   specs                        methodic_jobs_specs[]
-  styles                       methodic_jobs_styles[]
   tasks                        methodic_jobs_tasks[]
   technology                   methodic_jobs_technology[]
   tools                        methodic_jobs_tools[]
@@ -82,23 +74,6 @@ model methodic_jobs_activities {
   job        methodic_jobs? @relation(fields: [job_id], references: [job_id])
 }
 
-model methodic_jobs_additional_related_occupations {
-  id    Int     @id @default(autoincrement())
-  job_id String?
-  soc    String?
-
-  job    methodic_jobs? @relation(fields: [job_id], references: [job_id])
-}
-
-model methodic_jobs_context {
-  id      Int     @id @default(autoincrement())
-  job_id  String?
-  percent Int?
-  context String?
-
-  job     methodic_jobs? @relation(fields: [job_id], references: [job_id])
-}
-
 model methodic_jobs_detailed_activities {
   id               Int     @id @default(autoincrement())
   job_id           String?
@@ -107,23 +82,6 @@ model methodic_jobs_detailed_activities {
   job              methodic_jobs? @relation(fields: [job_id], references: [job_id])
 }
 
-model methodic_jobs_intereducationprograms {
-  id                 Int    @id @default(autoincrement())
-  job_id             String?
-  international_code String?
-  international_name String?
-
-job                methodic_jobs? @relation(fields: [job_id], references: [job_id])
-}
-
-model methodic_jobs_interest {
-  id       Int     @id @default(autoincrement())
-  job_id   String?
-  percent  Int?
-  interest String?
-
-  job      methodic_jobs? @relation(fields: [job_id], references: [job_id])
-}
 
 model methodic_jobs_knowledge {
   id         Int     @id @default(autoincrement())
@@ -132,32 +90,6 @@ model methodic_jobs_knowledge {
   knowledge  String?
 
   job        methodic_jobs? @relation(fields: [job_id], references: [job_id])
-}
-
-model methodic_jobs_kzeducationprograms {
-  id      Int     @id @default(autoincrement())
-  job_id  String?
-  kz_code String?
-  kz_name String?
-
-  job     methodic_jobs? @relation(fields: [job_id], references: [job_id])
-}
-
-model methodic_jobs_professionalassociations {
-  id          Int     @id @default(autoincrement())
-  job_id      String?
-  occupation  String?
-  url         String?
-
-  job         methodic_jobs? @relation(fields: [job_id], references: [job_id])
-}
-
-model methodic_jobs_related_occupation {
-  id    Int    @id @default(autoincrement())
-  job_id String?
-  soc    String?
-
-  job    methodic_jobs? @relation(fields: [job_id], references: [job_id])
 }
 
 model methodic_jobs_skills {
@@ -176,15 +108,6 @@ model methodic_jobs_specs {
 
   job     methodic_jobs?    @relation(fields: [job_id], references: [job_id])
   spec    methodic_specs?     @relation(fields: [spec_id], references: [spec_id])
-}
-
-model methodic_jobs_styles {
-  id         Int     @id @default(autoincrement())
-  job_id     String?
-  importance Int?
-  style      String?
-
-  job        methodic_jobs? @relation(fields: [job_id], references: [job_id])
 }
 
 model methodic_jobs_tasks {

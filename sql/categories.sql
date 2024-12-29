@@ -1,4 +1,5 @@
-INSERT INTO public.categories (id,"name") VALUES
+TRUNCATE TABLE public.methodic_categories RESTART IDENTITY CASCADE;
+INSERT INTO public.methodic_categories (id,"name") VALUES
 	 ('1','Business Management & Administration'),
 	 ('2','Health Science'),
 	 ('3','Manufacturing'),
@@ -9,7 +10,7 @@ INSERT INTO public.categories (id,"name") VALUES
 	 ('8','Agriculture, Food & Natural Resources'),
 	 ('9','Architecture & Construction'),
 	 ('10','Human Services');
-INSERT INTO public.categories (id,"name") VALUES
+INSERT INTO public.methodic_categories (id,"name") VALUES
 	 ('11','Transportation, Distribution & Logistics'),
 	 ('12','Hospitality & Tourism'),
 	 ('13','Law, Public Safety, Corrections & Security'),
