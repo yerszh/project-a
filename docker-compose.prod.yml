@@ -7,8 +7,8 @@ services:
     ports:
       - '80:3000'
     environment:
-      DATABASE_URL: "postgresql://postgres:password@db:5432/mydb"
-      NEXT_PUBLIC_API_URL: "http://your-production-url.com"
+      DDATABASE_URL: "postgresql://dbuser:dbpassword@db:5432/prisma_db"
+      NEXT_PUBLIC_API_URL: ""
     depends_on:
       - db
 
