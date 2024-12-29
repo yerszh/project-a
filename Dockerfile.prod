@@ -1,0 +1,33 @@
+# Dockerfile.prod
+FROM node:18-alpine AS builder
+
+# Set working directory
+WORKDIR /app
+
+# Install dependencies
+COPY package*.json ./
+RUN npm install
+
+# Copy local files to container
+COPY . .
+
+# Build the application
+RUN npm run build
+
+# Production image
+FROM node:18-alpine
+
+# Set working directory
+WORKDIR /app
+
+# Copy build files from the builder stage
+COPY --from=builder /app/ .
+
+# Install production dependencies
+RUN npm ci --only=production
+
+# Expose the production port
+EXPOSE 3000
+
+# Start Next.js in production mode
+CMD ["npm", "run", "start"]
