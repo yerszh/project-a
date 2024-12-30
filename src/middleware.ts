@@ -3,8 +3,10 @@ import type { NextRequest } from "next/server";
 
 export async function middleware(req: NextRequest) {
   const url = req.url;
-  const session = req.cookies.get("__Secure-authjs.session-token");
-
+  let session = req.cookies.get("__Secure-authjs.session-token");
+  if(!session){
+    session = req.cookies.get("authjs.session-token");
+  }
   const restrictedRoutes = ["/profile", "/chat", "/quiz", "/result"];
 
   if (restrictedRoutes.some((route) => url.includes(route))) {

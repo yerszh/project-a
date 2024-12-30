@@ -16,7 +16,7 @@ services:
       - '80:3000'
     environment:
       DATABASE_URL: "postgresql://dbuser:dbpassword@db:5432/prisma_db"
-      NEXT_PUBLIC_API_URL: "https://localhost:3000"
+      NEXT_PUBLIC_API_URL: "http://prof.smartbolashaq.kz/"
     depends_on:
       - db
 
