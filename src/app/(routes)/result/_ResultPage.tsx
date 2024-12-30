@@ -138,9 +138,10 @@ const ResultPage = ({ userResult }: ResultPageProps) => {
                 className="border-[#E3E6EB] border border-solid rounded-lg shadow-sm p-4"
               >
                 <div className="w-full flex justify-between mb-3">
-                  <p>{profession.name_ru}</p> <p>{100 - profession.percent / 100}%</p>
+                  <p>{profession.name_ru}</p>{" "}
+                  <p>{Math.floor(100 - profession.percent / 100)}%</p>
                 </div>
-                <Progress value={profession.percent / 100} />
+                <Progress value={Math.floor(100 - profession.percent / 100)} />
               </div>
             ))}
           </div>
