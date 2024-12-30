@@ -27,8 +27,8 @@ export const getLastUserResult = async () => {
             select: {
               occupation_id: true,
               name: true,
-              name_kz: true,
               name_ru: true,
+              name_kz: true,
               percent: true,
             },
           },

@@ -350,7 +350,7 @@ const SelectProfession: React.FC<SelectProfessionProps> = ({
                 key={index}
                 onClick={() => handleCategoryClick(profession)}
               >
-                {profession.name}
+                {profession.name_ru}
               </Badge>
             ))}
           </div>

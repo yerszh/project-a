@@ -133,6 +133,8 @@ model UserProfessions {
   user_professions_id String   @id @default(cuid())
   result_id           String
   name                String
+  name_ru             String
+  name_kz             String
   percent             Int
   occupation_id       String
   createdAt           DateTime @default(now())

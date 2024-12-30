@@ -13,6 +13,7 @@ import ChatHistory from "./_components/ChatHistory";
 import ChatHelp from "./_components/ChatHelp";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { setChatMessages } from "@/lib/chat/setChatMessages";
+import { UserProfessions } from "@prisma/client";
 
 interface ChatPageProps {
   userProfessions?: UserProfessions[];
@@ -48,7 +49,7 @@ const ChatPage = ({ userProfessions, userChats }: ChatPageProps) => {
       if (currentChatId === "" && selectedProfession?.occupation_id) {
         setUserChat(
           selectedProfession?.occupation_id,
-          selectedProfession?.name
+          selectedProfession?.name_ru
         ).then((chatId) => {
           if (chatId) {
             setCurrentChatId(chatId);
@@ -89,7 +90,7 @@ const ChatPage = ({ userProfessions, userChats }: ChatPageProps) => {
 
   const handleProfessionSelect = (profession: UserProfessions) => {
     setSelectedProfession(profession);
-    setInput(profession.name);
+    setInput(profession.name_ru);
   };
 
   useEffect(() => {
