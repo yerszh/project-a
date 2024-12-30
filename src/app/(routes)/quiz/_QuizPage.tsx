@@ -157,18 +157,20 @@ const QuizPage: React.FC<QuizPageProps> = ({ questionData }) => {
           <p>{currentQuestion?.question_text_ru}</p>
         </h1>
 
-        <form className="mt-10 w-full flex flex-col items-center">
+        <div className="mt-10 w-full flex flex-col items-center">
           <RadioGroup
             className="flex flex-col w-full"
             value={currentAnswer?.answer_id || ""}
-            onValueChange={handleAnswerChange}
           >
             {answers
               ?.filter((item) => Number(item.question_id) === questionNumber)
               ?.map((answer, index) => (
                 <div
                   key={index}
-                  className="bg-[#F1F4F8] flex gap-2.5 p-[17px_13px] rounded-lg items-center "
+                  className="bg-[#F1F4F8] flex gap-2.5 p-[17px_13px] rounded-lg items-center hover:bg-[#E2E8F0] cursor-pointer"
+                  onClick={() => {
+                    handleAnswerChange(answer.answer_id);
+                  }}
                 >
                   <RadioGroupItem
                     value={answer.answer_id}
@@ -189,7 +191,7 @@ const QuizPage: React.FC<QuizPageProps> = ({ questionData }) => {
               Завершить тест
             </Button>
           )}
-        </form>
+        </div>
       </motion.div>
     </div>
   );
