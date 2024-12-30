@@ -1,26 +1,27 @@
 import Link from "next/link";
+import Image from "next/image";
+
 
 const AuthErrorPage: React.FC = () => {
   return (
-    <div className="auth-error-page">
-      <div className="auth-error-card">
-        <div className="auth-error">
-          <p>{"Oops, something went wrong."}</p>
-        </div>
-        <div>
-          <p>
-            {"To go back to the sign in page, "}
-
-            <Link
-              href="/api/auth/signin"
-              style={{ cursor: "pointer", textDecoration: "underline" }}
-            >
-              Click Here
-            </Link>
-          </p>
-        </div>
-      </div>
+    <div className="p-4 w-full flex flex-col items-center">
+    <div className="w-full flex justify-between mt-4">
+      
+      <Link href="/">
+        <Image
+          src="/icons/arrow-back.svg"
+          alt={"closeButton"}
+          height={24}
+          width={24}
+        />
+      </Link>
     </div>
+
+    <h1 className="mt-20 text-xl text-[#171A1D] font-semibold text-center">
+    Упс, что-то пошло не так.
+    </h1>
+
+  </div>
   );
 };
 

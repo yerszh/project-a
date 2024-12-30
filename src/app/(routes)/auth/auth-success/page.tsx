@@ -1,27 +1,29 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const AuthSuccessPage: React.FC = () => {
   return (
-    <div className="auth-success-page">
-      <div className="auth-success-card">
-        <div className="auth-success">
-          <p>{"Success! Please check your email inbox for sign in link."}</p>
-        </div>
-        <div>
-          <p>
-            {
-              "Didn't receive an email? To go back to the sign-in page and try again, "
-            }
-
-            <Link
-              href="/api/auth/signin"
-              style={{ cursor: "pointer", textDecoration: "underline" }}
-            >
-              Click Here
-            </Link>
-          </p>
-        </div>
+    <div className="p-4 w-full flex flex-col items-center">
+      <div className="w-full flex justify-between mt-4">
+        
+        <Link href="/">
+          <Image
+            src="/icons/arrow-back.svg"
+            alt={"closeButton"}
+            height={24}
+            width={24}
+          />
+        </Link>
       </div>
+
+      <h1 className="mt-20 text-xl text-[#171A1D] font-semibold text-center">
+      Проверьте свой почтовый ящик на наличие ссылки для входа.
+      </h1>
+      <h2 className="mt-3 text-[13px] leading-[13px] text-[#171A1D] font-normal text-center">
+      Не получили письмо? Вернитесь на страницу входа и попробуйте снова.
+
+      </h2>
+     
     </div>
   );
 };

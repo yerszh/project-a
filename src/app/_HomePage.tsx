@@ -60,7 +60,7 @@ const HomePage = ({ activeQuiz }: HomePageProps) => {
           height={20}
           width={20}
         />
-        {activeQuiz?.isActive ? "continue" : t("startTest")}
+        {activeQuiz?.isActive ? "продолжить" : t("startTest")}
       </Button>
     </>
   );
