@@ -2,7 +2,7 @@
 
 import { prisma } from "@/lib/prisma";
 import { Results } from "@prisma/client";
-import { getProfessions } from "@/lib/methodic-data/getProfessionsServerAction";
+import { getProfessions } from "@/lib/methodic-data/getProfessionsForResult";
 
 export const setUserProfessions = async (userResult: Results) => {
   try {

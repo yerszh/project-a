@@ -18,6 +18,7 @@ import {
   Drawer,
   DrawerClose,
   DrawerContent,
+  DrawerDescription,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
@@ -44,10 +45,17 @@ import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { UserProfessions } from "@prisma/client";
+import { useLocale } from "next-intl";
 
 interface SelectProfessionProps {
   userProfessions?: UserProfessions[];
   onSelectProfession: (profession: UserProfessions) => void;
+  allJobs: {
+    job_id: string;
+    name: string;
+    name_kz: string;
+    name_ru: string;
+  }[];
 }
 
 const items = [
@@ -80,29 +88,11 @@ const items = [
 const SelectProfession: React.FC<SelectProfessionProps> = ({
   userProfessions,
   onSelectProfession,
+  allJobs,
 }) => {
+  const locale = useLocale();
+  const [searchTerm, setSearchTerm] = useState("");
   const [isSheetOpen, setIsSheetOpen] = useState(false);
-
-  const categories = [
-    "Автомеханик",
-    "Архитектор",
-    "Веб-программист",
-    "Горнорабочий",
-    "Инженер",
-    "Конструктор ",
-    "Механик",
-    "Программист",
-    "Радиоинженер",
-    "Автомеханик",
-    "Архитектор",
-    "Веб-программист",
-    "Горнорабочий",
-    "Инженер",
-    "Конструктор ",
-    "Механик",
-    "Программист",
-    "Радиоинженер",
-  ];
 
   const FormSchema = z.object({
     items: z.array(z.string()),
@@ -130,6 +120,12 @@ const SelectProfession: React.FC<SelectProfessionProps> = ({
   function onSubmit(data: z.infer<typeof FormSchema>) {
     //TODO onSubmit
   }
+
+  const filteredJobs = allJobs.filter((job) => {
+    const jobName =
+      locale === "kz" ? job.name_kz.toLowerCase() : job.name_ru.toLowerCase();
+    return jobName.includes(searchTerm.toLowerCase());
+  });
 
   return (
     <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
@@ -162,9 +158,9 @@ const SelectProfession: React.FC<SelectProfessionProps> = ({
             />
             <Input
               placeholder="Поиск профессии"
-              className={
-                "flex w-full !border-transparent bg-transparent  text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
-              }
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="flex w-full !border-transparent bg-transparent text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
             />
           </div>
 
@@ -180,10 +176,11 @@ const SelectProfession: React.FC<SelectProfessionProps> = ({
             </DrawerTrigger>
             <DrawerContent>
               <DrawerHeader className="grid grid-cols-3 items-center pb-4 pt-3">
-                <div></div>
+                <DrawerDescription></DrawerDescription>
                 <DrawerTitle className="text-center text-[#171A1D] text-base font-semibold">
                   Фильтр
                 </DrawerTitle>
+
                 <div
                   onClick={() => form.reset()}
                   className="text-right text-[#171A1D] text-xs cursor-pointer font-normal"
@@ -344,30 +341,36 @@ const SelectProfession: React.FC<SelectProfessionProps> = ({
             Рекомендуемые профессии
           </h3>
 
-          <div className="flex flex-wrap gap-1.5 mt-4">
-            {userProfessions?.map((profession, index) => (
-              <Badge
-                key={index}
-                onClick={() => handleCategoryClick(profession)}
-              >
-                {profession.name_ru}
-              </Badge>
-            ))}
-          </div>
+          <ScrollArea className="h-[180px] w-full mt-4">
+            <div className="flex flex-wrap gap-1.5 ">
+              {userProfessions?.map((profession, index) => (
+                <Badge
+                  key={index}
+                  onClick={() => handleCategoryClick(profession)}
+                >
+                  {locale === "kz" ? profession.name_kz : profession.name_ru}
+                </Badge>
+              ))}
+            </div>
+          </ScrollArea>
         </div>
 
         <div className="mt-8">
           <h3 className="text-[#171A1D] text-base font-semibold leading-4 ">
-            Выберите профессию
+            Все профессию
           </h3>
 
-          <ScrollArea className="h-[200px] w-full mt-6">
-            <div className="flex flex-wrap gap-1.5 ">
-              {categories.map((prof, index) => (
-                <Badge key={index} onClick={() => {}} variant="secondary">
-                  {prof}
-                </Badge>
-              ))}
+          <ScrollArea className="h-[280px] w-full mt-6">
+            <div className="flex flex-wrap gap-1.5">
+              {filteredJobs.length > 0 ? (
+                filteredJobs.map((job, index) => (
+                  <Badge key={index} onClick={() => {}} variant="secondary">
+                    {locale === "kz" ? job.name_kz : job.name_ru}
+                  </Badge>
+                ))
+              ) : (
+                <p className="text-sm text-gray-500">Профессия не найдена</p>
+              )}
             </div>
           </ScrollArea>
         </div>

@@ -21,9 +21,15 @@ interface ChatPageProps {
     chat_id: string;
     chat_title: string;
   }[];
+  allJobs: {
+    job_id: string;
+    name: string;
+    name_kz: string;
+    name_ru: string;
+  }[];
 }
 
-const ChatPage = ({ userProfessions, userChats }: ChatPageProps) => {
+const ChatPage = ({ userProfessions, userChats, allJobs }: ChatPageProps) => {
   const [currentChatId, setCurrentChatId] = useState("");
   const [copied, setCopied] = useState(false);
   const [isMessageFinish, setIsMessageFinish] = useState(false);
@@ -234,6 +240,7 @@ const ChatPage = ({ userProfessions, userChats }: ChatPageProps) => {
           <SelectProfession
             userProfessions={userProfessions}
             onSelectProfession={handleProfessionSelect}
+            allJobs={allJobs}
           />
         </div>
       )}

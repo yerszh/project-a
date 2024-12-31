@@ -1,3 +1,5 @@
+version: "3.7"
+
 services:
   db:
     image: postgres:latest
@@ -7,18 +9,54 @@ services:
       POSTGRES_DB: prisma_db
     volumes:
       - pg_data:/var/lib/postgresql/data
+    networks:
+      - web
 
   app:
     build:
       context: .
       dockerfile: ./Dockerfile.prod
-    ports:
-      - '80:3000'
     environment:
       DATABASE_URL: "postgresql://dbuser:dbpassword@db:5432/prisma_db"
-      NEXT_PUBLIC_API_URL: "http://prof.smartbolashaq.kz/"
-    depends_on:
-      - db
+      NEXT_PUBLIC_API_URL: "https://prof.smartbolashaq.kz/"
+    networks:
+      - web
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.app.rule=Host(prof.smartbolashaq.kz)"
+      - "traefik.http.routers.app.entrypoints=websecure"
+      - "traefik.http.routers.app.tls=true"
+      - "traefik.http.routers.app.tls.certresolver=myresolver"
+      - "traefik.http.services.app.loadbalancer.server.port=3000"
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https" # Define the middleware for redirection
+      - "traefik.http.routers.app-http.rule=Host(prof.smartbolashaq.kz)" # New HTTP router
+      - "traefik.http.routers.app-http.entrypoints=web"
+      - "traefik.http.routers.app-http.middlewares=redirect-to-https"
+
+  traefik:
+    image: traefik:v2.9
+    command:
+      - "--api=true" # Enable Traefik's dashboard (optional)
+      - "--api.dashboard=true"
+      - "--providers.docker=true"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--certificatesresolvers.myresolver.acme.email=zhumirov@gmail.com"
+      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+      - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
+    ports:
+      - "80:80" # HTTP
+      - "443:443" # HTTPS
+      - "8080:8080" # Traefik Dashboard (accessed via http://prof.smartbolashaq.kz:8080)
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro" # Allow Traefik to listen to Docker events
+      - "./traefik/letsencrypt:/letsencrypt" # Store SSL certificates
+    networks:
+      - web
+
+networks:
+  web:
+    external: false
 
 volumes:
   pg_data:

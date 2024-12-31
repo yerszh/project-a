@@ -4,12 +4,13 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const badgeVariants = cva(
-  "text-[#171A1D] p-3 border rounded-xl font-normal bg-white text-sm leading-3",
+  "text-[#171A1D] p-2.5 border rounded-xl font-normal bg-white text-xs",
   {
     variants: {
       variant: {
-        default: "border-transparent bg-[#F5F5F5]",
-        secondary: "border-[#E0E0E0]",
+        default:
+          "border-transparent bg-[#F5F5F5] hover:bg-[#FFFFFF] hover:border-[#E0E0E0]",
+        secondary: "border-[#E0E0E0] hover:bg-[#F5F5F5]",
         destructive:
           "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80",
         outline: "text-foreground",
