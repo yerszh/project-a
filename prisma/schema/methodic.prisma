@@ -9,6 +9,8 @@ model methodic_answers {
 model methodic_categories {
   id    String   @id
   name  String?
+  name_ru              String?
+  name_kz              String?
   jobs  methodic_jobs[] @relation("JobCategories")
 }
 
