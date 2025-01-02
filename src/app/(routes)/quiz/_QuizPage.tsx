@@ -6,11 +6,14 @@ import { useLocale, useTranslations } from "next-intl";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { submitQuestion } from "@/lib/quiz/submitQuestion";
+
 import { Label } from "@/components/ui/label";
 import { motion } from "motion/react";
 import { finishQuiz } from "@/lib/quiz/finishQuiz";
 import { useRouter } from "next/navigation";
+
+import { Checkbox } from "@/components/ui/checkbox";
+import { submitAnswer } from "@/lib/quiz/submitAnswer";
 
 type QuizPageProps = {
   questionData: {
@@ -56,9 +59,10 @@ const QuizPage: React.FC<QuizPageProps> = ({ questionData }) => {
   const isLastQuiz = lastQuizNumber === questionNumber;
   const currentQuestion = questionData?.userQuestions[questionNumber - 1];
   const [answers, setAnswers] = useState(questionData?.UserAnswer);
-  const currentAnswer = answers
-    ?.filter((item) => Number(item.question_id) === questionNumber)
-    .find((answer) => answer.isPicked);
+
+  const currentAnswers = answers?.filter(
+    (item) => Number(item.question_id) === questionNumber
+  );
 
   const handleNextQuestion = () => {
     setDirection("next");
@@ -76,26 +80,59 @@ const QuizPage: React.FC<QuizPageProps> = ({ questionData }) => {
   const handleAnswerChange = async (pickedAnswerId: string) => {
     const updatedAnswers = answers?.map((answer) => {
       if (answer.question_id === currentQuestion?.question_id) {
-        return {
-          ...answer,
-          isPicked: answer.answer_id === pickedAnswerId ? true : false,
-        };
+        if (currentQuestion.question_type === "multiple_choice") {
+          if (answer.question_id === currentQuestion?.question_id) {
+            if (answer.answer_id === pickedAnswerId) {
+              return {
+                ...answer,
+                isPicked: !answer.isPicked,
+              };
+            }
+          }
+        } else {
+          return {
+            ...answer,
+            isPicked: answer.answer_id === pickedAnswerId ? true : false,
+          };
+        }
       }
       return answer;
     });
 
     setAnswers(updatedAnswers);
-    handleNextQuestion();
 
-    if (!questionData || !currentQuestion?.question_id) return;
-    await submitQuestion(
-      questionData.user_quizzes_id,
-      currentQuestion.question_id,
-      pickedAnswerId
+    const selectedAnswers = updatedAnswers?.filter(
+      (item) => Number(item.question_id) === questionNumber
     );
+
+    if (currentQuestion.question_type === "single_choice") {
+      if (!questionData || !currentQuestion?.question_id) return;
+      await submitAnswer(
+        questionData.user_quizzes_id,
+        currentQuestion.question_id,
+        selectedAnswers
+      );
+      handleNextQuestion();
+    }
   };
 
-  const handleSubmit = async () => {
+  const handleMultipleAnswer = async () => {
+    const selectedAnswers = answers?.filter(
+      (item) => Number(item.question_id) === questionNumber
+    );
+    if (!questionData || !currentQuestion?.question_id) return;
+    await submitAnswer(
+      questionData.user_quizzes_id,
+      currentQuestion.question_id,
+      selectedAnswers
+    );
+    handleNextQuestion();
+  };
+
+  const handleFinishQuiz = async () => {
+    if (currentQuestion?.question_type === "multiple_choice") {
+      handleMultipleAnswer();
+    }
     if (!questionData || !currentQuestion?.question_id) return;
     await finishQuiz(questionData?.user_quizzes_id).then(() => {
       router.push("/result");
@@ -160,35 +197,42 @@ const QuizPage: React.FC<QuizPageProps> = ({ questionData }) => {
         <div className="mt-10 w-full flex flex-col items-center">
           <RadioGroup
             className="flex flex-col w-full"
-            value={currentAnswer?.answer_id || ""}
+            value={currentAnswers?.find((item) => item.isPicked)?.answer_id}
+            onClick={(event) => event.preventDefault()}
           >
-            {answers
-              ?.filter((item) => Number(item.question_id) === questionNumber)
-              ?.map((answer, index) => (
-                <div
-                  key={index}
-                  className="bg-[#F1F4F8] flex gap-2.5 p-[17px_13px] rounded-lg items-center hover:bg-[#E2E8F0] cursor-pointer"
-                  onClick={() => {
-                    handleAnswerChange(answer.answer_id);
-                  }}
-                >
+            {currentAnswers.map((answer, index) => (
+              <div
+                key={index}
+                className="bg-[#F1F4F8] flex gap-2.5 p-[17px_13px] rounded-lg items-center hover:bg-[#E2E8F0] cursor-pointer"
+                onClick={() => handleAnswerChange(answer.answer_id)}
+              >
+                {currentQuestion.question_type === "multiple_choice" ? (
+                  <Checkbox checked={answer.isPicked} />
+                ) : (
                   <RadioGroupItem
                     value={answer.answer_id}
                     id={answer.answer_id}
                   />
-                  <Label
-                    htmlFor={answer.answer_id}
-                    className="text-sm font-medium"
-                  >
-                    {answer.answer_text_ru}
-                  </Label>
-                </div>
-              ))}
+                )}
+                <Label
+                  htmlFor={answer.answer_id}
+                  className="text-sm font-medium"
+                  onClick={(event) => event.preventDefault()}
+                >
+                  {answer.answer_text_ru}
+                </Label>
+              </div>
+            ))}
           </RadioGroup>
 
-          {isLastQuiz && (
-            <Button className="m-10" type="button" onClick={handleSubmit}>
-              Завершить тест
+          {(isLastQuiz ||
+            currentQuestion?.question_type === "multiple_choice") && (
+            <Button
+              className="m-10"
+              type="button"
+              onClick={isLastQuiz ? handleFinishQuiz : handleMultipleAnswer}
+            >
+              {isLastQuiz ? "Завершить тест" : "Дальше"}
             </Button>
           )}
         </div>

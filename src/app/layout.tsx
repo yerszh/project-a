@@ -11,8 +11,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Smartbolashaq",
-  description: "Smartbolashaq",
+  title: "Smart Bolashaq",
+  description: "Smart Bolashaq",
 };
 
 export default async function RootLayout({

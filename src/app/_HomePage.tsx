@@ -19,9 +19,13 @@ const HomePage = ({ activeQuiz }: HomePageProps) => {
   const router = useRouter();
 
   const handleSubmit = async () => {
-    await createUserQuiz().then(() => {
+    if (activeQuiz?.isActive) {
       router.push("/quiz");
-    });
+    } else {
+      await createUserQuiz().then(() => {
+        router.push("/quiz");
+      });
+    }
   };
   return (
     <>
@@ -60,7 +64,7 @@ const HomePage = ({ activeQuiz }: HomePageProps) => {
           height={20}
           width={20}
         />
-        {activeQuiz?.isActive ? "продолжить" : t("startTest")}
+        {activeQuiz?.isActive ? "Продолжить" : t("startTest")}
       </Button>
     </>
   );

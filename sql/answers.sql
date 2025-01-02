@@ -109,3 +109,9 @@ INSERT INTO public.methodic_answers (id,question_id,answer_text_kz,answer_text_r
 	 (98,'25','Өте ұнайды2','Очень нравится2',5),
 	 (99,'25','Өте ұнайды3','Очень нравится3',5),
 	 (100,'25','Өте ұнайды4','Очень нравится4',5);
+INSERT INTO public.methodic_answers (id,question_id,answer_text_kz,answer_text_ru,riasec_score) VALUES
+	 (101,'26','Ұнайды1','Нрав2ится',3),
+	 (102,'26','Өте ұнайд1ы','Очень нравится',5),
+	 (103,'26','Ұнамай2ды','Не нрав2ится',1),
+	 (104,'26','Бейта2рап','Нейтр2ально',1);
+

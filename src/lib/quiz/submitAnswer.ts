@@ -2,22 +2,24 @@
 
 import { prisma } from "@/lib/prisma";
 
-export const submitQuestion = async (
+export const submitAnswer = async (
   quizId: string,
   questionId: string,
-  answerId: string
+  answers: { user_answers_id: string; isPicked: boolean }[]
 ) => {
   try {
-    await prisma.userAnswer.updateMany({
-      where: {
-        user_quizzes_id: quizId,
-        question_id: questionId,
-        answer_id: answerId,
-      },
-      data: {
-        isPicked: true,
-      },
-    });
+    const updatePromises = answers.map((answer) =>
+      prisma.userAnswer.update({
+        where: {
+          user_answers_id: answer.user_answers_id,
+        },
+        data: {
+          isPicked: answer.isPicked,
+        },
+      })
+    );
+
+    await Promise.all(updatePromises);
 
     await prisma.userQuestion.updateMany({
       where: {
