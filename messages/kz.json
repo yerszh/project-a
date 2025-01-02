@@ -5,7 +5,8 @@
     "findYourCalling": "Өзіңіздің жаныңызды табыңыз",
     "interactiveHelperDescription": "Таланттарды анықтау және дұрыс мамандықты таңдау үшін интерактивті көмекші",
     "cursorMagicAlt": "Сиқырлы курсор белгішесі",
-    "startTest": "Тесті бастау"
+    "startTest": "Тесті бастау",
+    "continue": "Жалғастыру"
   },
   "ProfilePage": {
     "signOut": "Шығу",
@@ -27,6 +28,23 @@
     "closeButton": "Жабу",
     "quizTitle": "AI Профориентатор",
     "questionCounter": "сұрақ",
-    "errorMessage": "Қате"
+    "errorMessage": "Қате",
+    "finishQuiz": "Тестті аяқтау",
+    "next": "Келесі"
+  },
+  "ResultPage": {
+    "retakeQuiz": "Қайта өту",
+    "closeButtonAlt": "Жабу",
+    "resultsTitle": "Нәтижелер",
+    "greatWork": "Тамаша жұмыс!",
+    "baseText": "Сіздің жауаптарыңыздың негізінде",
+    "aiAdvisor": "AI кәсіптік бағдарлаушы",
+    "selectedProfessions": "таланттарыңыз бен қызығушылықтарыңызға сәйкес келетін мамандықтарды таңдады.",
+    "directionsTitle": "Бағыттар",
+    "professionsTitle": "Мамандықтар",
+    "matchedProfessions": "Таңдалған мамандықтар",
+    "discussWithAI": "AI чатпен мамандықтарды талқылау",
+    "chatButtonAlt": "чат-батырма",
+    "arrowForwardAlt": "алға-көрсеткіш"
   }
 }

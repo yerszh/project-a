@@ -195,7 +195,11 @@ const QuizPage: React.FC<QuizPageProps> = ({ questionData }) => {
         transition={{ duration: 0.2 }}
       >
         <h1 className="text-xl font-semibold text-center">
-          <p>{currentQuestion?.question_text_ru}</p>
+          <p>
+            {locale === "kz"
+              ? currentQuestion?.question_text_kz
+              : currentQuestion?.question_text_ru}
+          </p>
         </h1>
 
         <div className="mt-10 w-full flex flex-col items-center">
@@ -223,7 +227,9 @@ const QuizPage: React.FC<QuizPageProps> = ({ questionData }) => {
                   className="text-sm font-medium"
                   onClick={(event) => event.preventDefault()}
                 >
-                  {answer.answer_text_ru}
+                  {locale === "kz"
+                    ? answer.answer_text_kz
+                    : answer.answer_text_ru}
                 </Label>
               </div>
             ))}
@@ -236,7 +242,7 @@ const QuizPage: React.FC<QuizPageProps> = ({ questionData }) => {
               type="button"
               onClick={isLastQuiz ? handleFinishQuiz : handleMultipleAnswer}
             >
-              {isLastQuiz ? "Завершить тест" : "Дальше"}
+              {isLastQuiz ? t("finishQuiz") : t("next")}
             </Button>
           )}
         </div>

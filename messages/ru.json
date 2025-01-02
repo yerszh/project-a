@@ -5,7 +5,8 @@
     "findYourCalling": "Найди своё призвание",
     "interactiveHelperDescription": "Интерактивный помощник для определения талантов и выбора подходящей профессии",
     "cursorMagicAlt": "Иконка волшебного курсора",
-    "startTest": "Начать тест"
+    "startTest": "Начать тест",
+    "continue": "Продолжить"
   },
   "ProfilePage": {
     "signOut": "Выйти",
@@ -27,6 +28,23 @@
     "closeButton": "Закрыть",
     "quizTitle": "AI Профориентатор",
     "questionCounter": "вопросов",
-    "errorMessage": "Ошибка"
+    "errorMessage": "Ошибка",
+    "finishQuiz": "Завершить тест",
+    "next": "Дальше"
+  },
+  "ResultPage": {
+    "retakeQuiz": "Пройти заново",
+    "closeButtonAlt": "Закрыть",
+    "resultsTitle": "Результаты",
+    "greatWork": "Отличная работа!",
+    "baseText": "На основе ваших ответов",
+    "aiAdvisor": "AI профориентатор",
+    "selectedProfessions": "подобрал профессии, которые лучше всего подходят вашим талантам и интересам.",
+    "directionsTitle": "Направления",
+    "professionsTitle": "Профессии",
+    "matchedProfessions": "Подобранные профессии",
+    "discussWithAI": "Обсудить профессии с AI chat",
+    "chatButtonAlt": "chat-button",
+    "arrowForwardAlt": "arrow-forward"
   }
 }
