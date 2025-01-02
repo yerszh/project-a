@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { User } from "@prisma/client";
 import { setUserInfo } from "@/lib/profile/setUserInfo";
 import { handleSignOut } from "@/lib/auth/signOutServerAction";
@@ -29,35 +29,54 @@ const ProfilePage = ({ userData, type }: ProfilePageProps) => {
     phoneNumber: userData?.phoneNumber,
   });
 
+  const [isPhoneValid, setIsPhoneValid] = useState(true);
+  const [isFormValid, setIsFormValid] = useState(false);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
+
+    if (name === "phoneNumber") {
+      const phoneRegex = /^(?:\+7|7|8)[0-9]{10,11}$/;
+      setIsPhoneValid(phoneRegex.test(value));
+    }
   };
 
-  const handleSubmit = async () => {
-    router.push("/quiz");
-  };
+  useEffect(() => {
+    const isNameValid = formData.name && formData.name.trim() !== "";
+    const isGradeValid = formData.grade && formData.grade.trim() !== "";
+    const isAgeValid = formData.age && formData.age.trim() !== "";
+    const isPhoneValidLocal = isPhoneValid && formData.phoneNumber;
+
+    setIsFormValid(
+      Boolean(isNameValid) &&
+        Boolean(isGradeValid) &&
+        Boolean(isAgeValid) &&
+        Boolean(isPhoneValidLocal)
+    );
+  }, [formData, isPhoneValid]);
 
   return (
     <div className="p-4 w-full flex flex-col">
       <div className="w-full flex justify-between">
-        <div className="flex gap-3">
-          <button style={{ cursor: "pointer" }} onClick={handleSignOut}>
-            {t("signOut")}
-          </button>
+        <button style={{ cursor: "pointer" }} onClick={handleSignOut}>
+          {t("signOut")}
+        </button>
+
+        <div className="flex flex-row gap-2">
           <LocaleSwitcher />
+          <Link href="/">
+            <Image
+              src="/icons/close-button.svg"
+              alt={t("closeButtonAlt")}
+              height={24}
+              width={24}
+            />
+          </Link>
         </div>
-        <Link href="/">
-          <Image
-            src="/icons/close-button.svg"
-            alt={t("closeButtonAlt")}
-            height={24}
-            width={24}
-          />
-        </Link>
       </div>
 
       <h1 className="mt-20 text-xl text-[#171A1D] font-semibold text-center">
@@ -114,7 +133,9 @@ const ProfilePage = ({ userData, type }: ProfilePageProps) => {
             {t("phoneNumber")}
           </label>
           <Input
-            className="p-4 flex w-full border border-[#E3E6EB] h-12 text-sm rounded-2xl"
+            className={`p-4 flex w-full border h-12 text-sm rounded-2xl ${
+              isPhoneValid ? "border-[#E3E6EB]" : "border-red-500"
+            }`}
             type="text"
             name="phoneNumber"
             value={formData.phoneNumber || ""}
@@ -125,9 +146,9 @@ const ProfilePage = ({ userData, type }: ProfilePageProps) => {
         </div>
 
         <Button
-          onClick={handleSubmit}
           className="my-8 w-full h-12 rounded-lg"
           type="submit"
+          disabled={!isFormValid}
         >
           {t("continue")}
         </Button>

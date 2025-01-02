@@ -14,6 +14,7 @@ import { useRouter } from "next/navigation";
 
 import { Checkbox } from "@/components/ui/checkbox";
 import { submitAnswer } from "@/lib/quiz/submitAnswer";
+import LocaleSwitcher from "@/components/LocaleSwitcher/LocaleSwitcher";
 
 type QuizPageProps = {
   questionData: {
@@ -155,7 +156,7 @@ const QuizPage: React.FC<QuizPageProps> = ({ questionData }) => {
           />
         </Button>
 
-        <div className="flex gap-1 items-center">
+        <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center gap-1">
           <Image
             src="/icons/logo.svg"
             alt={t("quizTitle")}
@@ -167,14 +168,17 @@ const QuizPage: React.FC<QuizPageProps> = ({ questionData }) => {
           </h1>
         </div>
 
-        <Link href="/">
-          <Image
-            src="/icons/close-button.svg"
-            alt={t("closeButton")}
-            height={24}
-            width={24}
-          />
-        </Link>
+        <div className="flex flex-row gap-2">
+          <LocaleSwitcher />
+          <Link href="/">
+            <Image
+              src="/icons/close-button.svg"
+              alt={t("closeButton")}
+              height={24}
+              width={24}
+            />
+          </Link>
+        </div>
       </div>
 
       <div className="bg-[#212121] text-white w-fit text-xs font-semibold p-2.5 rounded-lg mt-4">

@@ -32,11 +32,15 @@ export default function LocaleSwitcherSelect({
   }
 
   return (
-    <div className="relative ">
+    <div className="relative  w-[30px]">
       <Select onValueChange={onChange}>
         <SelectTrigger
           aria-label={label}
-          className={isPending ? "pointer-events-none opacity-60" : ""}
+          className={
+            isPending
+              ? "pointer-events-none opacity-60"
+              : "bg-[#F1F4F8] text-[#6F7581] h-6"
+          }
         >
           <SelectValue placeholder={defaultValue} />
         </SelectTrigger>
