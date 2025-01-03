@@ -1,10 +1,7 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
 import {
   Sheet,
   SheetContent,
@@ -13,7 +10,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-
 import {
   Drawer,
   DrawerClose,
@@ -23,114 +19,134 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-} from "@/components/ui/form";
 import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { UserProfessions } from "@prisma/client";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { useLocale, useTranslations } from "next-intl";
 
-interface ChatSelectionProps {
-  userProfessions?: UserProfessions[];
-  onSelectProfession: (profession: UserProfessions) => void;
-  allJobs: {
-    job_id: string;
-    name: string;
-    name_kz: string;
-    name_ru: string;
-  }[];
+interface Profession {
+  occupation_id: string;
+  name: string;
+  name_ru: string;
+  name_kz: string;
+  percent: number;
 }
 
-const items = [
-  {
-    id: "Технические",
-    label: "Технические",
-  },
-  {
-    id: "Педагогические",
-    label: "Педагогические",
-  },
-  {
-    id: "Юридические",
-    label: "Юридические",
-  },
-  {
-    id: "Медицинские",
-    label: "Медицинские",
-  },
-  {
-    id: "Экономические",
-    label: "Экономические",
-  },
-  {
-    id: "Творческие",
-    label: "Творческие",
-  },
-] as const;
+interface Job {
+  job_id: string;
+  name: string;
+  name_kz: string;
+  name_ru: string;
+  category_id: string;
+}
+
+interface Category {
+  id: string;
+  name: string;
+  name_ru: string;
+  name_kz: string;
+}
+
+interface Subject {
+  subjects: string;
+}
+
+interface ChatSelectionProps {
+  userProfessions?: Profession[];
+  onSelectProfession: (profession: Profession | Job) => void;
+  allJobs: Job[];
+  allCategories: Category[];
+  allSubjects: Subject[];
+}
 
 const ChatSelection: React.FC<ChatSelectionProps> = ({
   userProfessions,
   onSelectProfession,
   allJobs,
+  allCategories,
+  allSubjects,
 }) => {
   const t = useTranslations("ChatPage");
   const locale = useLocale();
   const [searchTerm, setSearchTerm] = useState("");
   const [isSheetOpen, setIsSheetOpen] = useState(false);
+  const [selectedFilters, setSelectedFilters] = useState<
+    ((typeof allCategories)[0] | (typeof allSubjects)[0])[]
+  >([]);
+  const [activeTab, setActiveTab] = useState<"directions" | "subjects">(
+    "directions"
+  );
+  const [filteredJobs, setFilteredJobs] = useState<Job[]>([]);
 
-  const FormSchema = z.object({
-    items: z.array(z.string()),
-  });
+  useEffect(() => {
+    const filtered = allJobs
+      .filter((job) => {
+        const jobName =
+          locale === "kz"
+            ? job.name_kz.toLowerCase()
+            : job.name_ru.toLowerCase();
+        const isMatchingSearchTerm = jobName.includes(searchTerm.toLowerCase());
 
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
-    defaultValues: {
-      items: [],
-    },
-  });
+        const isMatchingCategory =
+          selectedFilters.length === 0 ||
+          selectedFilters.some((filter) =>
+            isCategory(filter) ? filter.id === job.category_id : false
+          );
 
-  const handleCategoryClick = (profession: UserProfessions) => {
+        return isMatchingSearchTerm && isMatchingCategory;
+      })
+      .sort((a, b) => {
+        const nameA = locale === "kz" ? a.name_kz : a.name_ru;
+        const nameB = locale === "kz" ? b.name_kz : b.name_ru;
+        return nameA.localeCompare(nameB);
+      });
+
+    setFilteredJobs(filtered);
+  }, [searchTerm, selectedFilters, locale, allJobs]);
+
+  const handleCategoryClick = (profession: Profession | Job) => {
     onSelectProfession(profession);
     setIsSheetOpen(false);
   };
 
-  const selectedFilters = form.watch("items");
-
-  const handleRemoveFilter = (filter: string) => {
-    const updatedFilters = selectedFilters.filter((item) => item !== filter);
-    form.setValue("items", updatedFilters);
+  const handleRemoveFilter = (
+    filter: (typeof allCategories)[0] | (typeof allSubjects)[0]
+  ) => {
+    setSelectedFilters(selectedFilters.filter((item) => item !== filter));
   };
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    //TODO onSubmit
-  }
+  const handleTabChange = (value: string) => {
+    setActiveTab(value as "directions" | "subjects");
+    setSelectedFilters([]);
+  };
 
-  const filteredJobs = allJobs.filter((job) => {
-    const jobName =
-      locale === "kz" ? job.name_kz.toLowerCase() : job.name_ru.toLowerCase();
-    return jobName.includes(searchTerm.toLowerCase());
-  });
+  const handleCheckboxChange = (
+    item: (typeof allCategories)[0] | (typeof allSubjects)[0],
+    checked: boolean
+  ) => {
+    if (checked) {
+      setSelectedFilters([...selectedFilters, item]);
+    } else {
+      setSelectedFilters(selectedFilters.filter((filter) => filter !== item));
+    }
+  };
+
+  const resetFilters = () => {
+    setSelectedFilters([]);
+  };
+
+  const isCategory = (item: any): item is (typeof allCategories)[0] =>
+    "name" in item;
+  const isSubject = (item: any): item is (typeof allSubjects)[0] =>
+    "subjects" in item;
 
   return (
     <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
-      <SheetTrigger className=" mt-11 flex flex-row gap-1.5 text-[#171A1D] text-[13px] font-medium leading-4 text-center border rounded-3xl p-3">
+      <SheetTrigger className="mt-11 flex flex-row gap-1.5 text-[#171A1D] text-[13px] font-medium leading-4 text-center border rounded-3xl p-3">
         <Image
           src="/icons/message-search.svg"
           alt="message-search"
@@ -140,7 +156,7 @@ const ChatSelection: React.FC<ChatSelectionProps> = ({
         {t("selectProfession")}
       </SheetTrigger>
 
-      <SheetContent side={"bottom"} className="max-h-[80vh]">
+      <SheetContent side="bottom" className="max-h-[80vh]">
         <SheetHeader>
           <SheetTitle>{t("professions")}</SheetTitle>
         </SheetHeader>
@@ -153,7 +169,7 @@ const ChatSelection: React.FC<ChatSelectionProps> = ({
           >
             <Image
               src="/icons/search-icon.svg"
-              alt={"search-icon"}
+              alt="search-icon"
               height={21}
               width={20}
             />
@@ -170,7 +186,7 @@ const ChatSelection: React.FC<ChatSelectionProps> = ({
               <Image
                 className="max-w-fit"
                 src="/icons/filter-button.svg"
-                alt={"filter-button"}
+                alt="filter-button"
                 height={32}
                 width={32}
               />
@@ -181,16 +197,15 @@ const ChatSelection: React.FC<ChatSelectionProps> = ({
                 <DrawerTitle className="text-center text-[#171A1D] text-base font-semibold">
                   {t("filter")}
                 </DrawerTitle>
-
                 <div
-                  onClick={() => form.reset()}
+                  onClick={resetFilters}
                   className="text-right text-[#171A1D] text-xs cursor-pointer font-normal"
                 >
                   {t("reset")}
                 </div>
               </DrawerHeader>
 
-              <Tabs defaultValue="directions" className="">
+              <Tabs value={activeTab} onValueChange={handleTabChange}>
                 <TabsList>
                   <TabsTrigger value="directions">
                     {t("byDirections")}
@@ -199,117 +214,52 @@ const ChatSelection: React.FC<ChatSelectionProps> = ({
                 </TabsList>
 
                 <TabsContent value="directions">
-                  <Form {...form}>
-                    <form
-                      onSubmit={form.handleSubmit(onSubmit)}
-                      className="space-y-8"
-                    >
-                      <FormField
-                        control={form.control}
-                        name="items"
-                        render={() => (
-                          <FormItem>
-                            {items.map((item) => (
-                              <FormField
-                                key={item.id}
-                                control={form.control}
-                                name="items"
-                                render={({ field }) => {
-                                  return (
-                                    <>
-                                      <FormItem
-                                        key={item.id}
-                                        className="flex flex-row  justify-between py-4 items-center"
-                                      >
-                                        <FormLabel className="font-normal">
-                                          {item.label}
-                                        </FormLabel>
-                                        <FormControl>
-                                          <Checkbox
-                                            checked={field.value?.includes(
-                                              item.id
-                                            )}
-                                            onCheckedChange={(checked) => {
-                                              return checked
-                                                ? field.onChange([
-                                                    ...field.value,
-                                                    item.id,
-                                                  ])
-                                                : field.onChange(
-                                                    field.value?.filter(
-                                                      (value) =>
-                                                        value !== item.id
-                                                    )
-                                                  );
-                                            }}
-                                          />
-                                        </FormControl>
-                                      </FormItem>
-                                      <div className="border-t border-[#E3E6EB]"></div>
-                                    </>
-                                  );
-                                }}
-                              />
-                            ))}
-                          </FormItem>
-                        )}
-                      />
-                    </form>
-                  </Form>
+                  <ScrollArea className="h-[280px] w-full mt-6">
+                    {allCategories.map((category) => (
+                      <div key={category.id}>
+                        <div className="flex flex-row justify-between py-4 items-center">
+                          <Label className="font-normal">
+                            {locale === "kz"
+                              ? category.name_kz
+                              : category.name_ru}
+                          </Label>
+                          <Checkbox
+                            checked={selectedFilters.includes(category)}
+                            onCheckedChange={(checked) =>
+                              handleCheckboxChange(category, checked as boolean)
+                            }
+                          />
+                        </div>
+                        <div className="border-t border-[#E3E6EB]"></div>
+                      </div>
+                    ))}
+                  </ScrollArea>
                 </TabsContent>
+
                 <TabsContent value="subjects">
-                  <Accordion type="single" collapsible defaultValue="item-1">
-                    <AccordionItem value="item-1">
-                      <AccordionTrigger className="text-sm font-semibold">
-                        Профильный предмет 1
-                      </AccordionTrigger>
-                      <AccordionContent>
-                        <RadioGroup defaultValue="comfortable">
-                          <div className="flex flex-row  justify-between py-2 items-center">
-                            <Label htmlFor="r1">Биология</Label>
-                            <RadioGroupItem value="default" id="r1" />
-                          </div>
-                          <div className="border-t border-[#E3E6EB]"></div>
-                          <div className="flex flex-row  justify-between py-2 items-center">
-                            <Label htmlFor="r2">Всемирная история</Label>
-                            <RadioGroupItem value="comfortable" id="r2" />
-                          </div>
-                          <div className="border-t border-[#E3E6EB]"></div>
-                          <div className="flex flex-row  justify-between py-2 items-center">
-                            <Label htmlFor="r3">География</Label>
-                            <RadioGroupItem value="compact" id="r3" />
-                          </div>
-                        </RadioGroup>
-                      </AccordionContent>
-                    </AccordionItem>
-                    <AccordionItem value="item-2">
-                      <AccordionTrigger className="text-sm font-semibold">
-                        Профильный предмет 2
-                      </AccordionTrigger>
-                      <AccordionContent>
-                        <RadioGroup defaultValue="comfortable">
-                          <div className="flex flex-row  justify-between py-2 items-center">
-                            <Label htmlFor="r1">Биология</Label>
-                            <RadioGroupItem value="default" id="r1" />
-                          </div>
-                          <div className="border-t border-[#E3E6EB]"></div>
-                          <div className="flex flex-row  justify-between py-2 items-center">
-                            <Label htmlFor="r2">Всемирная история</Label>
-                            <RadioGroupItem value="comfortable" id="r2" />
-                          </div>
-                          <div className="border-t border-[#E3E6EB]"></div>
-                          <div className="flex flex-row  justify-between py-2 items-center">
-                            <Label htmlFor="r3">География</Label>
-                            <RadioGroupItem value="compact" id="r3" />
-                          </div>
-                        </RadioGroup>
-                      </AccordionContent>
-                    </AccordionItem>
-                  </Accordion>
+                  <ScrollArea className="h-[280px] w-full mt-6">
+                    {allSubjects.map((subject, index) => (
+                      <div key={index}>
+                        <div className="flex flex-row justify-between py-4 items-center">
+                          <Label className="font-normal">
+                            {subject.subjects}
+                          </Label>
+                          <Checkbox
+                            checked={selectedFilters.includes(subject)}
+                            onCheckedChange={(checked) =>
+                              handleCheckboxChange(subject, checked as boolean)
+                            }
+                          />
+                        </div>
+                        <div className="border-t border-[#E3E6EB]"></div>
+                      </div>
+                    ))}
+                  </ScrollArea>
                 </TabsContent>
               </Tabs>
+
               <DrawerClose asChild>
-                <Button variant={"secondary"} className="!my-7" type="submit">
+                <Button variant="secondary" className="!my-7">
                   {t("apply")}
                 </Button>
               </DrawerClose>
@@ -317,39 +267,48 @@ const ChatSelection: React.FC<ChatSelectionProps> = ({
           </Drawer>
         </div>
 
-        <div>
-          <div className="flex flex-wrap gap-2">
-            {selectedFilters.length > 0 &&
-              selectedFilters.map((filter) => (
+        {selectedFilters.length > 0 && (
+          <ScrollArea className="whitespace-nowrap pb-4 pt-2">
+            <div className="flex w-max space-x-2">
+              {selectedFilters.map((filter, index) => (
                 <div
-                  key={filter}
-                  className="flex gap-1 items-center border border-[border-[#E3E6EB]] px-2 py-1.5 text-sm rounded-full"
+                  key={index}
+                  className="flex gap-1 items-center border border-[#E3E6EB] px-2 py-1.5 text-sm rounded-full"
                 >
                   <Image
                     onClick={() => handleRemoveFilter(filter)}
                     className="max-w-fit"
                     src="/icons/cancel-square.svg"
-                    alt={"filter-button"}
+                    alt="filter-button"
                     height={32}
                     width={32}
                   />
-                  <p className="font-medium">{filter}</p>
+                  <p className="font-medium">
+                    {isCategory(filter)
+                      ? locale === "kz"
+                        ? filter.name_kz
+                        : filter.name_ru
+                      : isSubject(filter)
+                      ? filter.subjects
+                      : ""}
+                  </p>
                 </div>
               ))}
-          </div>
-        </div>
+            </div>
+            <ScrollBar orientation="horizontal" />
+          </ScrollArea>
+        )}
 
         <div className="mt-4">
           <h3 className="text-[#6F7581] text-sm font-normal">
             {t("recommendedProfessions")}
           </h3>
-
           <ScrollArea className="h-[180px] w-full mt-4">
-            <div className="flex flex-wrap gap-1.5 ">
+            <div className="flex flex-wrap gap-1.5">
               {userProfessions?.map((profession, index) => (
                 <Badge
                   key={index}
-                  onClick={() => handleCategoryClick(profession)}
+                  onClick={() => handleCategoryClick(profession as Profession)}
                 >
                   {locale === "kz" ? profession.name_kz : profession.name_ru}
                 </Badge>
@@ -359,15 +318,18 @@ const ChatSelection: React.FC<ChatSelectionProps> = ({
         </div>
 
         <div className="mt-8">
-          <h3 className="text-[#171A1D] text-base font-semibold leading-4 ">
+          <h3 className="text-[#171A1D] text-base font-semibold leading-4">
             {t("allProfessions")}
           </h3>
-
           <ScrollArea className="h-[280px] w-full mt-6">
             <div className="flex flex-wrap gap-1.5">
               {filteredJobs.length > 0 ? (
-                filteredJobs.map((job, index) => (
-                  <Badge key={index} onClick={() => {}} variant="secondary">
+                filteredJobs.map((job) => (
+                  <Badge
+                    key={job.job_id}
+                    onClick={() => handleCategoryClick(job as Job)}
+                    variant="secondary"
+                  >
                     {locale === "kz" ? job.name_kz : job.name_ru}
                   </Badge>
                 ))

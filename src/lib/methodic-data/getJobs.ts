@@ -10,7 +10,7 @@ export const getJobs = async () => {
         name: true,
         name_kz: true,
         name_ru: true,
-        specs: true,
+        category_id: true,
       },
     });
     return allJobs || null;

@@ -12,32 +12,61 @@ import ChatHistory from "./_components/ChatHistory";
 import ChatHelp from "./_components/ChatHelp";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { setChatMessages } from "@/lib/chat/setChatMessages";
-import { UserProfessions } from "@prisma/client";
 import { useLocale, useTranslations } from "next-intl";
 import ChatSelection from "./_components/ChatSelection";
 
+interface Profession {
+  occupation_id: string;
+  name: string;
+  name_ru: string;
+  name_kz: string;
+  percent: number;
+}
+interface Job {
+  job_id: string;
+  name: string;
+  name_kz: string;
+  name_ru: string;
+  category_id: string;
+}
+
+interface Category {
+  id: string;
+  name: string;
+  name_ru: string;
+  name_kz: string;
+}
+
+interface Subject {
+  subjects: string;
+}
+
 interface ChatPageProps {
-  userProfessions?: UserProfessions[];
+  userProfessions?: Profession[];
   userChats?: {
     chat_id: string;
     chat_title: string;
   }[];
-  allJobs: {
-    job_id: string;
-    name: string;
-    name_kz: string;
-    name_ru: string;
-  }[];
+  allJobs: Job[];
+  allCategories: Category[];
+  allSubjects: Subject[];
 }
 
-const ChatPage = ({ userProfessions, userChats, allJobs }: ChatPageProps) => {
+const ChatPage = ({
+  userProfessions,
+  userChats,
+  allJobs,
+  allCategories,
+  allSubjects,
+}: ChatPageProps) => {
   const t = useTranslations("ChatPage");
   const locale = useLocale();
   const [currentChatId, setCurrentChatId] = useState("");
   const [copied, setCopied] = useState(false);
   const [isMessageFinish, setIsMessageFinish] = useState(false);
-  const [selectedProfession, setSelectedProfession] =
-    useState<UserProfessions | null>(null);
+  const [selectedProfession, setSelectedProfession] = useState<
+    Profession | Job | null
+  >(null);
 
   const scrollAreaRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -55,10 +84,17 @@ const ChatPage = ({ userProfessions, userChats, allJobs }: ChatPageProps) => {
       setIsMessageFinish(true);
 
       const assistantMessage = message.content;
-      if (currentChatId === "" && selectedProfession?.occupation_id) {
+      if (currentChatId === "" && selectedProfession) {
+        const profId =
+          selectedProfession && "occupation_id" in selectedProfession
+            ? selectedProfession.occupation_id
+            : selectedProfession?.job_id;
+
         setUserChat(
-          selectedProfession?.occupation_id,
-          selectedProfession?.name_ru
+          profId,
+          locale === "kz"
+            ? selectedProfession.name_kz
+            : selectedProfession.name_ru
         ).then((chatId) => {
           if (chatId) {
             setCurrentChatId(chatId);
@@ -97,9 +133,9 @@ const ChatPage = ({ userProfessions, userChats, allJobs }: ChatPageProps) => {
     target.style.height = `${target.scrollHeight}px`;
   };
 
-  const handleProfessionSelect = (profession: UserProfessions) => {
+  const handleProfessionSelect = (profession: Profession | Job) => {
     setSelectedProfession(profession);
-    setInput(profession.name_ru);
+    setInput(locale === "kz" ? profession.name_kz : profession.name_ru);
   };
 
   useEffect(() => {
@@ -116,10 +152,15 @@ const ChatPage = ({ userProfessions, userChats, allJobs }: ChatPageProps) => {
   }, [selectedProfession]);
 
   const submitForm = (event: React.FormEvent | React.KeyboardEvent) => {
+    const profId =
+      selectedProfession && "occupation_id" in selectedProfession
+        ? selectedProfession.occupation_id
+        : selectedProfession?.job_id;
+
     setIsMessageFinish(false);
     handleSubmit(event, {
       body: {
-        professionId: selectedProfession?.occupation_id,
+        professionId: profId,
       },
     });
 
@@ -244,6 +285,8 @@ const ChatPage = ({ userProfessions, userChats, allJobs }: ChatPageProps) => {
             userProfessions={userProfessions}
             onSelectProfession={handleProfessionSelect}
             allJobs={allJobs}
+            allCategories={allCategories}
+            allSubjects={allSubjects}
           />
         </div>
       )}
