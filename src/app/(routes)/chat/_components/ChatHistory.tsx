@@ -11,6 +11,8 @@ import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import LocaleSwitcher from "@/components/LocaleSwitcher/LocaleSwitcher";
+import { useTranslations } from "next-intl";
 
 interface ChatHistoryProps {
   userChats?: {
@@ -20,6 +22,7 @@ interface ChatHistoryProps {
 }
 
 const ChatHistory = ({ userChats }: ChatHistoryProps) => {
+  const t = useTranslations("ChatPage");
   return (
     <Sheet>
       <SheetTrigger>
@@ -43,12 +46,14 @@ const ChatHistory = ({ userChats }: ChatHistoryProps) => {
         side={"right"}
         className="!p-0 !box-border"
       >
-        <SheetHeader className="px-4 mt-8">
-          <SheetTitle>
-            <p className="text-sm text-[#171A1D] font-bold">
+        <SheetHeader className="px-4 mt-8 flex flex-row items-center justify-between">
+          <LocaleSwitcher />
+          <SheetTitle className="!mt-0">
+            <p className="text-sm text-[#171A1D] font-bold ">
               Smart Bolashaq AI chat
             </p>
           </SheetTitle>
+          <div className="w-[24px]"></div>
         </SheetHeader>
         <SheetDescription></SheetDescription>
 
@@ -64,7 +69,7 @@ const ChatHistory = ({ userChats }: ChatHistoryProps) => {
               width={20}
             />
             <Input
-              placeholder="Поиск чата"
+              placeholder={t("chatPlaceholder")}
               className={
                 "flex w-full !border-transparent bg-transparent  text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
               }
@@ -72,7 +77,9 @@ const ChatHistory = ({ userChats }: ChatHistoryProps) => {
           </div>
         </div>
 
-        <h3 className="text-[#A5AAB3] text-sm leading-4 mt-7 px-4">Чаты</h3>
+        <h3 className="text-[#A5AAB3] text-sm leading-4 mt-7 px-4">
+          {t("chats")}
+        </h3>
 
         <ScrollArea className="h-full">
           <ul className="flex-1 ">

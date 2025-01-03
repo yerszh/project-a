@@ -9,22 +9,23 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 const ChatHelp = () => {
+  const t = useTranslations("ChatPage");
   return (
     <div className="mt-56 mx-5 flex flex-col ">
       <h2 className="text-[#171A1D] text-sm font-normal leading-4 text-center">
-        Привет, я <span className="font-semibold">AI Chat!</span> Я тут чтобы
-        помочь тебе узнать информацию о различных профессиях, вузах, грандах,
-        стипендиях, и многое другое. Для начала работы выбери профессию.
+        {t("greeting")} <span className="font-semibold">AI Chat!</span>{" "}
+        {t("intro")}
       </h2>
       <p className="mt-6 mx-14 text-[#757575] text-xs font-normal leading-3 text-center">
-        Диалог в чате ведется на основе выбранной вами профессии
+        {t("dialogInfo")}
       </p>
 
       <Dialog>
         <DialogTrigger className="mt-2.5 text-[#171A1D] text-xs font-medium leading-3 text-center">
-          Подробнее..
+          {t("moreInfo")}
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
@@ -35,11 +36,10 @@ const ChatHelp = () => {
                 height={16}
                 width={16}
               />
-              Помощь
+              {t("help")}
             </DialogTitle>
             <DialogDescription className="text-[#171A1D] text-[13px] font-medium leading-5 !mt-4">
-              Чат фокусируется на профессии, которую вы выбрали. Чтобы начать
-              обсуждение другой профессии необходимо сначала сменить выбор.
+              {t("chatFocus")}
             </DialogDescription>
           </DialogHeader>
         </DialogContent>

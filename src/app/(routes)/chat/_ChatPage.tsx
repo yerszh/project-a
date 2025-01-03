@@ -14,6 +14,7 @@ import ChatHelp from "./_components/ChatHelp";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { setChatMessages } from "@/lib/chat/setChatMessages";
 import { UserProfessions } from "@prisma/client";
+import { useLocale, useTranslations } from "next-intl";
 
 interface ChatPageProps {
   userProfessions?: UserProfessions[];
@@ -30,6 +31,8 @@ interface ChatPageProps {
 }
 
 const ChatPage = ({ userProfessions, userChats, allJobs }: ChatPageProps) => {
+  const t = useTranslations("ChatPage");
+  const locale = useLocale();
   const [currentChatId, setCurrentChatId] = useState("");
   const [copied, setCopied] = useState(false);
   const [isMessageFinish, setIsMessageFinish] = useState(false);

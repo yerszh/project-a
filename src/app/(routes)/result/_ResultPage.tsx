@@ -61,7 +61,7 @@ const ResultPage = ({ userResult }: ResultPageProps) => {
   ];
   const router = useRouter();
 
-  const handleSubmit = async () => {
+  const handleRetakeQuiz = async () => {
     await createUserQuiz().then(() => {
       router.push("/quiz");
     });
@@ -70,7 +70,7 @@ const ResultPage = ({ userResult }: ResultPageProps) => {
     <div className="p-4 w-full flex flex-col items-center">
       <div className="w-full flex justify-between mt-4">
         <Button
-          onClick={handleSubmit}
+          onClick={handleRetakeQuiz}
           variant={"ghost"}
           size={"icon"}
           className="flex gap-2 items-center text-[#A5AAB3] text-xs	"
