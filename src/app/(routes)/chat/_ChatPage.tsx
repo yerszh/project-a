@@ -6,7 +6,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import SelectProfession from "./_components/SelectProfession";
 import { setUserChat } from "@/lib/chat/setUserChat";
 import { useChat } from "ai/react";
 import ChatHistory from "./_components/ChatHistory";
@@ -15,6 +14,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { setChatMessages } from "@/lib/chat/setChatMessages";
 import { UserProfessions } from "@prisma/client";
 import { useLocale, useTranslations } from "next-intl";
+import ChatSelection from "./_components/ChatSelection";
 
 interface ChatPageProps {
   userProfessions?: UserProfessions[];
@@ -215,7 +215,7 @@ const ChatPage = ({ userProfessions, userChats, allJobs }: ChatPageProps) => {
                             width={12}
                           />
                         )}
-                        Копировать
+                        {t("copyButton")}
                       </Button>
 
                       <Button
@@ -229,7 +229,7 @@ const ChatPage = ({ userProfessions, userChats, allJobs }: ChatPageProps) => {
                           height={12}
                           width={12}
                         />
-                        Обсудить другую профессию
+                        {t("discussAnotherProfession")}
                       </Button>
                     </div>
                   )}
@@ -240,7 +240,7 @@ const ChatPage = ({ userProfessions, userChats, allJobs }: ChatPageProps) => {
       ) : (
         <div className=" flex-1 px-4 flex flex-col items-center h-full">
           <ChatHelp />
-          <SelectProfession
+          <ChatSelection
             userProfessions={userProfessions}
             onSelectProfession={handleProfessionSelect}
             allJobs={allJobs}
@@ -259,7 +259,7 @@ const ChatPage = ({ userProfessions, userChats, allJobs }: ChatPageProps) => {
             ref={textareaRef}
             className="mx-3"
             placeholder={
-              messages.length === 0 ? "Выберите профессию" : "Сообщение"
+              messages.length === 0 ? t("textareaSelect") : t("textareaMessage")
             }
             readOnly={messages.length === 0}
             value={input}

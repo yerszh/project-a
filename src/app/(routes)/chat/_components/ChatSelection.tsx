@@ -45,9 +45,9 @@ import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { UserProfessions } from "@prisma/client";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
-interface SelectProfessionProps {
+interface ChatSelectionProps {
   userProfessions?: UserProfessions[];
   onSelectProfession: (profession: UserProfessions) => void;
   allJobs: {
@@ -85,11 +85,12 @@ const items = [
   },
 ] as const;
 
-const SelectProfession: React.FC<SelectProfessionProps> = ({
+const ChatSelection: React.FC<ChatSelectionProps> = ({
   userProfessions,
   onSelectProfession,
   allJobs,
 }) => {
+  const t = useTranslations("ChatPage");
   const locale = useLocale();
   const [searchTerm, setSearchTerm] = useState("");
   const [isSheetOpen, setIsSheetOpen] = useState(false);
@@ -136,12 +137,12 @@ const SelectProfession: React.FC<SelectProfessionProps> = ({
           height={16}
           width={16}
         />
-        Выбрать профессию
+        {t("selectProfession")}
       </SheetTrigger>
 
       <SheetContent side={"bottom"} className="max-h-[80vh]">
         <SheetHeader>
-          <SheetTitle>Профессии</SheetTitle>
+          <SheetTitle>{t("professions")}</SheetTitle>
         </SheetHeader>
         <SheetDescription></SheetDescription>
 
@@ -157,7 +158,7 @@ const SelectProfession: React.FC<SelectProfessionProps> = ({
               width={20}
             />
             <Input
-              placeholder="Поиск профессии"
+              placeholder={t("searchProfession")}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="flex w-full !border-transparent bg-transparent text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
@@ -178,21 +179,23 @@ const SelectProfession: React.FC<SelectProfessionProps> = ({
               <DrawerHeader className="grid grid-cols-3 items-center pb-4 pt-3">
                 <DrawerDescription></DrawerDescription>
                 <DrawerTitle className="text-center text-[#171A1D] text-base font-semibold">
-                  Фильтр
+                  {t("filter")}
                 </DrawerTitle>
 
                 <div
                   onClick={() => form.reset()}
                   className="text-right text-[#171A1D] text-xs cursor-pointer font-normal"
                 >
-                  Сбросить
+                  {t("reset")}
                 </div>
               </DrawerHeader>
 
               <Tabs defaultValue="directions" className="">
                 <TabsList>
-                  <TabsTrigger value="directions">По направлениям</TabsTrigger>
-                  <TabsTrigger value="subjects">По предметам</TabsTrigger>
+                  <TabsTrigger value="directions">
+                    {t("byDirections")}
+                  </TabsTrigger>
+                  <TabsTrigger value="subjects">{t("bySubjects")}</TabsTrigger>
                 </TabsList>
 
                 <TabsContent value="directions">
@@ -307,7 +310,7 @@ const SelectProfession: React.FC<SelectProfessionProps> = ({
               </Tabs>
               <DrawerClose asChild>
                 <Button variant={"secondary"} className="!my-7" type="submit">
-                  Применить
+                  {t("apply")}
                 </Button>
               </DrawerClose>
             </DrawerContent>
@@ -338,7 +341,7 @@ const SelectProfession: React.FC<SelectProfessionProps> = ({
 
         <div className="mt-4">
           <h3 className="text-[#6F7581] text-sm font-normal">
-            Рекомендуемые профессии
+            {t("recommendedProfessions")}
           </h3>
 
           <ScrollArea className="h-[180px] w-full mt-4">
@@ -357,7 +360,7 @@ const SelectProfession: React.FC<SelectProfessionProps> = ({
 
         <div className="mt-8">
           <h3 className="text-[#171A1D] text-base font-semibold leading-4 ">
-            Все профессию
+            {t("allProfessions")}
           </h3>
 
           <ScrollArea className="h-[280px] w-full mt-6">
@@ -369,7 +372,9 @@ const SelectProfession: React.FC<SelectProfessionProps> = ({
                   </Badge>
                 ))
               ) : (
-                <p className="text-sm text-gray-500">Профессия не найдена</p>
+                <p className="text-sm text-gray-500">
+                  {t("professionNotFound")}
+                </p>
               )}
             </div>
           </ScrollArea>
@@ -379,4 +384,4 @@ const SelectProfession: React.FC<SelectProfessionProps> = ({
   );
 };
 
-export default SelectProfession;
+export default ChatSelection;

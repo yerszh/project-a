@@ -55,6 +55,21 @@
     "help": "Көмек",
     "chatFocus": "Чат таңдаған мамандығыңызға бағытталған. Басқа мамандықты талқылауды бастау үшін алдымен таңдауды өзгерту керек.",
     "chatPlaceholder": "Чат іздеу",
-    "chats": "Чаттар"
+    "chats": "Чаттар",
+    "selectProfession": "Мамандықты таңдау",
+    "professions": "Мамандықтар",
+    "searchProfession": "Мамандық іздеу",
+    "filter": "Фильтр",
+    "reset": "Тазарту",
+    "byDirections": "Бағыттар бойынша",
+    "bySubjects": "Пәндер бойынша",
+    "apply": "Қолдану",
+    "recommendedProfessions": "Ұсынылатын мамандықтар",
+    "allProfessions": "Барлық мамандықтар",
+    "professionNotFound": "Мамандық табылмады",
+    "copyButton": "Көшіру",
+    "discussAnotherProfession": "Басқа мамандықты талқылау",
+    "textareaSelect": "Мамандықты таңдаңыз",
+    "textareaMessage": "Хабарлама"
   }
 }

@@ -55,6 +55,21 @@
     "help": "Помощь",
     "chatFocus": "Чат фокусируется на профессии, которую вы выбрали. Чтобы начать обсуждение другой профессии необходимо сначала сменить выбор.",
     "chatPlaceholder": "Поиск чата",
-    "chats": "Чаты"
+    "chats": "Чаты",
+    "selectProfession": "Выбрать профессию",
+    "professions": "Профессии",
+    "searchProfession": "Поиск профессии",
+    "filter": "Фильтр",
+    "reset": "Сбросить",
+    "byDirections": "По направлениям",
+    "bySubjects": "По предметам",
+    "apply": "Применить",
+    "recommendedProfessions": "Рекомендуемые профессии",
+    "allProfessions": "Все профессии",
+    "professionNotFound": "Профессия не найдена",
+    "copyButton": "Копировать",
+    "discussAnotherProfession": "Обсудить другую профессию",
+    "textareaSelect": "Выберите профессию",
+    "textareaMessage": "Сообщение"
   }
 }
