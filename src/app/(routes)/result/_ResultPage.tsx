@@ -52,7 +52,7 @@ const ResultPage = ({ userResult }: ResultPageProps) => {
   const locale = useLocale();
 
   const chartData = [
-    { profs: "R", points: userResult?.R },
+    { profs: "Re", points: userResult?.R },
     { profs: "I", points: userResult?.I },
     { profs: "A", points: userResult?.A },
     { profs: "S", points: userResult?.S },
@@ -85,6 +85,15 @@ const ResultPage = ({ userResult }: ResultPageProps) => {
         </Button>
 
         <div className="flex flex-row gap-2">
+        <Link href="/profile">
+            <Image 
+              className="rounded-lg"
+              src="/icons/profile-icon.svg"
+              alt={"profile"}
+              height={24}
+              width={24}
+            />
+          </Link>
           <LocaleSwitcher />
           <Link href="/">
             <Image

@@ -99,9 +99,9 @@ const currentSchool = schools?.find(school =>
           {t("signOut")}
         </button>
 
-        <div className="flex flex-row gap-2">
+        <div className="flex flex-row gap-2 mt-4">
           <LocaleSwitcher />
-          <Link href="/">
+          <Link href="/result">
             <Image
               src="/icons/close-button.svg"
               alt={t("closeButtonAlt")}

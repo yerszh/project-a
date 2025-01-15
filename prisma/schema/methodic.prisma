@@ -213,3 +213,10 @@ model methodic_specs_univers {
   spec                    methodic_specs?       @relation(fields: [spec_id], references: [spec_id])
   univers                 methodic_univers?     @relation(fields: [univer_id], references: [univer_id])
 }
+
+
+model methodic_config {
+  config_id               String                                @id @default(uuid())
+  config_name             String
+  config_value            String
+}
