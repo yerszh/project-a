@@ -1,4 +1,8 @@
-TRUNCATE TABLE public.methodic_specs_univers RESTART IDENTITY CASCADE;
+DO $$
+BEGIN
+
+    IF NOT EXISTS (SELECT 1 FROM public.methodic_specs_univers) THEN
+
 INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
 	 ('9006ff0b-8abb-4697-8cf8-66e06d93b085','7446b266-f4fa-412b-8eff-33612f4ac52b','yes',70,107,2,109,100,100,1),
 	 ('b7b148c0-5111-47fd-b898-c8a971ca6054','7446b266-f4fa-412b-8eff-33612f4ac52b','yes',70,125,3,127,109,109,1),
@@ -9,8 +13,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('1bde7005-a39d-4ef7-9aab-2f3e2ba56b36','7446b266-f4fa-412b-8eff-33612f4ac52b','yes',70,111,13,124,97,111,6),
 	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','3da599f4-43d1-4c4e-bb7b-3395b1da7969','no',50,0,0,0,0,0,0),
 	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','3da599f4-43d1-4c4e-bb7b-3395b1da7969','yes',50,0,0,0,0,0,0),
-	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','3da599f4-43d1-4c4e-bb7b-3395b1da7969','yes',50,0,1,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','3da599f4-43d1-4c4e-bb7b-3395b1da7969','yes',50,0,1,0,0,0,0),
 	 ('e0455258-2b5f-4722-9b33-95655c9c2ba3','3da599f4-43d1-4c4e-bb7b-3395b1da7969','no',50,0,0,0,0,0,0),
 	 ('ba0ebff4-5d5a-4040-b34c-f333aaf30581','3da599f4-43d1-4c4e-bb7b-3395b1da7969','yes',50,80,118,130,0,0,0),
 	 ('9b291fa8-a072-4b17-a06d-174cd7e833ac','3da599f4-43d1-4c4e-bb7b-3395b1da7969','no',50,72,92,103,0,0,0),
@@ -20,8 +23,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('37526a2a-0547-4c5b-ab77-2d63ac4a467a','3da599f4-43d1-4c4e-bb7b-3395b1da7969','yes',50,74,102,96,0,0,0),
 	 ('cfeac907-17cc-404a-8506-52487e3555eb','3da599f4-43d1-4c4e-bb7b-3395b1da7969','no',50,50,99,91,0,0,0),
 	 ('b8ee7908-762e-453f-8aa5-7abc8cef3bb2','3da599f4-43d1-4c4e-bb7b-3395b1da7969','no',50,50,141,92,0,0,0),
-	 ('ecfb3b2b-1c2e-4324-b6bc-4ea21480d71d','3da599f4-43d1-4c4e-bb7b-3395b1da7969','no',50,57,243,102,51,56,46);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('ecfb3b2b-1c2e-4324-b6bc-4ea21480d71d','3da599f4-43d1-4c4e-bb7b-3395b1da7969','no',50,57,243,102,51,56,46),
 	 ('799bb59b-e8db-4700-b5ce-f5d003f0a0cf','3da599f4-43d1-4c4e-bb7b-3395b1da7969','no',70,88,185,129,0,0,0),
 	 ('22b17839-d90e-4ce0-b96a-311bb13039e4','3da599f4-43d1-4c4e-bb7b-3395b1da7969','no',60,61,317,109,0,0,0),
 	 ('69169118-aafe-417a-ae64-6e292e40c3f6','3da599f4-43d1-4c4e-bb7b-3395b1da7969','no',50,78,357,117,71,77,23),
@@ -31,8 +33,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('e73a6036-b1ec-442c-9172-5e5ece53404c','3da599f4-43d1-4c4e-bb7b-3395b1da7969','no',50,50,13,84,0,0,0),
 	 ('91cb0d5f-084c-462d-bd66-15decbfbebe5','3da599f4-43d1-4c4e-bb7b-3395b1da7969','no',50,59,333,90,53,75,59),
 	 ('70fdfcb8-600b-4f24-b06a-9fb4a5f4d064','3da599f4-43d1-4c4e-bb7b-3395b1da7969','no',50,50,6,76,0,0,0),
-	 ('8bde249d-d6bf-4d3a-ace8-d0fd50073dc4','3da599f4-43d1-4c4e-bb7b-3395b1da7969','no',50,50,20,77,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('8bde249d-d6bf-4d3a-ace8-d0fd50073dc4','3da599f4-43d1-4c4e-bb7b-3395b1da7969','no',50,50,20,77,0,0,0),
 	 ('edc0d87e-493a-49e6-80be-0f9714f086a3','3da599f4-43d1-4c4e-bb7b-3395b1da7969','yes',50,50,86,90,0,0,0),
 	 ('29f4909c-9c48-49ae-bc7b-e91a84ba4fd8','3da599f4-43d1-4c4e-bb7b-3395b1da7969','no',50,51,190,91,50,62,62),
 	 ('a2440d23-5d06-470d-836b-4930f953df2b','3da599f4-43d1-4c4e-bb7b-3395b1da7969','no',50,0,5,0,0,0,0),
@@ -42,8 +43,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('a2fd0858-fbf4-4b51-859d-c1c5e9928514','737c97fd-b213-4f94-b0a2-289253a3fae7','no',75,106,16,125,92,105,11),
 	 ('82c52cd0-83d8-4cdf-98dd-07cbbdca8252','737c97fd-b213-4f94-b0a2-289253a3fae7','no',75,97,9,113,82,91,7),
 	 ('ff179c5a-b1f4-49e2-affd-60f447f67ead','737c97fd-b213-4f94-b0a2-289253a3fae7','no',75,76,18,105,0,0,0),
-	 ('9e21b36e-cf5b-4ad2-9a73-e5259ee0c0a2','737c97fd-b213-4f94-b0a2-289253a3fae7','no',75,87,13,108,77,86,11);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('9e21b36e-cf5b-4ad2-9a73-e5259ee0c0a2','737c97fd-b213-4f94-b0a2-289253a3fae7','no',75,87,13,108,77,86,11),
 	 ('50b30175-6a36-4d29-aa70-742b5b352e89','737c97fd-b213-4f94-b0a2-289253a3fae7','no',75,91,11,101,82,90,9),
 	 ('343d4de5-ae93-44db-8979-c9ad34bb32a5','737c97fd-b213-4f94-b0a2-289253a3fae7','no',75,95,4,99,90,95,4),
 	 ('dcd3f8e8-d032-4316-bd7b-80ee20599438','737c97fd-b213-4f94-b0a2-289253a3fae7','no',75,103,9,110,95,101,7),
@@ -53,8 +53,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('3be5af1c-1aa4-404a-ad4e-396ececd2c1c','737c97fd-b213-4f94-b0a2-289253a3fae7','no',75,75,25,99,0,0,0),
 	 ('3d4db5b5-f42f-442b-bebe-27d500886969','737c97fd-b213-4f94-b0a2-289253a3fae7','no',50,0,0,0,0,0,0),
 	 ('74585823-3571-4985-af35-53a306d6dc8d','737c97fd-b213-4f94-b0a2-289253a3fae7','no',50,0,0,0,0,0,0),
-	 ('ba1011e7-60ca-4863-8d5c-a0a5d88833ab','737c97fd-b213-4f94-b0a2-289253a3fae7','no',50,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('ba1011e7-60ca-4863-8d5c-a0a5d88833ab','737c97fd-b213-4f94-b0a2-289253a3fae7','no',50,0,0,0,0,0,0),
 	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','737c97fd-b213-4f94-b0a2-289253a3fae7','no',50,0,0,0,0,0,0),
 	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','737c97fd-b213-4f94-b0a2-289253a3fae7','no',50,0,0,0,0,0,0),
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','737c97fd-b213-4f94-b0a2-289253a3fae7','no',50,0,0,0,0,0,0),
@@ -64,8 +63,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','737c97fd-b213-4f94-b0a2-289253a3fae7','no',50,116,17,121,69,102,11),
 	 ('a3e60bd8-0358-48f1-9f3d-30f599b98b92','737c97fd-b213-4f94-b0a2-289253a3fae7','no',50,50,4,63,0,0,0),
 	 ('7864108f-af86-4dd9-aebf-465fe765a524','737c97fd-b213-4f94-b0a2-289253a3fae7','no',50,59,21,93,50,66,31),
-	 ('37526a2a-0547-4c5b-ab77-2d63ac4a467a','737c97fd-b213-4f94-b0a2-289253a3fae7','no',50,50,23,93,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('37526a2a-0547-4c5b-ab77-2d63ac4a467a','737c97fd-b213-4f94-b0a2-289253a3fae7','no',50,50,23,93,0,0,0),
 	 ('cfeac907-17cc-404a-8506-52487e3555eb','737c97fd-b213-4f94-b0a2-289253a3fae7','no',50,50,16,104,0,0,0),
 	 ('b8ee7908-762e-453f-8aa5-7abc8cef3bb2','737c97fd-b213-4f94-b0a2-289253a3fae7','no',50,50,11,70,0,0,0),
 	 ('dcd0cf77-c965-48c6-998b-99a3401a8adc','737c97fd-b213-4f94-b0a2-289253a3fae7','no',50,50,31,73,0,0,0),
@@ -75,8 +73,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('29a9bee8-fe62-4e70-83e5-1bcbf1e3d009','737c97fd-b213-4f94-b0a2-289253a3fae7','no',50,57,16,83,0,0,0),
 	 ('df4d0ec2-c98d-4594-9966-7d796b9742a4','737c97fd-b213-4f94-b0a2-289253a3fae7','no',50,114,2,114,0,0,0),
 	 ('9a53f91c-d5f8-422f-8f1e-df461991b0aa','737c97fd-b213-4f94-b0a2-289253a3fae7','no',50,0,1,0,99,99,1),
-	 ('568bd7b2-73ec-4d9c-96b8-22c89ed3ef9f','737c97fd-b213-4f94-b0a2-289253a3fae7','no',50,89,1,89,65,67,3);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('568bd7b2-73ec-4d9c-96b8-22c89ed3ef9f','737c97fd-b213-4f94-b0a2-289253a3fae7','no',50,89,1,89,65,67,3),
 	 ('a2440d23-5d06-470d-836b-4930f953df2b','737c97fd-b213-4f94-b0a2-289253a3fae7','no',50,0,0,0,0,0,0),
 	 ('9006ff0b-8abb-4697-8cf8-66e06d93b085','f59a9f28-f0fc-460b-b45d-e2b88d1057b0','no',70,98,2,100,93,93,1),
 	 ('b7b148c0-5111-47fd-b898-c8a971ca6054','f59a9f28-f0fc-460b-b45d-e2b88d1057b0','no',70,107,5,110,98,102,2),
@@ -86,8 +83,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('dcf951d4-f863-46d8-b9c1-9de67f232032','f59a9f28-f0fc-460b-b45d-e2b88d1057b0','no',70,105,50,114,96,102,24),
 	 ('1bde7005-a39d-4ef7-9aab-2f3e2ba56b36','f59a9f28-f0fc-460b-b45d-e2b88d1057b0','no',70,0,0,0,0,0,0),
 	 ('7a70e183-1106-4c83-af24-1521cdd8d9e5','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',75,90,4,109,79,89,4),
-	 ('e19104e9-bda3-4041-9123-17e8eb01a75b','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',75,75,16,87,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('e19104e9-bda3-4041-9123-17e8eb01a75b','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',75,75,16,87,0,0,0),
 	 ('06fe98c5-019f-4409-b3e6-3fe40368ab8b','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',75,92,13,118,83,91,12),
 	 ('6e6a3c9b-9407-439a-9aaf-7b24aa261bc2','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',75,129,4,129,0,0,0),
 	 ('f8d37b18-f591-4a7a-ad79-dc63df618e57','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',75,123,2,126,119,123,2),
@@ -97,8 +93,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('ff179c5a-b1f4-49e2-affd-60f447f67ead','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',75,90,11,115,76,90,5),
 	 ('9e21b36e-cf5b-4ad2-9a73-e5259ee0c0a2','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',75,101,10,116,89,98,7),
 	 ('50b30175-6a36-4d29-aa70-742b5b352e89','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',75,98,11,109,89,93,9),
-	 ('343d4de5-ae93-44db-8979-c9ad34bb32a5','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',75,101,4,108,100,101,4);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('343d4de5-ae93-44db-8979-c9ad34bb32a5','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',75,101,4,108,100,101,4),
 	 ('dcd3f8e8-d032-4316-bd7b-80ee20599438','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',75,115,7,131,107,116,4),
 	 ('3261f8b0-9486-490a-a5d5-56f9d0a72f5b','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',75,118,13,130,113,116,9),
 	 ('4e3e8d13-59f5-4fae-a38c-e1ec8a144ea5','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',75,83,13,118,75,88,19),
@@ -108,8 +103,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('8746c70d-7354-4446-99f8-df18f02f32ec','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',55,0,0,0,0,0,0),
 	 ('8413d5b4-60a4-44e6-9584-57f50a8ebaf7','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',55,0,3,0,0,0,0),
 	 ('b77221e0-134b-4991-bf89-14f7fa6d384e','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',55,0,0,0,0,0,0),
-	 ('e32d3ed6-8080-4d66-a739-1be8eaf7cc0e','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',55,125,3,125,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('e32d3ed6-8080-4d66-a739-1be8eaf7cc0e','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',55,125,3,125,0,0,0),
 	 ('74585823-3571-4985-af35-53a306d6dc8d','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',55,124,3,127,0,0,0),
 	 ('c912bc9c-3ece-4594-a059-587ad9f0698e','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',55,0,0,0,0,0,0),
 	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',55,0,0,0,0,0,0),
@@ -119,8 +113,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('ba0ebff4-5d5a-4040-b34c-f333aaf30581','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',55,79,37,99,0,0,0),
 	 ('9b291fa8-a072-4b17-a06d-174cd7e833ac','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',55,72,25,89,0,0,0),
 	 ('37d20dce-712c-43b4-bd73-2468b5ba4f04','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',55,67,44,107,0,0,0),
-	 ('8d8404f6-43cd-47b1-a5e7-5854339c7d97','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',55,69,45,94,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('8d8404f6-43cd-47b1-a5e7-5854339c7d97','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',55,69,45,94,0,0,0),
 	 ('2ce70ff9-000b-4ece-acc8-b77c6620557c','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',55,65,36,108,0,0,0),
 	 ('0a4347d8-076b-45db-9671-2f9e0e8b7d03','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',55,89,25,104,0,0,0),
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',55,111,7,115,69,108,24),
@@ -130,8 +123,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('ecfb3b2b-1c2e-4324-b6bc-4ea21480d71d','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',55,56,105,92,55,74,12),
 	 ('ceb52a41-1897-4153-8aa4-92fe31f06a16','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',55,57,11,77,0,0,0),
 	 ('4ad718ce-1644-4c88-8cee-1f89be610386','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',55,55,80,88,0,0,0),
-	 ('22b17839-d90e-4ce0-b96a-311bb13039e4','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',55,62,27,108,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('22b17839-d90e-4ce0-b96a-311bb13039e4','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',55,62,27,108,0,0,0),
 	 ('df4d0ec2-c98d-4594-9966-7d796b9742a4','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',55,0,0,0,0,0,0),
 	 ('db0f8552-ee55-48c3-a09b-81fb431247f8','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',55,126,4,126,121,122,2),
 	 ('a2440d23-5d06-470d-836b-4930f953df2b','bc92d90a-f36f-4ad1-9eda-f212fe4bfbd0','no',55,0,8,0,111,111,1),
@@ -141,8 +133,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('7a70e183-1106-4c83-af24-1521cdd8d9e5','fe682aaf-12af-4401-951a-cb2469084518','no',75,76,4,81,0,0,0),
 	 ('e19104e9-bda3-4041-9123-17e8eb01a75b','fe682aaf-12af-4401-951a-cb2469084518','no',75,0,0,0,0,0,0),
 	 ('06fe98c5-019f-4409-b3e6-3fe40368ab8b','fe682aaf-12af-4401-951a-cb2469084518','no',75,78,4,85,0,0,0),
-	 ('6e6a3c9b-9407-439a-9aaf-7b24aa261bc2','fe682aaf-12af-4401-951a-cb2469084518','no',75,115,13,126,123,125,2);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('6e6a3c9b-9407-439a-9aaf-7b24aa261bc2','fe682aaf-12af-4401-951a-cb2469084518','no',75,115,13,126,123,125,2),
 	 ('f8d37b18-f591-4a7a-ad79-dc63df618e57','fe682aaf-12af-4401-951a-cb2469084518','no',75,120,2,127,116,119,2),
 	 ('73864b26-b50c-406b-9e18-310a870b08e1','fe682aaf-12af-4401-951a-cb2469084518','no',75,117,2,125,113,114,2),
 	 ('a2fd0858-fbf4-4b51-859d-c1c5e9928514','fe682aaf-12af-4401-951a-cb2469084518','no',75,75,24,103,75,79,9),
@@ -152,8 +143,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('50b30175-6a36-4d29-aa70-742b5b352e89','fe682aaf-12af-4401-951a-cb2469084518','no',75,75,13,88,0,0,0),
 	 ('343d4de5-ae93-44db-8979-c9ad34bb32a5','fe682aaf-12af-4401-951a-cb2469084518','no',75,76,13,96,77,82,7),
 	 ('dcd3f8e8-d032-4316-bd7b-80ee20599438','fe682aaf-12af-4401-951a-cb2469084518','no',75,75,13,98,78,86,7),
-	 ('3261f8b0-9486-490a-a5d5-56f9d0a72f5b','fe682aaf-12af-4401-951a-cb2469084518','no',75,77,18,113,86,96,9);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('3261f8b0-9486-490a-a5d5-56f9d0a72f5b','fe682aaf-12af-4401-951a-cb2469084518','no',75,77,18,113,86,96,9),
 	 ('4e3e8d13-59f5-4fae-a38c-e1ec8a144ea5','fe682aaf-12af-4401-951a-cb2469084518','no',75,75,3,75,0,0,0),
 	 ('d4715d94-b64c-4d3e-8cb6-c03f539b1631','fe682aaf-12af-4401-951a-cb2469084518','no',75,75,22,117,94,102,9),
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','f2d21941-bdba-425d-b94f-19ef034142e0','no',50,0,0,0,81,81,1),
@@ -163,8 +153,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('37526a2a-0547-4c5b-ab77-2d63ac4a467a','f2d21941-bdba-425d-b94f-19ef034142e0','no',50,60,33,106,0,0,0),
 	 ('b8ee7908-762e-453f-8aa5-7abc8cef3bb2','f2d21941-bdba-425d-b94f-19ef034142e0','no',50,52,5,55,0,0,0),
 	 ('4ad718ce-1644-4c88-8cee-1f89be610386','f2d21941-bdba-425d-b94f-19ef034142e0','no',50,51,35,113,0,0,0),
-	 ('22b17839-d90e-4ce0-b96a-311bb13039e4','f2d21941-bdba-425d-b94f-19ef034142e0','no',50,50,15,94,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('22b17839-d90e-4ce0-b96a-311bb13039e4','f2d21941-bdba-425d-b94f-19ef034142e0','no',50,50,15,94,0,0,0),
 	 ('568bd7b2-73ec-4d9c-96b8-22c89ed3ef9f','f2d21941-bdba-425d-b94f-19ef034142e0','no',50,0,0,0,0,0,0),
 	 ('a2440d23-5d06-470d-836b-4930f953df2b','f2d21941-bdba-425d-b94f-19ef034142e0','no',50,0,0,0,0,0,0),
 	 ('7a70e183-1106-4c83-af24-1521cdd8d9e5','9e6c20b5-001a-4f60-9712-cdd1f39c3c4b','no',75,85,2,88,0,0,0),
@@ -174,8 +163,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('6e6a3c9b-9407-439a-9aaf-7b24aa261bc2','9e6c20b5-001a-4f60-9712-cdd1f39c3c4b','no',75,123,21,126,122,122,2),
 	 ('f8d37b18-f591-4a7a-ad79-dc63df618e57','9e6c20b5-001a-4f60-9712-cdd1f39c3c4b','no',75,115,2,117,110,115,2),
 	 ('73864b26-b50c-406b-9e18-310a870b08e1','9e6c20b5-001a-4f60-9712-cdd1f39c3c4b','no',75,126,3,127,116,117,2),
-	 ('a2fd0858-fbf4-4b51-859d-c1c5e9928514','9e6c20b5-001a-4f60-9712-cdd1f39c3c4b','no',75,98,13,109,85,92,11);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('a2fd0858-fbf4-4b51-859d-c1c5e9928514','9e6c20b5-001a-4f60-9712-cdd1f39c3c4b','no',75,98,13,109,85,92,11),
 	 ('82c52cd0-83d8-4cdf-98dd-07cbbdca8252','9e6c20b5-001a-4f60-9712-cdd1f39c3c4b','no',75,76,16,109,0,0,0),
 	 ('ff179c5a-b1f4-49e2-affd-60f447f67ead','9e6c20b5-001a-4f60-9712-cdd1f39c3c4b','no',75,76,11,127,0,0,0),
 	 ('9e21b36e-cf5b-4ad2-9a73-e5259ee0c0a2','9e6c20b5-001a-4f60-9712-cdd1f39c3c4b','no',75,90,4,104,80,86,4),
@@ -185,8 +173,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('3261f8b0-9486-490a-a5d5-56f9d0a72f5b','9e6c20b5-001a-4f60-9712-cdd1f39c3c4b','no',75,109,11,124,102,109,9),
 	 ('4e3e8d13-59f5-4fae-a38c-e1ec8a144ea5','9e6c20b5-001a-4f60-9712-cdd1f39c3c4b','no',75,89,5,107,75,89,7),
 	 ('d4715d94-b64c-4d3e-8cb6-c03f539b1631','9e6c20b5-001a-4f60-9712-cdd1f39c3c4b','no',75,111,9,116,100,105,7),
-	 ('3be5af1c-1aa4-404a-ad4e-396ececd2c1c','9e6c20b5-001a-4f60-9712-cdd1f39c3c4b','no',75,75,8,98,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('3be5af1c-1aa4-404a-ad4e-396ececd2c1c','9e6c20b5-001a-4f60-9712-cdd1f39c3c4b','no',75,75,8,98,0,0,0),
 	 ('3d4db5b5-f42f-442b-bebe-27d500886969','9e6c20b5-001a-4f60-9712-cdd1f39c3c4b','no',50,0,2,0,0,0,0),
 	 ('8413d5b4-60a4-44e6-9584-57f50a8ebaf7','9e6c20b5-001a-4f60-9712-cdd1f39c3c4b','no',50,128,2,128,0,0,0),
 	 ('8fbc5faf-b691-406c-8111-54586460c1a2','9e6c20b5-001a-4f60-9712-cdd1f39c3c4b','no',50,0,0,0,0,0,0),
@@ -196,8 +183,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('c912bc9c-3ece-4594-a059-587ad9f0698e','9e6c20b5-001a-4f60-9712-cdd1f39c3c4b','no',50,0,1,0,0,0,0),
 	 ('cd362f75-6304-4532-95b4-a75e71ee1dae','9e6c20b5-001a-4f60-9712-cdd1f39c3c4b','no',50,128,2,128,0,0,0),
 	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','9e6c20b5-001a-4f60-9712-cdd1f39c3c4b','no',50,0,0,0,0,0,0),
-	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','9e6c20b5-001a-4f60-9712-cdd1f39c3c4b','no',50,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','9e6c20b5-001a-4f60-9712-cdd1f39c3c4b','no',50,0,0,0,0,0,0),
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','9e6c20b5-001a-4f60-9712-cdd1f39c3c4b','no',50,0,0,0,0,0,0),
 	 ('e0455258-2b5f-4722-9b33-95655c9c2ba3','9e6c20b5-001a-4f60-9712-cdd1f39c3c4b','no',50,0,0,0,0,0,0),
 	 ('b75d8a36-2640-47eb-81ea-9dfc9c109031','9e6c20b5-001a-4f60-9712-cdd1f39c3c4b','no',75,0,0,0,0,0,0),
@@ -207,8 +193,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('2ce70ff9-000b-4ece-acc8-b77c6620557c','9e6c20b5-001a-4f60-9712-cdd1f39c3c4b','no',50,52,37,91,0,0,0),
 	 ('0a4347d8-076b-45db-9671-2f9e0e8b7d03','9e6c20b5-001a-4f60-9712-cdd1f39c3c4b','no',50,60,33,111,0,0,0),
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','9e6c20b5-001a-4f60-9712-cdd1f39c3c4b','no',50,75,21,115,60,73,14),
-	 ('29a9bee8-fe62-4e70-83e5-1bcbf1e3d009','9e6c20b5-001a-4f60-9712-cdd1f39c3c4b','no',50,61,4,76,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('29a9bee8-fe62-4e70-83e5-1bcbf1e3d009','9e6c20b5-001a-4f60-9712-cdd1f39c3c4b','no',50,61,4,76,0,0,0),
 	 ('70fdfcb8-600b-4f24-b06a-9fb4a5f4d064','9e6c20b5-001a-4f60-9712-cdd1f39c3c4b','no',50,51,4,54,0,0,0),
 	 ('df4d0ec2-c98d-4594-9966-7d796b9742a4','9e6c20b5-001a-4f60-9712-cdd1f39c3c4b','no',50,0,0,0,0,0,0),
 	 ('7a70e183-1106-4c83-af24-1521cdd8d9e5','269c074b-3247-4435-a970-84122c4dfddc','no',75,80,7,108,78,80,4),
@@ -218,8 +203,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('f8d37b18-f591-4a7a-ad79-dc63df618e57','269c074b-3247-4435-a970-84122c4dfddc','no',75,120,7,121,118,120,2),
 	 ('73864b26-b50c-406b-9e18-310a870b08e1','269c074b-3247-4435-a970-84122c4dfddc','no',75,121,3,121,117,120,2),
 	 ('a2fd0858-fbf4-4b51-859d-c1c5e9928514','269c074b-3247-4435-a970-84122c4dfddc','no',75,76,36,136,77,102,13),
-	 ('82c52cd0-83d8-4cdf-98dd-07cbbdca8252','269c074b-3247-4435-a970-84122c4dfddc','no',75,86,14,108,79,84,7);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('82c52cd0-83d8-4cdf-98dd-07cbbdca8252','269c074b-3247-4435-a970-84122c4dfddc','no',75,86,14,108,79,84,7),
 	 ('ff179c5a-b1f4-49e2-affd-60f447f67ead','269c074b-3247-4435-a970-84122c4dfddc','no',75,75,20,106,0,0,0),
 	 ('9e21b36e-cf5b-4ad2-9a73-e5259ee0c0a2','269c074b-3247-4435-a970-84122c4dfddc','no',75,81,18,106,75,81,8),
 	 ('50b30175-6a36-4d29-aa70-742b5b352e89','269c074b-3247-4435-a970-84122c4dfddc','no',75,75,17,97,77,83,7),
@@ -229,8 +213,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('4e3e8d13-59f5-4fae-a38c-e1ec8a144ea5','269c074b-3247-4435-a970-84122c4dfddc','no',75,77,21,113,0,0,0),
 	 ('d4715d94-b64c-4d3e-8cb6-c03f539b1631','269c074b-3247-4435-a970-84122c4dfddc','no',75,75,52,122,109,113,7),
 	 ('3be5af1c-1aa4-404a-ad4e-396ececd2c1c','269c074b-3247-4435-a970-84122c4dfddc','no',75,76,14,96,76,85,7),
-	 ('8fbc5faf-b691-406c-8111-54586460c1a2','269c074b-3247-4435-a970-84122c4dfddc','no',50,125,2,125,121,122,3);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('8fbc5faf-b691-406c-8111-54586460c1a2','269c074b-3247-4435-a970-84122c4dfddc','no',50,125,2,125,121,122,3),
 	 ('e32d3ed6-8080-4d66-a739-1be8eaf7cc0e','269c074b-3247-4435-a970-84122c4dfddc','no',50,0,0,0,0,0,0),
 	 ('dca89c37-27a3-4955-a87f-312614f46cc1','269c074b-3247-4435-a970-84122c4dfddc','no',50,64,4,83,0,0,0),
 	 ('c912bc9c-3ece-4594-a059-587ad9f0698e','269c074b-3247-4435-a970-84122c4dfddc','no',50,67,3,105,0,0,0),
@@ -240,8 +223,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','269c074b-3247-4435-a970-84122c4dfddc','no',50,0,0,0,0,0,0),
 	 ('b75d8a36-2640-47eb-81ea-9dfc9c109031','269c074b-3247-4435-a970-84122c4dfddc','no',75,0,0,0,0,0,0),
 	 ('ba0ebff4-5d5a-4040-b34c-f333aaf30581','269c074b-3247-4435-a970-84122c4dfddc','no',50,61,11,102,0,0,0),
-	 ('9b291fa8-a072-4b17-a06d-174cd7e833ac','269c074b-3247-4435-a970-84122c4dfddc','no',50,64,41,106,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('9b291fa8-a072-4b17-a06d-174cd7e833ac','269c074b-3247-4435-a970-84122c4dfddc','no',50,64,41,106,0,0,0),
 	 ('37d20dce-712c-43b4-bd73-2468b5ba4f04','269c074b-3247-4435-a970-84122c4dfddc','no',50,56,15,119,0,0,0),
 	 ('8d8404f6-43cd-47b1-a5e7-5854339c7d97','269c074b-3247-4435-a970-84122c4dfddc','no',50,54,38,102,0,0,0),
 	 ('2ce70ff9-000b-4ece-acc8-b77c6620557c','269c074b-3247-4435-a970-84122c4dfddc','no',50,62,16,87,0,0,0),
@@ -251,8 +233,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('91cb0d5f-084c-462d-bd66-15decbfbebe5','269c074b-3247-4435-a970-84122c4dfddc','no',50,59,57,93,54,59,6),
 	 ('df4d0ec2-c98d-4594-9966-7d796b9742a4','269c074b-3247-4435-a970-84122c4dfddc','no',50,73,2,73,0,0,0),
 	 ('568bd7b2-73ec-4d9c-96b8-22c89ed3ef9f','269c074b-3247-4435-a970-84122c4dfddc','no',50,76,1,76,65,74,4),
-	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','fc932c3a-5107-42c4-945e-5c6797743f97','no',50,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','fc932c3a-5107-42c4-945e-5c6797743f97','no',50,0,0,0,0,0,0),
 	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','fc932c3a-5107-42c4-945e-5c6797743f97','no',50,0,0,0,0,0,0),
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','fc932c3a-5107-42c4-945e-5c6797743f97','no',50,123,1,123,0,0,0),
 	 ('e0455258-2b5f-4722-9b33-95655c9c2ba3','fc932c3a-5107-42c4-945e-5c6797743f97','no',50,0,0,0,0,0,0),
@@ -262,8 +243,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('7864108f-af86-4dd9-aebf-465fe765a524','fc932c3a-5107-42c4-945e-5c6797743f97','no',50,58,39,96,51,59,7),
 	 ('37526a2a-0547-4c5b-ab77-2d63ac4a467a','fc932c3a-5107-42c4-945e-5c6797743f97','no',50,53,17,124,0,0,0),
 	 ('cfeac907-17cc-404a-8506-52487e3555eb','fc932c3a-5107-42c4-945e-5c6797743f97','no',50,50,39,100,0,0,0),
-	 ('b8ee7908-762e-453f-8aa5-7abc8cef3bb2','fc932c3a-5107-42c4-945e-5c6797743f97','no',50,50,30,93,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('b8ee7908-762e-453f-8aa5-7abc8cef3bb2','fc932c3a-5107-42c4-945e-5c6797743f97','no',50,50,30,93,0,0,0),
 	 ('4ad718ce-1644-4c88-8cee-1f89be610386','fc932c3a-5107-42c4-945e-5c6797743f97','no',50,50,58,95,0,0,0),
 	 ('799bb59b-e8db-4700-b5ce-f5d003f0a0cf','fc932c3a-5107-42c4-945e-5c6797743f97','no',50,75,45,126,0,0,0),
 	 ('22b17839-d90e-4ce0-b96a-311bb13039e4','fc932c3a-5107-42c4-945e-5c6797743f97','no',50,50,67,111,0,0,0),
@@ -273,8 +253,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('91cb0d5f-084c-462d-bd66-15decbfbebe5','fc932c3a-5107-42c4-945e-5c6797743f97','no',50,50,40,77,53,58,11),
 	 ('8bde249d-d6bf-4d3a-ace8-d0fd50073dc4','fc932c3a-5107-42c4-945e-5c6797743f97','no',50,51,7,73,0,0,0),
 	 ('568bd7b2-73ec-4d9c-96b8-22c89ed3ef9f','fc932c3a-5107-42c4-945e-5c6797743f97','no',50,75,8,112,65,70,2),
-	 ('a2440d23-5d06-470d-836b-4930f953df2b','fc932c3a-5107-42c4-945e-5c6797743f97','no',50,118,1,118,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('a2440d23-5d06-470d-836b-4930f953df2b','fc932c3a-5107-42c4-945e-5c6797743f97','no',50,118,1,118,0,0,0),
 	 ('7a70e183-1106-4c83-af24-1521cdd8d9e5','a0acd34c-ed37-4b68-a74a-0603a4889947','no',90,99,38,123,90,99,16),
 	 ('e19104e9-bda3-4041-9123-17e8eb01a75b','a0acd34c-ed37-4b68-a74a-0603a4889947','no',80,80,39,102,0,0,0),
 	 ('6e6a3c9b-9407-439a-9aaf-7b24aa261bc2','a0acd34c-ed37-4b68-a74a-0603a4889947','no',115,125,67,130,125,125,3),
@@ -284,8 +263,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('343d4de5-ae93-44db-8979-c9ad34bb32a5','a0acd34c-ed37-4b68-a74a-0603a4889947','no',95,105,65,130,101,105,12),
 	 ('3261f8b0-9486-490a-a5d5-56f9d0a72f5b','a0acd34c-ed37-4b68-a74a-0603a4889947','no',90,122,97,136,116,121,34),
 	 ('4e3e8d13-59f5-4fae-a38c-e1ec8a144ea5','a0acd34c-ed37-4b68-a74a-0603a4889947','no',90,90,70,131,0,0,0),
-	 ('d4715d94-b64c-4d3e-8cb6-c03f539b1631','a0acd34c-ed37-4b68-a74a-0603a4889947','no',100,122,171,136,115,122,59);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('d4715d94-b64c-4d3e-8cb6-c03f539b1631','a0acd34c-ed37-4b68-a74a-0603a4889947','no',100,122,171,136,115,122,59),
 	 ('738f296c-c88f-42ca-a866-58dad13b6a75','a0acd34c-ed37-4b68-a74a-0603a4889947','no',80,80,26,110,0,0,0),
 	 ('ae842826-e0c3-435c-bc91-eab0d2d590f2','a0acd34c-ed37-4b68-a74a-0603a4889947','no',110,122,38,130,0,0,0),
 	 ('8413d5b4-60a4-44e6-9584-57f50a8ebaf7','a0acd34c-ed37-4b68-a74a-0603a4889947','no',115,125,38,130,0,0,0),
@@ -295,8 +273,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('ce76d31d-0ea6-49c2-98e8-cef39f56eb89','a0acd34c-ed37-4b68-a74a-0603a4889947','no',90,104,12,122,0,0,0),
 	 ('e32d3ed6-8080-4d66-a739-1be8eaf7cc0e','a0acd34c-ed37-4b68-a74a-0603a4889947','no',85,103,15,136,0,0,0),
 	 ('74585823-3571-4985-af35-53a306d6dc8d','a0acd34c-ed37-4b68-a74a-0603a4889947','no',85,112,34,139,0,0,0),
-	 ('26ad2a37-9a60-4f9b-aac9-65a44f981bb5','a0acd34c-ed37-4b68-a74a-0603a4889947','no',90,98,15,112,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('26ad2a37-9a60-4f9b-aac9-65a44f981bb5','a0acd34c-ed37-4b68-a74a-0603a4889947','no',90,98,15,112,0,0,0),
 	 ('1bbef426-aac7-4d7c-9bdb-59a1d5c57c6f','a0acd34c-ed37-4b68-a74a-0603a4889947','no',90,95,36,128,0,0,0),
 	 ('60de70b8-c264-41aa-9fc6-ee4c00be754d','a0acd34c-ed37-4b68-a74a-0603a4889947','no',90,93,49,118,0,0,0),
 	 ('0f9693fe-e7b6-4d84-81fb-b07b483c6eec','a0acd34c-ed37-4b68-a74a-0603a4889947','no',90,109,14,121,0,0,0),
@@ -306,8 +283,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('ba1011e7-60ca-4863-8d5c-a0a5d88833ab','a0acd34c-ed37-4b68-a74a-0603a4889947','no',90,112,9,131,0,0,0),
 	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','a0acd34c-ed37-4b68-a74a-0603a4889947','no',85,126,31,137,115,124,17),
 	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','a0acd34c-ed37-4b68-a74a-0603a4889947','no',85,121,11,125,113,119,9),
-	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','a0acd34c-ed37-4b68-a74a-0603a4889947','no',85,88,43,136,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','a0acd34c-ed37-4b68-a74a-0603a4889947','no',85,88,43,136,0,0,0),
 	 ('b75d8a36-2640-47eb-81ea-9dfc9c109031','a0acd34c-ed37-4b68-a74a-0603a4889947','no',90,109,36,129,0,0,0),
 	 ('1764b11d-6aae-4f12-8b91-b7da5262de83','a0acd34c-ed37-4b68-a74a-0603a4889947','no',85,90,14,122,99,116,8),
 	 ('ba0ebff4-5d5a-4040-b34c-f333aaf30581','a0acd34c-ed37-4b68-a74a-0603a4889947','no',90,90,118,136,0,0,0),
@@ -317,8 +293,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('2ce70ff9-000b-4ece-acc8-b77c6620557c','a0acd34c-ed37-4b68-a74a-0603a4889947','no',90,90,89,127,0,0,0),
 	 ('0a4347d8-076b-45db-9671-2f9e0e8b7d03','a0acd34c-ed37-4b68-a74a-0603a4889947','no',105,105,107,138,0,0,0),
 	 ('f2630995-d6f9-462a-88e6-891e8b78bd6f','a0acd34c-ed37-4b68-a74a-0603a4889947','no',85,87,23,130,0,0,0),
-	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','a0acd34c-ed37-4b68-a74a-0603a4889947','no',100,103,219,130,100,110,46);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','a0acd34c-ed37-4b68-a74a-0603a4889947','no',100,103,219,130,100,110,46),
 	 ('ffcb7274-ad02-47c2-a736-a0694144c200','a0acd34c-ed37-4b68-a74a-0603a4889947','no',100,100,143,124,0,0,0),
 	 ('031c3181-20ce-447e-b178-423bd70fa001','a0acd34c-ed37-4b68-a74a-0603a4889947','no',90,90,51,119,0,0,0),
 	 ('39938093-c369-477f-bc90-953ed5220b10','a0acd34c-ed37-4b68-a74a-0603a4889947','no',90,101,27,123,0,0,0),
@@ -328,8 +303,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('185225a3-e819-4d85-bdb8-07aff646d70c','a0acd34c-ed37-4b68-a74a-0603a4889947','no',85,85,39,131,0,0,0),
 	 ('799bb59b-e8db-4700-b5ce-f5d003f0a0cf','a0acd34c-ed37-4b68-a74a-0603a4889947','no',115,115,244,130,0,0,0),
 	 ('22b17839-d90e-4ce0-b96a-311bb13039e4','a0acd34c-ed37-4b68-a74a-0603a4889947','no',90,90,241,138,0,0,0),
-	 ('29a9bee8-fe62-4e70-83e5-1bcbf1e3d009','a0acd34c-ed37-4b68-a74a-0603a4889947','no',85,85,31,103,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('29a9bee8-fe62-4e70-83e5-1bcbf1e3d009','a0acd34c-ed37-4b68-a74a-0603a4889947','no',85,85,31,103,0,0,0),
 	 ('ab1e890f-6845-4681-8589-e9ce32d688ba','a0acd34c-ed37-4b68-a74a-0603a4889947','no',85,86,15,94,0,0,0),
 	 ('df4d0ec2-c98d-4594-9966-7d796b9742a4','a0acd34c-ed37-4b68-a74a-0603a4889947','no',85,100,76,130,0,0,0),
 	 ('9a53f91c-d5f8-422f-8f1e-df461991b0aa','a0acd34c-ed37-4b68-a74a-0603a4889947','no',90,110,55,126,95,110,25),
@@ -339,8 +313,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('06fe98c5-019f-4409-b3e6-3fe40368ab8b','b30ea9ba-e7a9-4468-af24-cf24490767cf','no',75,92,12,119,86,89,5),
 	 ('bbb9d8b1-7478-4594-b8f4-9efe2f309923','b30ea9ba-e7a9-4468-af24-cf24490767cf','no',75,121,7,124,118,120,2),
 	 ('6e6a3c9b-9407-439a-9aaf-7b24aa261bc2','b30ea9ba-e7a9-4468-af24-cf24490767cf','no',75,0,12,0,127,128,2),
-	 ('f8d37b18-f591-4a7a-ad79-dc63df618e57','b30ea9ba-e7a9-4468-af24-cf24490767cf','no',75,120,4,126,114,118,2);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('f8d37b18-f591-4a7a-ad79-dc63df618e57','b30ea9ba-e7a9-4468-af24-cf24490767cf','no',75,120,4,126,114,118,2),
 	 ('73864b26-b50c-406b-9e18-310a870b08e1','b30ea9ba-e7a9-4468-af24-cf24490767cf','no',75,117,3,123,115,117,2),
 	 ('a2fd0858-fbf4-4b51-859d-c1c5e9928514','b30ea9ba-e7a9-4468-af24-cf24490767cf','no',75,76,26,127,83,107,12),
 	 ('82c52cd0-83d8-4cdf-98dd-07cbbdca8252','b30ea9ba-e7a9-4468-af24-cf24490767cf','no',75,77,18,103,76,76,1),
@@ -350,8 +323,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('343d4de5-ae93-44db-8979-c9ad34bb32a5','b30ea9ba-e7a9-4468-af24-cf24490767cf','no',75,88,9,106,89,91,4),
 	 ('dcd3f8e8-d032-4316-bd7b-80ee20599438','b30ea9ba-e7a9-4468-af24-cf24490767cf','no',75,79,10,115,98,103,4),
 	 ('3261f8b0-9486-490a-a5d5-56f9d0a72f5b','b30ea9ba-e7a9-4468-af24-cf24490767cf','no',75,79,23,124,109,113,9),
-	 ('4e3e8d13-59f5-4fae-a38c-e1ec8a144ea5','b30ea9ba-e7a9-4468-af24-cf24490767cf','no',75,75,18,114,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('4e3e8d13-59f5-4fae-a38c-e1ec8a144ea5','b30ea9ba-e7a9-4468-af24-cf24490767cf','no',75,75,18,114,0,0,0),
 	 ('d4715d94-b64c-4d3e-8cb6-c03f539b1631','b30ea9ba-e7a9-4468-af24-cf24490767cf','no',75,102,14,128,112,114,7),
 	 ('3be5af1c-1aa4-404a-ad4e-396ececd2c1c','b30ea9ba-e7a9-4468-af24-cf24490767cf','no',75,77,18,99,76,76,1),
 	 ('8413d5b4-60a4-44e6-9584-57f50a8ebaf7','b30ea9ba-e7a9-4468-af24-cf24490767cf','no',50,129,5,129,0,0,0),
@@ -361,8 +333,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','b30ea9ba-e7a9-4468-af24-cf24490767cf','no',50,131,1,131,0,0,0),
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','b30ea9ba-e7a9-4468-af24-cf24490767cf','no',50,70,1,70,0,0,0),
 	 ('b75d8a36-2640-47eb-81ea-9dfc9c109031','b30ea9ba-e7a9-4468-af24-cf24490767cf','no',75,0,0,0,0,0,0),
-	 ('9b291fa8-a072-4b17-a06d-174cd7e833ac','b30ea9ba-e7a9-4468-af24-cf24490767cf','no',50,72,10,76,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('9b291fa8-a072-4b17-a06d-174cd7e833ac','b30ea9ba-e7a9-4468-af24-cf24490767cf','no',50,72,10,76,0,0,0),
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','b30ea9ba-e7a9-4468-af24-cf24490767cf','no',50,54,8,129,71,92,4),
 	 ('29a9bee8-fe62-4e70-83e5-1bcbf1e3d009','b30ea9ba-e7a9-4468-af24-cf24490767cf','no',50,57,21,86,0,0,0),
 	 ('cf69439b-67b6-4fd7-a701-13c8be94ed21','b30ea9ba-e7a9-4468-af24-cf24490767cf','no',50,52,18,72,0,0,0),
@@ -372,8 +343,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('e19104e9-bda3-4041-9123-17e8eb01a75b','152c187d-b703-47fc-95a3-c330c87f299c','yes',75,75,8,79,0,0,0),
 	 ('06fe98c5-019f-4409-b3e6-3fe40368ab8b','152c187d-b703-47fc-95a3-c330c87f299c','yes',75,83,10,105,79,83,7),
 	 ('bbb9d8b1-7478-4594-b8f4-9efe2f309923','152c187d-b703-47fc-95a3-c330c87f299c','no',75,121,13,126,120,120,2),
-	 ('6e6a3c9b-9407-439a-9aaf-7b24aa261bc2','152c187d-b703-47fc-95a3-c330c87f299c','no',75,93,48,128,90,125,4);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('6e6a3c9b-9407-439a-9aaf-7b24aa261bc2','152c187d-b703-47fc-95a3-c330c87f299c','no',75,93,48,128,90,125,4),
 	 ('f8d37b18-f591-4a7a-ad79-dc63df618e57','152c187d-b703-47fc-95a3-c330c87f299c','no',75,103,4,127,99,123,5),
 	 ('73864b26-b50c-406b-9e18-310a870b08e1','152c187d-b703-47fc-95a3-c330c87f299c','no',75,121,11,127,124,125,2),
 	 ('a2fd0858-fbf4-4b51-859d-c1c5e9928514','152c187d-b703-47fc-95a3-c330c87f299c','no',75,78,20,128,95,103,11),
@@ -383,8 +353,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('50b30175-6a36-4d29-aa70-742b5b352e89','152c187d-b703-47fc-95a3-c330c87f299c','yes',75,79,12,107,84,86,7),
 	 ('343d4de5-ae93-44db-8979-c9ad34bb32a5','152c187d-b703-47fc-95a3-c330c87f299c','no',75,75,11,114,88,93,4),
 	 ('dcd3f8e8-d032-4316-bd7b-80ee20599438','152c187d-b703-47fc-95a3-c330c87f299c','no',75,75,18,126,89,100,7),
-	 ('3261f8b0-9486-490a-a5d5-56f9d0a72f5b','152c187d-b703-47fc-95a3-c330c87f299c','no',75,75,39,128,97,105,9);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('3261f8b0-9486-490a-a5d5-56f9d0a72f5b','152c187d-b703-47fc-95a3-c330c87f299c','no',75,75,39,128,97,105,9),
 	 ('4e3e8d13-59f5-4fae-a38c-e1ec8a144ea5','152c187d-b703-47fc-95a3-c330c87f299c','no',75,75,29,120,0,0,0),
 	 ('d4715d94-b64c-4d3e-8cb6-c03f539b1631','152c187d-b703-47fc-95a3-c330c87f299c','no',75,75,22,132,107,112,8),
 	 ('738f296c-c88f-42ca-a866-58dad13b6a75','152c187d-b703-47fc-95a3-c330c87f299c','no',75,76,8,80,0,0,0),
@@ -394,8 +363,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('8413d5b4-60a4-44e6-9584-57f50a8ebaf7','152c187d-b703-47fc-95a3-c330c87f299c','no',50,103,4,127,0,0,0),
 	 ('b77221e0-134b-4991-bf89-14f7fa6d384e','152c187d-b703-47fc-95a3-c330c87f299c','no',50,0,0,0,0,0,0),
 	 ('74585823-3571-4985-af35-53a306d6dc8d','152c187d-b703-47fc-95a3-c330c87f299c','no',50,0,0,0,0,0,0),
-	 ('60de70b8-c264-41aa-9fc6-ee4c00be754d','152c187d-b703-47fc-95a3-c330c87f299c','no',50,54,5,108,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('60de70b8-c264-41aa-9fc6-ee4c00be754d','152c187d-b703-47fc-95a3-c330c87f299c','no',50,54,5,108,0,0,0),
 	 ('dca89c37-27a3-4955-a87f-312614f46cc1','152c187d-b703-47fc-95a3-c330c87f299c','yes',50,73,10,98,0,0,0),
 	 ('c912bc9c-3ece-4594-a059-587ad9f0698e','152c187d-b703-47fc-95a3-c330c87f299c','no',50,66,8,84,0,0,0),
 	 ('bbaa0f50-d133-4b60-8f95-c179f774314d','152c187d-b703-47fc-95a3-c330c87f299c','no',50,68,9,95,56,77,5),
@@ -405,8 +373,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','152c187d-b703-47fc-95a3-c330c87f299c','no',50,69,2,122,0,0,0),
 	 ('e0455258-2b5f-4722-9b33-95655c9c2ba3','152c187d-b703-47fc-95a3-c330c87f299c','no',50,0,0,0,0,0,0),
 	 ('b75d8a36-2640-47eb-81ea-9dfc9c109031','152c187d-b703-47fc-95a3-c330c87f299c','no',75,0,0,0,0,0,0),
-	 ('9b291fa8-a072-4b17-a06d-174cd7e833ac','152c187d-b703-47fc-95a3-c330c87f299c','yes',50,74,5,85,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('9b291fa8-a072-4b17-a06d-174cd7e833ac','152c187d-b703-47fc-95a3-c330c87f299c','yes',50,74,5,85,0,0,0),
 	 ('37d20dce-712c-43b4-bd73-2468b5ba4f04','152c187d-b703-47fc-95a3-c330c87f299c','yes',50,68,9,104,0,0,0),
 	 ('8d8404f6-43cd-47b1-a5e7-5854339c7d97','152c187d-b703-47fc-95a3-c330c87f299c','yes',50,52,42,90,0,0,0),
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','152c187d-b703-47fc-95a3-c330c87f299c','yes',50,51,18,119,50,94,13),
@@ -416,8 +383,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('dca89c37-27a3-4955-a87f-312614f46cc1','8bb3abef-23bf-48ac-9c39-effdb0f1c49d','yes',90,118,46,132,0,0,0),
 	 ('c912bc9c-3ece-4594-a059-587ad9f0698e','8bb3abef-23bf-48ac-9c39-effdb0f1c49d','yes',100,100,40,132,0,0,0),
 	 ('ba1011e7-60ca-4863-8d5c-a0a5d88833ab','8bb3abef-23bf-48ac-9c39-effdb0f1c49d','yes',90,0,0,0,0,0,0),
-	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','8bb3abef-23bf-48ac-9c39-effdb0f1c49d','yes',75,117,32,134,114,125,29);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','8bb3abef-23bf-48ac-9c39-effdb0f1c49d','yes',75,117,32,134,114,125,29),
 	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','8bb3abef-23bf-48ac-9c39-effdb0f1c49d','yes',100,104,12,131,110,118,9),
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','8bb3abef-23bf-48ac-9c39-effdb0f1c49d','yes',100,104,27,134,0,0,0),
 	 ('e0455258-2b5f-4722-9b33-95655c9c2ba3','8bb3abef-23bf-48ac-9c39-effdb0f1c49d','yes',100,105,21,129,0,0,0),
@@ -427,8 +393,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('0a4347d8-076b-45db-9671-2f9e0e8b7d03','8bb3abef-23bf-48ac-9c39-effdb0f1c49d','yes',100,100,76,134,0,0,0),
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','8bb3abef-23bf-48ac-9c39-effdb0f1c49d','yes',105,107,93,133,105,112,29),
 	 ('ffcb7274-ad02-47c2-a736-a0694144c200','8bb3abef-23bf-48ac-9c39-effdb0f1c49d','yes',100,100,139,119,0,0,0),
-	 ('ab1e890f-6845-4681-8589-e9ce32d688ba','8bb3abef-23bf-48ac-9c39-effdb0f1c49d','yes',80,80,20,97,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('ab1e890f-6845-4681-8589-e9ce32d688ba','8bb3abef-23bf-48ac-9c39-effdb0f1c49d','yes',80,80,20,97,0,0,0),
 	 ('df4d0ec2-c98d-4594-9966-7d796b9742a4','8bb3abef-23bf-48ac-9c39-effdb0f1c49d','yes',100,113,61,134,0,0,0),
 	 ('9a53f91c-d5f8-422f-8f1e-df461991b0aa','8bb3abef-23bf-48ac-9c39-effdb0f1c49d','yes',100,110,35,127,100,109,14),
 	 ('8413d5b4-60a4-44e6-9584-57f50a8ebaf7','ab159e0e-bbd8-4033-b88e-0082a17c1451','yes',50,125,87,130,0,0,0),
@@ -438,8 +403,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','ab159e0e-bbd8-4033-b88e-0082a17c1451','no',50,64,3,105,0,0,0),
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','ab159e0e-bbd8-4033-b88e-0082a17c1451','no',50,59,5,122,0,0,0),
 	 ('031c3181-20ce-447e-b178-423bd70fa001','ab159e0e-bbd8-4033-b88e-0082a17c1451','no',50,51,85,102,50,60,6),
-	 ('880016b9-5c6b-449e-980f-f0ad3994e5f6','ab159e0e-bbd8-4033-b88e-0082a17c1451','no',50,50,41,68,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('880016b9-5c6b-449e-980f-f0ad3994e5f6','ab159e0e-bbd8-4033-b88e-0082a17c1451','no',50,50,41,68,0,0,0),
 	 ('799bb59b-e8db-4700-b5ce-f5d003f0a0cf','ab159e0e-bbd8-4033-b88e-0082a17c1451','yes',60,60,881,130,0,0,0),
 	 ('22b17839-d90e-4ce0-b96a-311bb13039e4','ab159e0e-bbd8-4033-b88e-0082a17c1451','no',50,61,772,131,0,0,0),
 	 ('69169118-aafe-417a-ae64-6e292e40c3f6','ab159e0e-bbd8-4033-b88e-0082a17c1451','no',50,51,242,120,72,77,5),
@@ -449,8 +413,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('1bbef426-aac7-4d7c-9bdb-59a1d5c57c6f','95d3850f-ce3e-4ec8-a385-2b28b6caa2e9','no',100,101,7,121,0,0,0),
 	 ('cd362f75-6304-4532-95b4-a75e71ee1dae','95d3850f-ce3e-4ec8-a385-2b28b6caa2e9','no',80,94,6,115,0,0,0),
 	 ('ba1011e7-60ca-4863-8d5c-a0a5d88833ab','95d3850f-ce3e-4ec8-a385-2b28b6caa2e9','no',80,80,3,117,0,0,0),
-	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','95d3850f-ce3e-4ec8-a385-2b28b6caa2e9','no',65,0,0,0,119,119,1);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','95d3850f-ce3e-4ec8-a385-2b28b6caa2e9','no',65,0,0,0,119,119,1),
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','95d3850f-ce3e-4ec8-a385-2b28b6caa2e9','no',65,0,0,0,0,0,0),
 	 ('b75d8a36-2640-47eb-81ea-9dfc9c109031','95d3850f-ce3e-4ec8-a385-2b28b6caa2e9','no',80,0,0,0,0,0,0),
 	 ('df4d0ec2-c98d-4594-9966-7d796b9742a4','95d3850f-ce3e-4ec8-a385-2b28b6caa2e9','no',80,0,5,0,0,0,0),
@@ -460,8 +423,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','722719b2-c9d2-4c09-a9aa-8094478fa923','yes',65,76,2,78,0,0,0),
 	 ('e0455258-2b5f-4722-9b33-95655c9c2ba3','722719b2-c9d2-4c09-a9aa-8094478fa923','yes',65,0,0,0,0,0,0),
 	 ('b75d8a36-2640-47eb-81ea-9dfc9c109031','722719b2-c9d2-4c09-a9aa-8094478fa923','yes',75,0,0,0,0,0,0),
-	 ('ba0ebff4-5d5a-4040-b34c-f333aaf30581','722719b2-c9d2-4c09-a9aa-8094478fa923','yes',65,70,10,86,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('ba0ebff4-5d5a-4040-b34c-f333aaf30581','722719b2-c9d2-4c09-a9aa-8094478fa923','yes',65,70,10,86,0,0,0),
 	 ('9b291fa8-a072-4b17-a06d-174cd7e833ac','722719b2-c9d2-4c09-a9aa-8094478fa923','no',65,65,35,86,0,0,0),
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','722719b2-c9d2-4c09-a9aa-8094478fa923','yes',65,68,9,79,69,87,8),
 	 ('7864108f-af86-4dd9-aebf-465fe765a524','722719b2-c9d2-4c09-a9aa-8094478fa923','no',65,65,15,107,0,0,0),
@@ -471,8 +433,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('ecfb3b2b-1c2e-4324-b6bc-4ea21480d71d','722719b2-c9d2-4c09-a9aa-8094478fa923','yes',65,65,54,80,66,66,1),
 	 ('69169118-aafe-417a-ae64-6e292e40c3f6','722719b2-c9d2-4c09-a9aa-8094478fa923','yes',65,69,61,107,72,77,11),
 	 ('29a9bee8-fe62-4e70-83e5-1bcbf1e3d009','722719b2-c9d2-4c09-a9aa-8094478fa923','yes',65,67,4,96,0,0,0),
-	 ('fb25bca9-7103-4a83-83e7-e234f6505584','722719b2-c9d2-4c09-a9aa-8094478fa923','no',65,0,1,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('fb25bca9-7103-4a83-83e7-e234f6505584','722719b2-c9d2-4c09-a9aa-8094478fa923','no',65,0,1,0,0,0,0),
 	 ('cf69439b-67b6-4fd7-a701-13c8be94ed21','722719b2-c9d2-4c09-a9aa-8094478fa923','yes',50,50,117,98,50,73,9),
 	 ('e73a6036-b1ec-442c-9172-5e5ece53404c','722719b2-c9d2-4c09-a9aa-8094478fa923','yes',50,51,16,67,0,0,0),
 	 ('91cb0d5f-084c-462d-bd66-15decbfbebe5','722719b2-c9d2-4c09-a9aa-8094478fa923','yes',50,52,467,92,52,72,88),
@@ -482,8 +443,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('29f4909c-9c48-49ae-bc7b-e91a84ba4fd8','722719b2-c9d2-4c09-a9aa-8094478fa923','yes',50,50,347,106,57,66,70),
 	 ('568bd7b2-73ec-4d9c-96b8-22c89ed3ef9f','722719b2-c9d2-4c09-a9aa-8094478fa923','yes',65,86,1,86,68,75,2),
 	 ('a2440d23-5d06-470d-836b-4930f953df2b','722719b2-c9d2-4c09-a9aa-8094478fa923','yes',65,0,0,0,0,0,0),
-	 ('7a70e183-1106-4c83-af24-1521cdd8d9e5','eb7d6aaf-14a8-48a1-98c6-8f351ee83554','no',75,79,30,128,76,100,15);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('7a70e183-1106-4c83-af24-1521cdd8d9e5','eb7d6aaf-14a8-48a1-98c6-8f351ee83554','no',75,79,30,128,76,100,15),
 	 ('e19104e9-bda3-4041-9123-17e8eb01a75b','eb7d6aaf-14a8-48a1-98c6-8f351ee83554','no',75,75,255,108,84,84,1),
 	 ('06fe98c5-019f-4409-b3e6-3fe40368ab8b','eb7d6aaf-14a8-48a1-98c6-8f351ee83554','no',75,78,137,129,77,100,91),
 	 ('6e6a3c9b-9407-439a-9aaf-7b24aa261bc2','eb7d6aaf-14a8-48a1-98c6-8f351ee83554','no',75,121,22,127,0,0,0),
@@ -493,8 +453,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('82c52cd0-83d8-4cdf-98dd-07cbbdca8252','eb7d6aaf-14a8-48a1-98c6-8f351ee83554','yes',75,110,40,125,108,109,4),
 	 ('ff179c5a-b1f4-49e2-affd-60f447f67ead','eb7d6aaf-14a8-48a1-98c6-8f351ee83554','no',75,81,93,120,77,90,50),
 	 ('9e21b36e-cf5b-4ad2-9a73-e5259ee0c0a2','eb7d6aaf-14a8-48a1-98c6-8f351ee83554','yes',75,98,97,132,91,100,66),
-	 ('50b30175-6a36-4d29-aa70-742b5b352e89','eb7d6aaf-14a8-48a1-98c6-8f351ee83554','yes',75,83,179,125,91,96,103);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('50b30175-6a36-4d29-aa70-742b5b352e89','eb7d6aaf-14a8-48a1-98c6-8f351ee83554','yes',75,83,179,125,91,96,103),
 	 ('343d4de5-ae93-44db-8979-c9ad34bb32a5','eb7d6aaf-14a8-48a1-98c6-8f351ee83554','no',75,79,55,131,100,104,22),
 	 ('dcd3f8e8-d032-4316-bd7b-80ee20599438','eb7d6aaf-14a8-48a1-98c6-8f351ee83554','no',75,88,35,133,108,114,15),
 	 ('3261f8b0-9486-490a-a5d5-56f9d0a72f5b','eb7d6aaf-14a8-48a1-98c6-8f351ee83554','no',75,122,128,136,116,124,66),
@@ -504,8 +463,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('3be5af1c-1aa4-404a-ad4e-396ececd2c1c','eb7d6aaf-14a8-48a1-98c6-8f351ee83554','no',75,79,118,128,87,93,61),
 	 ('8746c70d-7354-4446-99f8-df18f02f32ec','eb7d6aaf-14a8-48a1-98c6-8f351ee83554','no',65,124,16,128,0,0,0),
 	 ('b77221e0-134b-4991-bf89-14f7fa6d384e','eb7d6aaf-14a8-48a1-98c6-8f351ee83554','no',65,113,1,113,0,0,0),
-	 ('e32d3ed6-8080-4d66-a739-1be8eaf7cc0e','eb7d6aaf-14a8-48a1-98c6-8f351ee83554','no',65,76,5,127,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('e32d3ed6-8080-4d66-a739-1be8eaf7cc0e','eb7d6aaf-14a8-48a1-98c6-8f351ee83554','no',65,76,5,127,0,0,0),
 	 ('74585823-3571-4985-af35-53a306d6dc8d','eb7d6aaf-14a8-48a1-98c6-8f351ee83554','no',65,119,11,131,0,0,0),
 	 ('60de70b8-c264-41aa-9fc6-ee4c00be754d','eb7d6aaf-14a8-48a1-98c6-8f351ee83554','no',65,89,12,118,0,0,0),
 	 ('c912bc9c-3ece-4594-a059-587ad9f0698e','eb7d6aaf-14a8-48a1-98c6-8f351ee83554','no',65,99,26,137,0,0,0),
@@ -515,8 +473,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('2ce70ff9-000b-4ece-acc8-b77c6620557c','eb7d6aaf-14a8-48a1-98c6-8f351ee83554','no',65,65,480,112,0,0,0),
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','eb7d6aaf-14a8-48a1-98c6-8f351ee83554','no',65,112,18,112,69,106,73),
 	 ('ab1e890f-6845-4681-8589-e9ce32d688ba','eb7d6aaf-14a8-48a1-98c6-8f351ee83554','no',65,72,110,95,71,77,105),
-	 ('df4d0ec2-c98d-4594-9966-7d796b9742a4','eb7d6aaf-14a8-48a1-98c6-8f351ee83554','no',65,113,10,122,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('df4d0ec2-c98d-4594-9966-7d796b9742a4','eb7d6aaf-14a8-48a1-98c6-8f351ee83554','no',65,113,10,122,0,0,0),
 	 ('db0f8552-ee55-48c3-a09b-81fb431247f8','eb7d6aaf-14a8-48a1-98c6-8f351ee83554','no',65,121,59,129,118,121,24),
 	 ('81dc258b-31ef-41e8-b2bf-5f871294c0ec','ab4a27d2-7edd-45ef-ab89-cfefc4d4c94c','no',75,75,340,122,0,0,0),
 	 ('9006ff0b-8abb-4697-8cf8-66e06d93b085','ab4a27d2-7edd-45ef-ab89-cfefc4d4c94c','no',70,95,2,97,92,92,1),
@@ -526,8 +483,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('4185d6ef-6c16-4962-be7e-dbed136164d1','ab4a27d2-7edd-45ef-ab89-cfefc4d4c94c','yes',70,0,34,0,0,0,0),
 	 ('dcf951d4-f863-46d8-b9c1-9de67f232032','ab4a27d2-7edd-45ef-ab89-cfefc4d4c94c','no',70,111,85,125,100,110,46),
 	 ('1bde7005-a39d-4ef7-9aab-2f3e2ba56b36','ab4a27d2-7edd-45ef-ab89-cfefc4d4c94c','no',70,108,12,125,95,100,7),
-	 ('309e940e-7b90-49e6-8193-bd4f327c27a4','400a6ade-493e-425d-9f98-f411aade4f8a','no',75,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('309e940e-7b90-49e6-8193-bd4f327c27a4','400a6ade-493e-425d-9f98-f411aade4f8a','no',75,0,0,0,0,0,0),
 	 ('8413d5b4-60a4-44e6-9584-57f50a8ebaf7','400a6ade-493e-425d-9f98-f411aade4f8a','no',75,125,3,128,0,0,0),
 	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','400a6ade-493e-425d-9f98-f411aade4f8a','no',65,92,1,92,77,77,1),
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','400a6ade-493e-425d-9f98-f411aade4f8a','no',65,84,3,96,0,0,0),
@@ -537,8 +493,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','400a6ade-493e-425d-9f98-f411aade4f8a','no',75,76,191,135,75,110,213),
 	 ('ffcb7274-ad02-47c2-a736-a0694144c200','400a6ade-493e-425d-9f98-f411aade4f8a','no',75,75,660,114,0,0,0),
 	 ('031c3181-20ce-447e-b178-423bd70fa001','400a6ade-493e-425d-9f98-f411aade4f8a','no',70,70,53,111,71,71,1),
-	 ('39938093-c369-477f-bc90-953ed5220b10','400a6ade-493e-425d-9f98-f411aade4f8a','no',75,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('39938093-c369-477f-bc90-953ed5220b10','400a6ade-493e-425d-9f98-f411aade4f8a','no',75,0,0,0,0,0,0),
 	 ('a3e60bd8-0358-48f1-9f3d-30f599b98b92','400a6ade-493e-425d-9f98-f411aade4f8a','no',65,65,12,97,0,0,0),
 	 ('898d9433-818a-4e5e-ac01-3329656f9ae0','400a6ade-493e-425d-9f98-f411aade4f8a','no',65,65,7,93,0,0,0),
 	 ('7864108f-af86-4dd9-aebf-465fe765a524','400a6ade-493e-425d-9f98-f411aade4f8a','no',65,65,189,124,69,69,1),
@@ -548,8 +503,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('185225a3-e819-4d85-bdb8-07aff646d70c','400a6ade-493e-425d-9f98-f411aade4f8a','no',65,74,18,110,0,0,0),
 	 ('880016b9-5c6b-449e-980f-f0ad3994e5f6','400a6ade-493e-425d-9f98-f411aade4f8a','no',65,68,4,135,0,0,0),
 	 ('4ad718ce-1644-4c88-8cee-1f89be610386','400a6ade-493e-425d-9f98-f411aade4f8a','no',65,65,174,110,0,0,0),
-	 ('81dc258b-31ef-41e8-b2bf-5f871294c0ec','400a6ade-493e-425d-9f98-f411aade4f8a','no',70,70,175,135,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('81dc258b-31ef-41e8-b2bf-5f871294c0ec','400a6ade-493e-425d-9f98-f411aade4f8a','no',70,70,175,135,0,0,0),
 	 ('799bb59b-e8db-4700-b5ce-f5d003f0a0cf','400a6ade-493e-425d-9f98-f411aade4f8a','no',75,75,111,129,0,0,0),
 	 ('22b17839-d90e-4ce0-b96a-311bb13039e4','400a6ade-493e-425d-9f98-f411aade4f8a','no',65,65,232,124,0,0,0),
 	 ('69169118-aafe-417a-ae64-6e292e40c3f6','400a6ade-493e-425d-9f98-f411aade4f8a','no',65,67,381,118,66,93,23),
@@ -559,8 +513,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('aab5836f-2471-4d6b-8c6c-8bf181bdc087','400a6ade-493e-425d-9f98-f411aade4f8a','no',65,73,2,73,0,0,0),
 	 ('d52835d6-08eb-4856-b45a-aacb374be987','400a6ade-493e-425d-9f98-f411aade4f8a','no',65,0,0,0,0,0,0),
 	 ('6fb3f74f-aa69-46ef-a2a2-f5363a8f9b5f','400a6ade-493e-425d-9f98-f411aade4f8a','no',65,0,6,0,0,0,0),
-	 ('8bde249d-d6bf-4d3a-ace8-d0fd50073dc4','400a6ade-493e-425d-9f98-f411aade4f8a','no',65,66,9,77,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('8bde249d-d6bf-4d3a-ace8-d0fd50073dc4','400a6ade-493e-425d-9f98-f411aade4f8a','no',65,66,9,77,0,0,0),
 	 ('568bd7b2-73ec-4d9c-96b8-22c89ed3ef9f','400a6ade-493e-425d-9f98-f411aade4f8a','no',65,76,5,90,65,73,2),
 	 ('a2440d23-5d06-470d-836b-4930f953df2b','400a6ade-493e-425d-9f98-f411aade4f8a','no',65,118,11,119,109,112,3),
 	 ('ba0ebff4-5d5a-4040-b34c-f333aaf30581','8326f27f-e56c-4537-944f-57fb6017d970','yes',50,80,58,110,0,0,0),
@@ -570,8 +523,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('8229ae86-bf2b-486b-bf39-561bfdea08cc','8326f27f-e56c-4537-944f-57fb6017d970','no',70,100,8,109,94,98,4),
 	 ('ff4d5019-f0c1-46eb-8b37-38620d9bc958','8326f27f-e56c-4537-944f-57fb6017d970','yes',70,111,319,137,101,111,150),
 	 ('4185d6ef-6c16-4962-be7e-dbed136164d1','8326f27f-e56c-4537-944f-57fb6017d970','no',70,0,31,0,0,0,0),
-	 ('dcf951d4-f863-46d8-b9c1-9de67f232032','8326f27f-e56c-4537-944f-57fb6017d970','yes',70,104,132,120,96,101,73);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('dcf951d4-f863-46d8-b9c1-9de67f232032','8326f27f-e56c-4537-944f-57fb6017d970','yes',70,104,132,120,96,101,73),
 	 ('1bde7005-a39d-4ef7-9aab-2f3e2ba56b36','8326f27f-e56c-4537-944f-57fb6017d970','no',70,98,42,109,92,98,22),
 	 ('7a70e183-1106-4c83-af24-1521cdd8d9e5','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',77,77,16,119,84,86,2),
 	 ('e19104e9-bda3-4041-9123-17e8eb01a75b','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',77,77,12,98,0,0,0),
@@ -581,8 +533,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('73864b26-b50c-406b-9e18-310a870b08e1','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',77,119,4,125,112,113,2),
 	 ('689df211-73b4-4373-adce-5dd7e9f0f3e2','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',77,82,19,103,77,93,11),
 	 ('a2fd0858-fbf4-4b51-859d-c1c5e9928514','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',77,77,155,131,104,112,11),
-	 ('82c52cd0-83d8-4cdf-98dd-07cbbdca8252','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',77,77,15,116,95,104,4);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('82c52cd0-83d8-4cdf-98dd-07cbbdca8252','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',77,77,15,116,95,104,4),
 	 ('ff179c5a-b1f4-49e2-affd-60f447f67ead','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',77,77,20,111,0,0,0),
 	 ('9e21b36e-cf5b-4ad2-9a73-e5259ee0c0a2','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',77,77,77,131,90,95,11),
 	 ('50b30175-6a36-4d29-aa70-742b5b352e89','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',77,77,77,109,83,94,9),
@@ -592,8 +543,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('4e3e8d13-59f5-4fae-a38c-e1ec8a144ea5','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',77,83,15,106,77,95,6),
 	 ('d4715d94-b64c-4d3e-8cb6-c03f539b1631','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','yes',77,77,523,128,104,118,8),
 	 ('738f296c-c88f-42ca-a866-58dad13b6a75','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',77,77,7,86,0,0,0),
-	 ('3be5af1c-1aa4-404a-ad4e-396ececd2c1c','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',77,77,17,108,83,89,5);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('3be5af1c-1aa4-404a-ad4e-396ececd2c1c','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',77,77,17,108,83,89,5),
 	 ('07587d0a-f476-4b74-9369-717f0a20b632','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',65,92,7,126,0,0,0),
 	 ('8413d5b4-60a4-44e6-9584-57f50a8ebaf7','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',65,125,8,125,0,0,0),
 	 ('cb912724-60f2-439d-930f-e0314b743568','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',55,94,5,102,0,0,0),
@@ -603,8 +553,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('74585823-3571-4985-af35-53a306d6dc8d','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',55,122,1,122,0,0,0),
 	 ('26ad2a37-9a60-4f9b-aac9-65a44f981bb5','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',55,63,9,104,0,0,0),
 	 ('60de70b8-c264-41aa-9fc6-ee4c00be754d','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',55,59,3,110,0,0,0),
-	 ('dca89c37-27a3-4955-a87f-312614f46cc1','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',55,68,9,119,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('dca89c37-27a3-4955-a87f-312614f46cc1','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',55,68,9,119,0,0,0),
 	 ('c912bc9c-3ece-4594-a059-587ad9f0698e','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',55,62,6,110,0,0,0),
 	 ('cd362f75-6304-4532-95b4-a75e71ee1dae','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',65,129,12,130,123,126,3),
 	 ('ba1011e7-60ca-4863-8d5c-a0a5d88833ab','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',55,78,4,89,0,0,0),
@@ -614,8 +563,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('e0455258-2b5f-4722-9b33-95655c9c2ba3','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',55,119,2,120,0,0,0),
 	 ('b75d8a36-2640-47eb-81ea-9dfc9c109031','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',75,91,13,123,0,0,0),
 	 ('ba0ebff4-5d5a-4040-b34c-f333aaf30581','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',55,62,43,97,0,0,0),
-	 ('9b291fa8-a072-4b17-a06d-174cd7e833ac','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',55,55,60,93,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('9b291fa8-a072-4b17-a06d-174cd7e833ac','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',55,55,60,93,0,0,0),
 	 ('37d20dce-712c-43b4-bd73-2468b5ba4f04','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',55,57,40,112,0,0,0),
 	 ('8d8404f6-43cd-47b1-a5e7-5854339c7d97','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',55,56,64,95,0,0,0),
 	 ('2ce70ff9-000b-4ece-acc8-b77c6620557c','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',55,57,61,107,0,0,0),
@@ -625,8 +573,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('031c3181-20ce-447e-b178-423bd70fa001','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',55,56,21,88,84,84,1),
 	 ('a3e60bd8-0358-48f1-9f3d-30f599b98b92','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',55,55,6,89,0,0,0),
 	 ('7864108f-af86-4dd9-aebf-465fe765a524','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',55,57,23,96,56,56,1),
-	 ('37526a2a-0547-4c5b-ab77-2d63ac4a467a','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',55,62,16,85,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('37526a2a-0547-4c5b-ab77-2d63ac4a467a','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',55,62,16,85,0,0,0),
 	 ('cfeac907-17cc-404a-8506-52487e3555eb','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',55,56,11,103,0,0,0),
 	 ('b8ee7908-762e-453f-8aa5-7abc8cef3bb2','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',55,55,15,104,0,0,0),
 	 ('81dc258b-31ef-41e8-b2bf-5f871294c0ec','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',60,60,257,97,0,0,0),
@@ -636,8 +583,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('9a53f91c-d5f8-422f-8f1e-df461991b0aa','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',55,0,1,0,99,99,1),
 	 ('568bd7b2-73ec-4d9c-96b8-22c89ed3ef9f','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',55,76,4,89,0,0,0),
 	 ('a2440d23-5d06-470d-836b-4930f953df2b','7ef6b931-9ffb-43cf-bb2b-f15f16c9ede7','no',55,0,12,0,110,112,2),
-	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','731d0293-df15-4adc-8269-e511985e841f','no',50,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','731d0293-df15-4adc-8269-e511985e841f','no',50,0,0,0,0,0,0),
 	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','731d0293-df15-4adc-8269-e511985e841f','no',50,0,1,0,0,0,0),
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','731d0293-df15-4adc-8269-e511985e841f','no',50,0,0,0,0,0,0),
 	 ('ba0ebff4-5d5a-4040-b34c-f333aaf30581','731d0293-df15-4adc-8269-e511985e841f','no',50,53,28,105,0,0,0),
@@ -647,8 +593,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('a3e60bd8-0358-48f1-9f3d-30f599b98b92','731d0293-df15-4adc-8269-e511985e841f','no',50,58,2,92,0,0,0),
 	 ('898d9433-818a-4e5e-ac01-3329656f9ae0','731d0293-df15-4adc-8269-e511985e841f','no',50,50,8,60,0,0,0),
 	 ('7864108f-af86-4dd9-aebf-465fe765a524','731d0293-df15-4adc-8269-e511985e841f','no',50,50,86,108,50,66,26),
-	 ('37526a2a-0547-4c5b-ab77-2d63ac4a467a','731d0293-df15-4adc-8269-e511985e841f','no',50,52,49,110,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('37526a2a-0547-4c5b-ab77-2d63ac4a467a','731d0293-df15-4adc-8269-e511985e841f','no',50,52,49,110,0,0,0),
 	 ('cfeac907-17cc-404a-8506-52487e3555eb','731d0293-df15-4adc-8269-e511985e841f','no',50,50,58,105,0,0,0),
 	 ('b8ee7908-762e-453f-8aa5-7abc8cef3bb2','731d0293-df15-4adc-8269-e511985e841f','no',50,50,37,83,50,53,3),
 	 ('4ad718ce-1644-4c88-8cee-1f89be610386','731d0293-df15-4adc-8269-e511985e841f','no',50,50,255,116,0,0,0),
@@ -658,8 +603,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('29a9bee8-fe62-4e70-83e5-1bcbf1e3d009','731d0293-df15-4adc-8269-e511985e841f','no',50,54,20,101,0,0,0),
 	 ('31003983-8973-420d-97e6-1e141fe8577a','731d0293-df15-4adc-8269-e511985e841f','no',50,60,2,80,0,0,0),
 	 ('568bd7b2-73ec-4d9c-96b8-22c89ed3ef9f','731d0293-df15-4adc-8269-e511985e841f','no',50,77,5,104,0,0,0),
-	 ('a2440d23-5d06-470d-836b-4930f953df2b','731d0293-df15-4adc-8269-e511985e841f','no',50,0,3,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('a2440d23-5d06-470d-836b-4930f953df2b','731d0293-df15-4adc-8269-e511985e841f','no',50,0,3,0,0,0,0),
 	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','ab2746d0-d321-4bda-a117-8e23f72f2abb','yes',50,0,0,0,0,0,0),
 	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','ab2746d0-d321-4bda-a117-8e23f72f2abb','no',50,0,0,0,0,0,0),
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','ab2746d0-d321-4bda-a117-8e23f72f2abb','no',50,50,65,64,0,0,0),
@@ -669,8 +613,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('37526a2a-0547-4c5b-ab77-2d63ac4a467a','ab2746d0-d321-4bda-a117-8e23f72f2abb','no',50,52,13,67,0,0,0),
 	 ('cfeac907-17cc-404a-8506-52487e3555eb','ab2746d0-d321-4bda-a117-8e23f72f2abb','no',50,53,12,54,0,0,0),
 	 ('b8ee7908-762e-453f-8aa5-7abc8cef3bb2','ab2746d0-d321-4bda-a117-8e23f72f2abb','no',50,50,3,53,0,0,0),
-	 ('880016b9-5c6b-449e-980f-f0ad3994e5f6','ab2746d0-d321-4bda-a117-8e23f72f2abb','no',50,69,1,69,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('880016b9-5c6b-449e-980f-f0ad3994e5f6','ab2746d0-d321-4bda-a117-8e23f72f2abb','no',50,69,1,69,0,0,0),
 	 ('4ad718ce-1644-4c88-8cee-1f89be610386','ab2746d0-d321-4bda-a117-8e23f72f2abb','no',50,50,9,60,0,0,0),
 	 ('81dc258b-31ef-41e8-b2bf-5f871294c0ec','ab2746d0-d321-4bda-a117-8e23f72f2abb','no',50,50,247,101,0,0,0),
 	 ('22b17839-d90e-4ce0-b96a-311bb13039e4','ab2746d0-d321-4bda-a117-8e23f72f2abb','no',50,51,12,88,0,0,0),
@@ -680,8 +623,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('e19104e9-bda3-4041-9123-17e8eb01a75b','08ea1ce8-316b-44d9-b2a9-d0d6f607f66f','no',75,75,62,95,75,77,11),
 	 ('06fe98c5-019f-4409-b3e6-3fe40368ab8b','08ea1ce8-316b-44d9-b2a9-d0d6f607f66f','no',75,88,30,127,83,88,11),
 	 ('bbb9d8b1-7478-4594-b8f4-9efe2f309923','08ea1ce8-316b-44d9-b2a9-d0d6f607f66f','no',75,121,11,125,119,120,3),
-	 ('6e6a3c9b-9407-439a-9aaf-7b24aa261bc2','08ea1ce8-316b-44d9-b2a9-d0d6f607f66f','no',75,126,91,128,124,125,9);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('6e6a3c9b-9407-439a-9aaf-7b24aa261bc2','08ea1ce8-316b-44d9-b2a9-d0d6f607f66f','no',75,126,91,128,124,125,9),
 	 ('f8d37b18-f591-4a7a-ad79-dc63df618e57','08ea1ce8-316b-44d9-b2a9-d0d6f607f66f','no',75,122,7,126,120,122,3),
 	 ('73864b26-b50c-406b-9e18-310a870b08e1','08ea1ce8-316b-44d9-b2a9-d0d6f607f66f','no',75,124,17,125,122,122,2),
 	 ('a2fd0858-fbf4-4b51-859d-c1c5e9928514','08ea1ce8-316b-44d9-b2a9-d0d6f607f66f','no',75,109,27,127,104,109,11),
@@ -691,8 +633,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('50b30175-6a36-4d29-aa70-742b5b352e89','08ea1ce8-316b-44d9-b2a9-d0d6f607f66f','no',75,89,19,103,83,88,11),
 	 ('343d4de5-ae93-44db-8979-c9ad34bb32a5','08ea1ce8-316b-44d9-b2a9-d0d6f607f66f','no',75,99,6,115,95,99,4),
 	 ('dcd3f8e8-d032-4316-bd7b-80ee20599438','08ea1ce8-316b-44d9-b2a9-d0d6f607f66f','no',75,98,13,129,96,98,7),
-	 ('3261f8b0-9486-490a-a5d5-56f9d0a72f5b','08ea1ce8-316b-44d9-b2a9-d0d6f607f66f','no',75,117,26,134,113,116,11);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('3261f8b0-9486-490a-a5d5-56f9d0a72f5b','08ea1ce8-316b-44d9-b2a9-d0d6f607f66f','no',75,117,26,134,113,116,11),
 	 ('4e3e8d13-59f5-4fae-a38c-e1ec8a144ea5','08ea1ce8-316b-44d9-b2a9-d0d6f607f66f','no',75,78,31,115,0,0,0),
 	 ('d4715d94-b64c-4d3e-8cb6-c03f539b1631','08ea1ce8-316b-44d9-b2a9-d0d6f607f66f','no',75,117,14,134,111,117,7),
 	 ('3d4db5b5-f42f-442b-bebe-27d500886969','08ea1ce8-316b-44d9-b2a9-d0d6f607f66f','no',50,123,4,125,0,0,0),
@@ -702,8 +643,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('74585823-3571-4985-af35-53a306d6dc8d','08ea1ce8-316b-44d9-b2a9-d0d6f607f66f','no',50,0,0,0,0,0,0),
 	 ('26ad2a37-9a60-4f9b-aac9-65a44f981bb5','08ea1ce8-316b-44d9-b2a9-d0d6f607f66f','no',50,0,0,0,0,0,0),
 	 ('cd362f75-6304-4532-95b4-a75e71ee1dae','08ea1ce8-316b-44d9-b2a9-d0d6f607f66f','no',50,127,4,127,0,0,0),
-	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','08ea1ce8-316b-44d9-b2a9-d0d6f607f66f','no',50,0,0,0,115,115,1);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','08ea1ce8-316b-44d9-b2a9-d0d6f607f66f','no',50,0,0,0,115,115,1),
 	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','08ea1ce8-316b-44d9-b2a9-d0d6f607f66f','no',50,0,0,0,116,116,1),
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','08ea1ce8-316b-44d9-b2a9-d0d6f607f66f','no',50,0,0,0,0,0,0),
 	 ('b75d8a36-2640-47eb-81ea-9dfc9c109031','08ea1ce8-316b-44d9-b2a9-d0d6f607f66f','no',75,0,0,0,0,0,0),
@@ -713,8 +653,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('7864108f-af86-4dd9-aebf-465fe765a524','08ea1ce8-316b-44d9-b2a9-d0d6f607f66f','no',50,57,33,90,51,67,19),
 	 ('37526a2a-0547-4c5b-ab77-2d63ac4a467a','08ea1ce8-316b-44d9-b2a9-d0d6f607f66f','no',50,62,36,101,0,0,0),
 	 ('cfeac907-17cc-404a-8506-52487e3555eb','08ea1ce8-316b-44d9-b2a9-d0d6f607f66f','no',50,50,18,85,0,0,0),
-	 ('b8ee7908-762e-453f-8aa5-7abc8cef3bb2','08ea1ce8-316b-44d9-b2a9-d0d6f607f66f','no',50,50,15,69,51,52,3);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('b8ee7908-762e-453f-8aa5-7abc8cef3bb2','08ea1ce8-316b-44d9-b2a9-d0d6f607f66f','no',50,50,15,69,51,52,3),
 	 ('ecfb3b2b-1c2e-4324-b6bc-4ea21480d71d','08ea1ce8-316b-44d9-b2a9-d0d6f607f66f','no',50,56,89,83,51,68,26),
 	 ('4ad718ce-1644-4c88-8cee-1f89be610386','08ea1ce8-316b-44d9-b2a9-d0d6f607f66f','no',50,50,64,85,0,0,0),
 	 ('22b17839-d90e-4ce0-b96a-311bb13039e4','08ea1ce8-316b-44d9-b2a9-d0d6f607f66f','no',50,61,71,102,0,0,0),
@@ -724,8 +663,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('edc0d87e-493a-49e6-80be-0f9714f086a3','08ea1ce8-316b-44d9-b2a9-d0d6f607f66f','no',50,50,12,75,0,0,0),
 	 ('ab1e890f-6845-4681-8589-e9ce32d688ba','08ea1ce8-316b-44d9-b2a9-d0d6f607f66f','no',50,81,8,89,72,76,15),
 	 ('568bd7b2-73ec-4d9c-96b8-22c89ed3ef9f','08ea1ce8-316b-44d9-b2a9-d0d6f607f66f','no',50,79,6,92,65,73,3),
-	 ('7a70e183-1106-4c83-af24-1521cdd8d9e5','27343b02-f5a6-4adf-bce0-511d028f837a','no',75,76,7,94,75,84,4);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('7a70e183-1106-4c83-af24-1521cdd8d9e5','27343b02-f5a6-4adf-bce0-511d028f837a','no',75,76,7,94,75,84,4),
 	 ('e19104e9-bda3-4041-9123-17e8eb01a75b','27343b02-f5a6-4adf-bce0-511d028f837a','no',75,75,8,82,0,0,0),
 	 ('06fe98c5-019f-4409-b3e6-3fe40368ab8b','27343b02-f5a6-4adf-bce0-511d028f837a','no',75,75,36,107,85,86,7),
 	 ('6e6a3c9b-9407-439a-9aaf-7b24aa261bc2','27343b02-f5a6-4adf-bce0-511d028f837a','no',75,121,8,121,124,125,2),
@@ -735,8 +673,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('ff179c5a-b1f4-49e2-affd-60f447f67ead','27343b02-f5a6-4adf-bce0-511d028f837a','yes',75,75,9,92,0,0,0),
 	 ('9e21b36e-cf5b-4ad2-9a73-e5259ee0c0a2','27343b02-f5a6-4adf-bce0-511d028f837a','yes',75,75,39,124,82,86,11),
 	 ('50b30175-6a36-4d29-aa70-742b5b352e89','27343b02-f5a6-4adf-bce0-511d028f837a','yes',75,75,41,97,86,88,7),
-	 ('343d4de5-ae93-44db-8979-c9ad34bb32a5','27343b02-f5a6-4adf-bce0-511d028f837a','no',75,76,31,100,91,97,4);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('343d4de5-ae93-44db-8979-c9ad34bb32a5','27343b02-f5a6-4adf-bce0-511d028f837a','no',75,76,31,100,91,97,4),
 	 ('dcd3f8e8-d032-4316-bd7b-80ee20599438','27343b02-f5a6-4adf-bce0-511d028f837a','no',75,75,50,113,92,107,5),
 	 ('3261f8b0-9486-490a-a5d5-56f9d0a72f5b','27343b02-f5a6-4adf-bce0-511d028f837a','no',75,75,154,118,110,112,7),
 	 ('4e3e8d13-59f5-4fae-a38c-e1ec8a144ea5','27343b02-f5a6-4adf-bce0-511d028f837a','no',75,78,12,114,75,93,10),
@@ -746,8 +683,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('8fbc5faf-b691-406c-8111-54586460c1a2','27343b02-f5a6-4adf-bce0-511d028f837a','no',50,0,0,0,0,0,0),
 	 ('b77221e0-134b-4991-bf89-14f7fa6d384e','27343b02-f5a6-4adf-bce0-511d028f837a','no',50,0,1,0,0,0,0),
 	 ('e32d3ed6-8080-4d66-a739-1be8eaf7cc0e','27343b02-f5a6-4adf-bce0-511d028f837a','no',50,0,1,0,0,0,0),
-	 ('74585823-3571-4985-af35-53a306d6dc8d','27343b02-f5a6-4adf-bce0-511d028f837a','no',50,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('74585823-3571-4985-af35-53a306d6dc8d','27343b02-f5a6-4adf-bce0-511d028f837a','no',50,0,0,0,0,0,0),
 	 ('c912bc9c-3ece-4594-a059-587ad9f0698e','27343b02-f5a6-4adf-bce0-511d028f837a','no',50,0,1,0,0,0,0),
 	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','27343b02-f5a6-4adf-bce0-511d028f837a','no',50,0,0,0,0,0,0),
 	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','27343b02-f5a6-4adf-bce0-511d028f837a','no',50,0,0,0,0,0,0),
@@ -757,8 +693,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('9b291fa8-a072-4b17-a06d-174cd7e833ac','27343b02-f5a6-4adf-bce0-511d028f837a','no',50,71,38,92,0,0,0),
 	 ('2ce70ff9-000b-4ece-acc8-b77c6620557c','27343b02-f5a6-4adf-bce0-511d028f837a','no',50,50,29,78,0,0,0),
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','27343b02-f5a6-4adf-bce0-511d028f837a','no',50,51,93,118,70,95,14),
-	 ('cfeac907-17cc-404a-8506-52487e3555eb','27343b02-f5a6-4adf-bce0-511d028f837a','no',50,53,8,89,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('cfeac907-17cc-404a-8506-52487e3555eb','27343b02-f5a6-4adf-bce0-511d028f837a','no',50,53,8,89,0,0,0),
 	 ('b8ee7908-762e-453f-8aa5-7abc8cef3bb2','27343b02-f5a6-4adf-bce0-511d028f837a','no',50,51,11,85,0,0,0),
 	 ('ecfb3b2b-1c2e-4324-b6bc-4ea21480d71d','27343b02-f5a6-4adf-bce0-511d028f837a','no',50,57,22,77,53,56,8),
 	 ('4ad718ce-1644-4c88-8cee-1f89be610386','27343b02-f5a6-4adf-bce0-511d028f837a','no',50,50,26,104,0,0,0),
@@ -768,8 +703,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('91cb0d5f-084c-462d-bd66-15decbfbebe5','27343b02-f5a6-4adf-bce0-511d028f837a','no',50,59,100,72,53,70,29),
 	 ('edc0d87e-493a-49e6-80be-0f9714f086a3','27343b02-f5a6-4adf-bce0-511d028f837a','no',50,50,12,79,0,0,0),
 	 ('8229ae86-bf2b-486b-bf39-561bfdea08cc','27343b02-f5a6-4adf-bce0-511d028f837a','yes',70,0,0,0,0,0,0),
-	 ('ff4d5019-f0c1-46eb-8b37-38620d9bc958','27343b02-f5a6-4adf-bce0-511d028f837a','yes',70,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('ff4d5019-f0c1-46eb-8b37-38620d9bc958','27343b02-f5a6-4adf-bce0-511d028f837a','yes',70,0,0,0,0,0,0),
 	 ('df4d0ec2-c98d-4594-9966-7d796b9742a4','27343b02-f5a6-4adf-bce0-511d028f837a','no',50,118,1,118,0,0,0),
 	 ('568bd7b2-73ec-4d9c-96b8-22c89ed3ef9f','27343b02-f5a6-4adf-bce0-511d028f837a','no',50,0,0,0,0,0,0),
 	 ('7a70e183-1106-4c83-af24-1521cdd8d9e5','1b3ad2c6-e188-42bb-bdb1-a8b29618ac31','no',75,75,9,99,83,88,4),
@@ -779,8 +713,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('6e6a3c9b-9407-439a-9aaf-7b24aa261bc2','1b3ad2c6-e188-42bb-bdb1-a8b29618ac31','no',75,120,10,128,124,124,2),
 	 ('f8d37b18-f591-4a7a-ad79-dc63df618e57','1b3ad2c6-e188-42bb-bdb1-a8b29618ac31','no',75,118,4,126,119,122,3),
 	 ('73864b26-b50c-406b-9e18-310a870b08e1','1b3ad2c6-e188-42bb-bdb1-a8b29618ac31','no',75,121,3,124,117,118,2),
-	 ('a2fd0858-fbf4-4b51-859d-c1c5e9928514','1b3ad2c6-e188-42bb-bdb1-a8b29618ac31','no',75,83,16,122,85,99,11);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('a2fd0858-fbf4-4b51-859d-c1c5e9928514','1b3ad2c6-e188-42bb-bdb1-a8b29618ac31','no',75,83,16,122,85,99,11),
 	 ('82c52cd0-83d8-4cdf-98dd-07cbbdca8252','1b3ad2c6-e188-42bb-bdb1-a8b29618ac31','no',75,77,11,117,79,84,7),
 	 ('ff179c5a-b1f4-49e2-affd-60f447f67ead','1b3ad2c6-e188-42bb-bdb1-a8b29618ac31','no',75,76,9,116,0,0,0),
 	 ('9e21b36e-cf5b-4ad2-9a73-e5259ee0c0a2','1b3ad2c6-e188-42bb-bdb1-a8b29618ac31','no',75,79,16,113,75,75,1),
@@ -790,8 +723,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('3261f8b0-9486-490a-a5d5-56f9d0a72f5b','1b3ad2c6-e188-42bb-bdb1-a8b29618ac31','no',75,75,25,128,98,105,7),
 	 ('4e3e8d13-59f5-4fae-a38c-e1ec8a144ea5','1b3ad2c6-e188-42bb-bdb1-a8b29618ac31','no',75,84,21,111,77,97,11),
 	 ('d4715d94-b64c-4d3e-8cb6-c03f539b1631','1b3ad2c6-e188-42bb-bdb1-a8b29618ac31','no',75,75,37,123,108,110,7),
-	 ('3be5af1c-1aa4-404a-ad4e-396ececd2c1c','1b3ad2c6-e188-42bb-bdb1-a8b29618ac31','no',75,85,9,112,79,85,7);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('3be5af1c-1aa4-404a-ad4e-396ececd2c1c','1b3ad2c6-e188-42bb-bdb1-a8b29618ac31','no',75,85,9,112,79,85,7),
 	 ('b77221e0-134b-4991-bf89-14f7fa6d384e','1b3ad2c6-e188-42bb-bdb1-a8b29618ac31','no',50,120,1,120,0,0,0),
 	 ('e32d3ed6-8080-4d66-a739-1be8eaf7cc0e','1b3ad2c6-e188-42bb-bdb1-a8b29618ac31','no',50,0,0,0,0,0,0),
 	 ('74585823-3571-4985-af35-53a306d6dc8d','1b3ad2c6-e188-42bb-bdb1-a8b29618ac31','no',50,0,1,0,0,0,0),
@@ -801,8 +733,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','1b3ad2c6-e188-42bb-bdb1-a8b29618ac31','no',50,0,0,0,0,0,0),
 	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','1b3ad2c6-e188-42bb-bdb1-a8b29618ac31','no',50,126,1,126,0,0,0),
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','1b3ad2c6-e188-42bb-bdb1-a8b29618ac31','no',50,0,1,0,0,0,0),
-	 ('e0455258-2b5f-4722-9b33-95655c9c2ba3','1b3ad2c6-e188-42bb-bdb1-a8b29618ac31','no',50,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('e0455258-2b5f-4722-9b33-95655c9c2ba3','1b3ad2c6-e188-42bb-bdb1-a8b29618ac31','no',50,0,0,0,0,0,0),
 	 ('b75d8a36-2640-47eb-81ea-9dfc9c109031','1b3ad2c6-e188-42bb-bdb1-a8b29618ac31','no',75,0,0,0,0,0,0),
 	 ('ba0ebff4-5d5a-4040-b34c-f333aaf30581','1b3ad2c6-e188-42bb-bdb1-a8b29618ac31','no',50,59,19,101,0,0,0),
 	 ('9b291fa8-a072-4b17-a06d-174cd7e833ac','1b3ad2c6-e188-42bb-bdb1-a8b29618ac31','no',50,56,22,110,0,0,0),
@@ -812,8 +743,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','1b3ad2c6-e188-42bb-bdb1-a8b29618ac31','no',50,50,28,123,70,109,16),
 	 ('7864108f-af86-4dd9-aebf-465fe765a524','1b3ad2c6-e188-42bb-bdb1-a8b29618ac31','no',50,51,31,94,50,61,10),
 	 ('cfeac907-17cc-404a-8506-52487e3555eb','1b3ad2c6-e188-42bb-bdb1-a8b29618ac31','no',50,51,55,99,0,0,0),
-	 ('b8ee7908-762e-453f-8aa5-7abc8cef3bb2','1b3ad2c6-e188-42bb-bdb1-a8b29618ac31','no',50,50,38,96,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('b8ee7908-762e-453f-8aa5-7abc8cef3bb2','1b3ad2c6-e188-42bb-bdb1-a8b29618ac31','no',50,50,38,96,0,0,0),
 	 ('ecfb3b2b-1c2e-4324-b6bc-4ea21480d71d','1b3ad2c6-e188-42bb-bdb1-a8b29618ac31','no',50,50,15,68,0,0,0),
 	 ('29a9bee8-fe62-4e70-83e5-1bcbf1e3d009','1b3ad2c6-e188-42bb-bdb1-a8b29618ac31','no',50,57,11,89,0,0,0),
 	 ('cf69439b-67b6-4fd7-a701-13c8be94ed21','1b3ad2c6-e188-42bb-bdb1-a8b29618ac31','no',50,50,41,91,0,0,0),
@@ -823,8 +753,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('df4d0ec2-c98d-4594-9966-7d796b9742a4','1b3ad2c6-e188-42bb-bdb1-a8b29618ac31','no',50,0,0,0,0,0,0),
 	 ('db0f8552-ee55-48c3-a09b-81fb431247f8','1b3ad2c6-e188-42bb-bdb1-a8b29618ac31','no',50,122,5,126,120,120,1),
 	 ('9a53f91c-d5f8-422f-8f1e-df461991b0aa','1b3ad2c6-e188-42bb-bdb1-a8b29618ac31','no',50,112,2,113,98,100,2),
-	 ('7a70e183-1106-4c83-af24-1521cdd8d9e5','b481fe63-c73b-41c4-a85b-a1554f9a68ec','no',75,86,8,102,81,86,4);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('7a70e183-1106-4c83-af24-1521cdd8d9e5','b481fe63-c73b-41c4-a85b-a1554f9a68ec','no',75,86,8,102,81,86,4),
 	 ('e19104e9-bda3-4041-9123-17e8eb01a75b','b481fe63-c73b-41c4-a85b-a1554f9a68ec','no',75,75,23,90,0,0,0),
 	 ('06fe98c5-019f-4409-b3e6-3fe40368ab8b','b481fe63-c73b-41c4-a85b-a1554f9a68ec','no',75,92,41,117,87,91,11),
 	 ('bbb9d8b1-7478-4594-b8f4-9efe2f309923','b481fe63-c73b-41c4-a85b-a1554f9a68ec','no',75,121,4,125,113,115,2),
@@ -834,8 +763,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('a2fd0858-fbf4-4b51-859d-c1c5e9928514','b481fe63-c73b-41c4-a85b-a1554f9a68ec','no',75,118,19,132,106,116,11),
 	 ('82c52cd0-83d8-4cdf-98dd-07cbbdca8252','b481fe63-c73b-41c4-a85b-a1554f9a68ec','no',75,106,13,124,99,104,7),
 	 ('ff179c5a-b1f4-49e2-affd-60f447f67ead','b481fe63-c73b-41c4-a85b-a1554f9a68ec','no',75,81,28,117,75,76,2),
-	 ('9e21b36e-cf5b-4ad2-9a73-e5259ee0c0a2','b481fe63-c73b-41c4-a85b-a1554f9a68ec','no',75,100,22,126,92,105,11);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('9e21b36e-cf5b-4ad2-9a73-e5259ee0c0a2','b481fe63-c73b-41c4-a85b-a1554f9a68ec','no',75,100,22,126,92,105,11),
 	 ('50b30175-6a36-4d29-aa70-742b5b352e89','b481fe63-c73b-41c4-a85b-a1554f9a68ec','no',75,96,20,121,90,95,11),
 	 ('343d4de5-ae93-44db-8979-c9ad34bb32a5','b481fe63-c73b-41c4-a85b-a1554f9a68ec','no',75,104,4,115,101,103,4),
 	 ('dcd3f8e8-d032-4316-bd7b-80ee20599438','b481fe63-c73b-41c4-a85b-a1554f9a68ec','no',75,117,8,121,109,118,5),
@@ -845,8 +773,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('3d4db5b5-f42f-442b-bebe-27d500886969','b481fe63-c73b-41c4-a85b-a1554f9a68ec','no',75,124,6,126,0,0,0),
 	 ('1cf763a9-2972-4724-bdb2-fbd05273296d','b481fe63-c73b-41c4-a85b-a1554f9a68ec','no',75,121,5,128,0,0,0),
 	 ('8746c70d-7354-4446-99f8-df18f02f32ec','b481fe63-c73b-41c4-a85b-a1554f9a68ec','no',75,124,5,128,0,0,0),
-	 ('8413d5b4-60a4-44e6-9584-57f50a8ebaf7','b481fe63-c73b-41c4-a85b-a1554f9a68ec','no',75,125,8,125,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('8413d5b4-60a4-44e6-9584-57f50a8ebaf7','b481fe63-c73b-41c4-a85b-a1554f9a68ec','no',75,125,8,125,0,0,0),
 	 ('cb912724-60f2-439d-930f-e0314b743568','b481fe63-c73b-41c4-a85b-a1554f9a68ec','no',60,98,2,99,0,0,0),
 	 ('8fbc5faf-b691-406c-8111-54586460c1a2','b481fe63-c73b-41c4-a85b-a1554f9a68ec','no',75,125,11,127,121,124,15),
 	 ('b77221e0-134b-4991-bf89-14f7fa6d384e','b481fe63-c73b-41c4-a85b-a1554f9a68ec','no',60,0,0,0,0,0,0),
@@ -856,8 +783,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('c912bc9c-3ece-4594-a059-587ad9f0698e','b481fe63-c73b-41c4-a85b-a1554f9a68ec','no',60,0,0,0,0,0,0),
 	 ('cd362f75-6304-4532-95b4-a75e71ee1dae','b481fe63-c73b-41c4-a85b-a1554f9a68ec','no',75,127,5,127,125,125,1),
 	 ('ba1011e7-60ca-4863-8d5c-a0a5d88833ab','b481fe63-c73b-41c4-a85b-a1554f9a68ec','no',65,0,0,0,0,0,0),
-	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','b481fe63-c73b-41c4-a85b-a1554f9a68ec','no',60,126,4,134,118,118,1);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','b481fe63-c73b-41c4-a85b-a1554f9a68ec','no',60,126,4,134,118,118,1),
 	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','b481fe63-c73b-41c4-a85b-a1554f9a68ec','no',60,0,0,0,116,117,3),
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','b481fe63-c73b-41c4-a85b-a1554f9a68ec','no',60,124,2,124,0,0,0),
 	 ('b75d8a36-2640-47eb-81ea-9dfc9c109031','b481fe63-c73b-41c4-a85b-a1554f9a68ec','no',75,0,0,0,0,0,0),
@@ -867,8 +793,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('0a4347d8-076b-45db-9671-2f9e0e8b7d03','b481fe63-c73b-41c4-a85b-a1554f9a68ec','no',60,93,54,115,0,0,0),
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','b481fe63-c73b-41c4-a85b-a1554f9a68ec','no',60,120,19,121,73,97,12),
 	 ('7864108f-af86-4dd9-aebf-465fe765a524','b481fe63-c73b-41c4-a85b-a1554f9a68ec','no',60,60,17,96,0,0,0),
-	 ('37526a2a-0547-4c5b-ab77-2d63ac4a467a','b481fe63-c73b-41c4-a85b-a1554f9a68ec','no',60,76,6,101,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('37526a2a-0547-4c5b-ab77-2d63ac4a467a','b481fe63-c73b-41c4-a85b-a1554f9a68ec','no',60,76,6,101,0,0,0),
 	 ('cfeac907-17cc-404a-8506-52487e3555eb','b481fe63-c73b-41c4-a85b-a1554f9a68ec','no',50,55,7,65,0,0,0),
 	 ('ff4d5019-f0c1-46eb-8b37-38620d9bc958','b481fe63-c73b-41c4-a85b-a1554f9a68ec','no',100,124,16,135,116,122,8),
 	 ('4185d6ef-6c16-4962-be7e-dbed136164d1','b481fe63-c73b-41c4-a85b-a1554f9a68ec','no',100,135,2,135,129,129,1),
@@ -878,8 +803,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('1cf763a9-2972-4724-bdb2-fbd05273296d','79cfef5a-7bd2-451c-a72d-3a7b9d332883','no',50,124,1,124,0,0,0),
 	 ('8413d5b4-60a4-44e6-9584-57f50a8ebaf7','79cfef5a-7bd2-451c-a72d-3a7b9d332883','no',50,125,5,128,0,0,0),
 	 ('b77221e0-134b-4991-bf89-14f7fa6d384e','79cfef5a-7bd2-451c-a72d-3a7b9d332883','no',50,70,1,70,0,0,0),
-	 ('e32d3ed6-8080-4d66-a739-1be8eaf7cc0e','79cfef5a-7bd2-451c-a72d-3a7b9d332883','no',50,124,2,124,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('e32d3ed6-8080-4d66-a739-1be8eaf7cc0e','79cfef5a-7bd2-451c-a72d-3a7b9d332883','no',50,124,2,124,0,0,0),
 	 ('74585823-3571-4985-af35-53a306d6dc8d','79cfef5a-7bd2-451c-a72d-3a7b9d332883','no',50,125,1,125,0,0,0),
 	 ('26ad2a37-9a60-4f9b-aac9-65a44f981bb5','79cfef5a-7bd2-451c-a72d-3a7b9d332883','no',50,98,1,98,0,0,0),
 	 ('0f9693fe-e7b6-4d84-81fb-b07b483c6eec','79cfef5a-7bd2-451c-a72d-3a7b9d332883','no',50,50,7,71,0,0,0),
@@ -889,8 +813,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('bbaa0f50-d133-4b60-8f95-c179f774314d','79cfef5a-7bd2-451c-a72d-3a7b9d332883','no',50,66,1,66,60,104,2),
 	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','79cfef5a-7bd2-451c-a72d-3a7b9d332883','no',50,0,0,0,0,0,0),
 	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','79cfef5a-7bd2-451c-a72d-3a7b9d332883','no',50,121,3,121,0,0,0),
-	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','79cfef5a-7bd2-451c-a72d-3a7b9d332883','no',50,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','79cfef5a-7bd2-451c-a72d-3a7b9d332883','no',50,0,0,0,0,0,0),
 	 ('e0455258-2b5f-4722-9b33-95655c9c2ba3','79cfef5a-7bd2-451c-a72d-3a7b9d332883','no',50,118,1,118,0,0,0),
 	 ('b75d8a36-2640-47eb-81ea-9dfc9c109031','79cfef5a-7bd2-451c-a72d-3a7b9d332883','no',75,0,0,0,0,0,0),
 	 ('ba0ebff4-5d5a-4040-b34c-f333aaf30581','79cfef5a-7bd2-451c-a72d-3a7b9d332883','no',50,52,28,116,0,0,0),
@@ -900,8 +823,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('2ce70ff9-000b-4ece-acc8-b77c6620557c','79cfef5a-7bd2-451c-a72d-3a7b9d332883','no',50,62,16,95,0,0,0),
 	 ('0a4347d8-076b-45db-9671-2f9e0e8b7d03','79cfef5a-7bd2-451c-a72d-3a7b9d332883','no',50,66,13,87,0,0,0),
 	 ('f2630995-d6f9-462a-88e6-891e8b78bd6f','79cfef5a-7bd2-451c-a72d-3a7b9d332883','no',50,50,10,68,0,0,0),
-	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','79cfef5a-7bd2-451c-a72d-3a7b9d332883','no',50,51,37,132,71,98,10);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','79cfef5a-7bd2-451c-a72d-3a7b9d332883','no',50,51,37,132,71,98,10),
 	 ('031c3181-20ce-447e-b178-423bd70fa001','79cfef5a-7bd2-451c-a72d-3a7b9d332883','no',50,52,17,92,51,51,1),
 	 ('a3e60bd8-0358-48f1-9f3d-30f599b98b92','79cfef5a-7bd2-451c-a72d-3a7b9d332883','no',50,58,13,98,0,0,0),
 	 ('7864108f-af86-4dd9-aebf-465fe765a524','79cfef5a-7bd2-451c-a72d-3a7b9d332883','no',50,58,62,109,52,76,11),
@@ -911,8 +833,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('ecfb3b2b-1c2e-4324-b6bc-4ea21480d71d','79cfef5a-7bd2-451c-a72d-3a7b9d332883','no',50,55,22,71,53,63,11),
 	 ('4ad718ce-1644-4c88-8cee-1f89be610386','79cfef5a-7bd2-451c-a72d-3a7b9d332883','no',50,50,48,93,0,0,0),
 	 ('799bb59b-e8db-4700-b5ce-f5d003f0a0cf','79cfef5a-7bd2-451c-a72d-3a7b9d332883','no',50,85,48,127,0,0,0),
-	 ('22b17839-d90e-4ce0-b96a-311bb13039e4','79cfef5a-7bd2-451c-a72d-3a7b9d332883','no',50,62,54,95,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('22b17839-d90e-4ce0-b96a-311bb13039e4','79cfef5a-7bd2-451c-a72d-3a7b9d332883','no',50,62,54,95,0,0,0),
 	 ('29a9bee8-fe62-4e70-83e5-1bcbf1e3d009','79cfef5a-7bd2-451c-a72d-3a7b9d332883','no',50,67,5,74,0,0,0),
 	 ('cf69439b-67b6-4fd7-a701-13c8be94ed21','79cfef5a-7bd2-451c-a72d-3a7b9d332883','no',50,52,16,76,0,0,0),
 	 ('e73a6036-b1ec-442c-9172-5e5ece53404c','79cfef5a-7bd2-451c-a72d-3a7b9d332883','no',50,51,11,73,0,0,0),
@@ -922,8 +843,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('df4d0ec2-c98d-4594-9966-7d796b9742a4','79cfef5a-7bd2-451c-a72d-3a7b9d332883','no',50,0,3,0,0,0,0),
 	 ('9a53f91c-d5f8-422f-8f1e-df461991b0aa','79cfef5a-7bd2-451c-a72d-3a7b9d332883','no',50,0,1,0,0,0,0),
 	 ('568bd7b2-73ec-4d9c-96b8-22c89ed3ef9f','79cfef5a-7bd2-451c-a72d-3a7b9d332883','no',50,83,2,83,66,66,2),
-	 ('a2440d23-5d06-470d-836b-4930f953df2b','79cfef5a-7bd2-451c-a72d-3a7b9d332883','no',50,0,3,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('a2440d23-5d06-470d-836b-4930f953df2b','79cfef5a-7bd2-451c-a72d-3a7b9d332883','no',50,0,3,0,0,0,0),
 	 ('8413d5b4-60a4-44e6-9584-57f50a8ebaf7','f881cda1-5fad-43dc-8d29-cbbeb6d70197','no',50,0,0,0,0,0,0),
 	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','f881cda1-5fad-43dc-8d29-cbbeb6d70197','no',50,0,0,0,0,0,0),
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','f881cda1-5fad-43dc-8d29-cbbeb6d70197','no',50,50,2,51,0,0,0),
@@ -933,8 +853,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('b8ee7908-762e-453f-8aa5-7abc8cef3bb2','f881cda1-5fad-43dc-8d29-cbbeb6d70197','no',50,52,3,65,0,0,0),
 	 ('ceb52a41-1897-4153-8aa4-92fe31f06a16','f881cda1-5fad-43dc-8d29-cbbeb6d70197','no',50,53,2,55,0,0,0),
 	 ('4ad718ce-1644-4c88-8cee-1f89be610386','f881cda1-5fad-43dc-8d29-cbbeb6d70197','no',50,50,15,116,0,0,0),
-	 ('22b17839-d90e-4ce0-b96a-311bb13039e4','f881cda1-5fad-43dc-8d29-cbbeb6d70197','no',50,51,20,94,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('22b17839-d90e-4ce0-b96a-311bb13039e4','f881cda1-5fad-43dc-8d29-cbbeb6d70197','no',50,51,20,94,0,0,0),
 	 ('568bd7b2-73ec-4d9c-96b8-22c89ed3ef9f','f881cda1-5fad-43dc-8d29-cbbeb6d70197','no',50,85,1,85,0,0,0),
 	 ('7a70e183-1106-4c83-af24-1521cdd8d9e5','7bc90d91-0204-4929-b92f-9fabbdc8ff93','no',75,0,1,0,0,0,0),
 	 ('e19104e9-bda3-4041-9123-17e8eb01a75b','7bc90d91-0204-4929-b92f-9fabbdc8ff93','no',75,78,2,78,0,0,0),
@@ -944,8 +863,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('a2fd0858-fbf4-4b51-859d-c1c5e9928514','7bc90d91-0204-4929-b92f-9fabbdc8ff93','no',75,76,17,105,80,95,11),
 	 ('82c52cd0-83d8-4cdf-98dd-07cbbdca8252','7bc90d91-0204-4929-b92f-9fabbdc8ff93','no',75,75,16,123,0,0,0),
 	 ('9e21b36e-cf5b-4ad2-9a73-e5259ee0c0a2','7bc90d91-0204-4929-b92f-9fabbdc8ff93','no',75,76,18,102,0,0,0),
-	 ('50b30175-6a36-4d29-aa70-742b5b352e89','7bc90d91-0204-4929-b92f-9fabbdc8ff93','no',75,77,26,113,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('50b30175-6a36-4d29-aa70-742b5b352e89','7bc90d91-0204-4929-b92f-9fabbdc8ff93','no',75,77,26,113,0,0,0),
 	 ('343d4de5-ae93-44db-8979-c9ad34bb32a5','7bc90d91-0204-4929-b92f-9fabbdc8ff93','no',75,75,12,107,84,89,7),
 	 ('dcd3f8e8-d032-4316-bd7b-80ee20599438','7bc90d91-0204-4929-b92f-9fabbdc8ff93','no',75,77,14,112,88,99,9),
 	 ('3261f8b0-9486-490a-a5d5-56f9d0a72f5b','7bc90d91-0204-4929-b92f-9fabbdc8ff93','no',75,75,21,130,85,100,9),
@@ -955,8 +873,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('8413d5b4-60a4-44e6-9584-57f50a8ebaf7','7bc90d91-0204-4929-b92f-9fabbdc8ff93','no',50,127,3,127,0,0,0),
 	 ('e32d3ed6-8080-4d66-a739-1be8eaf7cc0e','7bc90d91-0204-4929-b92f-9fabbdc8ff93','no',50,0,0,0,0,0,0),
 	 ('cd362f75-6304-4532-95b4-a75e71ee1dae','7bc90d91-0204-4929-b92f-9fabbdc8ff93','no',50,128,4,128,123,126,3),
-	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','7bc90d91-0204-4929-b92f-9fabbdc8ff93','no',50,0,1,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','7bc90d91-0204-4929-b92f-9fabbdc8ff93','no',50,0,1,0,0,0,0),
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','7bc90d91-0204-4929-b92f-9fabbdc8ff93','no',50,0,0,0,0,0,0),
 	 ('b75d8a36-2640-47eb-81ea-9dfc9c109031','7bc90d91-0204-4929-b92f-9fabbdc8ff93','no',75,87,6,97,0,0,0),
 	 ('ba0ebff4-5d5a-4040-b34c-f333aaf30581','7bc90d91-0204-4929-b92f-9fabbdc8ff93','no',50,0,0,0,0,0,0),
@@ -966,8 +883,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','7bc90d91-0204-4929-b92f-9fabbdc8ff93','no',50,0,5,0,0,0,0),
 	 ('031c3181-20ce-447e-b178-423bd70fa001','7bc90d91-0204-4929-b92f-9fabbdc8ff93','no',50,51,10,100,0,0,0),
 	 ('7864108f-af86-4dd9-aebf-465fe765a524','7bc90d91-0204-4929-b92f-9fabbdc8ff93','no',50,59,15,103,56,56,2),
-	 ('37526a2a-0547-4c5b-ab77-2d63ac4a467a','7bc90d91-0204-4929-b92f-9fabbdc8ff93','no',50,77,1,77,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('37526a2a-0547-4c5b-ab77-2d63ac4a467a','7bc90d91-0204-4929-b92f-9fabbdc8ff93','no',50,77,1,77,0,0,0),
 	 ('cfeac907-17cc-404a-8506-52487e3555eb','7bc90d91-0204-4929-b92f-9fabbdc8ff93','no',50,50,9,78,0,0,0),
 	 ('b8ee7908-762e-453f-8aa5-7abc8cef3bb2','7bc90d91-0204-4929-b92f-9fabbdc8ff93','no',50,50,12,83,0,0,0),
 	 ('ecfb3b2b-1c2e-4324-b6bc-4ea21480d71d','7bc90d91-0204-4929-b92f-9fabbdc8ff93','no',50,56,28,79,51,55,5),
@@ -977,8 +893,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('e73a6036-b1ec-442c-9172-5e5ece53404c','7bc90d91-0204-4929-b92f-9fabbdc8ff93','no',50,54,7,101,0,0,0),
 	 ('91cb0d5f-084c-462d-bd66-15decbfbebe5','7bc90d91-0204-4929-b92f-9fabbdc8ff93','no',50,59,60,74,53,58,14),
 	 ('b7b148c0-5111-47fd-b898-c8a971ca6054','7bc90d91-0204-4929-b92f-9fabbdc8ff93','no',70,0,0,0,0,0,0),
-	 ('db0f8552-ee55-48c3-a09b-81fb431247f8','7bc90d91-0204-4929-b92f-9fabbdc8ff93','no',50,122,5,128,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('db0f8552-ee55-48c3-a09b-81fb431247f8','7bc90d91-0204-4929-b92f-9fabbdc8ff93','no',50,122,5,128,0,0,0),
 	 ('9006ff0b-8abb-4697-8cf8-66e06d93b085','20ca605d-a969-47a6-9185-c8b76d28f8c2','no',70,97,3,100,93,93,1),
 	 ('b7b148c0-5111-47fd-b898-c8a971ca6054','20ca605d-a969-47a6-9185-c8b76d28f8c2','no',70,106,5,127,0,0,0),
 	 ('8229ae86-bf2b-486b-bf39-561bfdea08cc','20ca605d-a969-47a6-9185-c8b76d28f8c2','no',70,101,8,121,94,97,4),
@@ -988,8 +903,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('1bde7005-a39d-4ef7-9aab-2f3e2ba56b36','20ca605d-a969-47a6-9185-c8b76d28f8c2','no',70,0,0,0,0,0,0),
 	 ('7a70e183-1106-4c83-af24-1521cdd8d9e5','990a5e7b-14a6-4b3f-9968-3a51a08c6fa6','no',75,76,10,110,0,0,0),
 	 ('e19104e9-bda3-4041-9123-17e8eb01a75b','990a5e7b-14a6-4b3f-9968-3a51a08c6fa6','no',75,75,7,85,0,0,0),
-	 ('06fe98c5-019f-4409-b3e6-3fe40368ab8b','990a5e7b-14a6-4b3f-9968-3a51a08c6fa6','no',75,80,19,115,75,80,7);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('06fe98c5-019f-4409-b3e6-3fe40368ab8b','990a5e7b-14a6-4b3f-9968-3a51a08c6fa6','no',75,80,19,115,75,80,7),
 	 ('6e6a3c9b-9407-439a-9aaf-7b24aa261bc2','990a5e7b-14a6-4b3f-9968-3a51a08c6fa6','no',75,126,21,126,122,124,2),
 	 ('f8d37b18-f591-4a7a-ad79-dc63df618e57','990a5e7b-14a6-4b3f-9968-3a51a08c6fa6','no',75,121,11,126,119,119,2),
 	 ('73864b26-b50c-406b-9e18-310a870b08e1','990a5e7b-14a6-4b3f-9968-3a51a08c6fa6','no',75,122,7,129,120,120,2),
@@ -999,8 +913,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('9e21b36e-cf5b-4ad2-9a73-e5259ee0c0a2','990a5e7b-14a6-4b3f-9968-3a51a08c6fa6','no',75,75,23,119,75,80,9),
 	 ('50b30175-6a36-4d29-aa70-742b5b352e89','990a5e7b-14a6-4b3f-9968-3a51a08c6fa6','no',75,79,20,102,77,84,9),
 	 ('343d4de5-ae93-44db-8979-c9ad34bb32a5','990a5e7b-14a6-4b3f-9968-3a51a08c6fa6','no',75,82,8,120,77,95,5),
-	 ('dcd3f8e8-d032-4316-bd7b-80ee20599438','990a5e7b-14a6-4b3f-9968-3a51a08c6fa6','no',75,75,10,124,90,94,4);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('dcd3f8e8-d032-4316-bd7b-80ee20599438','990a5e7b-14a6-4b3f-9968-3a51a08c6fa6','no',75,75,10,124,90,94,4),
 	 ('3261f8b0-9486-490a-a5d5-56f9d0a72f5b','990a5e7b-14a6-4b3f-9968-3a51a08c6fa6','no',75,75,61,136,107,111,9),
 	 ('4e3e8d13-59f5-4fae-a38c-e1ec8a144ea5','990a5e7b-14a6-4b3f-9968-3a51a08c6fa6','no',75,75,13,102,0,0,0),
 	 ('d4715d94-b64c-4d3e-8cb6-c03f539b1631','990a5e7b-14a6-4b3f-9968-3a51a08c6fa6','no',75,75,48,121,107,114,7),
@@ -1010,8 +923,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('c912bc9c-3ece-4594-a059-587ad9f0698e','990a5e7b-14a6-4b3f-9968-3a51a08c6fa6','no',50,0,0,0,0,0,0),
 	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','990a5e7b-14a6-4b3f-9968-3a51a08c6fa6','yes',50,0,0,0,0,0,0),
 	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','990a5e7b-14a6-4b3f-9968-3a51a08c6fa6','no',50,0,0,0,0,0,0),
-	 ('ba0ebff4-5d5a-4040-b34c-f333aaf30581','990a5e7b-14a6-4b3f-9968-3a51a08c6fa6','no',50,69,27,84,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('ba0ebff4-5d5a-4040-b34c-f333aaf30581','990a5e7b-14a6-4b3f-9968-3a51a08c6fa6','no',50,69,27,84,0,0,0),
 	 ('9b291fa8-a072-4b17-a06d-174cd7e833ac','990a5e7b-14a6-4b3f-9968-3a51a08c6fa6','no',50,68,24,88,0,0,0),
 	 ('8d8404f6-43cd-47b1-a5e7-5854339c7d97','990a5e7b-14a6-4b3f-9968-3a51a08c6fa6','no',50,63,30,92,0,0,0),
 	 ('2ce70ff9-000b-4ece-acc8-b77c6620557c','990a5e7b-14a6-4b3f-9968-3a51a08c6fa6','no',50,53,21,107,0,0,0),
@@ -1021,8 +933,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('cfeac907-17cc-404a-8506-52487e3555eb','990a5e7b-14a6-4b3f-9968-3a51a08c6fa6','no',50,50,38,89,0,0,0),
 	 ('ecfb3b2b-1c2e-4324-b6bc-4ea21480d71d','990a5e7b-14a6-4b3f-9968-3a51a08c6fa6','no',50,50,38,99,50,59,18),
 	 ('22b17839-d90e-4ce0-b96a-311bb13039e4','990a5e7b-14a6-4b3f-9968-3a51a08c6fa6','no',50,55,32,86,0,0,0),
-	 ('cf69439b-67b6-4fd7-a701-13c8be94ed21','990a5e7b-14a6-4b3f-9968-3a51a08c6fa6','no',50,51,10,62,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('cf69439b-67b6-4fd7-a701-13c8be94ed21','990a5e7b-14a6-4b3f-9968-3a51a08c6fa6','no',50,51,10,62,0,0,0),
 	 ('e73a6036-b1ec-442c-9172-5e5ece53404c','990a5e7b-14a6-4b3f-9968-3a51a08c6fa6','no',50,52,12,71,0,0,0),
 	 ('91cb0d5f-084c-462d-bd66-15decbfbebe5','990a5e7b-14a6-4b3f-9968-3a51a08c6fa6','no',50,59,55,74,54,58,18),
 	 ('29f4909c-9c48-49ae-bc7b-e91a84ba4fd8','990a5e7b-14a6-4b3f-9968-3a51a08c6fa6','no',50,50,46,92,0,0,0),
@@ -1032,8 +943,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('7a70e183-1106-4c83-af24-1521cdd8d9e5','59fdaaf5-689f-42b6-a125-b3e68002a368','no',75,88,6,112,79,88,4),
 	 ('e19104e9-bda3-4041-9123-17e8eb01a75b','59fdaaf5-689f-42b6-a125-b3e68002a368','no',75,75,18,89,0,0,0),
 	 ('06fe98c5-019f-4409-b3e6-3fe40368ab8b','59fdaaf5-689f-42b6-a125-b3e68002a368','no',75,91,15,101,83,89,7),
-	 ('bbb9d8b1-7478-4594-b8f4-9efe2f309923','59fdaaf5-689f-42b6-a125-b3e68002a368','no',75,123,6,125,120,122,2);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('bbb9d8b1-7478-4594-b8f4-9efe2f309923','59fdaaf5-689f-42b6-a125-b3e68002a368','no',75,123,6,125,120,122,2),
 	 ('6e6a3c9b-9407-439a-9aaf-7b24aa261bc2','59fdaaf5-689f-42b6-a125-b3e68002a368','no',75,126,52,126,122,122,2),
 	 ('f8d37b18-f591-4a7a-ad79-dc63df618e57','59fdaaf5-689f-42b6-a125-b3e68002a368','no',75,121,6,124,119,121,4),
 	 ('73864b26-b50c-406b-9e18-310a870b08e1','59fdaaf5-689f-42b6-a125-b3e68002a368','no',75,121,3,123,117,119,2),
@@ -1043,8 +953,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('9e21b36e-cf5b-4ad2-9a73-e5259ee0c0a2','59fdaaf5-689f-42b6-a125-b3e68002a368','no',75,94,10,111,87,91,5),
 	 ('50b30175-6a36-4d29-aa70-742b5b352e89','59fdaaf5-689f-42b6-a125-b3e68002a368','no',75,89,13,95,80,88,7),
 	 ('343d4de5-ae93-44db-8979-c9ad34bb32a5','59fdaaf5-689f-42b6-a125-b3e68002a368','no',75,100,6,106,92,99,4),
-	 ('dcd3f8e8-d032-4316-bd7b-80ee20599438','59fdaaf5-689f-42b6-a125-b3e68002a368','no',75,105,6,125,94,98,4);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('dcd3f8e8-d032-4316-bd7b-80ee20599438','59fdaaf5-689f-42b6-a125-b3e68002a368','no',75,105,6,125,94,98,4),
 	 ('3261f8b0-9486-490a-a5d5-56f9d0a72f5b','59fdaaf5-689f-42b6-a125-b3e68002a368','no',75,115,13,127,110,113,7),
 	 ('4e3e8d13-59f5-4fae-a38c-e1ec8a144ea5','59fdaaf5-689f-42b6-a125-b3e68002a368','no',75,75,12,106,0,0,0),
 	 ('d4715d94-b64c-4d3e-8cb6-c03f539b1631','59fdaaf5-689f-42b6-a125-b3e68002a368','no',75,117,12,124,111,115,7),
@@ -1054,8 +963,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('8413d5b4-60a4-44e6-9584-57f50a8ebaf7','59fdaaf5-689f-42b6-a125-b3e68002a368','no',50,127,7,128,0,0,0),
 	 ('b77221e0-134b-4991-bf89-14f7fa6d384e','59fdaaf5-689f-42b6-a125-b3e68002a368','no',50,0,0,0,0,0,0),
 	 ('e32d3ed6-8080-4d66-a739-1be8eaf7cc0e','59fdaaf5-689f-42b6-a125-b3e68002a368','no',50,0,2,0,0,0,0),
-	 ('74585823-3571-4985-af35-53a306d6dc8d','59fdaaf5-689f-42b6-a125-b3e68002a368','no',50,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('74585823-3571-4985-af35-53a306d6dc8d','59fdaaf5-689f-42b6-a125-b3e68002a368','no',50,0,0,0,0,0,0),
 	 ('c912bc9c-3ece-4594-a059-587ad9f0698e','59fdaaf5-689f-42b6-a125-b3e68002a368','no',50,0,1,0,0,0,0),
 	 ('cd362f75-6304-4532-95b4-a75e71ee1dae','59fdaaf5-689f-42b6-a125-b3e68002a368','no',50,129,5,130,123,123,2),
 	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','59fdaaf5-689f-42b6-a125-b3e68002a368','no',50,0,1,0,0,0,0),
@@ -1065,8 +973,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('ba0ebff4-5d5a-4040-b34c-f333aaf30581','59fdaaf5-689f-42b6-a125-b3e68002a368','no',50,80,15,98,0,0,0),
 	 ('9b291fa8-a072-4b17-a06d-174cd7e833ac','59fdaaf5-689f-42b6-a125-b3e68002a368','no',50,72,28,91,0,0,0),
 	 ('37d20dce-712c-43b4-bd73-2468b5ba4f04','59fdaaf5-689f-42b6-a125-b3e68002a368','no',50,68,14,118,0,0,0),
-	 ('8d8404f6-43cd-47b1-a5e7-5854339c7d97','59fdaaf5-689f-42b6-a125-b3e68002a368','no',50,69,43,110,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('8d8404f6-43cd-47b1-a5e7-5854339c7d97','59fdaaf5-689f-42b6-a125-b3e68002a368','no',50,69,43,110,0,0,0),
 	 ('2ce70ff9-000b-4ece-acc8-b77c6620557c','59fdaaf5-689f-42b6-a125-b3e68002a368','no',50,65,20,90,0,0,0),
 	 ('0a4347d8-076b-45db-9671-2f9e0e8b7d03','59fdaaf5-689f-42b6-a125-b3e68002a368','no',50,93,26,107,0,0,0),
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','59fdaaf5-689f-42b6-a125-b3e68002a368','no',50,0,20,0,69,100,16),
@@ -1076,8 +983,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('7864108f-af86-4dd9-aebf-465fe765a524','59fdaaf5-689f-42b6-a125-b3e68002a368','no',50,57,31,95,51,56,14),
 	 ('37526a2a-0547-4c5b-ab77-2d63ac4a467a','59fdaaf5-689f-42b6-a125-b3e68002a368','no',50,85,6,113,0,0,0),
 	 ('cfeac907-17cc-404a-8506-52487e3555eb','59fdaaf5-689f-42b6-a125-b3e68002a368','no',50,50,14,90,0,0,0),
-	 ('b8ee7908-762e-453f-8aa5-7abc8cef3bb2','59fdaaf5-689f-42b6-a125-b3e68002a368','no',50,51,10,67,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('b8ee7908-762e-453f-8aa5-7abc8cef3bb2','59fdaaf5-689f-42b6-a125-b3e68002a368','no',50,51,10,67,0,0,0),
 	 ('ecfb3b2b-1c2e-4324-b6bc-4ea21480d71d','59fdaaf5-689f-42b6-a125-b3e68002a368','no',50,57,39,76,52,56,10),
 	 ('ceb52a41-1897-4153-8aa4-92fe31f06a16','59fdaaf5-689f-42b6-a125-b3e68002a368','no',50,50,4,57,0,0,0),
 	 ('4ad718ce-1644-4c88-8cee-1f89be610386','59fdaaf5-689f-42b6-a125-b3e68002a368','no',50,50,26,78,0,0,0),
@@ -1087,8 +993,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('29a9bee8-fe62-4e70-83e5-1bcbf1e3d009','59fdaaf5-689f-42b6-a125-b3e68002a368','no',50,58,15,89,0,0,0),
 	 ('31003983-8973-420d-97e6-1e141fe8577a','59fdaaf5-689f-42b6-a125-b3e68002a368','no',50,0,0,0,0,0,0),
 	 ('08fd2b64-37dc-43c2-8b46-c6829cac8a8e','59fdaaf5-689f-42b6-a125-b3e68002a368','no',50,0,0,0,0,0,0),
-	 ('948d49ed-3838-4316-b25c-8a7de08dce10','59fdaaf5-689f-42b6-a125-b3e68002a368','no',50,50,11,80,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('948d49ed-3838-4316-b25c-8a7de08dce10','59fdaaf5-689f-42b6-a125-b3e68002a368','no',50,50,11,80,0,0,0),
 	 ('f2b60988-bc17-4464-86f8-b26b21eb0ccd','59fdaaf5-689f-42b6-a125-b3e68002a368','no',50,55,25,115,0,0,0),
 	 ('cf69439b-67b6-4fd7-a701-13c8be94ed21','59fdaaf5-689f-42b6-a125-b3e68002a368','no',50,50,12,71,0,0,0),
 	 ('8bde249d-d6bf-4d3a-ace8-d0fd50073dc4','59fdaaf5-689f-42b6-a125-b3e68002a368','no',50,50,74,95,0,0,0),
@@ -1098,8 +1003,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('568bd7b2-73ec-4d9c-96b8-22c89ed3ef9f','59fdaaf5-689f-42b6-a125-b3e68002a368','no',50,0,0,0,0,0,0),
 	 ('a2440d23-5d06-470d-836b-4930f953df2b','59fdaaf5-689f-42b6-a125-b3e68002a368','no',50,0,5,0,111,111,1),
 	 ('81dc258b-31ef-41e8-b2bf-5f871294c0ec','ff53cb39-837f-4811-8d5d-967d00596b77','no',60,60,147,102,0,0,0),
-	 ('9006ff0b-8abb-4697-8cf8-66e06d93b085','ff53cb39-837f-4811-8d5d-967d00596b77','no',70,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('9006ff0b-8abb-4697-8cf8-66e06d93b085','ff53cb39-837f-4811-8d5d-967d00596b77','no',70,0,0,0,0,0,0),
 	 ('b7b148c0-5111-47fd-b898-c8a971ca6054','ff53cb39-837f-4811-8d5d-967d00596b77','no',70,0,0,0,0,0,0),
 	 ('8229ae86-bf2b-486b-bf39-561bfdea08cc','ff53cb39-837f-4811-8d5d-967d00596b77','no',70,0,0,0,0,0,0),
 	 ('ff4d5019-f0c1-46eb-8b37-38620d9bc958','ff53cb39-837f-4811-8d5d-967d00596b77','no',80,0,0,0,0,0,0),
@@ -1109,8 +1013,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('7a70e183-1106-4c83-af24-1521cdd8d9e5','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',75,99,2,118,97,97,1),
 	 ('e19104e9-bda3-4041-9123-17e8eb01a75b','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',75,76,13,92,0,0,0),
 	 ('06fe98c5-019f-4409-b3e6-3fe40368ab8b','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',75,101,4,116,92,97,5),
-	 ('bbb9d8b1-7478-4594-b8f4-9efe2f309923','ed8e0854-7f73-4f40-aaa5-3abc21da868e','yes',75,121,9,123,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('bbb9d8b1-7478-4594-b8f4-9efe2f309923','ed8e0854-7f73-4f40-aaa5-3abc21da868e','yes',75,121,9,123,0,0,0),
 	 ('6e6a3c9b-9407-439a-9aaf-7b24aa261bc2','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',75,125,151,130,124,125,3),
 	 ('f8d37b18-f591-4a7a-ad79-dc63df618e57','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',75,121,24,128,120,121,4),
 	 ('73864b26-b50c-406b-9e18-310a870b08e1','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',75,121,20,127,121,121,1),
@@ -1120,8 +1023,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('9e21b36e-cf5b-4ad2-9a73-e5259ee0c0a2','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',75,100,6,109,92,96,3),
 	 ('50b30175-6a36-4d29-aa70-742b5b352e89','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',75,99,3,107,95,95,1),
 	 ('343d4de5-ae93-44db-8979-c9ad34bb32a5','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',75,0,0,0,0,0,0),
-	 ('dcd3f8e8-d032-4316-bd7b-80ee20599438','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',75,0,2,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('dcd3f8e8-d032-4316-bd7b-80ee20599438','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',75,0,2,0,0,0,0),
 	 ('3261f8b0-9486-490a-a5d5-56f9d0a72f5b','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',75,126,5,128,117,120,2),
 	 ('4e3e8d13-59f5-4fae-a38c-e1ec8a144ea5','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',75,82,9,106,0,0,0),
 	 ('d4715d94-b64c-4d3e-8cb6-c03f539b1631','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',75,126,6,128,120,120,1),
@@ -1131,8 +1033,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('07587d0a-f476-4b74-9369-717f0a20b632','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',55,112,19,127,0,0,0),
 	 ('8413d5b4-60a4-44e6-9584-57f50a8ebaf7','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',55,125,31,130,0,0,0),
 	 ('cb912724-60f2-439d-930f-e0314b743568','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',50,94,4,100,0,0,0),
-	 ('8fbc5faf-b691-406c-8111-54586460c1a2','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',55,0,4,0,123,123,1);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('8fbc5faf-b691-406c-8111-54586460c1a2','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',55,0,4,0,123,123,1),
 	 ('b77221e0-134b-4991-bf89-14f7fa6d384e','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',50,0,2,0,0,0,0),
 	 ('e32d3ed6-8080-4d66-a739-1be8eaf7cc0e','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',50,0,1,0,0,0,0),
 	 ('74585823-3571-4985-af35-53a306d6dc8d','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',50,0,0,0,0,0,0),
@@ -1142,8 +1043,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('cd362f75-6304-4532-95b4-a75e71ee1dae','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',50,128,19,129,123,126,9),
 	 ('bbaa0f50-d133-4b60-8f95-c179f774314d','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',50,0,0,0,106,106,2),
 	 ('ba1011e7-60ca-4863-8d5c-a0a5d88833ab','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',50,0,0,0,0,0,0),
-	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',50,0,1,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',50,0,1,0,0,0,0),
 	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',50,0,0,0,0,0,0),
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',50,0,0,0,0,0,0),
 	 ('e0455258-2b5f-4722-9b33-95655c9c2ba3','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',50,119,1,119,0,0,0),
@@ -1153,8 +1053,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('37d20dce-712c-43b4-bd73-2468b5ba4f04','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',55,67,42,113,0,0,0),
 	 ('8d8404f6-43cd-47b1-a5e7-5854339c7d97','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',50,69,58,98,0,0,0),
 	 ('2ce70ff9-000b-4ece-acc8-b77c6620557c','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',50,64,57,103,0,0,0),
-	 ('0a4347d8-076b-45db-9671-2f9e0e8b7d03','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',50,92,73,113,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('0a4347d8-076b-45db-9671-2f9e0e8b7d03','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',50,92,73,113,0,0,0),
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',50,113,77,119,69,106,51),
 	 ('031c3181-20ce-447e-b178-423bd70fa001','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',50,52,72,103,51,51,1),
 	 ('a3e60bd8-0358-48f1-9f3d-30f599b98b92','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',50,52,6,59,0,0,0),
@@ -1164,8 +1063,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('cfeac907-17cc-404a-8506-52487e3555eb','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',50,50,60,87,0,0,0),
 	 ('b8ee7908-762e-453f-8aa5-7abc8cef3bb2','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',50,50,32,93,56,57,5),
 	 ('ecfb3b2b-1c2e-4324-b6bc-4ea21480d71d','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',50,56,95,94,51,73,46),
-	 ('880016b9-5c6b-449e-980f-f0ad3994e5f6','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',50,50,6,67,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('880016b9-5c6b-449e-980f-f0ad3994e5f6','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',50,50,6,67,0,0,0),
 	 ('ceb52a41-1897-4153-8aa4-92fe31f06a16','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',50,50,61,84,61,63,5),
 	 ('4ad718ce-1644-4c88-8cee-1f89be610386','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',50,50,90,79,0,0,0),
 	 ('81dc258b-31ef-41e8-b2bf-5f871294c0ec','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',50,56,310,89,0,0,0),
@@ -1175,8 +1073,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('29a9bee8-fe62-4e70-83e5-1bcbf1e3d009','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',50,57,49,90,0,0,0),
 	 ('cf69439b-67b6-4fd7-a701-13c8be94ed21','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',50,50,41,71,0,0,0),
 	 ('e73a6036-b1ec-442c-9172-5e5ece53404c','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',50,50,4,53,0,0,0),
-	 ('8bde249d-d6bf-4d3a-ace8-d0fd50073dc4','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',50,50,26,88,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('8bde249d-d6bf-4d3a-ace8-d0fd50073dc4','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',50,50,26,88,0,0,0),
 	 ('edc0d87e-493a-49e6-80be-0f9714f086a3','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',50,51,16,70,0,0,0),
 	 ('29f4909c-9c48-49ae-bc7b-e91a84ba4fd8','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',50,50,67,86,0,0,0),
 	 ('ab1e890f-6845-4681-8589-e9ce32d688ba','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',55,77,22,99,72,75,16),
@@ -1186,8 +1083,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('568bd7b2-73ec-4d9c-96b8-22c89ed3ef9f','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',50,84,3,100,65,74,6),
 	 ('a2440d23-5d06-470d-836b-4930f953df2b','ed8e0854-7f73-4f40-aaa5-3abc21da868e','no',50,0,15,0,112,112,1),
 	 ('7a70e183-1106-4c83-af24-1521cdd8d9e5','dffadd72-5a5a-4e4c-8b97-1f8f8175483f','no',75,0,1,0,0,0,0),
-	 ('e19104e9-bda3-4041-9123-17e8eb01a75b','dffadd72-5a5a-4e4c-8b97-1f8f8175483f','no',75,75,9,103,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('e19104e9-bda3-4041-9123-17e8eb01a75b','dffadd72-5a5a-4e4c-8b97-1f8f8175483f','no',75,75,9,103,0,0,0),
 	 ('06fe98c5-019f-4409-b3e6-3fe40368ab8b','dffadd72-5a5a-4e4c-8b97-1f8f8175483f','no',75,100,3,100,91,91,1),
 	 ('dcd3f8e8-d032-4316-bd7b-80ee20599438','dffadd72-5a5a-4e4c-8b97-1f8f8175483f','no',75,0,0,0,0,0,0),
 	 ('3261f8b0-9486-490a-a5d5-56f9d0a72f5b','dffadd72-5a5a-4e4c-8b97-1f8f8175483f','no',75,0,0,0,0,0,0),
@@ -1197,8 +1093,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('b75d8a36-2640-47eb-81ea-9dfc9c109031','dffadd72-5a5a-4e4c-8b97-1f8f8175483f','no',75,0,0,0,0,0,0),
 	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','5cde5ddf-6144-4d8a-825f-b4b1f18dac0f','no',50,0,0,0,0,0,0),
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','5cde5ddf-6144-4d8a-825f-b4b1f18dac0f','no',50,0,0,0,0,0,0),
-	 ('ba0ebff4-5d5a-4040-b34c-f333aaf30581','5cde5ddf-6144-4d8a-825f-b4b1f18dac0f','no',50,82,10,98,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('ba0ebff4-5d5a-4040-b34c-f333aaf30581','5cde5ddf-6144-4d8a-825f-b4b1f18dac0f','no',50,82,10,98,0,0,0),
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','5cde5ddf-6144-4d8a-825f-b4b1f18dac0f','no',50,116,23,121,69,91,23),
 	 ('031c3181-20ce-447e-b178-423bd70fa001','5cde5ddf-6144-4d8a-825f-b4b1f18dac0f','no',50,51,53,82,50,51,3),
 	 ('7864108f-af86-4dd9-aebf-465fe765a524','5cde5ddf-6144-4d8a-825f-b4b1f18dac0f','no',50,58,31,72,50,57,13),
@@ -1208,8 +1103,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('cf69439b-67b6-4fd7-a701-13c8be94ed21','5cde5ddf-6144-4d8a-825f-b4b1f18dac0f','no',50,50,21,64,0,0,0),
 	 ('df4d0ec2-c98d-4594-9966-7d796b9742a4','5cde5ddf-6144-4d8a-825f-b4b1f18dac0f','no',50,0,2,0,0,0,0),
 	 ('8413d5b4-60a4-44e6-9584-57f50a8ebaf7','c1001ad9-f96d-4983-93fd-509a93e7dbb0','no',50,71,23,129,0,0,0),
-	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','c1001ad9-f96d-4983-93fd-509a93e7dbb0','no',50,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','c1001ad9-f96d-4983-93fd-509a93e7dbb0','no',50,0,0,0,0,0,0),
 	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','c1001ad9-f96d-4983-93fd-509a93e7dbb0','no',50,0,0,0,0,0,0),
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','c1001ad9-f96d-4983-93fd-509a93e7dbb0','no',50,0,0,0,0,0,0),
 	 ('ba0ebff4-5d5a-4040-b34c-f333aaf30581','c1001ad9-f96d-4983-93fd-509a93e7dbb0','no',50,67,34,95,0,0,0),
@@ -1219,8 +1113,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('37526a2a-0547-4c5b-ab77-2d63ac4a467a','c1001ad9-f96d-4983-93fd-509a93e7dbb0','no',50,51,59,112,0,0,0),
 	 ('cfeac907-17cc-404a-8506-52487e3555eb','c1001ad9-f96d-4983-93fd-509a93e7dbb0','no',50,50,114,87,0,0,0),
 	 ('ecfb3b2b-1c2e-4324-b6bc-4ea21480d71d','c1001ad9-f96d-4983-93fd-509a93e7dbb0','no',50,50,476,90,51,64,108),
-	 ('ceb52a41-1897-4153-8aa4-92fe31f06a16','c1001ad9-f96d-4983-93fd-509a93e7dbb0','no',50,50,44,94,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('ceb52a41-1897-4153-8aa4-92fe31f06a16','c1001ad9-f96d-4983-93fd-509a93e7dbb0','no',50,50,44,94,0,0,0),
 	 ('29a9bee8-fe62-4e70-83e5-1bcbf1e3d009','c1001ad9-f96d-4983-93fd-509a93e7dbb0','no',50,53,52,90,0,0,0),
 	 ('e73a6036-b1ec-442c-9172-5e5ece53404c','c1001ad9-f96d-4983-93fd-509a93e7dbb0','no',50,50,7,54,0,0,0),
 	 ('df4d0ec2-c98d-4594-9966-7d796b9742a4','c1001ad9-f96d-4983-93fd-509a93e7dbb0','no',50,0,3,0,0,0,0),
@@ -1230,8 +1123,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('031c3181-20ce-447e-b178-423bd70fa001','1e2dfab5-ae0a-4dbc-8dd7-f362a95f227f','yes',70,70,30,116,0,0,0),
 	 ('7864108f-af86-4dd9-aebf-465fe765a524','1e2dfab5-ae0a-4dbc-8dd7-f362a95f227f','yes',50,50,260,122,50,64,46),
 	 ('37526a2a-0547-4c5b-ab77-2d63ac4a467a','1e2dfab5-ae0a-4dbc-8dd7-f362a95f227f','yes',70,74,73,109,0,0,0),
-	 ('cfeac907-17cc-404a-8506-52487e3555eb','1e2dfab5-ae0a-4dbc-8dd7-f362a95f227f','yes',60,60,12,90,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('cfeac907-17cc-404a-8506-52487e3555eb','1e2dfab5-ae0a-4dbc-8dd7-f362a95f227f','yes',60,60,12,90,0,0,0),
 	 ('b8ee7908-762e-453f-8aa5-7abc8cef3bb2','1e2dfab5-ae0a-4dbc-8dd7-f362a95f227f','yes',60,60,4,74,0,0,0),
 	 ('185225a3-e819-4d85-bdb8-07aff646d70c','1e2dfab5-ae0a-4dbc-8dd7-f362a95f227f','yes',70,96,1,96,0,0,0),
 	 ('fb25bca9-7103-4a83-83e7-e234f6505584','1e2dfab5-ae0a-4dbc-8dd7-f362a95f227f','yes',60,0,0,0,0,0,0),
@@ -1241,8 +1133,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('cd362f75-6304-4532-95b4-a75e71ee1dae','32abc121-f8cd-4f23-aa8d-36fbea5a6407','no',50,128,6,129,123,124,3),
 	 ('ba1011e7-60ca-4863-8d5c-a0a5d88833ab','32abc121-f8cd-4f23-aa8d-36fbea5a6407','yes',50,0,0,0,0,0,0),
 	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','32abc121-f8cd-4f23-aa8d-36fbea5a6407','yes',50,0,3,0,0,0,0),
-	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','32abc121-f8cd-4f23-aa8d-36fbea5a6407','yes',50,70,2,88,115,118,2);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','32abc121-f8cd-4f23-aa8d-36fbea5a6407','yes',50,70,2,88,115,118,2),
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','32abc121-f8cd-4f23-aa8d-36fbea5a6407','yes',50,101,8,127,0,0,0),
 	 ('e0455258-2b5f-4722-9b33-95655c9c2ba3','32abc121-f8cd-4f23-aa8d-36fbea5a6407','yes',50,81,4,121,0,0,0),
 	 ('b75d8a36-2640-47eb-81ea-9dfc9c109031','32abc121-f8cd-4f23-aa8d-36fbea5a6407','yes',75,0,0,0,0,0,0),
@@ -1252,8 +1143,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('a2440d23-5d06-470d-836b-4930f953df2b','32abc121-f8cd-4f23-aa8d-36fbea5a6407','no',50,117,7,123,110,115,4),
 	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','ae8247fe-df12-41a8-8f34-1af7df8bba3e','no',50,0,0,0,0,0,0),
 	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','ae8247fe-df12-41a8-8f34-1af7df8bba3e','no',50,0,0,0,0,0,0),
-	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','ae8247fe-df12-41a8-8f34-1af7df8bba3e','no',50,0,1,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','ae8247fe-df12-41a8-8f34-1af7df8bba3e','no',50,0,1,0,0,0,0),
 	 ('b8ee7908-762e-453f-8aa5-7abc8cef3bb2','ae8247fe-df12-41a8-8f34-1af7df8bba3e','no',50,53,10,71,0,0,0),
 	 ('22b17839-d90e-4ce0-b96a-311bb13039e4','ae8247fe-df12-41a8-8f34-1af7df8bba3e','no',50,63,10,75,0,0,0),
 	 ('31003983-8973-420d-97e6-1e141fe8577a','ae8247fe-df12-41a8-8f34-1af7df8bba3e','no',50,58,3,62,0,0,0),
@@ -1263,8 +1153,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('c912bc9c-3ece-4594-a059-587ad9f0698e','5d3d0bd5-6d34-4bd8-8a40-cfff52122e41','no',55,115,1,115,0,0,0),
 	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','5d3d0bd5-6d34-4bd8-8a40-cfff52122e41','no',55,0,1,0,0,0,0),
 	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','5d3d0bd5-6d34-4bd8-8a40-cfff52122e41','no',55,0,0,0,0,0,0),
-	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','5d3d0bd5-6d34-4bd8-8a40-cfff52122e41','no',55,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','5d3d0bd5-6d34-4bd8-8a40-cfff52122e41','no',55,0,0,0,0,0,0),
 	 ('e0455258-2b5f-4722-9b33-95655c9c2ba3','5d3d0bd5-6d34-4bd8-8a40-cfff52122e41','no',55,0,0,0,0,0,0),
 	 ('b75d8a36-2640-47eb-81ea-9dfc9c109031','5d3d0bd5-6d34-4bd8-8a40-cfff52122e41','no',75,0,5,0,0,0,0),
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','5d3d0bd5-6d34-4bd8-8a40-cfff52122e41','no',50,0,1,0,74,92,2),
@@ -1274,8 +1163,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('6fb3f74f-aa69-46ef-a2a2-f5363a8f9b5f','5d3d0bd5-6d34-4bd8-8a40-cfff52122e41','no',50,0,0,0,0,0,0),
 	 ('568bd7b2-73ec-4d9c-96b8-22c89ed3ef9f','5d3d0bd5-6d34-4bd8-8a40-cfff52122e41','no',50,0,0,0,0,0,0),
 	 ('9006ff0b-8abb-4697-8cf8-66e06d93b085','3c8d923e-d65c-44ca-ac2d-647fc9c3539e','no',70,99,2,104,92,95,3),
-	 ('b7b148c0-5111-47fd-b898-c8a971ca6054','3c8d923e-d65c-44ca-ac2d-647fc9c3539e','no',70,106,10,121,97,103,8);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('b7b148c0-5111-47fd-b898-c8a971ca6054','3c8d923e-d65c-44ca-ac2d-647fc9c3539e','no',70,106,10,121,97,103,8),
 	 ('ff4d5019-f0c1-46eb-8b37-38620d9bc958','3c8d923e-d65c-44ca-ac2d-647fc9c3539e','yes',70,111,165,137,101,133,100),
 	 ('4185d6ef-6c16-4962-be7e-dbed136164d1','3c8d923e-d65c-44ca-ac2d-647fc9c3539e','no',70,0,29,0,0,0,0),
 	 ('1bde7005-a39d-4ef7-9aab-2f3e2ba56b36','3c8d923e-d65c-44ca-ac2d-647fc9c3539e','no',70,0,0,0,0,0,0),
@@ -1285,8 +1173,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('e0455258-2b5f-4722-9b33-95655c9c2ba3','47c271fa-9fc0-4902-b5bc-92adf7205714','no',70,0,0,0,0,0,0),
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','47c271fa-9fc0-4902-b5bc-92adf7205714','no',70,114,5,114,75,75,1),
 	 ('7864108f-af86-4dd9-aebf-465fe765a524','47c271fa-9fc0-4902-b5bc-92adf7205714','no',70,75,12,115,0,0,0),
-	 ('a2440d23-5d06-470d-836b-4930f953df2b','47c271fa-9fc0-4902-b5bc-92adf7205714','no',70,117,2,118,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('a2440d23-5d06-470d-836b-4930f953df2b','47c271fa-9fc0-4902-b5bc-92adf7205714','no',70,117,2,118,0,0,0),
 	 ('371fde35-4829-438d-a770-1e4e9e3dc9cb','10ab75a2-3dc0-4a8e-b636-9ebc2785707e','no',50,127,1,127,0,0,0),
 	 ('c912bc9c-3ece-4594-a059-587ad9f0698e','10ab75a2-3dc0-4a8e-b636-9ebc2785707e','no',50,0,0,0,0,0,0),
 	 ('cd362f75-6304-4532-95b4-a75e71ee1dae','10ab75a2-3dc0-4a8e-b636-9ebc2785707e','no',50,129,4,129,0,0,0),
@@ -1296,8 +1183,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','10ab75a2-3dc0-4a8e-b636-9ebc2785707e','yes',50,98,13,138,0,0,0),
 	 ('e0455258-2b5f-4722-9b33-95655c9c2ba3','10ab75a2-3dc0-4a8e-b636-9ebc2785707e','yes',50,72,13,123,0,0,0),
 	 ('b75d8a36-2640-47eb-81ea-9dfc9c109031','10ab75a2-3dc0-4a8e-b636-9ebc2785707e','no',75,95,8,108,0,0,0),
-	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','10ab75a2-3dc0-4a8e-b636-9ebc2785707e','yes',50,60,63,121,50,105,48);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','10ab75a2-3dc0-4a8e-b636-9ebc2785707e','yes',50,60,63,121,50,105,48),
 	 ('df4d0ec2-c98d-4594-9966-7d796b9742a4','10ab75a2-3dc0-4a8e-b636-9ebc2785707e','yes',50,113,19,135,0,0,0),
 	 ('9a53f91c-d5f8-422f-8f1e-df461991b0aa','10ab75a2-3dc0-4a8e-b636-9ebc2785707e','yes',50,110,29,127,96,109,15),
 	 ('a2440d23-5d06-470d-836b-4930f953df2b','10ab75a2-3dc0-4a8e-b636-9ebc2785707e','yes',50,117,15,129,109,114,5),
@@ -1307,8 +1193,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('e32d3ed6-8080-4d66-a739-1be8eaf7cc0e','1eb0bebc-9920-4833-bcf9-9626c71ad4a9','no',50,0,2,0,0,0,0),
 	 ('dca89c37-27a3-4955-a87f-312614f46cc1','1eb0bebc-9920-4833-bcf9-9626c71ad4a9','no',50,68,7,129,0,0,0),
 	 ('c912bc9c-3ece-4594-a059-587ad9f0698e','1eb0bebc-9920-4833-bcf9-9626c71ad4a9','no',50,61,11,74,0,0,0),
-	 ('cd362f75-6304-4532-95b4-a75e71ee1dae','1eb0bebc-9920-4833-bcf9-9626c71ad4a9','yes',50,117,3,130,126,126,1);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('cd362f75-6304-4532-95b4-a75e71ee1dae','1eb0bebc-9920-4833-bcf9-9626c71ad4a9','yes',50,117,3,130,126,126,1),
 	 ('ba1011e7-60ca-4863-8d5c-a0a5d88833ab','1eb0bebc-9920-4833-bcf9-9626c71ad4a9','yes',50,90,5,107,0,0,0),
 	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','1eb0bebc-9920-4833-bcf9-9626c71ad4a9','yes',50,80,3,97,0,0,0),
 	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','1eb0bebc-9920-4833-bcf9-9626c71ad4a9','yes',50,0,0,0,0,0,0),
@@ -1318,8 +1203,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','1eb0bebc-9920-4833-bcf9-9626c71ad4a9','no',50,51,83,120,50,87,10),
 	 ('031c3181-20ce-447e-b178-423bd70fa001','1eb0bebc-9920-4833-bcf9-9626c71ad4a9','no',50,51,50,85,50,61,2),
 	 ('df4d0ec2-c98d-4594-9966-7d796b9742a4','1eb0bebc-9920-4833-bcf9-9626c71ad4a9','no',50,77,9,106,0,0,0),
-	 ('9a53f91c-d5f8-422f-8f1e-df461991b0aa','1eb0bebc-9920-4833-bcf9-9626c71ad4a9','yes',50,112,2,112,96,105,4);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('9a53f91c-d5f8-422f-8f1e-df461991b0aa','1eb0bebc-9920-4833-bcf9-9626c71ad4a9','yes',50,112,2,112,96,105,4),
 	 ('a2440d23-5d06-470d-836b-4930f953df2b','1eb0bebc-9920-4833-bcf9-9626c71ad4a9','yes',50,0,2,0,0,0,0),
 	 ('7a70e183-1106-4c83-af24-1521cdd8d9e5','66306ad4-dc0f-453f-b6db-f461c850e423','no',75,0,1,0,0,0,0),
 	 ('e19104e9-bda3-4041-9123-17e8eb01a75b','66306ad4-dc0f-453f-b6db-f461c850e423','no',75,0,4,0,0,0,0),
@@ -1329,8 +1213,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','66306ad4-dc0f-453f-b6db-f461c850e423','no',50,0,0,0,0,0,0),
 	 ('b75d8a36-2640-47eb-81ea-9dfc9c109031','66306ad4-dc0f-453f-b6db-f461c850e423','no',75,0,0,0,0,0,0),
 	 ('b7b148c0-5111-47fd-b898-c8a971ca6054','66306ad4-dc0f-453f-b6db-f461c850e423','no',70,0,0,0,0,0,0),
-	 ('6e6a3c9b-9407-439a-9aaf-7b24aa261bc2','84bdc4bd-135e-458c-a499-6d7f4b16bcd4','no',75,0,1,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('6e6a3c9b-9407-439a-9aaf-7b24aa261bc2','84bdc4bd-135e-458c-a499-6d7f4b16bcd4','no',75,0,1,0,0,0,0),
 	 ('c912bc9c-3ece-4594-a059-587ad9f0698e','84bdc4bd-135e-458c-a499-6d7f4b16bcd4','no',50,102,3,108,0,0,0),
 	 ('ba1011e7-60ca-4863-8d5c-a0a5d88833ab','84bdc4bd-135e-458c-a499-6d7f4b16bcd4','no',50,0,1,0,0,0,0),
 	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','84bdc4bd-135e-458c-a499-6d7f4b16bcd4','no',50,0,0,0,0,0,0),
@@ -1340,8 +1223,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('b75d8a36-2640-47eb-81ea-9dfc9c109031','84bdc4bd-135e-458c-a499-6d7f4b16bcd4','no',75,85,7,90,0,0,0),
 	 ('9b291fa8-a072-4b17-a06d-174cd7e833ac','84bdc4bd-135e-458c-a499-6d7f4b16bcd4','no',50,73,7,81,0,0,0),
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','84bdc4bd-135e-458c-a499-6d7f4b16bcd4','no',50,51,17,88,77,77,1),
-	 ('ecfb3b2b-1c2e-4324-b6bc-4ea21480d71d','84bdc4bd-135e-458c-a499-6d7f4b16bcd4','no',50,51,41,86,51,56,7);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('ecfb3b2b-1c2e-4324-b6bc-4ea21480d71d','84bdc4bd-135e-458c-a499-6d7f4b16bcd4','no',50,51,41,86,51,56,7),
 	 ('29a9bee8-fe62-4e70-83e5-1bcbf1e3d009','84bdc4bd-135e-458c-a499-6d7f4b16bcd4','no',50,68,2,81,0,0,0),
 	 ('ab1e890f-6845-4681-8589-e9ce32d688ba','84bdc4bd-135e-458c-a499-6d7f4b16bcd4','no',50,59,3,75,51,54,3),
 	 ('df4d0ec2-c98d-4594-9966-7d796b9742a4','84bdc4bd-135e-458c-a499-6d7f4b16bcd4','no',50,79,4,91,0,0,0),
@@ -1351,8 +1233,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','a18df6fa-638e-4fbc-a528-2b38458a79e1','no',50,0,0,0,0,0,0),
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','a18df6fa-638e-4fbc-a528-2b38458a79e1','no',50,0,0,0,0,0,0),
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','a18df6fa-638e-4fbc-a528-2b38458a79e1','no',50,51,7,62,74,98,3),
-	 ('7864108f-af86-4dd9-aebf-465fe765a524','a18df6fa-638e-4fbc-a528-2b38458a79e1','no',50,68,3,68,52,52,1);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('7864108f-af86-4dd9-aebf-465fe765a524','a18df6fa-638e-4fbc-a528-2b38458a79e1','no',50,68,3,68,52,52,1),
 	 ('37526a2a-0547-4c5b-ab77-2d63ac4a467a','a18df6fa-638e-4fbc-a528-2b38458a79e1','no',50,75,3,75,0,0,0),
 	 ('cfeac907-17cc-404a-8506-52487e3555eb','a18df6fa-638e-4fbc-a528-2b38458a79e1','no',50,50,10,84,0,0,0),
 	 ('b8ee7908-762e-453f-8aa5-7abc8cef3bb2','a18df6fa-638e-4fbc-a528-2b38458a79e1','no',50,50,3,89,0,0,0),
@@ -1362,8 +1243,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('edc0d87e-493a-49e6-80be-0f9714f086a3','a18df6fa-638e-4fbc-a528-2b38458a79e1','no',50,53,1,53,0,0,0),
 	 ('a2440d23-5d06-470d-836b-4930f953df2b','a18df6fa-638e-4fbc-a528-2b38458a79e1','no',50,0,6,0,0,0,0),
 	 ('7a70e183-1106-4c83-af24-1521cdd8d9e5','8fbf9176-9f06-4413-bf4b-f47922710926','no',75,75,15,98,0,0,0),
-	 ('e19104e9-bda3-4041-9123-17e8eb01a75b','8fbf9176-9f06-4413-bf4b-f47922710926','no',75,0,1,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('e19104e9-bda3-4041-9123-17e8eb01a75b','8fbf9176-9f06-4413-bf4b-f47922710926','no',75,0,1,0,0,0,0),
 	 ('06fe98c5-019f-4409-b3e6-3fe40368ab8b','8fbf9176-9f06-4413-bf4b-f47922710926','no',75,75,18,109,0,0,0),
 	 ('bbb9d8b1-7478-4594-b8f4-9efe2f309923','8fbf9176-9f06-4413-bf4b-f47922710926','no',75,0,0,0,0,0,0),
 	 ('6e6a3c9b-9407-439a-9aaf-7b24aa261bc2','8fbf9176-9f06-4413-bf4b-f47922710926','no',75,121,14,123,121,121,2),
@@ -1373,8 +1253,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('3261f8b0-9486-490a-a5d5-56f9d0a72f5b','8fbf9176-9f06-4413-bf4b-f47922710926','no',75,75,29,119,95,103,12),
 	 ('4e3e8d13-59f5-4fae-a38c-e1ec8a144ea5','8fbf9176-9f06-4413-bf4b-f47922710926','no',75,75,5,85,0,0,0),
 	 ('d4715d94-b64c-4d3e-8cb6-c03f539b1631','8fbf9176-9f06-4413-bf4b-f47922710926','no',75,76,32,113,95,107,11),
-	 ('b77221e0-134b-4991-bf89-14f7fa6d384e','8fbf9176-9f06-4413-bf4b-f47922710926','no',50,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('b77221e0-134b-4991-bf89-14f7fa6d384e','8fbf9176-9f06-4413-bf4b-f47922710926','no',50,0,0,0,0,0,0),
 	 ('74585823-3571-4985-af35-53a306d6dc8d','8fbf9176-9f06-4413-bf4b-f47922710926','no',50,0,1,0,0,0,0),
 	 ('c912bc9c-3ece-4594-a059-587ad9f0698e','8fbf9176-9f06-4413-bf4b-f47922710926','no',50,52,2,58,0,0,0),
 	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','8fbf9176-9f06-4413-bf4b-f47922710926','no',50,0,0,0,0,0,0),
@@ -1384,8 +1263,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('ba0ebff4-5d5a-4040-b34c-f333aaf30581','8fbf9176-9f06-4413-bf4b-f47922710926','no',50,57,46,87,0,0,0),
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','8fbf9176-9f06-4413-bf4b-f47922710926','no',50,50,23,62,70,79,8),
 	 ('7864108f-af86-4dd9-aebf-465fe765a524','8fbf9176-9f06-4413-bf4b-f47922710926','no',50,52,20,72,51,55,3),
-	 ('7a70e183-1106-4c83-af24-1521cdd8d9e5','b0155994-6d9d-4111-86b1-754fd822e7c7','no',75,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('7a70e183-1106-4c83-af24-1521cdd8d9e5','b0155994-6d9d-4111-86b1-754fd822e7c7','no',75,0,0,0,0,0,0),
 	 ('e19104e9-bda3-4041-9123-17e8eb01a75b','b0155994-6d9d-4111-86b1-754fd822e7c7','no',75,0,0,0,0,0,0),
 	 ('06fe98c5-019f-4409-b3e6-3fe40368ab8b','b0155994-6d9d-4111-86b1-754fd822e7c7','no',75,0,0,0,0,0,0),
 	 ('6e6a3c9b-9407-439a-9aaf-7b24aa261bc2','b0155994-6d9d-4111-86b1-754fd822e7c7','no',75,0,1,0,0,0,0),
@@ -1395,8 +1273,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('dcd3f8e8-d032-4316-bd7b-80ee20599438','b0155994-6d9d-4111-86b1-754fd822e7c7','no',75,0,0,0,0,0,0),
 	 ('3261f8b0-9486-490a-a5d5-56f9d0a72f5b','b0155994-6d9d-4111-86b1-754fd822e7c7','no',75,0,0,0,0,0,0),
 	 ('e32d3ed6-8080-4d66-a739-1be8eaf7cc0e','b0155994-6d9d-4111-86b1-754fd822e7c7','no',50,0,0,0,0,0,0),
-	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','b0155994-6d9d-4111-86b1-754fd822e7c7','no',50,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','b0155994-6d9d-4111-86b1-754fd822e7c7','no',50,0,0,0,0,0,0),
 	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','b0155994-6d9d-4111-86b1-754fd822e7c7','no',50,0,0,0,0,0,0),
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','b0155994-6d9d-4111-86b1-754fd822e7c7','no',50,0,0,0,0,0,0),
 	 ('b75d8a36-2640-47eb-81ea-9dfc9c109031','b0155994-6d9d-4111-86b1-754fd822e7c7','no',75,0,0,0,0,0,0),
@@ -1406,8 +1283,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('b8ee7908-762e-453f-8aa5-7abc8cef3bb2','b0155994-6d9d-4111-86b1-754fd822e7c7','no',50,0,0,0,0,0,0),
 	 ('29a9bee8-fe62-4e70-83e5-1bcbf1e3d009','b0155994-6d9d-4111-86b1-754fd822e7c7','no',50,0,0,0,0,0,0),
 	 ('df4d0ec2-c98d-4594-9966-7d796b9742a4','b0155994-6d9d-4111-86b1-754fd822e7c7','no',50,0,1,0,0,0,0),
-	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','29a4c475-0354-4368-a84f-431f089ac24e','no',50,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','29a4c475-0354-4368-a84f-431f089ac24e','no',50,0,0,0,0,0,0),
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','29a4c475-0354-4368-a84f-431f089ac24e','no',50,0,0,0,0,0,0),
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','29a4c475-0354-4368-a84f-431f089ac24e','no',50,0,1,0,0,0,0),
 	 ('7864108f-af86-4dd9-aebf-465fe765a524','29a4c475-0354-4368-a84f-431f089ac24e','no',50,78,10,97,0,0,0),
@@ -1417,8 +1293,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('4ad718ce-1644-4c88-8cee-1f89be610386','29a4c475-0354-4368-a84f-431f089ac24e','no',50,53,6,66,0,0,0),
 	 ('22b17839-d90e-4ce0-b96a-311bb13039e4','29a4c475-0354-4368-a84f-431f089ac24e','no',50,84,1,84,0,0,0),
 	 ('fb25bca9-7103-4a83-83e7-e234f6505584','29a4c475-0354-4368-a84f-431f089ac24e','no',50,0,2,0,0,0,0),
-	 ('d52835d6-08eb-4856-b45a-aacb374be987','29a4c475-0354-4368-a84f-431f089ac24e','no',50,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('d52835d6-08eb-4856-b45a-aacb374be987','29a4c475-0354-4368-a84f-431f089ac24e','no',50,0,0,0,0,0,0),
 	 ('a2440d23-5d06-470d-836b-4930f953df2b','29a4c475-0354-4368-a84f-431f089ac24e','no',50,0,0,0,0,0,0),
 	 ('06fe98c5-019f-4409-b3e6-3fe40368ab8b','c62243d8-2b05-4068-998a-26f209113fbb','no',75,0,2,0,0,0,0),
 	 ('6e6a3c9b-9407-439a-9aaf-7b24aa261bc2','c62243d8-2b05-4068-998a-26f209113fbb','no',75,0,7,0,0,0,2),
@@ -1428,8 +1303,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('e32d3ed6-8080-4d66-a739-1be8eaf7cc0e','c62243d8-2b05-4068-998a-26f209113fbb','no',50,0,0,0,0,0,0),
 	 ('c912bc9c-3ece-4594-a059-587ad9f0698e','c62243d8-2b05-4068-998a-26f209113fbb','no',50,0,0,0,0,0,0),
 	 ('cd362f75-6304-4532-95b4-a75e71ee1dae','c62243d8-2b05-4068-998a-26f209113fbb','no',50,110,4,124,0,0,0),
-	 ('ba1011e7-60ca-4863-8d5c-a0a5d88833ab','c62243d8-2b05-4068-998a-26f209113fbb','no',50,68,3,77,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('ba1011e7-60ca-4863-8d5c-a0a5d88833ab','c62243d8-2b05-4068-998a-26f209113fbb','no',50,68,3,77,0,0,0),
 	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','c62243d8-2b05-4068-998a-26f209113fbb','no',50,0,0,0,0,0,0),
 	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','c62243d8-2b05-4068-998a-26f209113fbb','no',50,0,0,0,0,0,0),
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','c62243d8-2b05-4068-998a-26f209113fbb','no',50,0,0,0,0,0,0),
@@ -1439,8 +1313,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('9a53f91c-d5f8-422f-8f1e-df461991b0aa','c62243d8-2b05-4068-998a-26f209113fbb','no',50,0,2,0,0,0,0),
 	 ('7a70e183-1106-4c83-af24-1521cdd8d9e5','b0cb649c-2e22-4898-a643-c7c3a31a47f0','no',80,0,0,0,0,0,0),
 	 ('06fe98c5-019f-4409-b3e6-3fe40368ab8b','b0cb649c-2e22-4898-a643-c7c3a31a47f0','no',80,0,0,0,0,0,0),
-	 ('8413d5b4-60a4-44e6-9584-57f50a8ebaf7','b0cb649c-2e22-4898-a643-c7c3a31a47f0','no',60,125,1,125,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('8413d5b4-60a4-44e6-9584-57f50a8ebaf7','b0cb649c-2e22-4898-a643-c7c3a31a47f0','no',60,125,1,125,0,0,0),
 	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','b0cb649c-2e22-4898-a643-c7c3a31a47f0','no',55,0,0,0,0,0,0),
 	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','b0cb649c-2e22-4898-a643-c7c3a31a47f0','no',60,0,0,0,0,0,0),
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','b0cb649c-2e22-4898-a643-c7c3a31a47f0','no',60,0,0,0,0,0,0),
@@ -1450,8 +1323,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','b0cb649c-2e22-4898-a643-c7c3a31a47f0','no',60,0,0,0,69,69,1),
 	 ('ceb52a41-1897-4153-8aa4-92fe31f06a16','b0cb649c-2e22-4898-a643-c7c3a31a47f0','no',60,0,0,0,0,0,0),
 	 ('185225a3-e819-4d85-bdb8-07aff646d70c','e0f49d04-d180-4944-8a3e-a225fbab2849','no',65,66,360,129,0,0,0),
-	 ('81cf89c8-22e9-48e4-8e61-66c44c555458','e0f49d04-d180-4944-8a3e-a225fbab2849','no',85,92,242,133,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('81cf89c8-22e9-48e4-8e61-66c44c555458','e0f49d04-d180-4944-8a3e-a225fbab2849','no',85,92,242,133,0,0,0),
 	 ('a2440d23-5d06-470d-836b-4930f953df2b','e0f49d04-d180-4944-8a3e-a225fbab2849','no',65,0,6,0,0,0,0),
 	 ('7a70e183-1106-4c83-af24-1521cdd8d9e5','1dbf9974-9d3d-4a25-a695-340b69626c54','no',75,78,1,78,0,0,0),
 	 ('e19104e9-bda3-4041-9123-17e8eb01a75b','1dbf9974-9d3d-4a25-a695-340b69626c54','no',75,76,1,76,0,0,0),
@@ -1461,8 +1333,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('73864b26-b50c-406b-9e18-310a870b08e1','1dbf9974-9d3d-4a25-a695-340b69626c54','no',75,0,1,0,0,0,0),
 	 ('ff179c5a-b1f4-49e2-affd-60f447f67ead','1dbf9974-9d3d-4a25-a695-340b69626c54','no',75,0,0,0,0,0,0),
 	 ('dcd3f8e8-d032-4316-bd7b-80ee20599438','1dbf9974-9d3d-4a25-a695-340b69626c54','no',75,75,7,90,0,0,0),
-	 ('d4715d94-b64c-4d3e-8cb6-c03f539b1631','1dbf9974-9d3d-4a25-a695-340b69626c54','no',75,75,45,109,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('d4715d94-b64c-4d3e-8cb6-c03f539b1631','1dbf9974-9d3d-4a25-a695-340b69626c54','no',75,75,45,109,0,0,0),
 	 ('738f296c-c88f-42ca-a866-58dad13b6a75','1dbf9974-9d3d-4a25-a695-340b69626c54','no',75,0,0,0,0,0,0),
 	 ('8413d5b4-60a4-44e6-9584-57f50a8ebaf7','1dbf9974-9d3d-4a25-a695-340b69626c54','no',50,0,1,0,0,0,0),
 	 ('e32d3ed6-8080-4d66-a739-1be8eaf7cc0e','1dbf9974-9d3d-4a25-a695-340b69626c54','no',50,0,0,0,0,0,0),
@@ -1472,8 +1343,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','1dbf9974-9d3d-4a25-a695-340b69626c54','no',50,0,0,0,0,0,0),
 	 ('b75d8a36-2640-47eb-81ea-9dfc9c109031','1dbf9974-9d3d-4a25-a695-340b69626c54','no',75,0,0,0,0,0,0),
 	 ('9b291fa8-a072-4b17-a06d-174cd7e833ac','1dbf9974-9d3d-4a25-a695-340b69626c54','no',50,73,4,78,0,0,0),
-	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','1dbf9974-9d3d-4a25-a695-340b69626c54','no',50,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','1dbf9974-9d3d-4a25-a695-340b69626c54','no',50,0,0,0,0,0,0),
 	 ('ab1e890f-6845-4681-8589-e9ce32d688ba','1dbf9974-9d3d-4a25-a695-340b69626c54','no',50,83,3,87,73,76,5),
 	 ('df4d0ec2-c98d-4594-9966-7d796b9742a4','1dbf9974-9d3d-4a25-a695-340b69626c54','no',50,0,0,0,0,0,0),
 	 ('db0f8552-ee55-48c3-a09b-81fb431247f8','1dbf9974-9d3d-4a25-a695-340b69626c54','no',50,0,1,0,0,0,0),
@@ -1483,8 +1353,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','9fe5ee02-d01d-4585-9671-700d77b83c6c','no',50,127,1,127,0,0,0),
 	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','9fe5ee02-d01d-4585-9671-700d77b83c6c','no',50,0,0,0,0,0,0),
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','9fe5ee02-d01d-4585-9671-700d77b83c6c','no',50,0,0,0,0,0,0),
-	 ('b75d8a36-2640-47eb-81ea-9dfc9c109031','9fe5ee02-d01d-4585-9671-700d77b83c6c','no',75,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('b75d8a36-2640-47eb-81ea-9dfc9c109031','9fe5ee02-d01d-4585-9671-700d77b83c6c','no',75,0,0,0,0,0,0),
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','9fe5ee02-d01d-4585-9671-700d77b83c6c','no',50,0,14,0,69,102,34),
 	 ('7864108f-af86-4dd9-aebf-465fe765a524','9fe5ee02-d01d-4585-9671-700d77b83c6c','no',50,57,99,115,50,57,34),
 	 ('cfeac907-17cc-404a-8506-52487e3555eb','9fe5ee02-d01d-4585-9671-700d77b83c6c','no',50,50,44,83,0,0,0),
@@ -1494,8 +1363,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('a2440d23-5d06-470d-836b-4930f953df2b','9fe5ee02-d01d-4585-9671-700d77b83c6c','no',50,0,2,0,0,0,0),
 	 ('c912bc9c-3ece-4594-a059-587ad9f0698e','a37f37d3-f319-4d54-b444-5b3ed136048e','no',50,0,0,0,0,0,0),
 	 ('ba1011e7-60ca-4863-8d5c-a0a5d88833ab','a37f37d3-f319-4d54-b444-5b3ed136048e','no',50,0,0,0,0,0,0),
-	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','a37f37d3-f319-4d54-b444-5b3ed136048e','no',50,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','a37f37d3-f319-4d54-b444-5b3ed136048e','no',50,0,0,0,0,0,0),
 	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','a37f37d3-f319-4d54-b444-5b3ed136048e','no',50,0,0,0,0,0,0),
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','a37f37d3-f319-4d54-b444-5b3ed136048e','no',50,0,0,0,0,0,0),
 	 ('e0455258-2b5f-4722-9b33-95655c9c2ba3','a37f37d3-f319-4d54-b444-5b3ed136048e','no',50,0,0,0,0,0,0),
@@ -1505,8 +1373,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('7864108f-af86-4dd9-aebf-465fe765a524','a37f37d3-f319-4d54-b444-5b3ed136048e','no',50,61,7,94,50,54,3),
 	 ('37526a2a-0547-4c5b-ab77-2d63ac4a467a','a37f37d3-f319-4d54-b444-5b3ed136048e','no',50,0,0,0,0,0,0),
 	 ('cfeac907-17cc-404a-8506-52487e3555eb','a37f37d3-f319-4d54-b444-5b3ed136048e','no',50,51,9,61,0,0,0),
-	 ('b8ee7908-762e-453f-8aa5-7abc8cef3bb2','a37f37d3-f319-4d54-b444-5b3ed136048e','no',50,50,27,75,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('b8ee7908-762e-453f-8aa5-7abc8cef3bb2','a37f37d3-f319-4d54-b444-5b3ed136048e','no',50,50,27,75,0,0,0),
 	 ('22b17839-d90e-4ce0-b96a-311bb13039e4','a37f37d3-f319-4d54-b444-5b3ed136048e','no',50,64,1,64,0,0,0),
 	 ('a2440d23-5d06-470d-836b-4930f953df2b','a37f37d3-f319-4d54-b444-5b3ed136048e','no',50,0,1,0,0,0,0),
 	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','67058e93-7880-4da9-9c2d-2a2c93985a63','no',50,0,0,0,0,0,0),
@@ -1516,8 +1383,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('b75d8a36-2640-47eb-81ea-9dfc9c109031','67058e93-7880-4da9-9c2d-2a2c93985a63','no',75,0,0,0,0,0,0),
 	 ('0a4347d8-076b-45db-9671-2f9e0e8b7d03','67058e93-7880-4da9-9c2d-2a2c93985a63','no',50,92,33,105,0,0,0),
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','67058e93-7880-4da9-9c2d-2a2c93985a63','no',50,119,23,119,71,107,11),
-	 ('ab1e890f-6845-4681-8589-e9ce32d688ba','67058e93-7880-4da9-9c2d-2a2c93985a63','no',50,77,16,96,72,77,17);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('ab1e890f-6845-4681-8589-e9ce32d688ba','67058e93-7880-4da9-9c2d-2a2c93985a63','no',50,77,16,96,72,77,17),
 	 ('df4d0ec2-c98d-4594-9966-7d796b9742a4','67058e93-7880-4da9-9c2d-2a2c93985a63','no',50,117,1,117,0,0,0),
 	 ('e32d3ed6-8080-4d66-a739-1be8eaf7cc0e','4a57f423-ef6c-44aa-9118-72fabce81712','yes',125,125,105,138,0,0,0),
 	 ('c912bc9c-3ece-4594-a059-587ad9f0698e','4a57f423-ef6c-44aa-9118-72fabce81712','no',120,120,12,136,0,0,0),
@@ -1527,8 +1393,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','4a57f423-ef6c-44aa-9118-72fabce81712','yes',120,121,11,136,121,121,1),
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','4a57f423-ef6c-44aa-9118-72fabce81712','yes',120,121,127,140,0,0,0),
 	 ('e0455258-2b5f-4722-9b33-95655c9c2ba3','4a57f423-ef6c-44aa-9118-72fabce81712','yes',120,120,13,133,0,0,0),
-	 ('b75d8a36-2640-47eb-81ea-9dfc9c109031','4a57f423-ef6c-44aa-9118-72fabce81712','no',120,122,78,137,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('b75d8a36-2640-47eb-81ea-9dfc9c109031','4a57f423-ef6c-44aa-9118-72fabce81712','no',120,122,78,137,0,0,0),
 	 ('df4d0ec2-c98d-4594-9966-7d796b9742a4','4a57f423-ef6c-44aa-9118-72fabce81712','yes',120,120,122,136,0,0,0),
 	 ('8413d5b4-60a4-44e6-9584-57f50a8ebaf7','5cfa288e-807e-4a5a-b43c-254003f6bee0','no',50,127,13,128,0,0,0),
 	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','5cfa288e-807e-4a5a-b43c-254003f6bee0','no',50,0,0,0,0,0,0),
@@ -1538,8 +1403,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('9b291fa8-a072-4b17-a06d-174cd7e833ac','5cfa288e-807e-4a5a-b43c-254003f6bee0','no',50,70,23,84,0,0,0),
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','5cfa288e-807e-4a5a-b43c-254003f6bee0','no',50,53,34,131,57,83,7),
 	 ('a3e60bd8-0358-48f1-9f3d-30f599b98b92','5cfa288e-807e-4a5a-b43c-254003f6bee0','no',50,53,14,89,0,0,0),
-	 ('37526a2a-0547-4c5b-ab77-2d63ac4a467a','5cfa288e-807e-4a5a-b43c-254003f6bee0','no',50,53,37,110,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('37526a2a-0547-4c5b-ab77-2d63ac4a467a','5cfa288e-807e-4a5a-b43c-254003f6bee0','no',50,53,37,110,0,0,0),
 	 ('cfeac907-17cc-404a-8506-52487e3555eb','5cfa288e-807e-4a5a-b43c-254003f6bee0','no',50,50,28,86,0,0,0),
 	 ('ecfb3b2b-1c2e-4324-b6bc-4ea21480d71d','5cfa288e-807e-4a5a-b43c-254003f6bee0','no',50,51,72,103,52,56,8),
 	 ('ceb52a41-1897-4153-8aa4-92fe31f06a16','5cfa288e-807e-4a5a-b43c-254003f6bee0','no',50,50,18,86,0,0,0),
@@ -1549,8 +1413,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('df4d0ec2-c98d-4594-9966-7d796b9742a4','5cfa288e-807e-4a5a-b43c-254003f6bee0','yes',50,124,9,124,0,0,0),
 	 ('9a53f91c-d5f8-422f-8f1e-df461991b0aa','5cfa288e-807e-4a5a-b43c-254003f6bee0','yes',50,110,14,113,96,96,1),
 	 ('568bd7b2-73ec-4d9c-96b8-22c89ed3ef9f','5cfa288e-807e-4a5a-b43c-254003f6bee0','no',50,78,2,110,67,67,1),
-	 ('371fde35-4829-438d-a770-1e4e9e3dc9cb','7bf9acad-a85e-48a4-9378-782eb02ab6dd','no',55,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('371fde35-4829-438d-a770-1e4e9e3dc9cb','7bf9acad-a85e-48a4-9378-782eb02ab6dd','no',55,0,0,0,0,0,0),
 	 ('8413d5b4-60a4-44e6-9584-57f50a8ebaf7','7bf9acad-a85e-48a4-9378-782eb02ab6dd','no',55,0,0,0,0,0,0),
 	 ('e32d3ed6-8080-4d66-a739-1be8eaf7cc0e','7bf9acad-a85e-48a4-9378-782eb02ab6dd','no',55,124,6,124,0,0,0),
 	 ('74585823-3571-4985-af35-53a306d6dc8d','7bf9acad-a85e-48a4-9378-782eb02ab6dd','no',55,0,0,0,0,0,0),
@@ -1560,8 +1423,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','7bf9acad-a85e-48a4-9378-782eb02ab6dd','no',55,73,7,99,0,0,0),
 	 ('b75d8a36-2640-47eb-81ea-9dfc9c109031','7bf9acad-a85e-48a4-9378-782eb02ab6dd','no',75,0,0,0,0,0,0),
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','7bf9acad-a85e-48a4-9378-782eb02ab6dd','no',55,55,87,100,69,80,6),
-	 ('df4d0ec2-c98d-4594-9966-7d796b9742a4','7bf9acad-a85e-48a4-9378-782eb02ab6dd','no',55,58,19,93,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('df4d0ec2-c98d-4594-9966-7d796b9742a4','7bf9acad-a85e-48a4-9378-782eb02ab6dd','no',55,58,19,93,0,0,0),
 	 ('9a53f91c-d5f8-422f-8f1e-df461991b0aa','7bf9acad-a85e-48a4-9378-782eb02ab6dd','no',55,65,13,111,60,99,2),
 	 ('7a70e183-1106-4c83-af24-1521cdd8d9e5','42c1ef38-7bd2-40c5-8248-f364a95a9dfc','no',75,75,31,111,86,91,4),
 	 ('e19104e9-bda3-4041-9123-17e8eb01a75b','42c1ef38-7bd2-40c5-8248-f364a95a9dfc','no',75,75,35,96,75,81,4),
@@ -1571,8 +1433,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('a2fd0858-fbf4-4b51-859d-c1c5e9928514','42c1ef38-7bd2-40c5-8248-f364a95a9dfc','no',75,86,48,122,98,109,15),
 	 ('82c52cd0-83d8-4cdf-98dd-07cbbdca8252','42c1ef38-7bd2-40c5-8248-f364a95a9dfc','no',75,80,20,119,84,105,6),
 	 ('ff179c5a-b1f4-49e2-affd-60f447f67ead','42c1ef38-7bd2-40c5-8248-f364a95a9dfc','no',75,75,45,108,77,89,11),
-	 ('9e21b36e-cf5b-4ad2-9a73-e5259ee0c0a2','42c1ef38-7bd2-40c5-8248-f364a95a9dfc','no',75,76,46,117,76,105,16);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('9e21b36e-cf5b-4ad2-9a73-e5259ee0c0a2','42c1ef38-7bd2-40c5-8248-f364a95a9dfc','no',75,76,46,117,76,105,16),
 	 ('50b30175-6a36-4d29-aa70-742b5b352e89','42c1ef38-7bd2-40c5-8248-f364a95a9dfc','no',75,75,37,118,91,102,14),
 	 ('343d4de5-ae93-44db-8979-c9ad34bb32a5','42c1ef38-7bd2-40c5-8248-f364a95a9dfc','no',75,76,20,108,94,97,5),
 	 ('dcd3f8e8-d032-4316-bd7b-80ee20599438','42c1ef38-7bd2-40c5-8248-f364a95a9dfc','no',75,77,28,137,109,118,11),
@@ -1582,8 +1443,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('8413d5b4-60a4-44e6-9584-57f50a8ebaf7','42c1ef38-7bd2-40c5-8248-f364a95a9dfc','no',70,127,4,127,0,0,0),
 	 ('b77221e0-134b-4991-bf89-14f7fa6d384e','42c1ef38-7bd2-40c5-8248-f364a95a9dfc','no',60,0,1,0,0,0,0),
 	 ('e32d3ed6-8080-4d66-a739-1be8eaf7cc0e','42c1ef38-7bd2-40c5-8248-f364a95a9dfc','no',60,124,1,124,0,0,0),
-	 ('c912bc9c-3ece-4594-a059-587ad9f0698e','42c1ef38-7bd2-40c5-8248-f364a95a9dfc','no',60,106,3,106,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('c912bc9c-3ece-4594-a059-587ad9f0698e','42c1ef38-7bd2-40c5-8248-f364a95a9dfc','no',60,106,3,106,0,0,0),
 	 ('ba1011e7-60ca-4863-8d5c-a0a5d88833ab','42c1ef38-7bd2-40c5-8248-f364a95a9dfc','no',60,0,1,0,0,0,0),
 	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','42c1ef38-7bd2-40c5-8248-f364a95a9dfc','no',60,0,0,0,0,0,0),
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','42c1ef38-7bd2-40c5-8248-f364a95a9dfc','no',60,0,1,0,0,0,0),
@@ -1593,8 +1453,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('9b291fa8-a072-4b17-a06d-174cd7e833ac','42c1ef38-7bd2-40c5-8248-f364a95a9dfc','no',60,72,75,111,0,0,0),
 	 ('37d20dce-712c-43b4-bd73-2468b5ba4f04','42c1ef38-7bd2-40c5-8248-f364a95a9dfc','no',60,67,225,110,0,0,0),
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','42c1ef38-7bd2-40c5-8248-f364a95a9dfc','no',60,65,165,115,60,105,134),
-	 ('cd362f75-6304-4532-95b4-a75e71ee1dae','53d68ada-515d-4adf-8132-39437085fbde','yes',60,127,7,130,123,124,3);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('cd362f75-6304-4532-95b4-a75e71ee1dae','53d68ada-515d-4adf-8132-39437085fbde','yes',60,127,7,130,123,124,3),
 	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','53d68ada-515d-4adf-8132-39437085fbde','yes',60,63,5,105,0,0,0),
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','53d68ada-515d-4adf-8132-39437085fbde','yes',60,0,0,0,0,0,0),
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','53d68ada-515d-4adf-8132-39437085fbde','yes',80,80,433,132,80,110,321),
@@ -1604,8 +1463,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('e19104e9-bda3-4041-9123-17e8eb01a75b','34e65a3f-debd-40ff-b42d-e63e9d552068','no',75,75,52,95,75,77,5),
 	 ('06fe98c5-019f-4409-b3e6-3fe40368ab8b','34e65a3f-debd-40ff-b42d-e63e9d552068','no',75,92,27,114,90,91,7),
 	 ('bbb9d8b1-7478-4594-b8f4-9efe2f309923','34e65a3f-debd-40ff-b42d-e63e9d552068','no',75,121,7,125,120,120,1),
-	 ('6e6a3c9b-9407-439a-9aaf-7b24aa261bc2','34e65a3f-debd-40ff-b42d-e63e9d552068','no',75,125,72,130,124,126,5);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('6e6a3c9b-9407-439a-9aaf-7b24aa261bc2','34e65a3f-debd-40ff-b42d-e63e9d552068','no',75,125,72,130,124,126,5),
 	 ('f8d37b18-f591-4a7a-ad79-dc63df618e57','34e65a3f-debd-40ff-b42d-e63e9d552068','no',75,123,9,128,119,123,7),
 	 ('73864b26-b50c-406b-9e18-310a870b08e1','34e65a3f-debd-40ff-b42d-e63e9d552068','no',75,121,24,126,123,124,2),
 	 ('689df211-73b4-4373-adce-5dd7e9f0f3e2','34e65a3f-debd-40ff-b42d-e63e9d552068','no',75,82,29,103,75,95,15),
@@ -1615,8 +1473,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('9e21b36e-cf5b-4ad2-9a73-e5259ee0c0a2','34e65a3f-debd-40ff-b42d-e63e9d552068','yes',75,97,15,116,90,96,7),
 	 ('50b30175-6a36-4d29-aa70-742b5b352e89','34e65a3f-debd-40ff-b42d-e63e9d552068','yes',75,96,15,118,88,95,7),
 	 ('343d4de5-ae93-44db-8979-c9ad34bb32a5','34e65a3f-debd-40ff-b42d-e63e9d552068','no',75,104,6,121,95,101,4),
-	 ('dcd3f8e8-d032-4316-bd7b-80ee20599438','34e65a3f-debd-40ff-b42d-e63e9d552068','no',75,105,13,115,100,104,7);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('dcd3f8e8-d032-4316-bd7b-80ee20599438','34e65a3f-debd-40ff-b42d-e63e9d552068','no',75,105,13,115,100,104,7),
 	 ('3261f8b0-9486-490a-a5d5-56f9d0a72f5b','34e65a3f-debd-40ff-b42d-e63e9d552068','no',75,118,13,130,112,116,7),
 	 ('4e3e8d13-59f5-4fae-a38c-e1ec8a144ea5','34e65a3f-debd-40ff-b42d-e63e9d552068','no',75,83,20,119,80,91,9),
 	 ('d4715d94-b64c-4d3e-8cb6-c03f539b1631','34e65a3f-debd-40ff-b42d-e63e9d552068','no',75,120,15,126,114,119,6),
@@ -1626,8 +1483,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('8413d5b4-60a4-44e6-9584-57f50a8ebaf7','34e65a3f-debd-40ff-b42d-e63e9d552068','no',50,125,9,129,0,0,0),
 	 ('e32d3ed6-8080-4d66-a739-1be8eaf7cc0e','34e65a3f-debd-40ff-b42d-e63e9d552068','no',50,0,1,0,0,0,0),
 	 ('74585823-3571-4985-af35-53a306d6dc8d','34e65a3f-debd-40ff-b42d-e63e9d552068','no',50,0,0,0,0,0,0),
-	 ('ba0ebff4-5d5a-4040-b34c-f333aaf30581','34e65a3f-debd-40ff-b42d-e63e9d552068','no',50,80,30,93,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('ba0ebff4-5d5a-4040-b34c-f333aaf30581','34e65a3f-debd-40ff-b42d-e63e9d552068','no',50,80,30,93,0,0,0),
 	 ('7a70e183-1106-4c83-af24-1521cdd8d9e5','8bc0d822-24ef-4fc0-b644-bf1e60c3f712','no',75,0,0,0,0,0,0),
 	 ('e19104e9-bda3-4041-9123-17e8eb01a75b','8bc0d822-24ef-4fc0-b644-bf1e60c3f712','no',75,0,0,0,0,0,0),
 	 ('06fe98c5-019f-4409-b3e6-3fe40368ab8b','8bc0d822-24ef-4fc0-b644-bf1e60c3f712','no',75,0,0,0,0,0,0),
@@ -1637,8 +1493,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('e32d3ed6-8080-4d66-a739-1be8eaf7cc0e','8bc0d822-24ef-4fc0-b644-bf1e60c3f712','no',50,0,1,0,0,0,0),
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','8bc0d822-24ef-4fc0-b644-bf1e60c3f712','no',50,0,1,0,84,84,1),
 	 ('7864108f-af86-4dd9-aebf-465fe765a524','8bc0d822-24ef-4fc0-b644-bf1e60c3f712','no',50,62,5,64,53,55,5),
-	 ('37526a2a-0547-4c5b-ab77-2d63ac4a467a','8bc0d822-24ef-4fc0-b644-bf1e60c3f712','no',50,0,1,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('37526a2a-0547-4c5b-ab77-2d63ac4a467a','8bc0d822-24ef-4fc0-b644-bf1e60c3f712','no',50,0,1,0,0,0,0),
 	 ('cfeac907-17cc-404a-8506-52487e3555eb','8bc0d822-24ef-4fc0-b644-bf1e60c3f712','no',50,51,2,54,0,0,0),
 	 ('b8ee7908-762e-453f-8aa5-7abc8cef3bb2','8bc0d822-24ef-4fc0-b644-bf1e60c3f712','no',50,50,9,90,0,0,0),
 	 ('799bb59b-e8db-4700-b5ce-f5d003f0a0cf','8bc0d822-24ef-4fc0-b644-bf1e60c3f712','no',50,89,116,125,0,0,0),
@@ -1648,8 +1503,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('29f4909c-9c48-49ae-bc7b-e91a84ba4fd8','8bc0d822-24ef-4fc0-b644-bf1e60c3f712','no',50,53,9,76,0,0,0),
 	 ('568bd7b2-73ec-4d9c-96b8-22c89ed3ef9f','8bc0d822-24ef-4fc0-b644-bf1e60c3f712','no',50,0,0,0,69,69,1),
 	 ('a2440d23-5d06-470d-836b-4930f953df2b','8bc0d822-24ef-4fc0-b644-bf1e60c3f712','no',50,0,1,0,0,0,0),
-	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','4ab01705-b1c8-4692-bbd4-be7c07e4d6f0','yes',50,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','4ab01705-b1c8-4692-bbd4-be7c07e4d6f0','yes',50,0,0,0,0,0,0),
 	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','4ab01705-b1c8-4692-bbd4-be7c07e4d6f0','no',50,0,0,0,0,0,0),
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','4ab01705-b1c8-4692-bbd4-be7c07e4d6f0','no',50,0,0,0,0,0,0),
 	 ('b75d8a36-2640-47eb-81ea-9dfc9c109031','4ab01705-b1c8-4692-bbd4-be7c07e4d6f0','no',75,0,0,0,0,0,0),
@@ -1659,8 +1513,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('7864108f-af86-4dd9-aebf-465fe765a524','4ab01705-b1c8-4692-bbd4-be7c07e4d6f0','no',50,0,0,0,0,0,0),
 	 ('37526a2a-0547-4c5b-ab77-2d63ac4a467a','4ab01705-b1c8-4692-bbd4-be7c07e4d6f0','no',50,89,3,89,0,0,0),
 	 ('b8ee7908-762e-453f-8aa5-7abc8cef3bb2','4ab01705-b1c8-4692-bbd4-be7c07e4d6f0','no',50,0,0,0,0,0,0),
-	 ('22b17839-d90e-4ce0-b96a-311bb13039e4','4ab01705-b1c8-4692-bbd4-be7c07e4d6f0','no',50,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('22b17839-d90e-4ce0-b96a-311bb13039e4','4ab01705-b1c8-4692-bbd4-be7c07e4d6f0','no',50,0,0,0,0,0,0),
 	 ('69169118-aafe-417a-ae64-6e292e40c3f6','4ab01705-b1c8-4692-bbd4-be7c07e4d6f0','no',50,0,0,0,0,0,0),
 	 ('29a9bee8-fe62-4e70-83e5-1bcbf1e3d009','4ab01705-b1c8-4692-bbd4-be7c07e4d6f0','no',50,0,0,0,0,0,0),
 	 ('568bd7b2-73ec-4d9c-96b8-22c89ed3ef9f','4ab01705-b1c8-4692-bbd4-be7c07e4d6f0','no',50,0,0,0,0,0,0),
@@ -1670,8 +1523,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('7a70e183-1106-4c83-af24-1521cdd8d9e5','c31b178b-b558-48cf-9cbd-34d949d1c584','no',75,0,0,0,0,0,0),
 	 ('e19104e9-bda3-4041-9123-17e8eb01a75b','c31b178b-b558-48cf-9cbd-34d949d1c584','no',75,0,0,0,0,0,0),
 	 ('06fe98c5-019f-4409-b3e6-3fe40368ab8b','c31b178b-b558-48cf-9cbd-34d949d1c584','no',75,0,0,0,0,0,0),
-	 ('6e6a3c9b-9407-439a-9aaf-7b24aa261bc2','c31b178b-b558-48cf-9cbd-34d949d1c584','no',75,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('6e6a3c9b-9407-439a-9aaf-7b24aa261bc2','c31b178b-b558-48cf-9cbd-34d949d1c584','no',75,0,0,0,0,0,0),
 	 ('f8d37b18-f591-4a7a-ad79-dc63df618e57','c31b178b-b558-48cf-9cbd-34d949d1c584','no',75,123,1,123,0,0,0),
 	 ('a2fd0858-fbf4-4b51-859d-c1c5e9928514','c31b178b-b558-48cf-9cbd-34d949d1c584','no',75,0,0,0,0,0,0),
 	 ('ff179c5a-b1f4-49e2-affd-60f447f67ead','c31b178b-b558-48cf-9cbd-34d949d1c584','no',75,0,0,0,0,0,0),
@@ -1681,8 +1533,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('dcd3f8e8-d032-4316-bd7b-80ee20599438','c31b178b-b558-48cf-9cbd-34d949d1c584','no',75,0,0,0,0,0,0),
 	 ('3261f8b0-9486-490a-a5d5-56f9d0a72f5b','c31b178b-b558-48cf-9cbd-34d949d1c584','no',75,0,0,0,0,0,0),
 	 ('4e3e8d13-59f5-4fae-a38c-e1ec8a144ea5','c31b178b-b558-48cf-9cbd-34d949d1c584','no',75,0,0,0,0,0,0),
-	 ('d4715d94-b64c-4d3e-8cb6-c03f539b1631','c31b178b-b558-48cf-9cbd-34d949d1c584','no',75,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('d4715d94-b64c-4d3e-8cb6-c03f539b1631','c31b178b-b558-48cf-9cbd-34d949d1c584','no',75,0,0,0,0,0,0),
 	 ('3be5af1c-1aa4-404a-ad4e-396ececd2c1c','c31b178b-b558-48cf-9cbd-34d949d1c584','no',75,0,0,0,0,0,0),
 	 ('8413d5b4-60a4-44e6-9584-57f50a8ebaf7','c31b178b-b558-48cf-9cbd-34d949d1c584','no',50,0,0,0,0,0,0),
 	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','c31b178b-b558-48cf-9cbd-34d949d1c584','no',50,0,0,0,0,0,0),
@@ -1692,8 +1543,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('b75d8a36-2640-47eb-81ea-9dfc9c109031','c31b178b-b558-48cf-9cbd-34d949d1c584','no',75,0,0,0,0,0,0),
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','c31b178b-b558-48cf-9cbd-34d949d1c584','no',50,0,0,0,0,0,0),
 	 ('031c3181-20ce-447e-b178-423bd70fa001','c31b178b-b558-48cf-9cbd-34d949d1c584','no',50,63,1,63,0,0,0),
-	 ('a3e60bd8-0358-48f1-9f3d-30f599b98b92','c31b178b-b558-48cf-9cbd-34d949d1c584','no',50,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('a3e60bd8-0358-48f1-9f3d-30f599b98b92','c31b178b-b558-48cf-9cbd-34d949d1c584','no',50,0,0,0,0,0,0),
 	 ('7864108f-af86-4dd9-aebf-465fe765a524','c31b178b-b558-48cf-9cbd-34d949d1c584','no',50,66,2,92,0,0,0),
 	 ('799bb59b-e8db-4700-b5ce-f5d003f0a0cf','c31b178b-b558-48cf-9cbd-34d949d1c584','no',50,94,11,120,0,0,0),
 	 ('22b17839-d90e-4ce0-b96a-311bb13039e4','c31b178b-b558-48cf-9cbd-34d949d1c584','no',50,0,0,0,0,0,0),
@@ -1703,8 +1553,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('bbb9d8b1-7478-4594-b8f4-9efe2f309923','ba69ebd8-65b6-40ce-bf2a-fd21496e1538','no',85,0,1,0,0,0,0),
 	 ('6e6a3c9b-9407-439a-9aaf-7b24aa261bc2','ba69ebd8-65b6-40ce-bf2a-fd21496e1538','no',85,128,13,128,0,0,0),
 	 ('73864b26-b50c-406b-9e18-310a870b08e1','ba69ebd8-65b6-40ce-bf2a-fd21496e1538','no',85,123,1,123,0,0,0),
-	 ('a2fd0858-fbf4-4b51-859d-c1c5e9928514','ba69ebd8-65b6-40ce-bf2a-fd21496e1538','no',75,0,3,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('a2fd0858-fbf4-4b51-859d-c1c5e9928514','ba69ebd8-65b6-40ce-bf2a-fd21496e1538','no',75,0,3,0,0,0,0),
 	 ('343d4de5-ae93-44db-8979-c9ad34bb32a5','ba69ebd8-65b6-40ce-bf2a-fd21496e1538','no',75,0,0,0,0,0,0),
 	 ('dcd3f8e8-d032-4316-bd7b-80ee20599438','ba69ebd8-65b6-40ce-bf2a-fd21496e1538','no',75,0,0,0,0,0,0),
 	 ('3261f8b0-9486-490a-a5d5-56f9d0a72f5b','ba69ebd8-65b6-40ce-bf2a-fd21496e1538','no',75,0,0,0,0,0,0),
@@ -1714,8 +1563,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','ba69ebd8-65b6-40ce-bf2a-fd21496e1538','no',50,0,0,0,0,0,0),
 	 ('b75d8a36-2640-47eb-81ea-9dfc9c109031','ba69ebd8-65b6-40ce-bf2a-fd21496e1538','no',75,0,0,0,0,0,0),
 	 ('ba0ebff4-5d5a-4040-b34c-f333aaf30581','ba69ebd8-65b6-40ce-bf2a-fd21496e1538','no',50,0,2,0,0,0,0),
-	 ('8d8404f6-43cd-47b1-a5e7-5854339c7d97','ba69ebd8-65b6-40ce-bf2a-fd21496e1538','no',50,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('8d8404f6-43cd-47b1-a5e7-5854339c7d97','ba69ebd8-65b6-40ce-bf2a-fd21496e1538','no',50,0,0,0,0,0,0),
 	 ('2ce70ff9-000b-4ece-acc8-b77c6620557c','ba69ebd8-65b6-40ce-bf2a-fd21496e1538','no',50,79,3,87,0,0,0),
 	 ('0a4347d8-076b-45db-9671-2f9e0e8b7d03','ba69ebd8-65b6-40ce-bf2a-fd21496e1538','no',50,0,0,0,0,0,0),
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','ba69ebd8-65b6-40ce-bf2a-fd21496e1538','no',50,0,3,0,78,78,1),
@@ -1725,8 +1573,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('7a70e183-1106-4c83-af24-1521cdd8d9e5','d21f439d-20dc-45f6-a6b1-0a2accb90772','yes',75,100,18,136,91,97,3),
 	 ('e19104e9-bda3-4041-9123-17e8eb01a75b','d21f439d-20dc-45f6-a6b1-0a2accb90772','yes',75,76,7,96,0,0,0),
 	 ('06fe98c5-019f-4409-b3e6-3fe40368ab8b','d21f439d-20dc-45f6-a6b1-0a2accb90772','yes',75,101,10,126,95,96,3),
-	 ('a2fd0858-fbf4-4b51-859d-c1c5e9928514','d21f439d-20dc-45f6-a6b1-0a2accb90772','yes',120,123,100,138,120,128,8);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('a2fd0858-fbf4-4b51-859d-c1c5e9928514','d21f439d-20dc-45f6-a6b1-0a2accb90772','yes',120,123,100,138,120,128,8),
 	 ('82c52cd0-83d8-4cdf-98dd-07cbbdca8252','d21f439d-20dc-45f6-a6b1-0a2accb90772','yes',105,108,37,128,109,109,1),
 	 ('ff179c5a-b1f4-49e2-affd-60f447f67ead','d21f439d-20dc-45f6-a6b1-0a2accb90772','yes',100,100,87,131,0,0,0),
 	 ('9e21b36e-cf5b-4ad2-9a73-e5259ee0c0a2','d21f439d-20dc-45f6-a6b1-0a2accb90772','yes',100,100,72,133,0,0,0),
@@ -1736,8 +1583,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('738f296c-c88f-42ca-a866-58dad13b6a75','d21f439d-20dc-45f6-a6b1-0a2accb90772','no',75,75,15,102,0,0,0),
 	 ('e32d3ed6-8080-4d66-a739-1be8eaf7cc0e','d21f439d-20dc-45f6-a6b1-0a2accb90772','yes',120,123,36,137,0,0,0),
 	 ('74585823-3571-4985-af35-53a306d6dc8d','d21f439d-20dc-45f6-a6b1-0a2accb90772','no',110,121,12,137,0,0,0),
-	 ('cd362f75-6304-4532-95b4-a75e71ee1dae','d21f439d-20dc-45f6-a6b1-0a2accb90772','yes',100,120,29,130,123,127,3);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('cd362f75-6304-4532-95b4-a75e71ee1dae','d21f439d-20dc-45f6-a6b1-0a2accb90772','yes',100,120,29,130,123,127,3),
 	 ('ba1011e7-60ca-4863-8d5c-a0a5d88833ab','d21f439d-20dc-45f6-a6b1-0a2accb90772','yes',100,118,16,140,0,0,0),
 	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','d21f439d-20dc-45f6-a6b1-0a2accb90772','yes',100,126,18,137,114,124,17),
 	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','d21f439d-20dc-45f6-a6b1-0a2accb90772','yes',100,124,9,133,114,118,5),
@@ -1747,8 +1593,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('0a4347d8-076b-45db-9671-2f9e0e8b7d03','d21f439d-20dc-45f6-a6b1-0a2accb90772','yes',110,110,106,139,0,0,0),
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','d21f439d-20dc-45f6-a6b1-0a2accb90772','yes',120,120,320,140,121,127,6),
 	 ('7a70e183-1106-4c83-af24-1521cdd8d9e5','5d82d4ba-da03-4895-a5db-a2c5eb46ce56','no',75,0,0,0,0,0,0),
-	 ('e19104e9-bda3-4041-9123-17e8eb01a75b','5d82d4ba-da03-4895-a5db-a2c5eb46ce56','no',75,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('e19104e9-bda3-4041-9123-17e8eb01a75b','5d82d4ba-da03-4895-a5db-a2c5eb46ce56','no',75,0,0,0,0,0,0),
 	 ('06fe98c5-019f-4409-b3e6-3fe40368ab8b','5d82d4ba-da03-4895-a5db-a2c5eb46ce56','no',75,0,0,0,0,0,0),
 	 ('bbb9d8b1-7478-4594-b8f4-9efe2f309923','5d82d4ba-da03-4895-a5db-a2c5eb46ce56','no',75,0,2,0,0,0,0),
 	 ('6e6a3c9b-9407-439a-9aaf-7b24aa261bc2','5d82d4ba-da03-4895-a5db-a2c5eb46ce56','no',75,0,6,0,0,0,0),
@@ -1758,8 +1603,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('ff179c5a-b1f4-49e2-affd-60f447f67ead','5d82d4ba-da03-4895-a5db-a2c5eb46ce56','no',75,0,0,0,0,0,0),
 	 ('50b30175-6a36-4d29-aa70-742b5b352e89','5d82d4ba-da03-4895-a5db-a2c5eb46ce56','no',75,0,0,0,0,0,0),
 	 ('343d4de5-ae93-44db-8979-c9ad34bb32a5','5d82d4ba-da03-4895-a5db-a2c5eb46ce56','no',75,0,0,0,0,0,0),
-	 ('dcd3f8e8-d032-4316-bd7b-80ee20599438','5d82d4ba-da03-4895-a5db-a2c5eb46ce56','no',75,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('dcd3f8e8-d032-4316-bd7b-80ee20599438','5d82d4ba-da03-4895-a5db-a2c5eb46ce56','no',75,0,0,0,0,0,0),
 	 ('3261f8b0-9486-490a-a5d5-56f9d0a72f5b','5d82d4ba-da03-4895-a5db-a2c5eb46ce56','no',75,0,0,0,0,0,0),
 	 ('4e3e8d13-59f5-4fae-a38c-e1ec8a144ea5','5d82d4ba-da03-4895-a5db-a2c5eb46ce56','no',75,0,0,0,0,0,0),
 	 ('d4715d94-b64c-4d3e-8cb6-c03f539b1631','5d82d4ba-da03-4895-a5db-a2c5eb46ce56','no',75,0,0,0,0,0,0),
@@ -1769,8 +1613,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('cd362f75-6304-4532-95b4-a75e71ee1dae','5d82d4ba-da03-4895-a5db-a2c5eb46ce56','no',50,0,0,0,0,0,0),
 	 ('bbaa0f50-d133-4b60-8f95-c179f774314d','5d82d4ba-da03-4895-a5db-a2c5eb46ce56','no',50,0,0,0,0,0,0),
 	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','5d82d4ba-da03-4895-a5db-a2c5eb46ce56','no',50,0,0,0,0,0,0),
-	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','5d82d4ba-da03-4895-a5db-a2c5eb46ce56','no',50,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','5d82d4ba-da03-4895-a5db-a2c5eb46ce56','no',50,0,0,0,0,0,0),
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','5d82d4ba-da03-4895-a5db-a2c5eb46ce56','no',50,0,0,0,0,0,0),
 	 ('b75d8a36-2640-47eb-81ea-9dfc9c109031','5d82d4ba-da03-4895-a5db-a2c5eb46ce56','no',75,0,0,0,0,0,0),
 	 ('9b291fa8-a072-4b17-a06d-174cd7e833ac','5d82d4ba-da03-4895-a5db-a2c5eb46ce56','no',50,0,2,0,0,0,0),
@@ -1780,8 +1623,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('6fb3f74f-aa69-46ef-a2a2-f5363a8f9b5f','5d82d4ba-da03-4895-a5db-a2c5eb46ce56','no',50,0,0,0,0,0,0),
 	 ('a2440d23-5d06-470d-836b-4930f953df2b','5d82d4ba-da03-4895-a5db-a2c5eb46ce56','no',50,0,0,0,0,0,0),
 	 ('7a70e183-1106-4c83-af24-1521cdd8d9e5','84f83746-e454-4af9-82f8-49da04ca1f0f','no',75,0,0,0,0,0,0),
-	 ('e19104e9-bda3-4041-9123-17e8eb01a75b','84f83746-e454-4af9-82f8-49da04ca1f0f','no',75,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('e19104e9-bda3-4041-9123-17e8eb01a75b','84f83746-e454-4af9-82f8-49da04ca1f0f','no',75,0,0,0,0,0,0),
 	 ('06fe98c5-019f-4409-b3e6-3fe40368ab8b','84f83746-e454-4af9-82f8-49da04ca1f0f','no',75,0,0,0,0,0,0),
 	 ('6e6a3c9b-9407-439a-9aaf-7b24aa261bc2','84f83746-e454-4af9-82f8-49da04ca1f0f','no',75,0,3,0,0,0,0),
 	 ('3261f8b0-9486-490a-a5d5-56f9d0a72f5b','84f83746-e454-4af9-82f8-49da04ca1f0f','no',75,0,0,0,0,0,0),
@@ -1791,8 +1633,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','84f83746-e454-4af9-82f8-49da04ca1f0f','no',50,0,0,0,0,0,0),
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','84f83746-e454-4af9-82f8-49da04ca1f0f','no',50,0,0,0,0,0,0),
 	 ('b75d8a36-2640-47eb-81ea-9dfc9c109031','84f83746-e454-4af9-82f8-49da04ca1f0f','no',75,0,0,0,0,0,0),
-	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','84f83746-e454-4af9-82f8-49da04ca1f0f','no',50,0,2,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','84f83746-e454-4af9-82f8-49da04ca1f0f','no',50,0,2,0,0,0,0),
 	 ('37526a2a-0547-4c5b-ab77-2d63ac4a467a','84f83746-e454-4af9-82f8-49da04ca1f0f','no',50,0,5,0,0,0,0),
 	 ('4ad718ce-1644-4c88-8cee-1f89be610386','84f83746-e454-4af9-82f8-49da04ca1f0f','no',50,50,20,54,0,0,0),
 	 ('22b17839-d90e-4ce0-b96a-311bb13039e4','84f83746-e454-4af9-82f8-49da04ca1f0f','no',50,0,0,0,0,0,0),
@@ -1802,8 +1643,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','64851561-985c-4119-b19b-c7236a218b12','yes',100,109,19,138,114,121,7),
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','64851561-985c-4119-b19b-c7236a218b12','yes',100,109,75,140,0,0,0),
 	 ('e0455258-2b5f-4722-9b33-95655c9c2ba3','64851561-985c-4119-b19b-c7236a218b12','yes',100,103,14,131,0,0,0),
-	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','64851561-985c-4119-b19b-c7236a218b12','yes',110,110,905,139,110,127,19);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','64851561-985c-4119-b19b-c7236a218b12','yes',110,110,905,139,110,127,19),
 	 ('a3e60bd8-0358-48f1-9f3d-30f599b98b92','64851561-985c-4119-b19b-c7236a218b12','yes',85,87,54,140,0,0,0),
 	 ('898d9433-818a-4e5e-ac01-3329656f9ae0','64851561-985c-4119-b19b-c7236a218b12','yes',70,70,111,135,0,0,0),
 	 ('37526a2a-0547-4c5b-ab77-2d63ac4a467a','64851561-985c-4119-b19b-c7236a218b12','yes',110,110,231,139,0,0,0),
@@ -1813,8 +1653,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('6e6a3c9b-9407-439a-9aaf-7b24aa261bc2','4801641f-bb72-431a-9ddd-23af5508447f','no',75,127,9,127,0,0,0),
 	 ('73864b26-b50c-406b-9e18-310a870b08e1','4801641f-bb72-431a-9ddd-23af5508447f','no',75,0,0,0,0,0,0),
 	 ('309e940e-7b90-49e6-8193-bd4f327c27a4','4801641f-bb72-431a-9ddd-23af5508447f','no',75,0,0,0,0,0,0),
-	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','4801641f-bb72-431a-9ddd-23af5508447f','no',50,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','4801641f-bb72-431a-9ddd-23af5508447f','no',50,0,0,0,0,0,0),
 	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','4801641f-bb72-431a-9ddd-23af5508447f','no',50,122,2,122,0,0,0),
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','4801641f-bb72-431a-9ddd-23af5508447f','no',50,0,0,0,0,0,0),
 	 ('9b291fa8-a072-4b17-a06d-174cd7e833ac','4801641f-bb72-431a-9ddd-23af5508447f','no',50,78,5,127,0,0,0),
@@ -1824,8 +1663,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('cfeac907-17cc-404a-8506-52487e3555eb','4801641f-bb72-431a-9ddd-23af5508447f','no',50,51,26,103,0,0,0),
 	 ('b8ee7908-762e-453f-8aa5-7abc8cef3bb2','4801641f-bb72-431a-9ddd-23af5508447f','no',50,50,17,70,0,0,0),
 	 ('ecfb3b2b-1c2e-4324-b6bc-4ea21480d71d','4801641f-bb72-431a-9ddd-23af5508447f','no',50,57,21,84,54,56,2),
-	 ('4ad718ce-1644-4c88-8cee-1f89be610386','4801641f-bb72-431a-9ddd-23af5508447f','no',50,50,47,109,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('4ad718ce-1644-4c88-8cee-1f89be610386','4801641f-bb72-431a-9ddd-23af5508447f','no',50,50,47,109,0,0,0),
 	 ('22b17839-d90e-4ce0-b96a-311bb13039e4','4801641f-bb72-431a-9ddd-23af5508447f','no',50,62,44,101,0,0,0),
 	 ('69169118-aafe-417a-ae64-6e292e40c3f6','4801641f-bb72-431a-9ddd-23af5508447f','no',50,79,23,107,73,74,3),
 	 ('29a9bee8-fe62-4e70-83e5-1bcbf1e3d009','4801641f-bb72-431a-9ddd-23af5508447f','no',50,58,11,95,0,0,0),
@@ -1835,8 +1673,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('91cb0d5f-084c-462d-bd66-15decbfbebe5','4801641f-bb72-431a-9ddd-23af5508447f','no',50,59,77,78,54,67,33),
 	 ('70fdfcb8-600b-4f24-b06a-9fb4a5f4d064','4801641f-bb72-431a-9ddd-23af5508447f','no',50,52,9,59,0,0,0),
 	 ('edc0d87e-493a-49e6-80be-0f9714f086a3','4801641f-bb72-431a-9ddd-23af5508447f','no',50,50,5,84,0,0,0),
-	 ('29f4909c-9c48-49ae-bc7b-e91a84ba4fd8','4801641f-bb72-431a-9ddd-23af5508447f','no',50,50,67,81,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('29f4909c-9c48-49ae-bc7b-e91a84ba4fd8','4801641f-bb72-431a-9ddd-23af5508447f','no',50,50,67,81,0,0,0),
 	 ('568bd7b2-73ec-4d9c-96b8-22c89ed3ef9f','4801641f-bb72-431a-9ddd-23af5508447f','no',50,75,3,80,67,74,6),
 	 ('a2440d23-5d06-470d-836b-4930f953df2b','4801641f-bb72-431a-9ddd-23af5508447f','no',50,0,1,0,0,0,0),
 	 ('8fbc5faf-b691-406c-8111-54586460c1a2','0bf4ad33-e68a-4e2d-b3f9-2d37ad0e4597','no',70,125,154,130,121,125,67),
@@ -1846,8 +1683,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('06fe98c5-019f-4409-b3e6-3fe40368ab8b','d2f7d2b3-313a-4f45-99eb-bd604bee314e','no',75,75,18,99,76,81,7),
 	 ('bbb9d8b1-7478-4594-b8f4-9efe2f309923','d2f7d2b3-313a-4f45-99eb-bd604bee314e','no',75,123,3,125,118,121,2),
 	 ('6e6a3c9b-9407-439a-9aaf-7b24aa261bc2','d2f7d2b3-313a-4f45-99eb-bd604bee314e','no',75,119,30,126,124,124,2),
-	 ('f8d37b18-f591-4a7a-ad79-dc63df618e57','d2f7d2b3-313a-4f45-99eb-bd604bee314e','no',75,110,21,120,117,118,2);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('f8d37b18-f591-4a7a-ad79-dc63df618e57','d2f7d2b3-313a-4f45-99eb-bd604bee314e','no',75,110,21,120,117,118,2),
 	 ('73864b26-b50c-406b-9e18-310a870b08e1','d2f7d2b3-313a-4f45-99eb-bd604bee314e','no',75,121,13,125,122,122,2),
 	 ('689df211-73b4-4373-adce-5dd7e9f0f3e2','d2f7d2b3-313a-4f45-99eb-bd604bee314e','no',75,82,15,128,76,90,8),
 	 ('a2fd0858-fbf4-4b51-859d-c1c5e9928514','d2f7d2b3-313a-4f45-99eb-bd604bee314e','no',75,75,26,127,92,105,7),
@@ -1857,8 +1693,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('50b30175-6a36-4d29-aa70-742b5b352e89','d2f7d2b3-313a-4f45-99eb-bd604bee314e','no',75,75,16,121,76,83,7),
 	 ('343d4de5-ae93-44db-8979-c9ad34bb32a5','d2f7d2b3-313a-4f45-99eb-bd604bee314e','no',75,75,15,125,91,96,4),
 	 ('dcd3f8e8-d032-4316-bd7b-80ee20599438','d2f7d2b3-313a-4f45-99eb-bd604bee314e','no',75,75,27,123,87,95,5),
-	 ('3261f8b0-9486-490a-a5d5-56f9d0a72f5b','d2f7d2b3-313a-4f45-99eb-bd604bee314e','no',75,76,38,122,103,109,7);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('3261f8b0-9486-490a-a5d5-56f9d0a72f5b','d2f7d2b3-313a-4f45-99eb-bd604bee314e','no',75,76,38,122,103,109,7),
 	 ('4e3e8d13-59f5-4fae-a38c-e1ec8a144ea5','d2f7d2b3-313a-4f45-99eb-bd604bee314e','no',75,77,17,103,76,83,6),
 	 ('d4715d94-b64c-4d3e-8cb6-c03f539b1631','d2f7d2b3-313a-4f45-99eb-bd604bee314e','no',75,76,51,127,107,113,7),
 	 ('738f296c-c88f-42ca-a866-58dad13b6a75','d2f7d2b3-313a-4f45-99eb-bd604bee314e','no',75,76,6,89,0,0,0),
@@ -1868,8 +1703,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','807f4e68-2e89-4b34-bcfa-7d4f0561ac41','no',80,110,941,140,82,124,103),
 	 ('ffcb7274-ad02-47c2-a736-a0694144c200','807f4e68-2e89-4b34-bcfa-7d4f0561ac41','no',80,80,846,136,0,0,0),
 	 ('031c3181-20ce-447e-b178-423bd70fa001','807f4e68-2e89-4b34-bcfa-7d4f0561ac41','no',70,70,124,138,0,0,0),
-	 ('37526a2a-0547-4c5b-ab77-2d63ac4a467a','807f4e68-2e89-4b34-bcfa-7d4f0561ac41','no',70,74,198,135,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('37526a2a-0547-4c5b-ab77-2d63ac4a467a','807f4e68-2e89-4b34-bcfa-7d4f0561ac41','no',70,74,198,135,0,0,0),
 	 ('6e6a3c9b-9407-439a-9aaf-7b24aa261bc2','5eef9936-8a84-4a06-a369-e1db1783a046','no',75,122,166,129,117,122,88),
 	 ('7a70e183-1106-4c83-af24-1521cdd8d9e5','92ae9f9d-79ba-4b4c-9a9f-fcfd77350b20','no',75,0,0,0,0,0,0),
 	 ('e19104e9-bda3-4041-9123-17e8eb01a75b','92ae9f9d-79ba-4b4c-9a9f-fcfd77350b20','no',75,0,0,0,0,0,0),
@@ -1879,8 +1713,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('ff179c5a-b1f4-49e2-affd-60f447f67ead','92ae9f9d-79ba-4b4c-9a9f-fcfd77350b20','no',75,0,0,0,0,0,0),
 	 ('309e940e-7b90-49e6-8193-bd4f327c27a4','92ae9f9d-79ba-4b4c-9a9f-fcfd77350b20','no',75,0,0,0,0,0,0),
 	 ('8413d5b4-60a4-44e6-9584-57f50a8ebaf7','92ae9f9d-79ba-4b4c-9a9f-fcfd77350b20','no',50,0,0,0,0,0,0),
-	 ('bbaa0f50-d133-4b60-8f95-c179f774314d','92ae9f9d-79ba-4b4c-9a9f-fcfd77350b20','no',50,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('bbaa0f50-d133-4b60-8f95-c179f774314d','92ae9f9d-79ba-4b4c-9a9f-fcfd77350b20','no',50,0,0,0,0,0,0),
 	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','92ae9f9d-79ba-4b4c-9a9f-fcfd77350b20','no',50,0,0,0,0,0,0),
 	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','92ae9f9d-79ba-4b4c-9a9f-fcfd77350b20','no',50,0,0,0,0,0,0),
 	 ('b75d8a36-2640-47eb-81ea-9dfc9c109031','92ae9f9d-79ba-4b4c-9a9f-fcfd77350b20','no',75,0,0,0,0,0,0),
@@ -1890,8 +1723,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('22b17839-d90e-4ce0-b96a-311bb13039e4','92ae9f9d-79ba-4b4c-9a9f-fcfd77350b20','no',50,0,0,0,0,0,0),
 	 ('6fb3f74f-aa69-46ef-a2a2-f5363a8f9b5f','92ae9f9d-79ba-4b4c-9a9f-fcfd77350b20','no',50,0,0,0,0,0,0),
 	 ('ab1e890f-6845-4681-8589-e9ce32d688ba','92ae9f9d-79ba-4b4c-9a9f-fcfd77350b20','no',50,0,0,0,0,0,0),
-	 ('db0f8552-ee55-48c3-a09b-81fb431247f8','92ae9f9d-79ba-4b4c-9a9f-fcfd77350b20','no',50,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('db0f8552-ee55-48c3-a09b-81fb431247f8','92ae9f9d-79ba-4b4c-9a9f-fcfd77350b20','no',50,0,0,0,0,0,0),
 	 ('a2440d23-5d06-470d-836b-4930f953df2b','92ae9f9d-79ba-4b4c-9a9f-fcfd77350b20','no',50,0,0,0,0,0,0),
 	 ('7a70e183-1106-4c83-af24-1521cdd8d9e5','cafa7d5e-795c-4590-a692-d816a29596f9','no',75,82,22,124,79,97,9),
 	 ('e19104e9-bda3-4041-9123-17e8eb01a75b','cafa7d5e-795c-4590-a692-d816a29596f9','no',75,75,54,100,0,0,0),
@@ -1901,8 +1733,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('f8d37b18-f591-4a7a-ad79-dc63df618e57','cafa7d5e-795c-4590-a692-d816a29596f9','no',75,115,17,129,119,119,2),
 	 ('73864b26-b50c-406b-9e18-310a870b08e1','cafa7d5e-795c-4590-a692-d816a29596f9','no',75,109,31,127,103,103,1),
 	 ('a2fd0858-fbf4-4b51-859d-c1c5e9928514','cafa7d5e-795c-4590-a692-d816a29596f9','yes',75,100,109,138,109,123,62),
-	 ('82c52cd0-83d8-4cdf-98dd-07cbbdca8252','cafa7d5e-795c-4590-a692-d816a29596f9','yes',75,108,19,122,108,110,6);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('82c52cd0-83d8-4cdf-98dd-07cbbdca8252','cafa7d5e-795c-4590-a692-d816a29596f9','yes',75,108,19,122,108,110,6),
 	 ('ff179c5a-b1f4-49e2-affd-60f447f67ead','cafa7d5e-795c-4590-a692-d816a29596f9','no',75,75,97,122,75,91,37),
 	 ('9e21b36e-cf5b-4ad2-9a73-e5259ee0c0a2','cafa7d5e-795c-4590-a692-d816a29596f9','yes',75,81,76,123,91,100,29),
 	 ('50b30175-6a36-4d29-aa70-742b5b352e89','cafa7d5e-795c-4590-a692-d816a29596f9','no',75,76,73,117,79,96,19),
@@ -1912,8 +1743,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('4e3e8d13-59f5-4fae-a38c-e1ec8a144ea5','cafa7d5e-795c-4590-a692-d816a29596f9','no',75,80,67,129,76,82,5),
 	 ('d4715d94-b64c-4d3e-8cb6-c03f539b1631','cafa7d5e-795c-4590-a692-d816a29596f9','yes',75,77,100,130,115,122,27),
 	 ('738f296c-c88f-42ca-a866-58dad13b6a75','cafa7d5e-795c-4590-a692-d816a29596f9','no',75,76,25,94,0,0,0),
-	 ('3be5af1c-1aa4-404a-ad4e-396ececd2c1c','cafa7d5e-795c-4590-a692-d816a29596f9','no',75,82,59,123,75,92,22);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('3be5af1c-1aa4-404a-ad4e-396ececd2c1c','cafa7d5e-795c-4590-a692-d816a29596f9','no',75,82,59,123,75,92,22),
 	 ('309e940e-7b90-49e6-8193-bd4f327c27a4','cafa7d5e-795c-4590-a692-d816a29596f9','no',75,0,0,0,0,0,0),
 	 ('8746c70d-7354-4446-99f8-df18f02f32ec','cafa7d5e-795c-4590-a692-d816a29596f9','no',65,124,8,129,0,0,0),
 	 ('ae842826-e0c3-435c-bc91-eab0d2d590f2','cafa7d5e-795c-4590-a692-d816a29596f9','no',65,124,8,124,0,0,0),
@@ -1923,8 +1753,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('8fbc5faf-b691-406c-8111-54586460c1a2','cafa7d5e-795c-4590-a692-d816a29596f9','no',65,126,5,126,120,123,7),
 	 ('b77221e0-134b-4991-bf89-14f7fa6d384e','cafa7d5e-795c-4590-a692-d816a29596f9','no',65,70,5,117,0,0,0),
 	 ('e32d3ed6-8080-4d66-a739-1be8eaf7cc0e','cafa7d5e-795c-4590-a692-d816a29596f9','no',65,95,5,117,0,0,0),
-	 ('74585823-3571-4985-af35-53a306d6dc8d','cafa7d5e-795c-4590-a692-d816a29596f9','yes',65,92,6,120,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('74585823-3571-4985-af35-53a306d6dc8d','cafa7d5e-795c-4590-a692-d816a29596f9','yes',65,92,6,120,0,0,0),
 	 ('60de70b8-c264-41aa-9fc6-ee4c00be754d','cafa7d5e-795c-4590-a692-d816a29596f9','no',65,111,2,115,0,0,0),
 	 ('0f9693fe-e7b6-4d84-81fb-b07b483c6eec','cafa7d5e-795c-4590-a692-d816a29596f9','no',65,69,16,118,0,0,0),
 	 ('dca89c37-27a3-4955-a87f-312614f46cc1','cafa7d5e-795c-4590-a692-d816a29596f9','no',65,73,13,119,0,0,0),
@@ -1934,8 +1763,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','cafa7d5e-795c-4590-a692-d816a29596f9','no',65,0,0,0,113,113,1),
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','cafa7d5e-795c-4590-a692-d816a29596f9','no',65,0,2,0,0,0,0),
 	 ('e0455258-2b5f-4722-9b33-95655c9c2ba3','cafa7d5e-795c-4590-a692-d816a29596f9','no',65,0,0,0,0,0,0),
-	 ('b75d8a36-2640-47eb-81ea-9dfc9c109031','cafa7d5e-795c-4590-a692-d816a29596f9','no',75,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('b75d8a36-2640-47eb-81ea-9dfc9c109031','cafa7d5e-795c-4590-a692-d816a29596f9','no',75,0,0,0,0,0,0),
 	 ('ba0ebff4-5d5a-4040-b34c-f333aaf30581','cafa7d5e-795c-4590-a692-d816a29596f9','no',65,79,67,99,0,0,0),
 	 ('9b291fa8-a072-4b17-a06d-174cd7e833ac','cafa7d5e-795c-4590-a692-d816a29596f9','no',65,72,64,93,0,0,0),
 	 ('37d20dce-712c-43b4-bd73-2468b5ba4f04','cafa7d5e-795c-4590-a692-d816a29596f9','no',65,67,102,113,0,0,0),
@@ -1945,8 +1773,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','cafa7d5e-795c-4590-a692-d816a29596f9','yes',65,66,31,95,69,107,61),
 	 ('df4d0ec2-c98d-4594-9966-7d796b9742a4','cafa7d5e-795c-4590-a692-d816a29596f9','no',65,0,5,0,0,0,0),
 	 ('db0f8552-ee55-48c3-a09b-81fb431247f8','cafa7d5e-795c-4590-a692-d816a29596f9','no',65,129,6,129,120,121,3),
-	 ('9a53f91c-d5f8-422f-8f1e-df461991b0aa','cafa7d5e-795c-4590-a692-d816a29596f9','no',65,113,2,113,96,100,4);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('9a53f91c-d5f8-422f-8f1e-df461991b0aa','cafa7d5e-795c-4590-a692-d816a29596f9','no',65,113,2,113,96,100,4),
 	 ('6e6a3c9b-9407-439a-9aaf-7b24aa261bc2','e7ff82a3-0434-4555-a9cc-229f8f80d2de','no',75,125,277,130,124,125,20),
 	 ('df4d0ec2-c98d-4594-9966-7d796b9742a4','e7ff82a3-0434-4555-a9cc-229f8f80d2de','no',50,0,3,0,0,0,0),
 	 ('9a53f91c-d5f8-422f-8f1e-df461991b0aa','e7ff82a3-0434-4555-a9cc-229f8f80d2de','no',50,0,2,0,0,0,0),
@@ -1956,8 +1783,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('cb912724-60f2-439d-930f-e0314b743568','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',80,87,44,116,0,0,0),
 	 ('8fbc5faf-b691-406c-8111-54586460c1a2','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',80,125,10,127,121,124,11),
 	 ('b77221e0-134b-4991-bf89-14f7fa6d384e','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',70,73,45,133,0,0,0),
-	 ('ce76d31d-0ea6-49c2-98e8-cef39f56eb89','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',75,75,21,124,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('ce76d31d-0ea6-49c2-98e8-cef39f56eb89','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',75,75,21,124,0,0,0),
 	 ('e32d3ed6-8080-4d66-a739-1be8eaf7cc0e','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',65,98,20,131,0,0,0),
 	 ('74585823-3571-4985-af35-53a306d6dc8d','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',65,101,77,137,0,0,0),
 	 ('26ad2a37-9a60-4f9b-aac9-65a44f981bb5','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',70,72,15,110,0,0,0),
@@ -1967,8 +1793,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('dca89c37-27a3-4955-a87f-312614f46cc1','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',85,88,37,129,0,0,0),
 	 ('c912bc9c-3ece-4594-a059-587ad9f0698e','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',80,99,30,129,0,0,0),
 	 ('cd362f75-6304-4532-95b4-a75e71ee1dae','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',90,112,67,130,123,127,37),
-	 ('bbaa0f50-d133-4b60-8f95-c179f774314d','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',70,71,21,118,104,110,11);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('bbaa0f50-d133-4b60-8f95-c179f774314d','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',70,71,21,118,104,110,11),
 	 ('ba1011e7-60ca-4863-8d5c-a0a5d88833ab','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',90,115,13,137,0,0,0),
 	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',70,102,24,138,96,122,19),
 	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',70,75,27,128,114,119,8),
@@ -1978,8 +1803,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('ba0ebff4-5d5a-4040-b34c-f333aaf30581','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',70,70,393,138,0,0,0),
 	 ('9b291fa8-a072-4b17-a06d-174cd7e833ac','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',65,65,113,112,0,0,0),
 	 ('37d20dce-712c-43b4-bd73-2468b5ba4f04','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',75,75,201,118,0,0,0),
-	 ('8d8404f6-43cd-47b1-a5e7-5854339c7d97','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',80,80,151,138,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('8d8404f6-43cd-47b1-a5e7-5854339c7d97','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',80,80,151,138,0,0,0),
 	 ('2ce70ff9-000b-4ece-acc8-b77c6620557c','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',70,70,213,127,0,0,0),
 	 ('0a4347d8-076b-45db-9671-2f9e0e8b7d03','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',90,92,364,134,0,0,0),
 	 ('f2630995-d6f9-462a-88e6-891e8b78bd6f','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',70,70,54,127,0,0,0),
@@ -1989,8 +1813,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('39938093-c369-477f-bc90-953ed5220b10','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',65,102,59,136,0,0,0),
 	 ('a3e60bd8-0358-48f1-9f3d-30f599b98b92','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',70,71,24,108,0,0,0),
 	 ('898d9433-818a-4e5e-ac01-3329656f9ae0','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',65,65,25,94,0,0,0),
-	 ('7864108f-af86-4dd9-aebf-465fe765a524','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',70,70,110,127,84,123,2);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('7864108f-af86-4dd9-aebf-465fe765a524','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',70,70,110,127,84,123,2),
 	 ('37526a2a-0547-4c5b-ab77-2d63ac4a467a','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',70,74,125,121,0,0,0),
 	 ('185225a3-e819-4d85-bdb8-07aff646d70c','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',70,73,31,119,0,0,0),
 	 ('ecfb3b2b-1c2e-4324-b6bc-4ea21480d71d','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',80,81,14,107,0,0,0),
@@ -2000,8 +1823,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('29a9bee8-fe62-4e70-83e5-1bcbf1e3d009','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',70,71,42,116,0,0,0),
 	 ('70fdfcb8-600b-4f24-b06a-9fb4a5f4d064','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',50,52,15,72,0,0,0),
 	 ('9006ff0b-8abb-4697-8cf8-66e06d93b085','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',70,0,0,0,0,0,0),
-	 ('b7b148c0-5111-47fd-b898-c8a971ca6054','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',90,124,2,135,120,120,1);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('b7b148c0-5111-47fd-b898-c8a971ca6054','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',90,124,2,135,120,120,1),
 	 ('8229ae86-bf2b-486b-bf39-561bfdea08cc','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',70,112,5,117,100,102,3),
 	 ('ff4d5019-f0c1-46eb-8b37-38620d9bc958','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',100,0,0,0,0,0,0),
 	 ('4185d6ef-6c16-4962-be7e-dbed136164d1','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',90,138,3,138,130,130,1),
@@ -2011,8 +1833,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('a2440d23-5d06-470d-836b-4930f953df2b','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',70,117,44,129,110,114,13),
 	 ('ab1e890f-6845-4681-8589-e9ce32d688ba','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',80,80,23,91,0,0,0),
 	 ('f7a7de5a-505a-4093-85ea-5a2058b23336','4dd940bf-da8a-4a5f-9d9f-c3560d24abfc','yes',75,95,28,125,0,0,0),
-	 ('c912bc9c-3ece-4594-a059-587ad9f0698e','0d288687-b317-44f1-968b-b7606504ea46','no',75,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('c912bc9c-3ece-4594-a059-587ad9f0698e','0d288687-b317-44f1-968b-b7606504ea46','no',75,0,0,0,0,0,0),
 	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','0d288687-b317-44f1-968b-b7606504ea46','no',70,0,0,0,0,0,0),
 	 ('419697b9-c262-4aea-b02c-acf24c5d56e9','0d288687-b317-44f1-968b-b7606504ea46','no',70,0,0,0,0,0,0),
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','0d288687-b317-44f1-968b-b7606504ea46','no',70,0,0,0,0,0,0),
@@ -2022,8 +1843,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('7a70e183-1106-4c83-af24-1521cdd8d9e5','e6290ddd-4862-4632-8adb-2a376a7a8293','yes',75,0,0,0,0,0,0),
 	 ('e19104e9-bda3-4041-9123-17e8eb01a75b','e6290ddd-4862-4632-8adb-2a376a7a8293','yes',75,76,2,88,0,0,0),
 	 ('06fe98c5-019f-4409-b3e6-3fe40368ab8b','e6290ddd-4862-4632-8adb-2a376a7a8293','yes',75,0,0,0,0,0,0),
-	 ('6e6a3c9b-9407-439a-9aaf-7b24aa261bc2','e6290ddd-4862-4632-8adb-2a376a7a8293','no',75,126,43,126,124,125,2);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('6e6a3c9b-9407-439a-9aaf-7b24aa261bc2','e6290ddd-4862-4632-8adb-2a376a7a8293','no',75,126,43,126,124,125,2),
 	 ('f8d37b18-f591-4a7a-ad79-dc63df618e57','e6290ddd-4862-4632-8adb-2a376a7a8293','no',75,122,4,127,119,120,2),
 	 ('73864b26-b50c-406b-9e18-310a870b08e1','e6290ddd-4862-4632-8adb-2a376a7a8293','no',75,121,18,127,0,0,0),
 	 ('a2fd0858-fbf4-4b51-859d-c1c5e9928514','e6290ddd-4862-4632-8adb-2a376a7a8293','yes',75,0,0,0,0,0,0),
@@ -2033,8 +1853,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('50b30175-6a36-4d29-aa70-742b5b352e89','e6290ddd-4862-4632-8adb-2a376a7a8293','yes',75,0,0,0,0,0,0),
 	 ('343d4de5-ae93-44db-8979-c9ad34bb32a5','e6290ddd-4862-4632-8adb-2a376a7a8293','no',75,0,0,0,0,0,0),
 	 ('dcd3f8e8-d032-4316-bd7b-80ee20599438','e6290ddd-4862-4632-8adb-2a376a7a8293','no',75,0,0,0,0,0,0),
-	 ('3261f8b0-9486-490a-a5d5-56f9d0a72f5b','e6290ddd-4862-4632-8adb-2a376a7a8293','no',75,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('3261f8b0-9486-490a-a5d5-56f9d0a72f5b','e6290ddd-4862-4632-8adb-2a376a7a8293','no',75,0,0,0,0,0,0),
 	 ('4e3e8d13-59f5-4fae-a38c-e1ec8a144ea5','e6290ddd-4862-4632-8adb-2a376a7a8293','no',75,0,0,0,0,0,0),
 	 ('d4715d94-b64c-4d3e-8cb6-c03f539b1631','e6290ddd-4862-4632-8adb-2a376a7a8293','yes',75,0,0,0,0,0,0),
 	 ('8413d5b4-60a4-44e6-9584-57f50a8ebaf7','e6290ddd-4862-4632-8adb-2a376a7a8293','yes',50,125,9,125,0,0,0),
@@ -2044,8 +1863,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('5f4334c9-eb60-4fef-98f7-012bef525f99','e6290ddd-4862-4632-8adb-2a376a7a8293','yes',50,0,0,0,0,0,0),
 	 ('b75d8a36-2640-47eb-81ea-9dfc9c109031','e6290ddd-4862-4632-8adb-2a376a7a8293','yes',75,0,0,0,0,0,0),
 	 ('ba0ebff4-5d5a-4040-b34c-f333aaf30581','e6290ddd-4862-4632-8adb-2a376a7a8293','yes',50,0,0,0,0,0,0),
-	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','e6290ddd-4862-4632-8adb-2a376a7a8293','yes',50,0,1,0,69,69,1);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','e6290ddd-4862-4632-8adb-2a376a7a8293','yes',50,0,1,0,69,69,1),
 	 ('cd2a4b1d-1549-4732-ba7b-2ee635d4a9e3','20f84a49-fc82-4e06-979b-489f84593bdc','no',50,0,0,0,0,0,0),
 	 ('b75d8a36-2640-47eb-81ea-9dfc9c109031','20f84a49-fc82-4e06-979b-489f84593bdc','no',75,0,0,0,0,0,0),
 	 ('e30f81f5-509c-4f17-ac03-b868ebb1184e','20f84a49-fc82-4e06-979b-489f84593bdc','no',50,0,1,0,0,0,0),
@@ -2055,8 +1873,7 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('22b17839-d90e-4ce0-b96a-311bb13039e4','20f84a49-fc82-4e06-979b-489f84593bdc','no',50,65,1,65,0,0,0),
 	 ('6fb3f74f-aa69-46ef-a2a2-f5363a8f9b5f','20f84a49-fc82-4e06-979b-489f84593bdc','no',50,0,0,0,0,0,0),
 	 ('d11dd9b1-75db-45c2-9a7a-703a73274cdf','7bc90d91-0204-4929-b92f-9fabbdc8ff93','yes',50,0,4,0,0,0,0),
-	 ('a9db8655-326d-454f-aecb-e3c9d6cf3e68','7bc90d91-0204-4929-b92f-9fabbdc8ff93','yes',50,0,3,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('a9db8655-326d-454f-aecb-e3c9d6cf3e68','7bc90d91-0204-4929-b92f-9fabbdc8ff93','yes',50,0,3,0,0,0,0),
 	 ('08d71afe-3339-4d3b-85e8-3e95d9efad5a','7bc90d91-0204-4929-b92f-9fabbdc8ff93','yes',50,0,1,0,0,0,0),
 	 ('5d5618f8-db9f-417b-ad53-3fdecb6b1206','7bc90d91-0204-4929-b92f-9fabbdc8ff93','yes',50,0,1,0,0,0,0),
 	 ('e6c0bdc4-3305-4623-b87b-ac49785e4e0b','7bc90d91-0204-4929-b92f-9fabbdc8ff93','yes',50,0,17,0,0,0,0),
@@ -2066,6 +1883,12 @@ INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_availabl
 	 ('874fa288-e64c-4695-b9af-0015100d3eeb','7bc90d91-0204-4929-b92f-9fabbdc8ff93','yes',75,0,0,0,0,0,0),
 	 ('0bfd4fef-7b9b-4ffc-9e95-64fe0863d91e','7bc90d91-0204-4929-b92f-9fabbdc8ff93','yes',75,0,0,0,0,0,0),
 	 ('12d1cc3c-384f-489b-ae27-65f8759b2566','7bc90d91-0204-4929-b92f-9fabbdc8ff93','yes',50,0,0,0,0,0,0),
-	 ('853318d8-6886-44ca-82cd-c4b22b6ff748','7bc90d91-0204-4929-b92f-9fabbdc8ff93','yes',50,0,0,0,0,0,0);
-INSERT INTO public.methodic_specs_univers (spec_id,univer_id,is_english_available,min_grant,min_point_gen_2023,count_grant_gen_2023,max_point_gen_2023,min_point_aul_2023,max_point_aul_2023,count_grant_aul_2023) VALUES
+	 ('853318d8-6886-44ca-82cd-c4b22b6ff748','7bc90d91-0204-4929-b92f-9fabbdc8ff93','yes',50,0,0,0,0,0,0),
 	 ('bed60b8e-adee-4fe2-b97a-015e3c385f0f','7bc90d91-0204-4929-b92f-9fabbdc8ff93','yes',50,0,0,0,0,0,0);
+
+        RAISE NOTICE 'Inserted initial data into public.methodic_specs_univers.';
+    ELSE
+        RAISE NOTICE 'Table public.methodic_specs_univers already contains data. Skipping inserts.';
+    END IF;
+
+END $$;

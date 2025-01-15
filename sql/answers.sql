@@ -1,4 +1,7 @@
-TRUNCATE TABLE public.methodic_answers RESTART IDENTITY CASCADE;
+DO $$
+BEGIN
+
+    IF NOT EXISTS (SELECT 1 FROM public.methodic_answers) THEN
 INSERT INTO public.methodic_answers (id,question_id,answer_text_kz,answer_text_ru,riasec_score) VALUES
 	 (1,'1','Ұнамайды','Не нравится',0),
 	 (2,'1','Бейтарап','Нейтрально',1),
@@ -9,8 +12,7 @@ INSERT INTO public.methodic_answers (id,question_id,answer_text_kz,answer_text_r
 	 (7,'2','Ұнайды','Нравится',3),
 	 (8,'2','Өте ұнайды','Очень нравится',5),
 	 (9,'3','Ұнамайды','Не нравится',0),
-	 (10,'3','Бейтарап','Нейтрально',1);
-INSERT INTO public.methodic_answers (id,question_id,answer_text_kz,answer_text_ru,riasec_score) VALUES
+	 (10,'3','Бейтарап','Нейтрально',1),
 	 (11,'3','Ұнайды','Нравится',3),
 	 (12,'3','Өте ұнайды','Очень нравится',5),
 	 (13,'4','Ұнамайды','Не нравится',0),
@@ -20,8 +22,7 @@ INSERT INTO public.methodic_answers (id,question_id,answer_text_kz,answer_text_r
 	 (17,'5','Ұнамайды','Не нравится',0),
 	 (18,'5','Бейтарап','Нейтрально',1),
 	 (19,'5','Ұнайды','Нравится',3),
-	 (20,'5','Өте ұнайды','Очень нравится',5);
-INSERT INTO public.methodic_answers (id,question_id,answer_text_kz,answer_text_ru,riasec_score) VALUES
+	 (20,'5','Өте ұнайды','Очень нравится',5),
 	 (21,'6','Ұнамайды','Не нравится',0),
 	 (22,'6','Бейтарап','Нейтрально',1),
 	 (23,'6','Ұнайды','Нравится',3),
@@ -31,8 +32,7 @@ INSERT INTO public.methodic_answers (id,question_id,answer_text_kz,answer_text_r
 	 (27,'7','Ұнайды','Нравится',3),
 	 (28,'7','Өте ұнайды','Очень нравится',5),
 	 (29,'8','Ұнамайды','Не нравится',0),
-	 (30,'8','Бейтарап','Нейтрально',1);
-INSERT INTO public.methodic_answers (id,question_id,answer_text_kz,answer_text_ru,riasec_score) VALUES
+	 (30,'8','Бейтарап','Нейтрально',1),
 	 (31,'8','Ұнайды','Нравится',3),
 	 (32,'8','Өте ұнайды','Очень нравится',5),
 	 (33,'9','Ұнамайды','Не нравится',0),
@@ -42,8 +42,7 @@ INSERT INTO public.methodic_answers (id,question_id,answer_text_kz,answer_text_r
 	 (37,'10','Ұнамайды','Не нравится',0),
 	 (38,'10','Бейтарап','Нейтрально',1),
 	 (39,'10','Ұнайды','Нравится',3),
-	 (40,'10','Өте ұнайды','Очень нравится',5);
-INSERT INTO public.methodic_answers (id,question_id,answer_text_kz,answer_text_ru,riasec_score) VALUES
+	 (40,'10','Өте ұнайды','Очень нравится',5),
 	 (41,'11','Ұнамайды','Не нравится',0),
 	 (42,'11','Бейтарап','Нейтрально',1),
 	 (43,'11','Ұнайды','Нравится',3),
@@ -53,8 +52,7 @@ INSERT INTO public.methodic_answers (id,question_id,answer_text_kz,answer_text_r
 	 (47,'12','Ұнайды','Нравится',3),
 	 (48,'12','Өте ұнайды','Очень нравится',5),
 	 (49,'13','Ұнамайды','Не нравится',0),
-	 (50,'13','Бейтарап','Нейтрально',1);
-INSERT INTO public.methodic_answers (id,question_id,answer_text_kz,answer_text_ru,riasec_score) VALUES
+	 (50,'13','Бейтарап','Нейтрально',1),
 	 (51,'13','Ұнайды','Нравится',3),
 	 (52,'13','Өте ұнайды','Очень нравится',5),
 	 (53,'14','Ұнамайды','Не нравится',0),
@@ -64,8 +62,7 @@ INSERT INTO public.methodic_answers (id,question_id,answer_text_kz,answer_text_r
 	 (57,'15','Ұнамайды','Не нравится',0),
 	 (58,'15','Бейтарап','Нейтрально',1),
 	 (59,'15','Ұнайды','Нравится',3),
-	 (60,'15','Өте ұнайды','Очень нравится',5);
-INSERT INTO public.methodic_answers (id,question_id,answer_text_kz,answer_text_ru,riasec_score) VALUES
+	 (60,'15','Өте ұнайды','Очень нравится',5),
 	 (61,'16','Ұнамайды','Не нравится',0),
 	 (62,'16','Бейтарап','Нейтрально',1),
 	 (63,'16','Ұнайды','Нравится',3),
@@ -75,8 +72,7 @@ INSERT INTO public.methodic_answers (id,question_id,answer_text_kz,answer_text_r
 	 (67,'17','Ұнайды','Нравится',3),
 	 (68,'17','Өте ұнайды','Очень нравится',5),
 	 (69,'18','Ұнамайды','Не нравится',0),
-	 (70,'18','Бейтарап','Нейтрально',1);
-INSERT INTO public.methodic_answers (id,question_id,answer_text_kz,answer_text_ru,riasec_score) VALUES
+	 (70,'18','Бейтарап','Нейтрально',1),
 	 (71,'18','Ұнайды','Нравится',3),
 	 (72,'18','Өте ұнайды','Очень нравится',5),
 	 (73,'19','Ұнамайды','Не нравится',0),
@@ -86,8 +82,7 @@ INSERT INTO public.methodic_answers (id,question_id,answer_text_kz,answer_text_r
 	 (77,'20','Ұнамайды','Не нравится',0),
 	 (78,'20','Бейтарап','Нейтрально',1),
 	 (79,'20','Ұнайды','Нравится',3),
-	 (80,'20','Өте ұнайды','Очень нравится',5);
-INSERT INTO public.methodic_answers (id,question_id,answer_text_kz,answer_text_ru,riasec_score) VALUES
+	 (80,'20','Өте ұнайды','Очень нравится',5),
 	 (81,'21','Ұнамайды','Не нравится',0),
 	 (82,'21','Бейтарап','Нейтрально',1),
 	 (83,'21','Ұнайды','Нравится',3),
@@ -97,8 +92,7 @@ INSERT INTO public.methodic_answers (id,question_id,answer_text_kz,answer_text_r
 	 (87,'22','Ұнайды','Нравится',3),
 	 (88,'22','Өте ұнайды','Очень нравится',5),
 	 (89,'23','Ұнамайды','Не нравится',0),
-	 (90,'23','Бейтарап','Нейтрально',1);
-INSERT INTO public.methodic_answers (id,question_id,answer_text_kz,answer_text_ru,riasec_score) VALUES
+	 (90,'23','Бейтарап','Нейтрально',1),
 	 (91,'23','Ұнайды','Нравится',3),
 	 (92,'23','Өте ұнайды','Очень нравится',5),
 	 (93,'24','Ұнамайды','Не нравится',0),
@@ -108,10 +102,15 @@ INSERT INTO public.methodic_answers (id,question_id,answer_text_kz,answer_text_r
 	 (97,'25','Өте ұнайды1','Очень нравится1',5),
 	 (98,'25','Өте ұнайды2','Очень нравится2',5),
 	 (99,'25','Өте ұнайды3','Очень нравится3',5),
-	 (100,'25','Өте ұнайды4','Очень нравится4',5);
-INSERT INTO public.methodic_answers (id,question_id,answer_text_kz,answer_text_ru,riasec_score) VALUES
+	 (100,'25','Өте ұнайды4','Очень нравится4',5),
 	 (101,'26','Ұнайды1','Нрав2ится',3),
 	 (102,'26','Өте ұнайд1ы','Очень нравится',5),
 	 (103,'26','Ұнамай2ды','Не нрав2ится',1),
 	 (104,'26','Бейта2рап','Нейтр2ально',1);
+	 
+        RAISE NOTICE 'Inserted initial data into public.methodic_answers.';
+    ELSE
+        RAISE NOTICE 'Table public.methodic_answers already contains data. Skipping inserts.';
+    END IF;
 
+END $$;
