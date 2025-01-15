@@ -2,7 +2,13 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
@@ -11,16 +17,26 @@ import { setUserInfo } from "@/lib/profile/setUserInfo";
 import { handleSignOut } from "@/lib/auth/signOutServerAction";
 import { useTranslations } from "next-intl";
 import LocaleSwitcher from "@/components/LocaleSwitcher/LocaleSwitcher";
-import { useRouter } from "next/navigation";
+import Cookies from 'js-cookie';
 
 interface ProfilePageProps {
-  type: "quiz" | "profile";
+  pageType: "quiz" | "profile";
   userData?: User | null;
+  schoolCookie?: string;
+  schools?: {
+    id: string;
+    name_ru: string;
+    name_kz: string;
+    url_name: string;
+}[] | null;
 }
 
-const ProfilePage = ({ userData, type }: ProfilePageProps) => {
+const ProfilePage = ({ userData, schools, schoolCookie, pageType }: ProfilePageProps) => {
   const t = useTranslations("ProfilePage");
-  const router = useRouter();
+  
+  const matchingSchool = schools?.find(school => school.url_name === schoolCookie)?.url_name || '';
+
+
 
   const [formData, setFormData] = useState({
     name: userData?.name,
@@ -99,6 +115,22 @@ const ProfilePage = ({ userData, type }: ProfilePageProps) => {
             placeholder={t("fullNamePlaceholder")}
             maxLength={100}
           />
+        </div>
+         <div className="flex flex-col gap-2 mt-4">
+          <label className="text-[#333944] text-[13px] leading-[13px]">
+          {t("school")}
+          </label>
+          <Select defaultValue={matchingSchool} >
+            <SelectTrigger className="justify-start h-12 rounded-2xl p-4">
+              <SelectValue  placeholder="school" />
+            </SelectTrigger>
+            <SelectContent className=""> 
+              {schools?.map((school, index) => (
+                <SelectItem className="justify-start p-3" key={index} value={school.url_name}>{school.name_ru}</SelectItem>
+              ))}
+             
+            </SelectContent>
+          </Select>
         </div>
         <div className="flex flex-col gap-2 mt-4">
           <label className="text-[#333944] text-[13px] leading-[13px]">

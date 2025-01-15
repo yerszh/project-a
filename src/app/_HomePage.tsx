@@ -4,7 +4,9 @@ import { Button } from "@/components/ui/button";
 import { createUserQuiz } from "@/lib/quiz/createUserQuiz";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
+import Cookies from 'js-cookie';
 
 interface HomePageProps {
   activeQuiz?: {
@@ -17,6 +19,17 @@ interface HomePageProps {
 const HomePage = ({ activeQuiz }: HomePageProps) => {
   const t = useTranslations("HomePage");
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const school = searchParams.get("school") || "gen";
+
+  
+  useEffect(() => {
+    if (school) {
+      Cookies.set('school', school, { expires: 7 })
+    }
+  }, [school]);
+
+
 
   const handleSubmit = async () => {
     if (activeQuiz?.isActive) {

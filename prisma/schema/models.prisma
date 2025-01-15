@@ -3,29 +3,55 @@ enum AuthRole {
   ADMIN
 }
 
+model SchoolAdmin {
+  id         String  @id @default(cuid())
+  login      String
+  password   String
+  looker_id  String
+  school_id  String 
+
+  school     School  @relation(fields: [school_id], references: [id]) 
+}
+
+model School {
+  id        String         @id @default(cuid())
+  name_ru   String
+  name_kz   String
+  url_name  String
+  
+  admins    SchoolAdmin[]
+  users     User[]
+}
+
+
 model User {
   id            String          @id @default(cuid())
   name          String?
   grade         String?  
   age           String?
-  phoneNumber   String?  
+  phoneNumber   String? 
   email         String          @unique
   emailVerified DateTime?
   image         String?
   role          AuthRole @default(USER)
   accounts      Account[]
   sessions      Session[]
-
+  
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt  
 
+  schoolId      String?  
+         
+  school        School?         @relation(fields: [schoolId], references: [id]) 
+  UserQuizzes   UserQuiz[]
+  Results       Results[]
+  UserChats     UserChats[]
 
-  UserQuizzes UserQuiz[]
-
-  Results Results[]
-
-  UserChats UserChats[]
 }
+
+
+
+
  
 model Account {
   userId            String
@@ -48,7 +74,11 @@ model Account {
   @@id([provider, providerAccountId])
 }
  
-model Session {
+
+
+
+ 
+model Session { 
   sessionToken String   @unique
   userId       String
   expires      DateTime
