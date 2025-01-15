@@ -15,14 +15,16 @@
     "shortInfoDescription": "Қысқаша сауалнаманы толтырыңыз",
     "fullName": "Аты-жөні",
     "fullNamePlaceholder": "Аты-жөніңізді енгізіңіз",
+    "school": "Мектеп",
+    "schoolChoose": "Мектебіңізді таңдаңыз",
     "grade": "Сынып",
     "gradePlaceholder": "Сыныпыңызды енгізіңіз",
     "age": "Жас",
-    "school": "Мектеп",
     "agePlaceholder": "Жасыңызды енгізіңіз",
     "phoneNumber": "Телефон нөмірі",
     "phoneNumberPlaceholder": "Нөмірді енгізіңіз",
-    "continue": "Жалғастыру"
+    "continue": "Жалғастыру",
+    "save": "Сақтау"
   },
   "QuizPage": {
     "arrowBack": "Артқа",

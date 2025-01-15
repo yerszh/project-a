@@ -15,14 +15,14 @@ import { useState, useEffect } from "react";
 import { User } from "@prisma/client";
 import { setUserInfo } from "@/lib/profile/setUserInfo";
 import { handleSignOut } from "@/lib/auth/signOutServerAction";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import LocaleSwitcher from "@/components/LocaleSwitcher/LocaleSwitcher";
 import Cookies from 'js-cookie';
 
 interface ProfilePageProps {
   pageType: "quiz" | "profile";
   userData?: User | null;
-  schoolCookie?: string;
+  schoolCookieUrl?: string;
   schools?: {
     id: string;
     name_ru: string;
@@ -31,18 +31,21 @@ interface ProfilePageProps {
 }[] | null;
 }
 
-const ProfilePage = ({ userData, schools, schoolCookie, pageType }: ProfilePageProps) => {
+const ProfilePage = ({ userData, schools, schoolCookieUrl, pageType }: ProfilePageProps) => {
   const t = useTranslations("ProfilePage");
+  const locale = useLocale();
+
+const currentSchool = schools?.find(school => 
+  school.id === userData?.schoolId || school.url_name === schoolCookieUrl
+)
   
-  const matchingSchool = schools?.find(school => school.url_name === schoolCookie)?.url_name || '';
-
-
 
   const [formData, setFormData] = useState({
-    name: userData?.name,
-    grade: userData?.grade,
-    age: userData?.age,
-    phoneNumber: userData?.phoneNumber,
+    name: userData?.name || null,
+    grade: userData?.grade || null,
+    age: userData?.age || null,
+    phoneNumber: userData?.phoneNumber || null,
+    schoolId: userData?.schoolId ? userData?.schoolId : currentSchool?.id || null ,
   });
 
   const [isPhoneValid, setIsPhoneValid] = useState(true);
@@ -75,6 +78,20 @@ const ProfilePage = ({ userData, schools, schoolCookie, pageType }: ProfilePageP
     );
   }, [formData, isPhoneValid]);
 
+  const handleSchoolChange = (value: string) => {
+    const selectedSchool = schools?.find((school) => school.url_name === value);
+    setFormData((prevData) => ({
+      ...prevData,
+      schoolId: selectedSchool?.id || null, 
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setUserInfo(formData, pageType)
+
+  };
+  
   return (
     <div className="p-4 w-full flex flex-col">
       <div className="w-full flex justify-between">
@@ -101,7 +118,7 @@ const ProfilePage = ({ userData, schools, schoolCookie, pageType }: ProfilePageP
       <h2 className="mt-3 text-[13px] leading-[13px] text-[#A5AAB3] font-normal text-center">
         {t("shortInfoDescription")}
       </h2>
-      <form action={setUserInfo} className="mt-12">
+      <form onSubmit={handleSubmit} className="mt-12">
         <div className="flex flex-col gap-2 mt-4">
           <label className="text-[#333944] text-[13px] leading-[13px]">
             {t("fullName")}
@@ -120,13 +137,15 @@ const ProfilePage = ({ userData, schools, schoolCookie, pageType }: ProfilePageP
           <label className="text-[#333944] text-[13px] leading-[13px]">
           {t("school")}
           </label>
-          <Select defaultValue={matchingSchool} >
+          <Select defaultValue={currentSchool?.url_name} onValueChange={handleSchoolChange}>
             <SelectTrigger className="justify-start h-12 rounded-2xl p-4">
-              <SelectValue  placeholder="school" />
+              <SelectValue  placeholder={t('schoolChoose')} />
             </SelectTrigger>
             <SelectContent className=""> 
               {schools?.map((school, index) => (
-                <SelectItem className="justify-start p-3" key={index} value={school.url_name}>{school.name_ru}</SelectItem>
+                <SelectItem className="justify-start p-3" key={index} value={school.url_name}>{locale === "kz"
+                  ? school.name_kz
+                  : school.name_ru}</SelectItem>
               ))}
              
             </SelectContent>
@@ -182,7 +201,7 @@ const ProfilePage = ({ userData, schools, schoolCookie, pageType }: ProfilePageP
           type="submit"
           disabled={!isFormValid}
         >
-          {t("continue")}
+          {pageType === 'profile' ? t("save"): t("continue")}
         </Button>
       </form>
     </div>
