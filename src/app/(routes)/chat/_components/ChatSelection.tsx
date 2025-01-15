@@ -70,6 +70,7 @@ const ChatSelection: React.FC<ChatSelectionProps> = ({
   allCategories,
   allSubjects,
 }) => {
+ 
   const t = useTranslations("ChatPage");
   const locale = useLocale();
   const [searchTerm, setSearchTerm] = useState("");

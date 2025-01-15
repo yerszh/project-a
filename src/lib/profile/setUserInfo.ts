@@ -12,7 +12,7 @@ interface UserInfoData {
   schoolId: string | null;
 }
 
-export const setUserInfo = async (formData: UserInfoData, pageType: "quiz" | "profile") => {
+export const setUserInfo = async (formData: UserInfoData, pageType: string) => {
 
   try {
     const session = await auth();

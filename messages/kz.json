@@ -48,7 +48,13 @@
     "matchedProfessions": "Таңдалған мамандықтар",
     "discussWithAI": "AI чатпен мамандықтарды талқылау",
     "chatButtonAlt": "чат-батырма",
-    "arrowForwardAlt": "алға-көрсеткіш"
+    "arrowForwardAlt": "алға-көрсеткіш",
+    "realistic": "Реалистік",
+    "investigative": "Зерттеушілік",
+    "artistic": "Көркемдік",
+    "social": "Әлеуметтік",
+    "enterprising": "Кәсіпкерлік",
+    "conventional": "Дәстүрлі"
   },
   "ChatPage": {
     "greeting": "Сәлем, мен",

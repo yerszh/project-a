@@ -9,7 +9,7 @@ const Profile = async () => {
   const cookieStore = await cookies();
   const schoolCookie = cookieStore.get("school")?.value || '';
 
-  return <ProfilePage schoolCookieUrl={schoolCookie}  schools={schools} userData={userData} pageType="profile" />;
+  return <ProfilePage schoolCookieUrl={schoolCookie}  schools={schools} userData={userData} />;
 };
 
 export default Profile;

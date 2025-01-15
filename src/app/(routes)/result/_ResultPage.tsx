@@ -52,12 +52,12 @@ const ResultPage = ({ userResult }: ResultPageProps) => {
   const locale = useLocale();
 
   const chartData = [
-    { profs: "Re", points: userResult?.R },
-    { profs: "I", points: userResult?.I },
-    { profs: "A", points: userResult?.A },
-    { profs: "S", points: userResult?.S },
-    { profs: "E", points: userResult?.E },
-    { profs: "C", points: userResult?.C },
+    { profs: t("realistic"), "": userResult?.R },
+    { profs:  t("investigative"), "": userResult?.I },
+    { profs:  t("artistic"), "": userResult?.A },
+    { profs:  t("social"), "": userResult?.S },
+    { profs:  t("enterprising"), "": userResult?.E },
+    { profs:  t("conventional"), "": userResult?.C },
   ];
   const router = useRouter();
 
@@ -133,7 +133,7 @@ const ResultPage = ({ userResult }: ResultPageProps) => {
             />
             <PolarGrid gridType="circle" />
             <PolarAngleAxis dataKey="profs" />
-            <Radar dataKey="points" fill="#644CF8" fillOpacity={0.5} />
+            <Radar dataKey="" fill="#644CF8" fillOpacity={0.4} />
           </RadarChart>
         </ChartContainer>
       </div>

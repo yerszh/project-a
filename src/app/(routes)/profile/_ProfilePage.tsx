@@ -17,10 +17,9 @@ import { setUserInfo } from "@/lib/profile/setUserInfo";
 import { handleSignOut } from "@/lib/auth/signOutServerAction";
 import { useLocale, useTranslations } from "next-intl";
 import LocaleSwitcher from "@/components/LocaleSwitcher/LocaleSwitcher";
-import Cookies from 'js-cookie';
+import { useSearchParams } from "next/navigation";
 
 interface ProfilePageProps {
-  pageType: "quiz" | "profile";
   userData?: User | null;
   schoolCookieUrl?: string;
   schools?: {
@@ -31,7 +30,10 @@ interface ProfilePageProps {
 }[] | null;
 }
 
-const ProfilePage = ({ userData, schools, schoolCookieUrl, pageType }: ProfilePageProps) => {
+const ProfilePage = ({ userData, schools, schoolCookieUrl }: ProfilePageProps) => {
+    const searchParams = useSearchParams();
+    const pageType = searchParams.get("type") || "profile";
+   
   const t = useTranslations("ProfilePage");
   const locale = useLocale();
 
@@ -101,7 +103,7 @@ const currentSchool = schools?.find(school =>
 
         <div className="flex flex-row gap-2 mt-4">
           <LocaleSwitcher />
-          <Link href="/result">
+          <Link href={pageType === 'quiz' ? "/": "/result"}>
             <Image
               src="/icons/close-button.svg"
               alt={t("closeButtonAlt")}
@@ -138,7 +140,7 @@ const currentSchool = schools?.find(school =>
           {t("school")}
           </label>
           <Select defaultValue={currentSchool?.url_name} onValueChange={handleSchoolChange}>
-            <SelectTrigger className="justify-start h-12 rounded-2xl p-4">
+            <SelectTrigger className="justify-start h-12 rounded-2xl p-4 border text-muted-foreground">
               <SelectValue  placeholder={t('schoolChoose')} />
             </SelectTrigger>
             <SelectContent className=""> 

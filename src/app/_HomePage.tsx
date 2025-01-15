@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import Cookies from 'js-cookie';
+import LocaleSwitcher from "@/components/LocaleSwitcher/LocaleSwitcher";
 
 interface HomePageProps {
   activeQuiz?: {
@@ -20,7 +21,7 @@ const HomePage = ({ activeQuiz }: HomePageProps) => {
   const t = useTranslations("HomePage");
   const router = useRouter();
   const searchParams = useSearchParams();
-  const school = searchParams.get("school") || "gen";
+  const school = searchParams.get("school");
 
   
   useEffect(() => {
@@ -42,14 +43,21 @@ const HomePage = ({ activeQuiz }: HomePageProps) => {
   };
   return (
     <>
-      <div className="flex gap-1 items-center mt-9 text-[#9E9E9E]">
+      <div className="flex justify-end gap-1 w-full mb-3 mt-9 px-4 text-[#9E9E9E]">
+       
+        <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center gap-1">
         <Image
           src="/icons/logo-main.svg"
           alt={t("logoAlt")}
           height={24}
           width={156}
         />
+        </div>
+
+        <LocaleSwitcher />
       </div>
+    
+    
 
       <Image
         src="/images/main-image.jpg"

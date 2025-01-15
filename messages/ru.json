@@ -48,7 +48,13 @@
     "matchedProfessions": "Подобранные профессии",
     "discussWithAI": "Обсудить профессии с AI chat",
     "chatButtonAlt": "chat-button",
-    "arrowForwardAlt": "arrow-forward"
+    "arrowForwardAlt": "arrow-forward",
+    "realistic": "Реалистичный",
+    "investigative": "Исследовательский",
+    "artistic": "Артистичный",
+    "social": "Социальный",
+    "enterprising": "Предприимчивый",
+    "conventional": "Традиционный"
   },
   "ChatPage": {
     "greeting": "Привет, я",
