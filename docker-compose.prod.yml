@@ -23,13 +23,13 @@ services:
       - web
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.app.rule=Host(prof.smartbolashaq.kz)"
+      - "traefik.http.routers.app.rule=Host(`prof.smartbolashaq.kz`)"
       - "traefik.http.routers.app.entrypoints=websecure"
       - "traefik.http.routers.app.tls=true"
       - "traefik.http.routers.app.tls.certresolver=myresolver"
       - "traefik.http.services.app.loadbalancer.server.port=3000"
       - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https" # Define the middleware for redirection
-      - "traefik.http.routers.app-http.rule=Host(prof.smartbolashaq.kz)" # New HTTP router
+      - "traefik.http.routers.app-http.rule=Host(`prof.smartbolashaq.kz`)" # New HTTP router
       - "traefik.http.routers.app-http.entrypoints=web"
       - "traefik.http.routers.app-http.middlewares=redirect-to-https"
 
@@ -60,3 +60,4 @@ networks:
 
 volumes:
   pg_data:
+
