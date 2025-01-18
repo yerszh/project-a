@@ -5,7 +5,7 @@ enum AuthRole {
 
 model SchoolAdmin {
   id         String  @id @default(cuid())
-  login      String
+  login      String  @unique
   password   String
   looker_id  String
   school_id  String 
