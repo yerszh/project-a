@@ -12,7 +12,6 @@ export const checkActiveQuiz = async () => {
       const activeQuiz = await prisma.userQuiz.findFirst({
         where: {
           user_id: uuid,
-          isActive: true,
         },
         select: {
           isActive: true,

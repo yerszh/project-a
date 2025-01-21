@@ -140,7 +140,7 @@ const currentSchool = schools?.find(school =>
           {t("school")}
           </label>
           <Select defaultValue={currentSchool?.url_name} onValueChange={handleSchoolChange}>
-            <SelectTrigger className="justify-start h-12 rounded-2xl p-4 border text-muted-foreground">
+            <SelectTrigger className="justify-start h-12 rounded-2xl p-4 border text-inherit">
               <SelectValue  placeholder={t('schoolChoose')} />
             </SelectTrigger>
             <SelectContent className=""> 
