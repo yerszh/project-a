@@ -1,4 +1,6 @@
+import { getPromptConfig } from "@/lib/methodic-data/getPromptConfig";
 import { prisma } from "@/lib/prisma";
+import { getLocale } from "next-intl/server";
 
 export async function generatePrompt(code: string): Promise<string> {
   try {
@@ -137,8 +139,21 @@ export async function generatePrompt(code: string): Promise<string> {
     };
 
     const prepNeededDescription = prepLevelDescriptions[processedJobData.prep_needed || ""] || "Unknown preparation level";
-    
-    promptLines.push(`Return text very short. Just most important moments. It is very important. Text should be super short. only most imporant moments. Return your response only in KAzakh or Russian. Depends on what language question is asked. By default return in Russian.`);
+
+    const promtConfig = await getPromptConfig();
+    if (promtConfig) {
+      promptLines.push(promtConfig[0].config_value)
+    }
+   
+    const locale =  await getLocale();
+
+    if (locale === 'kz') {
+      promptLines.push("Return your response in kazakh")
+    } else {
+      promptLines.push("Return your response in russian")
+    }
+
+    promptLines.push(`Return text very short. Just most important moments. It is very important. Text should be super short. only most imporant moments.`);
     promptLines.push(`**Education and Preparation Needed:**\n`);
     promptLines.push(`This occupation requires a **${prepNeededDescription}**.`);
     
