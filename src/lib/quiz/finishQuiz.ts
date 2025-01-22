@@ -48,7 +48,7 @@ export const finishQuiz = async (quizId: string) => {
     });
     
 
-     const response = await fetch(
+      fetch(
       "https://script.google.com/macros/s/AKfycbzJXxoA9ZzgcgCxn9b5Ay73iFT2SqkojKBuxc9OvjkGjVN1uLXxkojzO0m3GDZS5u8K/exec",
       {
         method: "POST",
