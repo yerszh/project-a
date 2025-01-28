@@ -90,7 +90,7 @@ const currentSchool = schools?.find(school =>
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setUserInfo(formData, pageType)
+    setUserInfo(formData, pageType);
 
   };
   

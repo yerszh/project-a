@@ -41,7 +41,7 @@ export const setUserInfo = async (formData: UserInfoData, pageType: string) => {
         where: { id: uuid },
         data: updateData,
       });
-
+      
       if (pageType === 'quiz') {  
         return redirect("/quiz")
       }
