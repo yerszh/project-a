@@ -49,7 +49,7 @@ export const finishQuiz = async (quizId: string) => {
     
 
       fetch(
-      "https://script.google.com/macros/s/AKfycbzJXxoA9ZzgcgCxn9b5Ay73iFT2SqkojKBuxc9OvjkGjVN1uLXxkojzO0m3GDZS5u8K/exec",
+      "https://script.google.com/macros/s/AKfycbwn1muWS2at_SQDUVw9uAeVRTcFqblsEBjOJxjZE4L4BbgE48JUU8IWajVy7O00vtJw/exec",
       {
         method: "POST",
         headers: {
