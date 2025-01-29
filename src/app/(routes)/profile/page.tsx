@@ -1,15 +1,15 @@
 import { getUserInfo } from "@/lib/profile/getUserInfo";
 import ProfilePage from "./_ProfilePage";
-import { getSchools } from "@/lib/profile/getSchools";
+import { getSchoolByUrl } from "@/lib/profile/getSchoolByUrl";
 import { cookies } from "next/headers";
 
 const Profile = async () => {
   const userData = await getUserInfo();
-  const schools = await getSchools()
   const cookieStore = await cookies();
   const schoolCookie = cookieStore.get("school")?.value || '';
-
-  return <ProfilePage schoolCookieUrl={schoolCookie}  schools={schools} userData={userData} />;
+  const selectedSchool = await getSchoolByUrl(schoolCookie);
+  
+  return <ProfilePage selectedSchool={selectedSchool}  userData={userData} />;
 };
 
 export default Profile;

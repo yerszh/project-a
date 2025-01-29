@@ -27,6 +27,8 @@ const HomePage = ({ activeQuiz }: HomePageProps) => {
   useEffect(() => {
     if (school) {
       Cookies.set('school', school, { expires: 7 })
+    } else {
+      Cookies.set('school', 'gen', { expires: 7 })
     }
   }, [school]);
 

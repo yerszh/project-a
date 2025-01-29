@@ -2,13 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
@@ -22,23 +15,20 @@ import { useToast } from "@/hooks/use-toast"
 
 interface ProfilePageProps {
   userData?: User | null;
-  schoolCookieUrl?: string;
-  schools?: {
+  selectedSchool?: {
     id: string;
     name_ru: string;
     name_kz: string;
     url_name: string;
-}[] | null;
+} | null;
 }
 
-const ProfilePage = ({ userData, schools, schoolCookieUrl }: ProfilePageProps) => {
+const ProfilePage = ({ userData, selectedSchool }: ProfilePageProps) => {
     const searchParams = useSearchParams();
     const pageType = searchParams.get("type") || "profile";
     const t = useTranslations("ProfilePage");
     const locale = useLocale();
-    const currentSchool = schools?.find(school => 
-      school.id === userData?.schoolId || school.url_name === schoolCookieUrl
-    )
+  
     const [isPending, setIsPending] = useState(false);
     const { toast } = useToast(); 
 
@@ -47,7 +37,7 @@ const ProfilePage = ({ userData, schools, schoolCookieUrl }: ProfilePageProps) =
     grade: userData?.grade || null,
     age: userData?.age || null,
     phoneNumber: userData?.phoneNumber || null,
-    schoolId: userData?.schoolId ? userData?.schoolId : currentSchool?.id || null ,
+    schoolId: userData?.schoolId ? userData?.schoolId : selectedSchool?.id || null ,
   });
 
   const [isPhoneValid, setIsPhoneValid] = useState(true);
@@ -79,14 +69,6 @@ const ProfilePage = ({ userData, schools, schoolCookieUrl }: ProfilePageProps) =
         Boolean(isPhoneValidLocal)
     );
   }, [formData, isPhoneValid]);
-
-  const handleSchoolChange = (value: string) => {
-    const selectedSchool = schools?.find((school) => school.url_name === value);
-    setFormData((prevData) => ({
-      ...prevData,
-      schoolId: selectedSchool?.id || null, 
-    }));
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -152,19 +134,11 @@ const ProfilePage = ({ userData, schools, schoolCookieUrl }: ProfilePageProps) =
           <label className="text-[#333944] text-[13px] leading-[13px]">
           {t("school")}
           </label>
-          <Select defaultValue={currentSchool?.url_name} onValueChange={handleSchoolChange}>
-            <SelectTrigger className="justify-start h-12 rounded-2xl p-4 border text-inherit">
-              <SelectValue  placeholder={t('schoolChoose')} />
-            </SelectTrigger>
-            <SelectContent className=""> 
-              {schools?.map((school, index) => (
-                <SelectItem className="justify-start p-3" key={index} value={school.url_name}>{locale === "kz"
-                  ? school.name_kz
-                  : school.name_ru}</SelectItem>
-              ))}
-             
-            </SelectContent>
-          </Select>
+          <Input
+            className="p-4 flex w-full border border-[#E3E6EB] h-12 text-sm rounded-2xl"
+            value={locale === 'kz' ? selectedSchool?.name_kz :  selectedSchool?.name_ru || ""}
+            readOnly
+          />
         </div>
         <div className="flex flex-col gap-2 mt-4">
           <label className="text-[#333944] text-[13px] leading-[13px]">

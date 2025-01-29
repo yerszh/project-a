@@ -4,21 +4,17 @@ import { auth } from "@/lib/auth/authConfig";
 import { prisma } from "@/lib/prisma";
 
 
-export const getSchools = async () => {
+export const getSchoolByUrl = async (urlName: string) => {
   try {
     const session = await auth();
     const uuid = session?.user?.id;
 
     if (uuid) {
-      const schools = await prisma.school.findMany({
-        select: {
-          id: true,
-          name_ru: true,
-          name_kz: true,
-          url_name:  true,
-        },
+      const school = await prisma.school.findUnique({
+        where: { url_name: urlName },
       });
-      return schools;
+    
+      return school;
     }
   } catch (error) {
     throw error;
