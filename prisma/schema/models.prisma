@@ -17,7 +17,7 @@ model School {
   id        String         @id @default(cuid())
   name_ru   String
   name_kz   String
-  url_name  String
+  url_name  String  @unique
   
   admins    SchoolAdmin[]
   users     User[]

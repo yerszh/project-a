@@ -24,7 +24,9 @@
     "phoneNumber": "Номер телефона",
     "phoneNumberPlaceholder": "Введите номер",
     "continue": "Продолжить",
-    "save": "Сохранить"
+    "save": "Сохранить",
+    "updatedTitle": "Обновлено",
+    "errorTitle": "Ошибка"
   },
   "QuizPage": {
     "arrowBack": "Назад",

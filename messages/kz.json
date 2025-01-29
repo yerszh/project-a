@@ -24,7 +24,9 @@
     "phoneNumber": "Телефон нөмірі",
     "phoneNumberPlaceholder": "Нөмірді енгізіңіз",
     "continue": "Жалғастыру",
-    "save": "Сақтау"
+    "save": "Сақтау",
+    "updatedTitle": "Жаңартылды",
+    "errorTitle": "Ошибка"
   },
   "QuizPage": {
     "arrowBack": "Артқа",

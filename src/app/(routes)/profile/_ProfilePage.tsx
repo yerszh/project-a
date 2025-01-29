@@ -18,6 +18,7 @@ import { handleSignOut } from "@/lib/auth/signOutServerAction";
 import { useLocale, useTranslations } from "next-intl";
 import LocaleSwitcher from "@/components/LocaleSwitcher/LocaleSwitcher";
 import { useSearchParams } from "next/navigation";
+import { useToast } from "@/hooks/use-toast"
 
 interface ProfilePageProps {
   userData?: User | null;
@@ -33,14 +34,13 @@ interface ProfilePageProps {
 const ProfilePage = ({ userData, schools, schoolCookieUrl }: ProfilePageProps) => {
     const searchParams = useSearchParams();
     const pageType = searchParams.get("type") || "profile";
-   
-  const t = useTranslations("ProfilePage");
-  const locale = useLocale();
-
-const currentSchool = schools?.find(school => 
-  school.id === userData?.schoolId || school.url_name === schoolCookieUrl
-)
-  
+    const t = useTranslations("ProfilePage");
+    const locale = useLocale();
+    const currentSchool = schools?.find(school => 
+      school.id === userData?.schoolId || school.url_name === schoolCookieUrl
+    )
+    const [isPending, setIsPending] = useState(false);
+    const { toast } = useToast(); 
 
   const [formData, setFormData] = useState({
     name: userData?.name || null,
@@ -90,8 +90,21 @@ const currentSchool = schools?.find(school =>
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setUserInfo(formData, pageType);
-
+    if (isPending) return; 
+    
+    setIsPending(true);
+    try {
+      await setUserInfo(formData, pageType);
+      toast({
+        title: t("updatedTitle"), 
+       
+      });
+    } catch (error) {
+      toast({
+        title: t("errorTitle"), 
+      });
+    }
+    setIsPending(false);
   };
   
   return (
@@ -201,7 +214,7 @@ const currentSchool = schools?.find(school =>
         <Button
           className="my-8 w-full h-12 rounded-lg"
           type="submit"
-          disabled={!isFormValid}
+          disabled={!isFormValid || isPending}
         >
           {pageType === 'profile' ? t("save"): t("continue")}
         </Button>
