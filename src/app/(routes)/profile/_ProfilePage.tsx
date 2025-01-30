@@ -11,7 +11,7 @@ import { handleSignOut } from "@/lib/auth/signOutServerAction";
 import { useLocale, useTranslations } from "next-intl";
 import LocaleSwitcher from "@/components/LocaleSwitcher/LocaleSwitcher";
 import { useSearchParams } from "next/navigation";
-import { useToast } from "@/hooks/use-toast"
+import { useToast } from "@/hooks/use-toast";
 
 interface ProfilePageProps {
   userData?: User | null;
@@ -20,24 +20,26 @@ interface ProfilePageProps {
     name_ru: string;
     name_kz: string;
     url_name: string;
-} | null;
+  } | null;
 }
 
 const ProfilePage = ({ userData, selectedSchool }: ProfilePageProps) => {
-    const searchParams = useSearchParams();
-    const pageType = searchParams.get("type") || "profile";
-    const t = useTranslations("ProfilePage");
-    const locale = useLocale();
-  
-    const [isPending, setIsPending] = useState(false);
-    const { toast } = useToast(); 
+  const searchParams = useSearchParams();
+  const pageType = searchParams.get("type") || "profile";
+  const t = useTranslations("ProfilePage");
+  const locale = useLocale();
+
+  const [isPending, setIsPending] = useState(false);
+  const { toast } = useToast();
 
   const [formData, setFormData] = useState({
     name: userData?.name || null,
     grade: userData?.grade || null,
     age: userData?.age || null,
     phoneNumber: userData?.phoneNumber || null,
-    schoolId: userData?.schoolId ? userData?.schoolId : selectedSchool?.id || null ,
+    schoolId: userData?.schoolId
+      ? userData?.schoolId
+      : selectedSchool?.id || null,
   });
 
   const [isPhoneValid, setIsPhoneValid] = useState(true);
@@ -72,23 +74,22 @@ const ProfilePage = ({ userData, selectedSchool }: ProfilePageProps) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (isPending) return; 
-    
+    if (isPending) return;
+
     setIsPending(true);
     try {
       await setUserInfo(formData, pageType);
       toast({
-        title: t("updatedTitle"), 
-       
+        title: t("updatedTitle"),
       });
     } catch (error) {
       toast({
-        title: t("errorTitle"), 
+        title: t("errorTitle"),
       });
     }
     setIsPending(false);
   };
-  
+
   return (
     <div className="p-4 w-full flex flex-col">
       <div className="w-full flex justify-between">
@@ -98,7 +99,7 @@ const ProfilePage = ({ userData, selectedSchool }: ProfilePageProps) => {
 
         <div className="flex flex-row gap-2 mt-4">
           <LocaleSwitcher />
-          <Link href={pageType === 'quiz' ? "/": "/result"}>
+          <Link href={pageType === "quiz" ? "/" : "/result"}>
             <Image
               src="/icons/close-button.svg"
               alt={t("closeButtonAlt")}
@@ -130,13 +131,17 @@ const ProfilePage = ({ userData, selectedSchool }: ProfilePageProps) => {
             maxLength={100}
           />
         </div>
-         <div className="flex flex-col gap-2 mt-4">
+        <div className="flex flex-col gap-2 mt-4">
           <label className="text-[#333944] text-[13px] leading-[13px]">
-          {t("school")}
+            {t("school")}
           </label>
           <Input
             className="p-4 flex w-full border border-[#E3E6EB] h-12 text-sm rounded-2xl"
-            value={locale === 'kz' ? selectedSchool?.name_kz :  selectedSchool?.name_ru || ""}
+            value={
+              locale === "kz"
+                ? selectedSchool?.name_kz
+                : selectedSchool?.name_ru || ""
+            }
             readOnly
           />
         </div>
@@ -190,7 +195,7 @@ const ProfilePage = ({ userData, selectedSchool }: ProfilePageProps) => {
           type="submit"
           disabled={!isFormValid || isPending}
         >
-          {pageType === 'profile' ? t("save"): t("continue")}
+          {pageType === "profile" ? t("save") : t("continue")}
         </Button>
       </form>
     </div>

@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 import LocaleSwitcher from "@/components/LocaleSwitcher/LocaleSwitcher";
 
 interface HomePageProps {
@@ -23,16 +23,11 @@ const HomePage = ({ activeQuiz }: HomePageProps) => {
   const searchParams = useSearchParams();
   const school = searchParams.get("school");
 
-  
   useEffect(() => {
     if (school) {
-      Cookies.set('school', school, { expires: 7 })
-    } else {
-      Cookies.set('school', 'gen', { expires: 7 })
+      Cookies.set("school", school, { expires: 7 });
     }
   }, [school]);
-
-
 
   const handleSubmit = async () => {
     if (activeQuiz?.isActive) {
@@ -46,28 +41,22 @@ const HomePage = ({ activeQuiz }: HomePageProps) => {
   return (
     <>
       <div className="flex justify-end gap-1 w-full mb-3 mt-9 px-4 text-[#9E9E9E]">
-       
         <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center gap-1">
-        <Image
-          src="/icons/logo-main.svg"
-          alt={t("logoAlt")}
-          height={24}
-          width={156}
-        />
+          <Image
+            src="/icons/logo-main.svg"
+            alt={t("logoAlt")}
+            height={24}
+            width={156}
+          />
         </div>
-
         <LocaleSwitcher />
       </div>
-    
-    
-
       <Image
         src="/images/main-image.jpg"
         alt={t("mainImageAlt")}
         width="480"
         height="480"
       />
-
       <div className="max-w-[236px]">
         <h1 className="text-[32px] text-[#171A1D] font-semibold leading-8 text-center">
           {t("findYourCalling")}
@@ -76,7 +65,6 @@ const HomePage = ({ activeQuiz }: HomePageProps) => {
           {t("interactiveHelperDescription")}
         </p>
       </div>
-
       <Button
         className="mt-8 bg-[#3761EE] flex gap-1.5 py-6 px-5 rounded-2xl text-white"
         onClick={handleSubmit}

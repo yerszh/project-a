@@ -13,7 +13,6 @@ interface UserInfoData {
 }
 
 export const setUserInfo = async (formData: UserInfoData, pageType: string) => {
-
   try {
     const session = await auth();
     const uuid = session?.user?.id;
@@ -27,7 +26,6 @@ export const setUserInfo = async (formData: UserInfoData, pageType: string) => {
       };
 
       if (formData.schoolId) {
-        
         updateData.school = {
           connect: { id: formData.schoolId },
         };
@@ -41,9 +39,9 @@ export const setUserInfo = async (formData: UserInfoData, pageType: string) => {
         where: { id: uuid },
         data: updateData,
       });
-      
-      if (pageType === 'quiz') {  
-        return redirect("/quiz")
+
+      if (pageType === "quiz") {
+        return redirect("/quiz");
       }
     }
   } catch (error) {

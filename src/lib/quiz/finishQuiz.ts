@@ -26,7 +26,7 @@ export const finishQuiz = async (quizId: string) => {
     }
 
     const session = await auth();
-    const userEmail = session?.user?.email
+    const userEmail = session?.user?.email;
     const userResult = await getLastUserResult();
 
     const json = {
@@ -38,17 +38,16 @@ export const finishQuiz = async (quizId: string) => {
       e: userResult?.E?.toString(),
       c: userResult?.C?.toString(),
     } as { [key: string]: string | undefined | null };
-    
+
     userResult?.UserProfessions?.forEach((profession, index) => {
       const valueKey = `${index + 1}`;
       const profKey = `prof${valueKey}`;
-    
-      json[profKey] = profession.name_ru; 
-      json[valueKey] = profession.percent.toString(); 
-    });
-    
 
-      fetch(
+      json[profKey] = profession.name_ru;
+      json[valueKey] = profession.percent.toString();
+    });
+
+    fetch(
       "https://script.google.com/macros/s/AKfycbwn1muWS2at_SQDUVw9uAeVRTcFqblsEBjOJxjZE4L4BbgE48JUU8IWajVy7O00vtJw/exec",
       {
         method: "POST",

@@ -53,11 +53,11 @@ const ResultPage = ({ userResult }: ResultPageProps) => {
 
   const chartData = [
     { profs: t("realistic"), "": userResult?.R },
-    { profs:  t("investigative"), "": userResult?.I },
-    { profs:  t("artistic"), "": userResult?.A },
-    { profs:  t("social"), "": userResult?.S },
-    { profs:  t("enterprising"), "": userResult?.E },
-    { profs:  t("conventional"), "": userResult?.C },
+    { profs: t("investigative"), "": userResult?.I },
+    { profs: t("artistic"), "": userResult?.A },
+    { profs: t("social"), "": userResult?.S },
+    { profs: t("enterprising"), "": userResult?.E },
+    { profs: t("conventional"), "": userResult?.C },
   ];
   const router = useRouter();
 
@@ -85,8 +85,8 @@ const ResultPage = ({ userResult }: ResultPageProps) => {
         </Button>
 
         <div className="flex flex-row gap-2">
-        <Link href="/profile">
-            <Image 
+          <Link href="/profile">
+            <Image
               className="rounded-lg"
               src="/icons/profile-icon.svg"
               alt={"profile"}
