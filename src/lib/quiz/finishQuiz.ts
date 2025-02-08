@@ -5,6 +5,7 @@ import { setResultRIASEC } from "../result/setResultRIASEC";
 import { setUserProfessions } from "../result/setUserProfessions";
 import { getLastUserResult } from "../result/getLastUserResult";
 import { auth } from "../auth/authConfig";
+import {getLocale} from 'next-intl/server';
 
 export const finishQuiz = async (quizId: string) => {
   try {
@@ -28,8 +29,10 @@ export const finishQuiz = async (quizId: string) => {
     const session = await auth();
     const userEmail = session?.user?.email;
     const userResult = await getLastUserResult();
+    const locale = await getLocale()
 
-    const json = {
+    const jsonData = {
+      language: locale,
       email: userEmail,
       r: userResult?.R?.toString(),
       i: userResult?.I?.toString(),
@@ -37,14 +40,17 @@ export const finishQuiz = async (quizId: string) => {
       s: userResult?.S?.toString(),
       e: userResult?.E?.toString(),
       c: userResult?.C?.toString(),
-    } as { [key: string]: string | undefined | null };
+    } as { [key: string]: any };
 
     userResult?.UserProfessions?.forEach((profession, index) => {
       const valueKey = `${index + 1}`;
       const profKey = `prof${valueKey}`;
 
-      json[profKey] = profession.name_ru;
-      json[valueKey] = profession.percent.toString();
+      jsonData[profKey] = {
+        ru: profession.name_ru,
+        kz: profession.name_kz, 
+      };
+      jsonData[valueKey] = profession.percent.toString();
     });
 
     fetch(
@@ -54,7 +60,7 @@ export const finishQuiz = async (quizId: string) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(json),
+        body: JSON.stringify(jsonData),
       }
     );
 
