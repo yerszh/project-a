@@ -6,8 +6,10 @@ import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { handleEmailSignIn } from "@/lib/auth/emailSignInServerAction";
+
 import { handleGoogleSignIn } from "@/lib/auth/googleSignInServerAction";
+import { sendEmailOTP } from "@/lib/auth/sendEmailOTPServerAction";
+import { handleOTPSignIn } from "@/lib/auth/oTPSignInServerAction";
 
 export default function SignInVerifyPage() {
   const [isPending, startTransition] = useTransition();
@@ -19,7 +21,7 @@ export default function SignInVerifyPage() {
   const handleOTPRequest = async (e: React.FormEvent) => {
     e.preventDefault();
     startTransition(async () => {
-      await handleEmailSignIn(email);
+      await sendEmailOTP(email);
       setStep("verify");
     });
   };
@@ -28,14 +30,8 @@ export default function SignInVerifyPage() {
     e.preventDefault();
     const code = otp.join("");
     startTransition(async () => {
-      const result = await signIn("credentials", {
-        redirect: false,
-        email,
-        code,
-      });
-      if (result?.ok) {
-        router.push("/quiz");
-      } 
+      const result = await handleOTPSignIn(email, code);
+      console.log(result)   
     });
   };
 
@@ -135,8 +131,6 @@ export default function SignInVerifyPage() {
           </div>
 
           <form className="w-full flex flex-col mt-8" onSubmit={handleVerify}>
-            <input type="hidden" value={email} name="email" />
-            
             <div className="flex gap-2 justify-center">
               {otp.map((digit, index) => (
                 <Input
@@ -150,6 +144,7 @@ export default function SignInVerifyPage() {
                   onKeyDown={(e) => handleKeyDown(index, e)}
                   onPaste={handlePaste} 
                   disabled={isPending}
+                  autoComplete="off"
                   required
               />
               ))}
