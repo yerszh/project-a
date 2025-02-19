@@ -3,6 +3,18 @@ enum AuthRole {
   ADMIN
 }
 
+model OTP {
+  id        String   @id @default(uuid())
+  email     String  
+  code      String
+  createdAt DateTime @default(now())
+  expiresAt DateTime @default(dbgenerated("NOW() + interval '10 minutes'"))
+  used      Boolean  @default(false)
+  
+  @@index([email])
+  @@index([code])
+}
+
 model SchoolAdmin {
   id         String  @id @default(cuid())
   login      String  @unique
@@ -48,9 +60,6 @@ model User {
   UserChats     UserChats[]
 
 }
-
-
-
 
  
 model Account {

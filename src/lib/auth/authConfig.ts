@@ -1,6 +1,6 @@
 import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
-import Nodemailer from "next-auth/providers/nodemailer";
+import CredentialsProvider from "next-auth/providers/credentials";
 import { clearStaleTokens } from "./clearStaleTokensServerAction";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { prisma } from "@/lib/prisma";
@@ -25,40 +25,50 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       clientSecret: process.env.AUTH_GOOGLE_SECRET,
       allowDangerousEmailAccountLinking: true,
     }),
-    Nodemailer({
-      server: {
-        host: process.env.EMAIL_SERVER_HOST,
-        port: parseInt(process.env.EMAIL_SERVER_PORT!, 10),
-        auth: {
-          user: process.env.EMAIL_SERVER_USER,
-          pass: process.env.EMAIL_SERVER_PASSWORD,
-        },
+    CredentialsProvider({
+      name: "OTP",
+      credentials: {
+        email: { label: "Email", type: "text" },
+        code: { label: "OTP Code", type: "text" },
       },
-      from: process.env.EMAIL_FROM,
-      async sendVerificationRequest({ identifier, url, provider }) {
-        const { host } = new URL(url);
+      async authorize(credentials) {
+        if (!credentials) {
+          throw new Error("No credentials provided");
+        }
+        const { email, code } = credentials as { email: string; code: string };
 
-        const transport = nodemailer.createTransport(provider.server);
+        if (!email || !code) {
+          throw new Error("Email and OTP code are required");
+        }
 
-        const message = {
-          to: identifier,
-          from: provider.from,
-          subject: `Вход на ${host}`,
-          text: `Вход на ${host}\n\n${url}\n\n`,
-          html: `
-            <div style="font-family: Arial, sans-serif; line-height: 1.5; color: #333;">
-              <h1>Добро пожаловать</h1>
-              <p>Пожалуйста, нажмите на ссылку ниже, чтобы войти:</p>
-              <a href="${url}" style="display: inline-block; margin: 10px 0; padding: 10px 20px; background: #0070f3; color: #fff; text-decoration: none; border-radius: 5px;">
-                Войти
-              </a>
-              <p>Если вы не запрашивали вход, вы можете проигнорировать это письмо.</p>
-              <p style="font-size: 12px; color: #666;">Эта ссылка будет действительна в течение 10 минут.</p>
-            </div>
-          `,
-        };
+        const otpRecord = await prisma.oTP.findFirst({
+          where: {
+            email,
+            code,
+            used: false,
+            expiresAt: { gt: new Date() },
+          },
+        });
 
-        await transport.sendMail(message);
+        if (!otpRecord) {
+          throw new Error("Invalid or expired OTP code");
+        }
+
+        await prisma.oTP.update({
+          where: { id: otpRecord.id },
+          data: { used: true },
+        });
+
+        let user = await prisma.user.findUnique({
+          where: { email },
+        });
+        
+        if (!user) {
+          user = await prisma.user.create({
+            data: { email, role: "USER" },
+          });
+        }
+        return user;
       },
     }),
   ],
