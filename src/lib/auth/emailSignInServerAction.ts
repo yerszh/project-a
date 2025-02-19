@@ -4,7 +4,8 @@ import { prisma } from "@/lib/prisma";
 import nodemailer from "nodemailer";
 
 export const handleEmailSignIn = async (email: string) => {
-  const code = Math.floor(100000 + Math.random() * 900000).toString();
+  
+  const code = Math.floor(1000 + Math.random() * 9000).toString();
 
   await prisma.oTP.create({
     data: {
