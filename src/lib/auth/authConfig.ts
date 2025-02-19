@@ -4,7 +4,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { clearStaleTokens } from "./clearStaleTokensServerAction";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { prisma } from "@/lib/prisma";
-import nodemailer from "nodemailer";
+import { clearExpiredOTPs } from "./clearExpiredOTPsServerAction";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   trustHost: true,
@@ -62,7 +62,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         let user = await prisma.user.findUnique({
           where: { email },
         });
-        
+
         if (!user) {
           user = await prisma.user.create({
             data: { email, role: "USER" },
@@ -75,6 +75,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
+        await clearExpiredOTPs();
         await clearStaleTokens();
         return {
           ...token,

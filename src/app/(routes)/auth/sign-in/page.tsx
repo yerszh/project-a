@@ -4,9 +4,9 @@ import { useState, useTransition } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
-import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { handleEmailSignIn } from "@/lib/auth/emailSignInServerAction";
+import { handleGoogleSignIn } from "@/lib/auth/googleSignInServerAction";
 
 const SignInPage: React.FC = () => {
   const [isPending, startTransition] = useTransition();
@@ -19,10 +19,6 @@ const SignInPage: React.FC = () => {
       await handleEmailSignIn(email);
       router.push("/auth/verify");
     });
-  };
-
-  const handleGoogleSignIn = () => {
-    signIn("google", { callbackUrl: "/quiz" });
   };
 
   return (
@@ -66,7 +62,9 @@ const SignInPage: React.FC = () => {
       <Button
         variant={"ghost"}
         className="w-full h-12 border border-[#E3E6EB] rounded-lg mt-4"
-        onClick={handleGoogleSignIn}
+        onClick={() => {
+                  handleGoogleSignIn();
+                }}
       >
         <Image src="/icons/google-icon.svg" alt="google-icon" height={24} width={24} />
         Продолжить с Google
