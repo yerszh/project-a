@@ -107,12 +107,23 @@ const ProfilePage = ({
 
   return (
     <div className="p-4 w-full flex flex-col">
-      <div className="w-full flex justify-between">
-        <button style={{ cursor: "pointer" }} onClick={handleSignOut}>
+      <div className="w-full flex justify-between mt-4">
+        <Button
+          onClick={handleSignOut}
+          variant={"ghost"}
+          size={"icon"}
+          className="flex gap-2 items-center text-[#A5AAB3] text-xs	"
+        >
+          <Image
+            src="/icons/logout-icon.svg"
+            alt={"logout"}
+            height={20}
+            width={20}
+          />
           {t("signOut")}
-        </button>
+        </Button>
 
-        <div className="flex flex-row gap-2 mt-4">
+        <div className="flex flex-row gap-2">
           <LocaleSwitcher />
           <Link href={pageType === "quiz" ? "/" : "/result"}>
             <Image

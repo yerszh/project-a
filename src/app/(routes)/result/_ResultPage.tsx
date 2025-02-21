@@ -85,20 +85,12 @@ const ResultPage = ({ userResult }: ResultPageProps) => {
         </Button>
 
         <div className="flex flex-row gap-2">
+          <LocaleSwitcher />
           <Link href="/profile">
             <Image
               className="rounded-lg"
               src="/icons/profile-icon.svg"
               alt={"profile"}
-              height={24}
-              width={24}
-            />
-          </Link>
-          <LocaleSwitcher />
-          <Link href="/">
-            <Image
-              src="/icons/close-button.svg"
-              alt={"close-Button"}
               height={24}
               width={24}
             />

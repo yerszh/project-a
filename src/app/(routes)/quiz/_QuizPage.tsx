@@ -170,14 +170,6 @@ const QuizPage: React.FC<QuizPageProps> = ({ questionData }) => {
 
         <div className="flex flex-row gap-2">
           <LocaleSwitcher />
-          <Link href="/">
-            <Image
-              src="/icons/close-button.svg"
-              alt={t("closeButton")}
-              height={24}
-              width={24}
-            />
-          </Link>
         </div>
       </div>
 
