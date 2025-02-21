@@ -43,7 +43,7 @@ const HomePage = ({ activeQuiz }: HomePageProps) => {
       <div className="flex justify-end gap-1 w-full mb-3 mt-9 px-4 text-[#9E9E9E]">
         <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center gap-1">
           <Image
-            src="/icons/logo-main.svg"
+            src="/icons/logo-main2.svg"
             alt={t("logoAlt")}
             height={24}
             width={156}
@@ -51,17 +51,12 @@ const HomePage = ({ activeQuiz }: HomePageProps) => {
         </div>
         <LocaleSwitcher />
       </div>
-      <Image
-        src="/images/main-image.jpg"
-        alt={t("mainImageAlt")}
-        width="480"
-        height="480"
-      />
-      <div className="max-w-[236px]">
-        <h1 className="text-[32px] text-[#171A1D] font-semibold leading-8 text-center">
+     <div className="flex flex-col items-center absolute bottom-20">
+     <div className="max-w-[236px]">
+        <h1 className="text-[32px] text-white font-semibold leading-8 text-center">
           {t("findYourCalling")}
         </h1>
-        <p className="mt-6 text-[14px] text-[#171A1D] font-normal leading-4 text-center">
+        <p className="mt-6 text-[14px] text-white font-normal leading-4 text-center">
           {t("interactiveHelperDescription")}
         </p>
       </div>
@@ -77,6 +72,7 @@ const HomePage = ({ activeQuiz }: HomePageProps) => {
         />
         {activeQuiz?.isActive ? t("continue") : t("startTest")}
       </Button>
+     </div>
     </>
   );
 };

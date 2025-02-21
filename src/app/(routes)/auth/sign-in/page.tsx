@@ -4,19 +4,16 @@ import { useState, useTransition } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
-import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
-
 import { handleGoogleSignIn } from "@/lib/auth/googleSignInServerAction";
 import { sendEmailOTP } from "@/lib/auth/sendEmailOTPServerAction";
 import { handleOTPSignIn } from "@/lib/auth/oTPSignInServerAction";
 
 export default function SignInVerifyPage() {
   const [isPending, startTransition] = useTransition();
-  const [step, setStep] = useState<"email" | "verify">("email");
+  const [step, setStep] = useState<"email" | "verify">("verify");
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState(["", "", "", ""]);
-  const router = useRouter();
+  
 
   const handleOTPRequest = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,8 +27,7 @@ export default function SignInVerifyPage() {
     e.preventDefault();
     const code = otp.join("");
     startTransition(async () => {
-      const result = await handleOTPSignIn(email, code);
-      console.log(result)   
+      await handleOTPSignIn(email, code);  
     });
   };
 
