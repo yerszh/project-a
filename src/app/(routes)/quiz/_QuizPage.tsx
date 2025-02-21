@@ -47,7 +47,7 @@ const QuizPage: React.FC<QuizPageProps> = ({ questionData }) => {
   const t = useTranslations("QuizPage");
   const locale = useLocale();
   const router = useRouter();
-
+  const [loading, setLoading] = useState(false);
   const [direction, setDirection] = useState<"next" | "previous">("next");
   const lastQuizNumber = questionData?.userQuestions.length;
 
@@ -135,10 +135,48 @@ const QuizPage: React.FC<QuizPageProps> = ({ questionData }) => {
       handleMultipleAnswer();
     }
     if (!questionData || !currentQuestion?.question_id) return;
+    setLoading(true);
     await finishQuiz(questionData?.user_quizzes_id).then(() => {
       router.push("/result");
     });
   };
+
+  if (loading) {
+    return (
+      <div className="m-auto flex flex-col items-center">
+        <style jsx>{`
+          .loader {
+            border: 6px solid #f1f4f8;
+            border-top: 6px solid #4caf50;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+          }
+
+          @keyframes spin {
+            to {
+              transform: rotate(360deg);
+            }
+          }
+        `}</style>
+        <div className="loader"></div>
+
+        <Image
+          className="mt-8"
+          src="/icons/logo-big.svg"
+          alt="logo"
+          height={64}
+          width={64}
+        />
+        <h1 className="text-sm font-semibold mt-3">AI Профориентатор</h1>
+        <p className="w-[211px] text-sm text-center mt-6">
+          Работает с вашими данными и подбирает для вас наиболее подходящие
+          варианты
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="p-4 w-full flex flex-col items-center">
