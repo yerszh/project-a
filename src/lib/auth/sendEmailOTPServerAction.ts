@@ -4,7 +4,6 @@ import { prisma } from "@/lib/prisma";
 import nodemailer from "nodemailer";
 
 export const sendEmailOTP = async (email: string) => {
-
   const code = Math.floor(1000 + Math.random() * 9000).toString();
 
   await prisma.oTP.create({
@@ -23,8 +22,6 @@ export const sendEmailOTP = async (email: string) => {
     },
   });
 
-
-  
   const message = {
     from: process.env.EMAIL_FROM,
     to: email,

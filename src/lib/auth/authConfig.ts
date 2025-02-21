@@ -5,6 +5,7 @@ import { clearStaleTokens } from "./clearStaleTokensServerAction";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { prisma } from "@/lib/prisma";
 import { clearExpiredOTPs } from "./clearExpiredOTPsServerAction";
+import { error } from "console";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   trustHost: true,
@@ -32,14 +33,11 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         code: { label: "OTP Code", type: "text" },
       },
       async authorize(credentials) {
-        if (!credentials) {
-          throw new Error("No credentials provided");
+        if (!credentials || !credentials.code || !credentials.email) {
+          return null;
         }
-        const { email, code } = credentials as { email: string; code: string };
 
-        if (!email || !code) {
-          throw new Error("Email and OTP code are required");
-        }
+        const { email, code } = credentials as { email: string; code: string };
 
         const otpRecord = await prisma.oTP.findFirst({
           where: {
@@ -51,7 +49,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         });
 
         if (!otpRecord) {
-          throw new Error("Invalid or expired OTP code");
+          return null;
         }
 
         await prisma.oTP.update({
@@ -77,6 +75,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       if (user) {
         await clearExpiredOTPs();
         await clearStaleTokens();
+
         return {
           ...token,
           id: user.id,

@@ -4,10 +4,9 @@ export async function clearExpiredOTPs() {
   try {
     await prisma.oTP.deleteMany({
       where: {
-        expiresAt: { lt: new Date() }, 
+        expiresAt: { lt: new Date() },
       },
     });
-
   } catch (error) {
     throw error;
   }

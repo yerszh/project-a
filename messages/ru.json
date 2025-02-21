@@ -82,5 +82,9 @@
     "discussAnotherProfession": "Обсудить другую профессию",
     "textareaSelect": "Выберите профессию",
     "textareaMessage": "Сообщение"
+  },
+  "AuthPage": {
+    "MissingEmail": "Отсутствует адрес электронной почты или код",
+    "InvalidOTP": "Недействительный или просроченный код"
   }
 }
