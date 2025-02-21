@@ -12,18 +12,33 @@ import { useLocale, useTranslations } from "next-intl";
 import LocaleSwitcher from "@/components/LocaleSwitcher/LocaleSwitcher";
 import { useSearchParams } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
+interface School {
+  id: string;
+  name_ru: string;
+  name_kz: string;
+  url_name: string;
+}
 
 interface ProfilePageProps {
   userData?: User | null;
-  selectedSchool?: {
-    id: string;
-    name_ru: string;
-    name_kz: string;
-    url_name: string;
-  } | null;
+  selectedSchool?: School | null;
+  allSchools?: School[];
 }
 
-const ProfilePage = ({ userData, selectedSchool }: ProfilePageProps) => {
+const ProfilePage = ({
+  userData,
+  selectedSchool,
+  allSchools,
+}: ProfilePageProps) => {
   const searchParams = useSearchParams();
   const pageType = searchParams.get("type") || "profile";
   const t = useTranslations("ProfilePage");
@@ -135,15 +150,33 @@ const ProfilePage = ({ userData, selectedSchool }: ProfilePageProps) => {
           <label className="text-[#333944] text-[13px] leading-[13px]">
             {t("school")}
           </label>
-          <Input
-            className="p-4 flex w-full border border-[#E3E6EB] h-12 text-sm rounded-2xl"
-            value={
-              locale === "kz"
-                ? selectedSchool?.name_kz
-                : selectedSchool?.name_ru || ""
-            }
-            readOnly
-          />
+
+          <Select
+            defaultValue={selectedSchool?.id}
+            onValueChange={(value) => {
+              setFormData((prev) => ({
+                ...prev,
+                schoolId: value || null,
+              }));
+            }}
+          >
+            <SelectTrigger className="justify-start h-12 rounded-2xl p-4 border text-inherit">
+              <SelectValue placeholder={t("schoolChoose")} />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                {allSchools?.map((school, index) => (
+                  <SelectItem
+                    className="justify-start p-3"
+                    key={index}
+                    value={school.id}
+                  >
+                    {locale === "kz" ? school.name_kz : school.name_ru}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
         </div>
         <div className="flex flex-col gap-2 mt-4">
           <label className="text-[#333944] text-[13px] leading-[13px]">

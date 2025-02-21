@@ -82,5 +82,9 @@
     "discussAnotherProfession": "Басқа мамандықты талқылау",
     "textareaSelect": "Мамандықты таңдаңыз",
     "textareaMessage": "Хабарлама"
+  },
+  "AuthPage": {
+    "MissingEmail": "Электрондық пошта мекенжайы немесе код жоқ",
+    "InvalidOTP": "Жарамсыз немесе мерзімі өтіп кеткен код"
   }
 }
