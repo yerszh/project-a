@@ -43,8 +43,8 @@ const HomePage = ({ activeQuiz }: HomePageProps) => {
       <div className="flex justify-end gap-1 w-full mb-3 mt-9 px-4 text-[#9E9E9E]">
         <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center gap-1">
           <Image
-            src="/icons/logo-main2.svg"
-            alt={t("logoAlt")}
+            src="/icons/logo-white.svg"
+            alt="logo"
             height={24}
             width={156}
           />
