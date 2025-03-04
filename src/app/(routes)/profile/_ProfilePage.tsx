@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { User } from "@prisma/client";
+import { School, User } from "@prisma/client";
 import { setUserInfo } from "@/lib/profile/setUserInfo";
 import { handleSignOut } from "@/lib/auth/signOutServerAction";
 import { useLocale, useTranslations } from "next-intl";
@@ -21,29 +21,21 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-interface School {
-  id: string;
-  name_ru: string;
-  name_kz: string;
-  url_name: string;
-}
-
 interface ProfilePageProps {
   userData?: User | null;
-  selectedSchool?: School | null;
+  schoolByUrl?: School | null;
   allSchools?: School[];
 }
 
 const ProfilePage = ({
   userData,
-  selectedSchool,
+  schoolByUrl,
   allSchools,
 }: ProfilePageProps) => {
   const searchParams = useSearchParams();
   const pageType = searchParams.get("type") || "profile";
   const t = useTranslations("ProfilePage");
   const locale = useLocale();
-
   const [isPending, setIsPending] = useState(false);
   const { toast } = useToast();
 
@@ -52,9 +44,7 @@ const ProfilePage = ({
     grade: userData?.grade || null,
     age: userData?.age || null,
     phoneNumber: userData?.phoneNumber || null,
-    schoolId: userData?.schoolId
-      ? userData?.schoolId
-      : selectedSchool?.id || null,
+    schoolId: userData?.schoolId ? userData?.schoolId : schoolByUrl?.id || null,
   });
 
   const [isPhoneValid, setIsPhoneValid] = useState(true);
@@ -104,6 +94,35 @@ const ProfilePage = ({
     }
     setIsPending(false);
   };
+
+  const schoolRegions = Array.from(
+    new Map(allSchools?.map((item) => [item.region_ru, item])).values()
+  );
+
+  const [selectedRegion, setSelectedRegion] = useState<string>(
+    allSchools?.find((entry) => entry.id === userData?.schoolId)?.region_ru ||
+      ""
+  );
+
+  const regionCities = Array.from(
+    new Map(
+      allSchools
+        ?.filter((school) => school.region_ru === selectedRegion)
+        .map((school) => [school.city_ru, school])
+    ).values()
+  );
+
+  const [selectedCity, setSelectedCity] = useState<string>(
+    allSchools?.find((entry) => entry.id === userData?.schoolId)?.city_ru || ""
+  );
+
+  const citySchools = allSchools?.filter(
+    (school) => school.city_ru === selectedCity
+  );
+
+  const [selectedSchool, setSelectedSchool] = useState<string>(
+    allSchools?.find((entry) => entry.id === userData?.schoolId)?.name_ru || ""
+  );
 
   return (
     <div className="p-4 w-full flex flex-col">
@@ -157,18 +176,81 @@ const ProfilePage = ({
             maxLength={100}
           />
         </div>
+
+        <div className="flex flex-col gap-2 mt-4">
+          <label className="text-[#333944] text-[13px] leading-[13px]">
+            Область
+          </label>
+
+          <Select
+            value={selectedRegion}
+            onValueChange={(value) => {
+              setSelectedRegion(value);
+              setSelectedCity("");
+              setSelectedSchool("");
+            }}
+          >
+            <SelectTrigger className="justify-start h-12 rounded-2xl p-4 border text-inherit">
+              <SelectValue placeholder={"Выберите регион"} />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                {schoolRegions.map((school, index) => (
+                  <SelectItem
+                    className="justify-start p-3"
+                    key={index}
+                    value={
+                      (locale === "kz" ? school.region_kz : school.region_ru) ??
+                      ""
+                    }
+                  >
+                    {locale === "kz" ? school.region_kz : school.region_ru}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="flex flex-col gap-2 mt-4">
+          <label className="text-[#333944] text-[13px] leading-[13px]">
+            Город
+          </label>
+
+          <Select
+            value={selectedCity}
+            onValueChange={(value) => {
+              setSelectedCity(value);
+              setSelectedSchool("");
+            }}
+          >
+            <SelectTrigger className="justify-start h-12 rounded-2xl p-4 border text-inherit">
+              <SelectValue placeholder="Выберите город" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                {regionCities.map((school, index) => (
+                  <SelectItem
+                    className="justify-start p-3"
+                    key={index}
+                    value={school.city_ru || ""}
+                  >
+                    {school.city_ru}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </div>
+
         <div className="flex flex-col gap-2 mt-4">
           <label className="text-[#333944] text-[13px] leading-[13px]">
             {t("school")}
           </label>
 
           <Select
-            defaultValue={selectedSchool?.id}
+            value={selectedSchool}
             onValueChange={(value) => {
-              setFormData((prev) => ({
-                ...prev,
-                schoolId: value || null,
-              }));
+              setSelectedSchool(value);
             }}
           >
             <SelectTrigger className="justify-start h-12 rounded-2xl p-4 border text-inherit">
@@ -176,11 +258,17 @@ const ProfilePage = ({
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                {allSchools?.map((school, index) => (
+                {citySchools?.map((school, index) => (
                   <SelectItem
                     className="justify-start p-3"
                     key={index}
-                    value={school.id}
+                    value={school.name_ru}
+                    onClick={() => {
+                      setFormData((prev) => ({
+                        ...prev,
+                        schoolId: school.id || null,
+                      }));
+                    }}
                   >
                     {locale === "kz" ? school.name_kz : school.name_ru}
                   </SelectItem>

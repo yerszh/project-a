@@ -8,13 +8,13 @@ const Profile = async () => {
   const userData = await getUserInfo();
   const cookieStore = await cookies();
   const schoolCookie = cookieStore.get("school")?.value || "gen";
-  const selectedSchool = await getSchoolByUrl(schoolCookie);
+  const schoolByUrl = await getSchoolByUrl(schoolCookie);
   const allSchools = await getAllSchool();
 
   return (
     <ProfilePage
       allSchools={allSchools}
-      selectedSchool={selectedSchool}
+      schoolByUrl={schoolByUrl}
       userData={userData}
     />
   );

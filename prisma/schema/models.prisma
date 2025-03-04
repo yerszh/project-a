@@ -30,7 +30,11 @@ model School {
   name_ru   String
   name_kz   String
   url_name  String  @unique
-  
+  region_ru   String?
+  region_kz   String?
+  city_ru     String?
+  city_kz     String?
+
   admins    SchoolAdmin[]
   users     User[]
 }
