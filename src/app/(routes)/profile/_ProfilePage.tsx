@@ -288,7 +288,7 @@ const ProfilePage = ({
             value={formData.grade || ""}
             onChange={handleChange}
             placeholder={t("gradePlaceholder")}
-            maxLength={2}
+            maxLength={3}
           />
         </div>
         <div className="flex flex-col gap-2 mt-4">
