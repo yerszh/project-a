@@ -179,7 +179,7 @@ const ProfilePage = ({
 
         <div className="flex flex-col gap-2 mt-4">
           <label className="text-[#333944] text-[13px] leading-[13px]">
-            Область
+            {t("region")}
           </label>
 
           <Select
@@ -191,7 +191,7 @@ const ProfilePage = ({
             }}
           >
             <SelectTrigger className="justify-start h-12 rounded-2xl p-4 border text-inherit">
-              <SelectValue placeholder={"Выберите регион"} />
+              <SelectValue placeholder={t("regionChoose")} />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
@@ -213,7 +213,7 @@ const ProfilePage = ({
         </div>
         <div className="flex flex-col gap-2 mt-4">
           <label className="text-[#333944] text-[13px] leading-[13px]">
-            Город
+            {t("city")}
           </label>
 
           <Select
@@ -224,7 +224,7 @@ const ProfilePage = ({
             }}
           >
             <SelectTrigger className="justify-start h-12 rounded-2xl p-4 border text-inherit">
-              <SelectValue placeholder="Выберите город" />
+              <SelectValue placeholder={t("cityChoose")} />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
