@@ -95,13 +95,16 @@ const ProfilePage = ({
     setIsPending(false);
   };
 
+  const userSchoolInfo = allSchools?.find(
+    (item) => item.id === userData?.schoolId
+  );
+
   const schoolRegions = Array.from(
     new Map(allSchools?.map((item) => [item.region_ru, item])).values()
   );
 
   const [selectedRegion, setSelectedRegion] = useState<string>(
-    allSchools?.find((entry) => entry.id === userData?.schoolId)?.region_ru ||
-      ""
+    userSchoolInfo?.region_ru || ""
   );
 
   const regionCities = Array.from(
@@ -113,7 +116,7 @@ const ProfilePage = ({
   );
 
   const [selectedCity, setSelectedCity] = useState<string>(
-    allSchools?.find((entry) => entry.id === userData?.schoolId)?.city_ru || ""
+    userSchoolInfo?.city_ru || ""
   );
 
   const citySchools = allSchools?.filter(
@@ -121,7 +124,7 @@ const ProfilePage = ({
   );
 
   const [selectedSchool, setSelectedSchool] = useState<string>(
-    allSchools?.find((entry) => entry.id === userData?.schoolId)?.name_ru || ""
+    userSchoolInfo?.name_ru || ""
   );
 
   return (
@@ -183,7 +186,7 @@ const ProfilePage = ({
           </label>
 
           <Select
-            value={selectedRegion}
+            defaultValue={userSchoolInfo?.region_ru || ""}
             onValueChange={(value) => {
               setSelectedRegion(value);
               setSelectedCity("");
@@ -198,11 +201,8 @@ const ProfilePage = ({
                 {schoolRegions.map((school, index) => (
                   <SelectItem
                     className="justify-start p-3"
-                    key={index}
-                    value={
-                      (locale === "kz" ? school.region_kz : school.region_ru) ??
-                      ""
-                    }
+                    key={school.id || index}
+                    value={school.region_ru || ""}
                   >
                     {locale === "kz" ? school.region_kz : school.region_ru}
                   </SelectItem>
@@ -217,7 +217,7 @@ const ProfilePage = ({
           </label>
 
           <Select
-            value={selectedCity}
+            value={selectedCity || ""}
             onValueChange={(value) => {
               setSelectedCity(value);
               setSelectedSchool("");
@@ -234,7 +234,7 @@ const ProfilePage = ({
                     key={index}
                     value={school.city_ru || ""}
                   >
-                    {school.city_ru}
+                    {locale === "kz" ? school.city_kz : school.city_ru}
                   </SelectItem>
                 ))}
               </SelectGroup>
@@ -248,7 +248,7 @@ const ProfilePage = ({
           </label>
 
           <Select
-            value={selectedSchool}
+            value={selectedSchool || ""}
             onValueChange={(value) => {
               setSelectedSchool(value);
             }}
