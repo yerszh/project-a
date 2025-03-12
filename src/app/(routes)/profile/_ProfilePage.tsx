@@ -186,14 +186,14 @@ const ProfilePage = ({
           </label>
 
           <Select
-            defaultValue={userSchoolInfo?.region_ru || ""}
+            defaultValue={selectedRegion}
             onValueChange={(value) => {
               setSelectedRegion(value);
               setSelectedCity("");
               setSelectedSchool("");
             }}
           >
-            <SelectTrigger className="justify-start h-12 rounded-2xl p-4 border text-inherit">
+            <SelectTrigger className="h-12 rounded-2xl p-4 border text-inherit">
               <SelectValue placeholder={t("regionChoose")} />
             </SelectTrigger>
             <SelectContent>
@@ -217,13 +217,13 @@ const ProfilePage = ({
           </label>
 
           <Select
-            value={selectedCity || ""}
+            value={selectedCity}
             onValueChange={(value) => {
               setSelectedCity(value);
               setSelectedSchool("");
             }}
           >
-            <SelectTrigger className="justify-start h-12 rounded-2xl p-4 border text-inherit">
+            <SelectTrigger className="h-12 rounded-2xl p-4 border text-inherit">
               <SelectValue placeholder={t("cityChoose")} />
             </SelectTrigger>
             <SelectContent>
@@ -248,12 +248,12 @@ const ProfilePage = ({
           </label>
 
           <Select
-            value={selectedSchool || ""}
+            value={selectedSchool}
             onValueChange={(value) => {
               setSelectedSchool(value);
             }}
           >
-            <SelectTrigger className="justify-start h-12 rounded-2xl p-4 border text-inherit">
+            <SelectTrigger className=" h-12 rounded-2xl p-4 border text-inherit">
               <SelectValue placeholder={t("schoolChoose")} />
             </SelectTrigger>
             <SelectContent>

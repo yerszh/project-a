@@ -32,21 +32,23 @@ export default function LocaleSwitcherSelect({
   }
 
   return (
-    <div className="relative  w-[30px]">
+    <div className="relative ">
       <Select onValueChange={onChange}>
         <SelectTrigger
+          hideChevron
           aria-label={label}
-          className={
-            isPending
-              ? "pointer-events-none opacity-60"
-              : "bg-[#F1F4F8] text-[#6F7581] h-6"
-          }
+          className={"bg-[#F1F4F8] text-[#6F7581] h-6 px-0 w-8 justify-center"}
         >
           <SelectValue placeholder={defaultValue} />
         </SelectTrigger>
-        <SelectContent>
+        <SelectContent className="min-w-8">
           {items.map((item) => (
-            <SelectItem key={item.value} value={item.value}>
+            <SelectItem
+              className="py-1.5 pl-1 pr-1"
+              hideCheck
+              key={item.value}
+              value={item.value}
+            >
               <span>{item.label}</span>
             </SelectItem>
           ))}
