@@ -7,10 +7,10 @@ const Home = async () => {
   const lastUserResult = await getLastUserResult();
   const activeUserQuiz = await checkActiveQuiz();
 
-  if (lastUserResult) {
-    redirect("/result");
-  } else if (activeUserQuiz?.isActive) {
+  if (activeUserQuiz?.isActive) {
     redirect("/quiz");
+  } else if (lastUserResult) {
+    redirect("/result");
   }
 
   return (

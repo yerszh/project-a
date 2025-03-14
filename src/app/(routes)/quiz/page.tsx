@@ -18,7 +18,7 @@ const Quiz = async () => {
 
   const activeQuiz = await checkActiveQuiz();
 
-  if (activeQuiz) {
+  if (activeQuiz?.isActive) {
     const questionData = await getUserQuestionAndAnswers(
       activeQuiz?.user_quizzes_id
     );

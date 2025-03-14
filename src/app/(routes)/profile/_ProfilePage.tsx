@@ -147,7 +147,7 @@ const ProfilePage = ({
 
         <div className="flex flex-row gap-2">
           <LocaleSwitcher />
-          <Link href={pageType === "quiz" ? "/" : "/result"}>
+          <Link href={pageType === "quiz" ? "/quiz" : "/result"}>
             <Image
               src="/icons/close-button.svg"
               alt={t("closeButtonAlt")}
@@ -222,6 +222,7 @@ const ProfilePage = ({
               setSelectedCity(value);
               setSelectedSchool("");
             }}
+            disabled={!selectedRegion}
           >
             <SelectTrigger className="h-12 rounded-2xl p-4 border text-inherit">
               <SelectValue placeholder={t("cityChoose")} />
@@ -252,6 +253,7 @@ const ProfilePage = ({
             onValueChange={(value) => {
               setSelectedSchool(value);
             }}
+            disabled={!selectedCity}
           >
             <SelectTrigger className=" h-12 rounded-2xl p-4 border text-inherit">
               <SelectValue placeholder={t("schoolChoose")} />
