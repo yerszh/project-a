@@ -159,19 +159,21 @@ const ResultPage = ({ userResult }: ResultPageProps) => {
       </div>
 
       <Link
-        className="bg-[#212121] w-full flex gap-2 py-5 text-white justify-center rounded-lg !mb-10 !mt-8"
+        className="bg-[#212121] w-full flex flex-row items-center justify-center gap-2 py-5 text-white rounded-lg !mb-10 !mt-8 overflow-hidden"
         href={"/chat"}
       >
         <Image
           src="/icons/chat-button.svg"
-          alt={"chat-button"}
+          alt="chat-button"
           height={24}
           width={24}
         />
-        {t("discussWithAI")}
+        <span className="truncate max-w-[70%] text-center">
+          {t("discussWithAI")}
+        </span>
         <Image
           src="/icons/arrow-forward.svg"
-          alt={"arrow-forward"}
+          alt="arrow-forward"
           height={24}
           width={24}
         />

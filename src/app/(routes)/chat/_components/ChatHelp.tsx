@@ -16,8 +16,8 @@ const ChatHelp = () => {
   return (
     <div className="mt-56 mx-5 flex flex-col ">
       <h2 className="text-[#171A1D] text-sm font-normal leading-4 text-center">
-        {t("greeting")} <span className="font-semibold">AI Chat!</span>{" "}
-        {t("intro")}
+        {t("greeting")}{" "}
+        <span className="font-semibold">AI Профориентатор!</span> {t("intro")}
       </h2>
       <p className="mt-6 mx-14 text-[#757575] text-xs font-normal leading-3 text-center">
         {t("dialogInfo")}
