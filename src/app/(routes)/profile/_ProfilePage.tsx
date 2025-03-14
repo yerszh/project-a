@@ -147,7 +147,7 @@ const ProfilePage = ({
 
         <div className="flex flex-row gap-2">
           <LocaleSwitcher />
-          <Link href={pageType === "quiz" ? "/quiz" : "/result"}>
+          <Link href={pageType === "quiz" ? "/" : "/result"}>
             <Image
               src="/icons/close-button.svg"
               alt={t("closeButtonAlt")}

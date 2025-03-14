@@ -4,6 +4,7 @@ import { getUserQuestionAndAnswers } from "@/lib/quiz/getUserQuestionAndAnswers"
 import { redirect } from "next/navigation";
 import QuizPage from "./_QuizPage";
 import { User } from "next-auth";
+import { createUserQuiz } from "@/lib/quiz/createUserQuiz";
 
 const Quiz = async () => {
   const userData = await getUserInfo();
@@ -17,6 +18,10 @@ const Quiz = async () => {
   }
 
   const activeQuiz = await checkActiveQuiz();
+
+  if (!activeQuiz) {
+    await createUserQuiz();
+  }
 
   if (activeQuiz?.isActive) {
     const questionData = await getUserQuestionAndAnswers(
