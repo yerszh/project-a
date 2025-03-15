@@ -11,7 +11,6 @@ import { handleSignOut } from "@/lib/auth/signOutServerAction";
 import { useLocale, useTranslations } from "next-intl";
 import LocaleSwitcher from "@/components/LocaleSwitcher/LocaleSwitcher";
 import { useSearchParams } from "next/navigation";
-import { useToast } from "@/hooks/use-toast";
 import {
   Select,
   SelectContent,
@@ -37,7 +36,6 @@ const ProfilePage = ({
   const t = useTranslations("ProfilePage");
   const locale = useLocale();
   const [isPending, setIsPending] = useState(false);
-  const { toast } = useToast();
 
   const [formData, setFormData] = useState({
     name: userData?.name || null,
@@ -84,13 +82,8 @@ const ProfilePage = ({
     setIsPending(true);
     try {
       await setUserInfo(formData, pageType);
-      toast({
-        title: t("updatedTitle"),
-      });
     } catch (error) {
-      toast({
-        title: t("errorTitle"),
-      });
+      console.log(error);
     }
     setIsPending(false);
   };
