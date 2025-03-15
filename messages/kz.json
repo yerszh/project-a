@@ -2,10 +2,10 @@
   "HomePage": {
     "logoAlt": "Негізгі логотип",
     "mainImageAlt": "Негізгі сурет",
-    "findYourCalling": "Өзіңіздің жаныңызды табыңыз",
+    "findYourCalling": "Өз таңдауыңды жаса!",
     "interactiveHelperDescription": "Қабілеттерді анықтауға және тиісті мамандықты таңдауға арналған интерактивті көмекші",
     "cursorMagicAlt": "Сиқырлы курсор белгішесі",
-    "startTest": "Тесті бастау",
+    "startTest": "Тестті бастау",
     "continue": "Жалғастыру"
   },
   "ProfilePage": {
