@@ -244,7 +244,14 @@ const ProfilePage = ({
           <Select
             value={selectedSchool}
             onValueChange={(value) => {
+              const selectedSchoolObj = citySchools?.find(
+                (school) => school.name_ru === value
+              );
               setSelectedSchool(value);
+              setFormData((prev) => ({
+                ...prev,
+                schoolId: selectedSchoolObj?.id || null,
+              }));
             }}
             disabled={!selectedCity}
           >

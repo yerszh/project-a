@@ -5,7 +5,7 @@ import { setResultRIASEC } from "../result/setResultRIASEC";
 import { setUserProfessions } from "../result/setUserProfessions";
 import { getLastUserResult } from "../result/getLastUserResult";
 import { auth } from "../auth/authConfig";
-import {getLocale} from 'next-intl/server';
+import { getLocale } from "next-intl/server";
 
 export const finishQuiz = async (quizId: string) => {
   try {
@@ -29,7 +29,7 @@ export const finishQuiz = async (quizId: string) => {
     const session = await auth();
     const userEmail = session?.user?.email;
     const userResult = await getLastUserResult();
-    const locale = await getLocale()
+    const locale = await getLocale();
 
     const jsonData = {
       language: locale,
@@ -48,7 +48,7 @@ export const finishQuiz = async (quizId: string) => {
 
       jsonData[profKey] = {
         ru: profession.name_ru,
-        kz: profession.name_kz, 
+        kz: profession.name_kz,
       };
       jsonData[valueKey] = profession.percent.toString();
     });
