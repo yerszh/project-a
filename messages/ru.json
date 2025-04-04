@@ -22,7 +22,7 @@
     "school": "Школа",
     "schoolChoose": "Выберите вашу школу",
     "grade": "Класс",
-    "gradePlaceholder": "Введите ваш класс",
+    "gradePlaceholder": "Введите ваш класс, (Например: 10Б)",
     "age": "Возраст",
     "agePlaceholder": "Введите ваш возраст",
     "phoneNumber": "Номер телефона",
@@ -90,5 +90,12 @@
   "AuthPage": {
     "MissingEmail": "Отсутствует адрес электронной почты или код",
     "InvalidOTP": "Недействительный или просроченный код"
+  },
+  "SchoolAdminPage": {
+    "adminLogin": "Вход администратора",
+    "login": "Логин",
+    "password": "Пароль",
+    "submitButton": "Войти",
+    "errorMessage": "Что-то пошло не так"
   }
 }

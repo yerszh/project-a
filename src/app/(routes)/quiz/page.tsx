@@ -8,11 +8,9 @@ import { createUserQuiz } from "@/lib/quiz/createUserQuiz";
 
 const Quiz = async () => {
   const userData = await getUserInfo();
-  const missingFieldsInfo = ["name", "grade", "age", "phoneNumber"].some(
-    (field) => {
-      return userData?.[field as keyof User] == null;
-    }
-  );
+  const missingFieldsInfo = ["name", "grade", "age"].some((field) => {
+    return userData?.[field as keyof User] == null;
+  });
   if (missingFieldsInfo) {
     redirect("/profile?type=quiz");
   }

@@ -22,7 +22,7 @@
     "school": "Мектеп",
     "schoolChoose": "Мектебіңізді таңдаңыз",
     "grade": "Сынып",
-    "gradePlaceholder": "Сыныпыңызды енгізіңіз",
+    "gradePlaceholder": "Сыныпыңызды енгізіңіз, (Мысалы: 10Б)",
     "age": "Жас",
     "agePlaceholder": "Жасыңызды енгізіңіз",
     "phoneNumber": "Телефон нөмірі",
@@ -90,5 +90,12 @@
   "AuthPage": {
     "MissingEmail": "Электрондық пошта мекенжайы немесе код жоқ",
     "InvalidOTP": "Жарамсыз немесе мерзімі өтіп кеткен код"
+  },
+  "SchoolAdminPage": {
+    "adminLogin": "Әкімшіге кіру",
+    "login": "Логин",
+    "password": "Құпия сөз",
+    "submitButton": "Кіру",
+    "errorMessage": "Бірдеңе дұрыс емес"
   }
 }

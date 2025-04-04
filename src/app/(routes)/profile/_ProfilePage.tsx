@@ -50,28 +50,22 @@ const ProfilePage = ({
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+
+    if (name === "age" && !/^\d*$/.test(value)) return;
+
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
-
-    if (name === "phoneNumber") {
-      const phoneRegex = /^(?:\+7|7|8)[0-9]{10,11}$/;
-      setIsPhoneValid(phoneRegex.test(value));
-    }
   };
 
   useEffect(() => {
     const isNameValid = formData.name && formData.name.trim() !== "";
     const isGradeValid = formData.grade && formData.grade.trim() !== "";
     const isAgeValid = formData.age && formData.age.trim() !== "";
-    const isPhoneValidLocal = isPhoneValid && formData.phoneNumber;
 
     setIsFormValid(
-      Boolean(isNameValid) &&
-        Boolean(isGradeValid) &&
-        Boolean(isAgeValid) &&
-        Boolean(isPhoneValidLocal)
+      Boolean(isNameValid) && Boolean(isGradeValid) && Boolean(isAgeValid)
     );
   }, [formData, isPhoneValid]);
 
@@ -305,22 +299,6 @@ const ProfilePage = ({
             onChange={handleChange}
             placeholder={t("agePlaceholder")}
             maxLength={2}
-          />
-        </div>
-        <div className="flex flex-col gap-2 mt-4">
-          <label className="text-[#333944] text-[13px] leading-[13px]">
-            {t("phoneNumber")}
-          </label>
-          <Input
-            className={`p-4 flex w-full border h-12 text-sm rounded-2xl ${
-              isPhoneValid ? "border-[#E3E6EB]" : "border-red-500"
-            }`}
-            type="text"
-            name="phoneNumber"
-            value={formData.phoneNumber || ""}
-            onChange={handleChange}
-            placeholder={t("phoneNumberPlaceholder")}
-            maxLength={12}
           />
         </div>
 
