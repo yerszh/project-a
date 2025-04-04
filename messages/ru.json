@@ -92,7 +92,7 @@
     "InvalidOTP": "Недействительный или просроченный код"
   },
   "SchoolAdminPage": {
-    "adminLogin": "Вход администратора",
+    "adminLogin": "Вход в систему",
     "login": "Логин",
     "password": "Пароль",
     "submitButton": "Войти",

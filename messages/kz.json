@@ -92,7 +92,7 @@
     "InvalidOTP": "Жарамсыз немесе мерзімі өтіп кеткен код"
   },
   "SchoolAdminPage": {
-    "adminLogin": "Әкімшіге кіру",
+    "adminLogin": "Жүйеге кіру",
     "login": "Логин",
     "password": "Құпия сөз",
     "submitButton": "Кіру",
